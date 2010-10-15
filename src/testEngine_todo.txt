@@ -1,0 +1,3 @@
+Wir brauchen eine ChangeCOntent funktion - sonst wird man blöde
+Oder eine showContent für jedees Element oder stlt (SomeThingLikeThis)
+Wir brauchen noch ein Movie Panel und ein DropDown (und die Navi Leiste)
