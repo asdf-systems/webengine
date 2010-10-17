@@ -12,26 +12,26 @@ function init(elem){
 	// check Type 
 	switch(elem.type){
 		case "Button":
-			elem.domObject = new Button(elem.positionX, elem.positionY, ...);
+			elem.domObject = new Button(elem.positionX, elem.positionY);
 			elem.domObject.registeOnMouseClickEvent(eventHandler);
 		break;
 		case "InputField":
-			elem.domObject = new InputField(elem.positionX, elem.positionY, ...);
+			elem.domObject = new InputField(elem.positionX, elem.positionY);
 		break;
 		case "TextField":
-			elem.domObject = new Button(elem.positionX, elem.positionY, ...);
+			elem.domObject = new Button(elem.positionX, elem.positionY);
 		break;
 		case "PagePanel":
-			elem.domObject = new Button(elem.positionX, elem.positionY, ...);
+			elem.domObject = new Button(elem.positionX, elem.positionY);
 		break;		"
 		case "RollOutPanel":
-			elem.domObject = new Button(elem.positionX, elem.positionY, ...);
+			elem.domObject = new Button(elem.positionX, elem.positionY);
 		break;
 		case "Formular":
-			elem.domObject = new Button(elem.positionX, elem.positionY, ...);
+			elem.domObject = new Button(elem.positionX, elem.positionY);
 		break;
 		case "GridPanel":
-			elem.domObject = new Button(elem.positionX, elem.positionY, ...);
+			elem.domObject = new Button(elem.positionX, elem.positionY);
 		break;
 		case "Panel":
 			// Do nothing
