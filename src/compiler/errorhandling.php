@@ -1,7 +1,8 @@
 <?
 	function DieOnError($op) {
 		if(!$op) {
-			die("An error occurred");
+			debug_print_backtrace();
+			die("An error occurred\n");
 		}
 		return $op;
 	}

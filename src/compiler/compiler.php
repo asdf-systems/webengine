@@ -8,6 +8,8 @@
 	fwrite($output, compile($ROOT));
 	fclose($output);
 
+	/** Functions **/
+
 	function getOutputHandle() {
 		$filename = "object.js";
 		$handle = dieOnError(fopen($filename, "w+"));
@@ -21,16 +23,28 @@
 		foreach($content as $file) {
 			if (!$file["is_directory"]) {
 				issueWarning("There's a txt file in \$ROOT, it will be ignored\n");
+				continue;
 			}
-
 			$object[$file["name"]] = compileSubtree($path."/".$file["name"]);
 		}
 		return json_encode($object);
 	}
 
 	function compileSubtree($path) {
+		$object = Array();
 		$content = getDirectoryContent($path);
-		// TODO: continue here
-	}
 
+		foreach($content as $file) {
+			if(!isRelevantFile($file))
+				continue;
+			$elem = parseElementIncludeFile($path."/".$rebuildFilename($file));
+
+		}
+		return $object;
+	}
+	
+	function isRelevantFile($file) {
+		return strtolower($file["name"]) != "layout" 
+			&& strtolower($file["extension"] == "txt");
+	}
 ?>

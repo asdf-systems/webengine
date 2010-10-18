@@ -9,9 +9,10 @@
 		$content = Array();
 		$dirhandle = dieOnError(opendir($path));
 
-		while (($file = readdir($dirhandle)) !== false) {
-			if (isFileOfInterest($file)) {
-				$data = getFileInformation($file);
+		while(($file = readdir($dirhandle)) !== false) {
+			$fullfile = $path."/".$file;
+			if(isFileOfInterest($fullfile)) {
+				$data = getFileInformation($fullfile);
 				array_push($content, $data);
 			}
 		}
@@ -23,22 +24,22 @@
 	 * relevant for creating the JSON tree
 	 */
 	function isFileOfInterest($file) {
-		if ($file[0] == '.') {
+		$filedata = getFileInformation($file);
+		if($filedata["name"][0] == '.') {
 			return false;
 		}
-		if (is_dir($file)) {
+		if(is_dir($file)) {
 			return true;	
 		}	
 
-		$filedata = getFileInformation($file);
-		if ($filedata["extension"] != "txt") {
+		if($filedata["extension"] != "txt") {
 			return false;
 		}
 		return true;
 	}
 
 	function getFileInformation($file) {
-		$data = stat($file);
+		$data = dieOnError(stat($file));
 		return array_merge($data, getExtraData($file));
 	}
 
@@ -64,5 +65,12 @@
 		$filedata["is_directory"] = is_dir($file);
 
 		return $filedata;
+	}
+
+	function rebuildFilename($file) {
+		if($file["extension"] == "") {
+			return $file["name"];
+		}
+		return $file["name"].".".$file["extension"];
 	}
 ?>
