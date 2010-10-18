@@ -53,12 +53,12 @@
 		// Since $filedata["extension"=="" is our sign for "no extension"
 		// we have to catch the special case when "." is the last
 		// character of the filename
-		if(!$extension_pos || $extension_pos == strlen($filename)) {
+		if(!$extension_pos || $extension_pos == strlen($filename)-1) {
 			$filedata["name"] = $filename;
 			$filedata["extension"] = "";
 		} else {
 			$filedata["name"] = substr($filename, 0, $extension_pos);
-			$filedata["extentsion"] = substr($filename, $extension_pos+1);
+			$filedata["extension"] = substr($filename, $extension_pos+1);
 		}
 
 		$filedata["is_directory"] = is_dir($file);

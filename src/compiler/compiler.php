@@ -15,7 +15,22 @@
 	}
 
 	function compile($path) {
+		$object = Array();
+
 		$content = getDirectoryContent($path);
+		foreach($content as $file) {
+			if (!$file["is_directory"]) {
+				issueWarning("There's a txt file in \$ROOT, it will be ignored\n");
+			}
+
+			$object[$file["name"]] = compileSubtree($path."/".$file["name"]);
+		}
+		return json_encode($object);
+	}
+
+	function compileSubtree($path) {
+		$content = getDirectoryContent($path);
+		// TODO: continue here
 	}
 
 ?>

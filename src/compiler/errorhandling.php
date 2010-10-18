@@ -5,4 +5,8 @@
 		}
 		return $op;
 	}
+
+	function issueWarning($str) {
+		echo "Warning: ", $str;
+	}
 ?>
