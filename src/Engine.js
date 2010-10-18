@@ -12,10 +12,10 @@ function init(elem){
 	// check Type 
 	switch(elem.type){
 		case "Button":
-			elem.domObject = new Button(elem.positionX, elem.positionY);
-			elem.domObject.registeOnMouseClickEvent(eventHandler);
+			elem.object = new Button(elem.positionX, elem.positionY);
+			elem.object.registerOnMouseClickEvent(eventHandler);
 		break;
-		case "InputField":
+		/*case "InputField":
 			elem.domObject = new InputField(elem.positionX, elem.positionY);
 		break;
 		case "TextField":
@@ -35,7 +35,7 @@ function init(elem){
 		break;
 		case "Panel":
 			// Do nothing
-		break;
+		break;*/
 		case "default":
 			alert("Unknown type:" + elem.type + "on Element: " + elem.id);
 		break;
