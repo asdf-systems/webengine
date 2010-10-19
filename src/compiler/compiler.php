@@ -1,11 +1,11 @@
 <?
 	$ROOT = getcwd();
-
+	define(DEBUG, true);
 	require_once("directory_operations.php");
 	require_once("errorhandling.php");
 	require_once("elements.php");
 
-	$output = getOutputHandle();
+	$output = dieOnError(getOutputHandle(), "Could not open outputfie\n");
 	fwrite($output, compile($ROOT));
 	fclose($output);
 
@@ -18,6 +18,7 @@
 	}
 
 	function compile($path) {
+		debug("Compiling \"".$path."\"");
 		$object = Array();
 
 		$content = getDirectoryContent($path);
@@ -28,10 +29,13 @@
 			}
 			$object[$file["name"]] = compileSubtree($path."/".$file["name"]);
 		}
-		return json_encode($object)."\n";
+		$ret = json_encode($object)."\n";
+		debug("Result is: \n".$ret."\n");
+		return $ret;
 	}
 
 	function compileSubtree($path) {
+		debug("Compiling subtree \"".$path."\"");
 		$object = Array();
 		$content = getDirectoryContent($path);
 

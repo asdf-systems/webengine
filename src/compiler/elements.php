@@ -1,7 +1,9 @@
 <?
 	require_once("errorhandling.php");
+	require_once("debug.php");
 
 	function parseElementIncludeFile($file) {
+		debug("Parsing \"".$file."\"");
 		$object = Array();
 		$data = dieOnError(file($file));
 
