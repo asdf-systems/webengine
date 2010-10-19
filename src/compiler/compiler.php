@@ -1,5 +1,5 @@
 <?
-	$ROOT = getcwd();
+	$ROOT = getcwd()."/../testCases/testCaseParser";
 	define(DEBUG, true);
 	require_once("directory_operations.php");
 	require_once("errorhandling.php");
@@ -33,11 +33,20 @@
 				$elem = parseElementIncludeFile($fullpath);
 			}
 		}
+		debug("Done.");
 		return $object;
 	}
 
 	function isRelevantFile($file) {
 		return strtolower($file["name"]) != "layout" 
 			&& strtolower($file["extension"] == "txt");
+	}
+
+	function fixPath($curdir, $path) {
+		global $ROOT;
+		if($path[0] == "/") {
+			return $ROOT."/".$path;
+		}
+		return $curdir."/".$path;
 	}
 ?>

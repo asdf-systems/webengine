@@ -73,4 +73,5 @@
 		}
 		return $file["name"].".".$file["extension"];
 	}
+
 ?>

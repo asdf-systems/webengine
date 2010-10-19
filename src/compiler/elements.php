@@ -5,9 +5,10 @@
 	function parseElementIncludeFile($file) {
 		debug("Parsing \"".$file."\"");
 		$object = Array();
-		$data = dieOnError(file($file));
+		$data = dieOnError(file($file), "Could not read \"".$file."\"");
 
-		$type = extractType(array_shift($data));
+		$type = dieOnError(extractType(array_shift($data)), "No type specified in \"".$file."\"");
+		debug("Include declares type \"".$type."\"");
 		foreach($data as $line) {
 			$keyval = explode("=", $line, 2);
 			$keyval[0] = trim($keyval[0]);
@@ -15,8 +16,8 @@
 			debug("Parsing line: \"".$keyval[0]."\" = \"".$keyval[1]."\"");
 
 			switch($keyval[0]) {
-				case "src":
-					$elem = getElementByPath($keyval[1]);
+				case "element_path":
+					$elem = parseElementFile(fixPath(dirname($file),$keyval[1]));
 					dieOnError(isOfType($elem, $type), "Element referenced in \"".$file."\" is not of declared type.");
 					$object[$keyval[0]] = $elem;
 					break;
@@ -39,9 +40,25 @@
 		return $object;
 	}
 
-	function getElementByPath($path) {
-		debug("Looking up element \"".$path."\"");
+	function parseElementFile($file) {
+		$file .= "/layout.txt";
+		debug("Looking up element \"".$file."\"");
 		$object = Array();
+		if(!file_exists($file)) {
+			$object["type"] = "Panel";
+		} else { 
+			$data = dieOnError(file($file), "Could not read \"".$file."\"");
+			$object["type"] = dieOnError(extractType(array_shift($data)), "No type specified in \"".$file."\"");
+			debug("Element declares type \"".$object["type"]."\"");
+			foreach($data as $line) {
+				$keyval = explode("=", $line, 2);
+				$keyval[0] = trim($keyval[0]);
+				$keyval[1] = trim($keyval[1]);
+				debug("Parsing line: \"".$keyval[0]."\" = \"".$keyval[1]."\"");
+				$object[$keyval[0]] = $keyval[1];
+			}
+		}
+		$object["children"] = "subfolders";
 		return $object;
 	}
 
@@ -79,17 +96,21 @@
 	}
 
 	function extractFunctionName($function) {
-		return preg_replace("/(^[^(]+)\(/", "${1}", $function);
+		return preg_replace("/(^[^(]+)\(/", "$1", $function);
 	}
 
 	function extractParameters($function) {
-		$paramlist = preg_replace("/^[^(]+\([^)]+\)/", "${1}", $function);
+		$paramlist = preg_replace("/^[^(]+\([^)]+\)/", "$1", $function);
 		return explode(",", $paramlist);
 
 	}
 
 	function extractType($type) {
-		return preg_replace("/\[([^\]]+)\]/", "${1}", $type);
+		$type = trim($type);
+		if(!preg_match("/^\[[^\]]+\]$/", $type)) {
+			return false;
+		}
+		return preg_replace("/^\[([^\]]+)\]$/", "$1", $type);
 	}
 
 	function isOfType($elem, $type) {
