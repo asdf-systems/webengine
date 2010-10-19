@@ -28,7 +28,7 @@
 			}
 			$object[$file["name"]] = compileSubtree($path."/".$file["name"]);
 		}
-		return json_encode($object);
+		return json_encode($object)."\n";
 	}
 
 	function compileSubtree($path) {

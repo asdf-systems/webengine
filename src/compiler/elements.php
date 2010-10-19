@@ -56,10 +56,10 @@
 	function isValidEventChain($chain) {
 		$function_name = "([^(]+)";
 		$parameter = "([^),]+)";
-		$parameter_list = "(".$parameter."?(,".$parameter.")*)";
-		$single_function = "(".$function_name."\(".$parameter_list."\)";
-		$multiple_functions = "(".$single_function."?(,".$single_function.")*)";
-		return preg_match($multiple_function, $chain) ;
+		$parameter_list = "(".$parameter."(,".$parameter.")*)";
+		$single_function = "(".$function_name."\(".$parameter_list."?\)";
+		$multiple_functions = "(".$single_function."(,".$single_function.")*)?";
+		return preg_match("/".$multiple_function."/", $chain) ;
 	}
 
 	function parseFunction($function) {
@@ -76,7 +76,7 @@
 	}
 
 	function extractParameters($function) {
-		$paramlist = preg_replace("/^[^(]+\([^)]+\)", "${1}", $function);
+		$paramlist = preg_replace("/^[^(]+\([^)]+\)/", "${1}", $function);
 		return explode(",", $paramlist);
 
 	}
