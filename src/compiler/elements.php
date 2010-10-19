@@ -7,14 +7,18 @@
 		$object = Array();
 		$data = dieOnError(file($file));
 
+		$type = extractType(array_shift($data));
 		foreach($data as $line) {
 			$keyval = explode("=", $line, 2);
 			$keyval[0] = trim($keyval[0]);
 			$keyval[1] = trim($keyval[1]);
+			debug("Parsing line: \"".$keyval[0]."\" = \"".$keyval[1]."\"");
 
 			switch($keyval[0]) {
 				case "src":
-					$object[$keyval[0]] = getElementByPath($keyval[1]);
+					$elem = getElementByPath($keyval[1]);
+					dieOnError(isOfType($elem, $type), "Element referenced in \"".$file."\" is not of declared type.");
+					$object[$keyval[0]] = $elem;
 					break;
 				case "onClick":
 					$object["eventhandlers"]["onClick"] = dieOnError(parseEventChain($keyval[1]),
@@ -36,6 +40,7 @@
 	}
 
 	function getElementByPath($path) {
+		debug("Looking up element \"".$path."\"");
 		$object = Array();
 		return $object;
 	}
@@ -81,5 +86,13 @@
 		$paramlist = preg_replace("/^[^(]+\([^)]+\)/", "${1}", $function);
 		return explode(",", $paramlist);
 
+	}
+
+	function extractType($type) {
+		return preg_replace("/\[([^\]]+)\]/", "${1}", $type);
+	}
+
+	function isOfType($elem, $type) {
+		return $elem["type"] == $type;
 	}
 ?>

@@ -5,8 +5,11 @@
 	require_once("errorhandling.php");
 	require_once("elements.php");
 
+	debug("Starting main routine");
 	$output = dieOnError(getOutputHandle(), "Could not open outputfie\n");
-	fwrite($output, compile($ROOT));
+	$result = json_encode(compile($ROOT))."\n";
+	debug("Result:\n".$result);
+	fwrite($output, $result);
 	fclose($output);
 
 	/** Functions **/
@@ -23,31 +26,16 @@
 
 		$content = getDirectoryContent($path);
 		foreach($content as $file) {
-			if (!$file["is_directory"]) {
-				issueWarning("There's a txt file in \$ROOT, it will be ignored\n");
-				continue;
+			$fullpath = $path."/".rebuildFilename($file);
+			if ($file["is_directory"]) {
+				$object[$file["name"]] = compile($fullpath);
+			} else if(isRelevantFile($file)) {
+				$elem = parseElementIncludeFile($fullpath);
 			}
-			$object[$file["name"]] = compileSubtree($path."/".$file["name"]);
-		}
-		$ret = json_encode($object)."\n";
-		debug("Result is: \n".$ret."\n");
-		return $ret;
-	}
-
-	function compileSubtree($path) {
-		debug("Compiling subtree \"".$path."\"");
-		$object = Array();
-		$content = getDirectoryContent($path);
-
-		foreach($content as $file) {
-			if(!isRelevantFile($file))
-				continue;
-			$elem = parseElementIncludeFile($path."/".rebuildFilename($file));
-
 		}
 		return $object;
 	}
-	
+
 	function isRelevantFile($file) {
 		return strtolower($file["name"]) != "layout" 
 			&& strtolower($file["extension"] == "txt");

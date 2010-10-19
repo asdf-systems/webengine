@@ -1,8 +1,7 @@
 <?
 	function DieOnError($op, $msg = "No details were given") {
 		if($op === false) {
-			debug_print_backtrace();
-			print("Details\n");
+			print("\n\nDetails:\n");
 			print($msg."\n\n");
 			die("An error occurred\n");
 		}
