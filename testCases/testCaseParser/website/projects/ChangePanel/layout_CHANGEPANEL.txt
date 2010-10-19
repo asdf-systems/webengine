@@ -1,3 +1,0 @@
-[ChangePanel]
-variable_name=loginnStatus
-extra_css=

@@ -1,5 +1,5 @@
 [Button]
-standtart_src=normal.jpg
+standard_src=normal.jpg
 activ_src=activ.jpg
 hover_src=hover.jpg
-extra_css=standartButton
+extra_css=standardButton
