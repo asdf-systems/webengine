@@ -49,7 +49,7 @@
 		$filedata["path"] = dirname($file);
 
 		$filename = basename($file);
-		$extension_pos = strrpos($file, ".");
+		$extension_pos = strrpos($filename, ".");
 
 		// Since $filedata["extension"=="" is our sign for "no extension"
 		// we have to catch the special case when "." is the last

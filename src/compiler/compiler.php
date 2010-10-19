@@ -3,6 +3,7 @@
 
 	require_once("directory_operations.php");
 	require_once("errorhandling.php");
+	require_once("elements.php");
 
 	$output = getOutputHandle();
 	fwrite($output, compile($ROOT));
@@ -37,7 +38,7 @@
 		foreach($content as $file) {
 			if(!isRelevantFile($file))
 				continue;
-			$elem = parseElementIncludeFile($path."/".$rebuildFilename($file));
+			$elem = parseElementIncludeFile($path."/".rebuildFilename($file));
 
 		}
 		return $object;
