@@ -45,17 +45,19 @@
 		debug("Looking up element \"".$file."\"");
 		$object = getDefaultObject($file);
 
-		$data = dieOnError(file($file), "Could not read \"".$file."\"");
-		$object["type"] = dieOnError(extractType(array_shift($data)), "No type specified in \"".$file."\"");
-		debug("Element declares type \"".$object["type"]."\"");
-		foreach($data as $line) {
-			$keyval = explode("=", $line, 2);
-			$keyval[0] = trim($keyval[0]);
-			$keyval[1] = trim($keyval[1]);
-			debug("Parsing line: \"".$keyval[0]."\" = \"".$keyval[1]."\"");
-			$object[$keyval[0]] = $keyval[1];
+		if(file_exists($file)) {
+			$data = dieOnError(file($file), "Could not read \"".$file."\"");
+			$object["type"] = dieOnError(extractType(array_shift($data)), "No type specified in \"".$file."\"");
+			debug("Element declares type \"".$object["type"]."\"");
+			foreach($data as $line) {
+				$keyval = explode("=", $line, 2);
+				$keyval[0] = trim($keyval[0]);
+				$keyval[1] = trim($keyval[1]);
+				debug("Parsing line: \"".$keyval[0]."\" = \"".$keyval[1]."\"");
+				$object[$keyval[0]] = $keyval[1];
+			}
 		}
-		$object["children"] = compile(basename($file));
+		$object["children"] = compile(dirname($file));
 		return $object;
 	}
 
