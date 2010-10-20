@@ -19,7 +19,7 @@
 				case "element_path":
 					$elem = parseElementFile(fixPath(dirname($file),$keyval[1]));
 					dieOnError(isOfType($elem, $type), "Element referenced in \"".$file."\" is not of declared type.");
-					$object[$keyval[0]] = $elem;
+					$object = array_merge($object, $elem);
 					break;
 				case "onClick":
 					$object["eventhandlers"]["onClick"] = dieOnError(parseEventChain($keyval[1]),
@@ -43,22 +43,19 @@
 	function parseElementFile($file) {
 		$file .= "/layout.txt";
 		debug("Looking up element \"".$file."\"");
-		$object = Array();
-		if(!file_exists($file)) {
-			$object["type"] = "Panel";
-		} else { 
-			$data = dieOnError(file($file), "Could not read \"".$file."\"");
-			$object["type"] = dieOnError(extractType(array_shift($data)), "No type specified in \"".$file."\"");
-			debug("Element declares type \"".$object["type"]."\"");
-			foreach($data as $line) {
-				$keyval = explode("=", $line, 2);
-				$keyval[0] = trim($keyval[0]);
-				$keyval[1] = trim($keyval[1]);
-				debug("Parsing line: \"".$keyval[0]."\" = \"".$keyval[1]."\"");
-				$object[$keyval[0]] = $keyval[1];
-			}
+		$object = getDefaultObject($file);
+
+		$data = dieOnError(file($file), "Could not read \"".$file."\"");
+		$object["type"] = dieOnError(extractType(array_shift($data)), "No type specified in \"".$file."\"");
+		debug("Element declares type \"".$object["type"]."\"");
+		foreach($data as $line) {
+			$keyval = explode("=", $line, 2);
+			$keyval[0] = trim($keyval[0]);
+			$keyval[1] = trim($keyval[1]);
+			debug("Parsing line: \"".$keyval[0]."\" = \"".$keyval[1]."\"");
+			$object[$keyval[0]] = $keyval[1];
 		}
-		$object["children"] = "subfolders";
+		$object["children"] = compile(basename($file));
 		return $object;
 	}
 

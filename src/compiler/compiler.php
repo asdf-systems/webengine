@@ -1,5 +1,5 @@
 <?
-	$ROOT = getcwd()."/../testCases/testCaseParser";
+	$ROOT = getcwd()."/../../testCases/testCaseParser";
 	define(DEBUG, true);
 	require_once("directory_operations.php");
 	require_once("errorhandling.php");
@@ -22,18 +22,28 @@
 
 	function compile($path) {
 		debug("Compiling \"".$path."\"");
-		$object = Array();
+		$object = getDefaultObject($path);
 
 		$content = getDirectoryContent($path);
 		foreach($content as $file) {
 			$fullpath = $path."/".rebuildFilename($file);
-			if ($file["is_directory"]) {
-				$object[$file["name"]] = compile($fullpath);
-			} else if(isRelevantFile($file)) {
+			if(isRelevantFile($file)) {
 				$elem = parseElementIncludeFile($fullpath);
+				array_push($object["children"], $elem);
+			} else {
+				debug("Dismissed \"".$fullpath."\"");
 			}
 		}
 		debug("Done.");
+		return $object;
+	}
+
+	function getDefaultObject($id) {
+		$object = Array();
+		$object["id"] = $id;
+		$object["type"] = "Panel";
+		$object["object"] = null;
+		$object["children"] = Array();
 		return $object;
 	}
 
