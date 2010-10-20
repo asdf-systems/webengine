@@ -43,7 +43,7 @@
 	function parseElementFile($file) {
 		$file .= "/layout.txt";
 		debug("Looking up element \"".$file."\"");
-		$object = getDefaultObject($file);
+		$object = getDefaultObject(dirname($file));
 
 		if(file_exists($file)) {
 			$data = dieOnError(file($file), "Could not read \"".$file."\"");
@@ -57,7 +57,10 @@
 				$object[$keyval[0]] = $keyval[1];
 			}
 		}
-		$object["children"] = compile(dirname($file));
+		$compile = compile(dirname($file));
+		debug("Was: ".$object["type"].", Read: ".$compile["type"]);
+		$object = array_merge(compile(dirname($file)), $object);
+		debug("Is: ".$object["type"]);
 		return $object;
 	}
 
