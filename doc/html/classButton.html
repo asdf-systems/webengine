@@ -29,21 +29,39 @@
 <p><a href="classButton-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a400b475859265bffd271de4d36ea1e86">Button</a> (positionX, positionY)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#aacf5035aeb3c9130c596cf9dab3d5da4">hide</a> (event)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a59eec5e3582c6870cd6f385f177519ff">show</a> (event)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a6fdc12dae0c78f28ee827fdf98360a72">specificAction</a> (actionName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a106955b5c817cd7935c0e75b0d8ddd62">Button</a> (_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#ab1b53d51f8c488e6756d1ef4eaff6b04">hide</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a8ae4791cd6935083da2c39b192bd2ff9">show</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a387fba6029d66e445abfeba45a5c663e">setActiveImage</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a52e5c6ba7dce02262a36cc66cb47f73b">setNormalImage</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#ac9d10278a988fc40b496010e356f7de0">setHoverImage</a> (params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a308a60b2b09956ec62d1e4c2de910c79">unsetHoverImage</a> (params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a0de19c074643d7278b520d55ac29e67e">specificAction</a> (params)</td></tr>
+<tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">registerOnMouseOverEvent&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a1c23e913d94ef53703b432235500f0b5">Name</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>Class documentation for <a class="el" href="classButton.html">Button</a> </p>
+<p>Creates an <a class="el" href="classButton.html">Button</a> that changes Background Images on MouseOver and Out. <a class="el" href="classButton.html">Button</a> can hold an image if activatet. </p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a400b475859265bffd271de4d36ea1e86"></a><!-- doxytag: member="Button::Button" ref="a400b475859265bffd271de4d36ea1e86" args="(positionX, positionY)" -->
+<a class="anchor" id="a106955b5c817cd7935c0e75b0d8ddd62"></a><!-- doxytag: member="Button::Button" ref="a106955b5c817cd7935c0e75b0d8ddd62" args="(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Button::Button </td>
           <td>(</td>
+          <td class="paramtype">_id&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">_parent&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">positionX&nbsp;</td>
           <td class="paramname">, </td>
         </tr>
@@ -51,6 +69,30 @@
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">positionY&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">image_normal&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">image_active&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">image_hover&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">extra_css_class&nbsp;</td>
           <td class="paramname"></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -61,18 +103,30 @@
       </table>
 </div>
 <div class="memdoc">
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>_id string unique Id for the Element (used also for the HTML elements) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>_parent Element parent Element (need to know where HTML elements add to) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>positionX int x Position of the <a class="el" href="classButton.html">Button</a> - relative to parent </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>positionY int y Position of the <a class="el" href="classButton.html">Button</a> - relative to parent </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>image_normal string Path to Image that showed if nothing is done to the <a class="el" href="classButton.html">Button</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>image_active string Path to Image that showd if <a class="el" href="classButton.html">Button</a> is activated. Default: = image_normal </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>image_hover string Path to Image that showed if Mouse is over <a class="el" href="classButton.html">Button</a>. Default: =image_normal </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>extra_css string Name of extra css_classes for the HTML Object </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="aacf5035aeb3c9130c596cf9dab3d5da4"></a><!-- doxytag: member="Button::hide" ref="aacf5035aeb3c9130c596cf9dab3d5da4" args="(event)" -->
+<a class="anchor" id="ab1b53d51f8c488e6756d1ef4eaff6b04"></a><!-- doxytag: member="Button::hide" ref="ab1b53d51f8c488e6756d1ef4eaff6b04" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Button::hide </td>
           <td>(</td>
-          <td class="paramtype">event&nbsp;</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline, private]</code></td>
@@ -80,17 +134,78 @@
       </table>
 </div>
 <div class="memdoc">
+<p>instant hide <a class="el" href="classButton.html">Button</a> </p>
 
 </div>
 </div>
-<a class="anchor" id="a59eec5e3582c6870cd6f385f177519ff"></a><!-- doxytag: member="Button::show" ref="a59eec5e3582c6870cd6f385f177519ff" args="(event)" -->
+<a class="anchor" id="a387fba6029d66e445abfeba45a5c663e"></a><!-- doxytag: member="Button::setActiveImage" ref="a387fba6029d66e445abfeba45a5c663e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button::setActiveImage </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Changes Background Image to active Image </p>
+
+</div>
+</div>
+<a class="anchor" id="ac9d10278a988fc40b496010e356f7de0"></a><!-- doxytag: member="Button::setHoverImage" ref="ac9d10278a988fc40b496010e356f7de0" args="(params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button::setHoverImage </td>
+          <td>(</td>
+          <td class="paramtype">params&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Change Background Image to hover Image - if Buttion is not active </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>params</em>&nbsp;</td><td><a class="el" href="classEventParameter.html">EventParameter</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a52e5c6ba7dce02262a36cc66cb47f73b"></a><!-- doxytag: member="Button::setNormalImage" ref="a52e5c6ba7dce02262a36cc66cb47f73b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button::setNormalImage </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Changes Background Image to normal Image </p>
+
+</div>
+</div>
+<a class="anchor" id="a8ae4791cd6935083da2c39b192bd2ff9"></a><!-- doxytag: member="Button::show" ref="a8ae4791cd6935083da2c39b192bd2ff9" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Button::show </td>
           <td>(</td>
-          <td class="paramtype">event&nbsp;</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline, private]</code></td>
@@ -98,18 +213,18 @@
       </table>
 </div>
 <div class="memdoc">
-<p><a class="el" href="classButton.html">Button</a> show </p>
+<p>instant show <a class="el" href="classButton.html">Button</a> </p>
 
 </div>
 </div>
-<a class="anchor" id="a6fdc12dae0c78f28ee827fdf98360a72"></a><!-- doxytag: member="Button::specificAction" ref="a6fdc12dae0c78f28ee827fdf98360a72" args="(actionName)" -->
+<a class="anchor" id="a0de19c074643d7278b520d55ac29e67e"></a><!-- doxytag: member="Button::specificAction" ref="a0de19c074643d7278b520d55ac29e67e" args="(params)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Button::specificAction </td>
           <td>(</td>
-          <td class="paramtype">actionName&nbsp;</td>
+          <td class="paramtype">params&nbsp;</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline, private]</code></td>
@@ -117,11 +232,61 @@
       </table>
 </div>
 <div class="memdoc">
-<p>Methoddocumentation for <a class="el" href="classButton.html">Button</a> SpecificAction </p>
+<p>Start <a class="el" href="classButton.html">Button</a> Specific actions. ActionName has to be set on first element of params.parameter </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>params</em>&nbsp;</td><td><a class="el" href="classEventParameter.html">EventParameter</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="definition"><dt><b><a class="el" href="definition.html#_definition000001">Defintions:</a></b></dt><dd>: Special Actions: <a class="el" href="classButton.html">Button</a>: activate, deactivate </dd></dl>
 
-<p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>: Do some error output here </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>: do some error Output here </dd></dl>
-</p>
+</div>
+</div>
+<a class="anchor" id="a308a60b2b09956ec62d1e4c2de910c79"></a><!-- doxytag: member="Button::unsetHoverImage" ref="a308a60b2b09956ec62d1e4c2de910c79" args="(params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button::unsetHoverImage </td>
+          <td>(</td>
+          <td class="paramtype">params&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Change Background Image to normal Image - if Buttion is not active </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>params</em>&nbsp;</td><td><a class="el" href="classEventParameter.html">EventParameter</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a1c23e913d94ef53703b432235500f0b5"></a><!-- doxytag: member="Button::Name" ref="a1c23e913d94ef53703b432235500f0b5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">registerOnMouseOverEvent <a class="el" href="classButton.html#a1c23e913d94ef53703b432235500f0b5">Button::Name</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Adds an Function that is called everytime Mouse is over the <a class="el" href="classButton.html">Button</a> </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>Name string Name of the Function </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>params <a class="el" href="classEventParameter.html">EventParameter</a> Parameter for the called s </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -129,7 +294,7 @@
 <li>W:/asdf_systems/Projekte/webengine/src/elements/<a class="el" href="Button_8cpp.html">Button.cpp</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on Sun Oct 17 22:40:21 2010 for MaterialLib_CC by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on Fri Oct 22 00:32:57 2010 for MaterialLib_CC by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

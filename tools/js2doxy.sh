@@ -20,4 +20,11 @@
 	    done
 	 
 	done
+doxywizard.exe
+for DIR in $DIRs; do
+	CPPs=`find $DIR -name "*.cpp"`;
+	for CPP in $CPPs; do
+		rm $CPP;
+	done
+done
 

@@ -1,6 +1,9 @@
 /**
  * Creates an Button that changes Background Images on MouseOver and Out.
  * Button can hold an image if activatet.
+ */
+//* class Button{
+/**
  * \param: _id          string      unique Id for the Element (used also for the HTML elements)
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the Button - relative to parent
@@ -10,7 +13,6 @@
  * \param: image_hover  string      Path to Image that showed if Mouse is over Button. Default: =image_normal
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-//* class Button{
 function Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class){
     
     

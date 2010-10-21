@@ -1,3 +1,7 @@
+/**
+ * Engine Class Description
+ */
+//* class Engine{
 function main(){
 
 	var elem = jsonObject.root[0];
@@ -60,12 +64,12 @@ function init(elem, parentObject){
  * \return: newDomTreeObject or null if error occurs
  * returned DomTreeObject saves parent in nextNode
  * \definition: HTML Objecttag: nextNode is reserved to save Wrapper Elements
- * \param:  parent      Element Element where the new Element should add to
- * \param:  id          string  id of the ne HTML Object
- * \param:  type        string  HTML-Type of the new DomTreeObject. Default: div
- * \param:  css         string  normal css class. Default: "NOTSET"
- * \param:  extra_css   string  secoond css class. Default: "EXTRA_NOTSET"
- * \param:  src         string  for HTML types that need a sourcePath like img. Default: ""
+ * \param:  parent\t    Element Element where the new Element should add to
+ * \param:  id\t        string  id of the ne HTML Object
+ * \param:  type\t      string  HTML-Type of the new DomTreeObject. Default: div
+ * \param:  css\t       string  normal css class. Default: "NOTSET"
+ * \param:  extra_css\t string  secoond css class. Default: "EXTRA_NOTSET"
+ * \param:  src\t       string  for HTML types that need a sourcePath like img. Default: ""
  */
 function createDomObject(parent, id, type, css, extra_css, src){
     // check Params
@@ -104,3 +108,4 @@ function createDomObject(parent, id, type, css, extra_css, src){
     return domObject;         
          
 }
+//*};

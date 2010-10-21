@@ -1,22 +1,38 @@
 /**
- * Base Class for all Elements
+ * Creates an BaseElement that changes Background Images on MouseOver and Out.
+ * BaseElement can hold an image if activatet.
  */
-//* class Element{
-function Element(id, parent, positionX, positionY, extra_css_class){
+//* class BaseElement{
+/**
+ * \param: _id          string      unique Id for the Element (used also for the HTML elements)
+ * \param: _parent      Element     parent Element (need to know where HTML elements add to)
+ * \param: positionX    int         x Position of the BaseElement - relative to parent
+ * \param: positionY    int         y Position of the BaseElement - relative to parent
+ * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ */
+function BaseElement(_id, _parent, positionX, positionY, extra_css_class){
+    
     
     //* public: 
-    if(id == null){
-        //! \todo some error output
-        return;
+    if(_id == null){
+
+      if(globals.debug > 0)
+           alert("BaseElement: Id is not set - cancel");
+        return null;
     }
 
-    if(parent == null){
-        //! \todo some error out
-        return;
+    if(_parent == null){
+
+        if(globals.debug > 0)
+            alert("BaseElement: Parent is null - cancel");
+        return null;
     }
 
-    this.mParent        = parent; 
-    this.mType          = "Element";
+   
+
+    this.mId = _id;
+    this.mParent        = _parent; 
+    this.mType          = "BaseElement";
 
     if(positionX == null)
         this.mPosX = 0;
@@ -28,77 +44,105 @@ function Element(id, parent, positionX, positionY, extra_css_class){
     else
         this.mPosY      = positionY;
     
-    if(extra_class_css == null)
+    if(extra_css_class == null)
         this.mExtraClassCSS = "EXTRA_NOTSET";
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    this.mDomTreeObject = createDomObject("div", mId, mType, extra_css_class);
-    //* private:
-    this.mMouseOverEvents;
-    this.mMouseOutEvents;
-    this.mMouseClickEvents;
-    $(this.mDomTreeObject).mouseover(this.onMouseOverEvent);
-    $(this.mDomTreeObject).mouseout(this.onMouseOutEvent);
-    $(this.mDomTreeObject).mouseclick(this.onMouseClickEvent);
     
-    mMouseClickEvents[0] = test;
+
+    this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+
+    // set Position
+    this.mDomTreeObject.style.left = this.mPosX + "px";
+    this.mDomTreeObject.style.top = this.mPosY + "px";
+    
+    //* private:
+    this.mMouseOverEvents = new Array();
+    this.mMouseOutEvents = new Array();
+    this.mMouseClickEvents = new Array();
+    
+    this.mMouseOverParams = new Array();
+    this.mMouseOutParams = new Array();
+    this.mMouseClickParams = new Array()
+    
+    $(this.mDomTreeObject).mouseover(onMouseOver);
+    $(this.mDomTreeObject).mouseout(onMouseOut);
+    $(this.mDomTreeObject).click(onMouseClick);
+    
+    return this;
 }
 
 
-function test(event){
-    alert("test");
-    alert(event.currentTarget.id);
-}
+
 /**
- * instant hide Element
+ * instant hide BaseElement
  */
-Element.prototype.hide = function(){
+BaseElement.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
 }
 
 /**
- * instant show Element
+ * instant show BaseElement
  */
-Element.prototype.show = function(){
+BaseElement.prototype.show = function(){
     $(this.mDomTreeObject).show();
 }
 
-Element.prototype.specificAction = function(actionName){
+
+/**
+ * Start BaseElement Specific actions. ActionName has to be set on first element of params.parameter
+ * \param params    EventParameter
+ */
+BaseElement.prototype.specificAction = function(params){
+    actionName = params.parameter[0];
+    object = params.event.currentTarget.nextNode;
     switch(actionName){
-        case default:
-            //! \todo make some error Output
+        case "default":
+            if(globals.debug > 0)
+                alert("BaseElement: action name: " + actionName + " unknown!");
         break;
     }
 }
 
-Element.prototype.onMouseOver(event){
-    for(f in this.mMouseOverEvents){
-        f(event);
-    }
+
+/**
+ * Adds an Function that is called everytime Mouse is over the BaseElement
+ * \param: functionName    string           Name of the Function
+ * \param: params          EventParameter   Parameter for the called functions
+ */
+BaseElement.prototype.registerOnMouseOverEvent = function(functionName, params){
+    if(params == null)
+        params = new EventParameter();
+    this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
+    this.mMouseOverParams[this.mMouseOverParams.length] = params;
+
 }
 
-Element.prototype.onMouseOut(event){
-    for(f in this.mMouseOutEvents){
-        f(event);
-    }
+/**
+ * Adds an Function that is called everytime BaseElement is clicked
+ * \param: functionName    string           Name of the Function
+ * \param: params          EventParameter   Parameter for the called functions
+ */
+BaseElement.prototype.registerOnMouseClickEvent = function(functionName,  params){
+    if(params == null)
+        params = new Array();
+        
+    this.mMouseClickEvents[this.mMouseClickEvents.length] = functionName;
+    this.mMouseClickParams[this.mMouseClickParams.length] = params;
 }
 
-Element.prototype.onMouseClick(event){
-    for(f in this.mMouseClickEvents){
-        f(event);
-    }
-}
-
-Element.prototype.registerOnMouseOverEvent(functionName){
+/**
+ * Adds an Function that is called everytime Mouse leave the BaseElement
+ * \param: functionName    string           Name of the Function
+ * \param: params          EventParameter   Parameter for the called functions
+ */
+BaseElement.prototype.registerOnMouseOutEvent = function(functionName,  params){
+    if(params == null)
+        params = new Array();
+        
+    this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
+    this.mMouseOutParams[this.mMouseOutParams.length] = params;
     
-}
-
-Element.prototype.registerOnMouseClickEvent(functionName){
-    $(this.mDomTreeObject).click(functionName);
-}
-
-Element.prototype.registerOnMouseOutEvent(functionName){
-    $(this.mDomTreeObject).mouseout(functionName);
 }
 //*};
