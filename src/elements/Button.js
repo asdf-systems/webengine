@@ -1,5 +1,14 @@
 /**
- * Base Class for all Buttons
+ * Creates an Button that changes Background Images on MouseOver and Out.
+ * Button can hold an image if activatet.
+ * \param: _id          string      unique Id for the Element (used also for the HTML elements)
+ * \param: _parent      Element     parent Element (need to know where HTML elements add to)
+ * \param: positionX    int         x Position of the Button - relative to parent
+ * \param: positionY    int         y Position of the Button - relative to parent
+ * \param: image_normal string      Path to Image that showed if nothing is done to the Button
+ * \param: image_active string      Path to Image that showd if Button is activated. Default: = image_normal
+ * \param: image_hover  string      Path to Image that showed if Mouse is over Button. Default: =image_normal
+ * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
 //* class Button{
 function Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class){
@@ -103,25 +112,38 @@ Button.prototype.show = function(){
     $(this.mDomTreeObject).show();
 }
 
+/**
+ * Changes Background Image to active Image
+ */
 Button.prototype.setActiveImage = function(){
     //object = event.currentTarget.nextNode;
     this.mActice = true;
     this.mDomTreeObject.src = this.mImageActive;
 }
 
+/**
+ * Changes Background Image to normal Image
+ */
 Button.prototype.setNormalImage = function(){
     this.mActice = false;
     this.mDomTreeObject.src = this.mImageNormal;
 }
 
 
+/**
+ * Change Background Image to hover Image - if Buttion is not active
+ * \param params    EventParameter
+ */
 Button.prototype.setHoverImage = function(params){
     if(object.mActice)
         return;
     object = params.event.currentTarget.nextNode;
     object.mDomTreeObject.src = object.mImageHover;
 }
-
+/**
+ * Change Background Image to normal Image - if Buttion is not active
+ * \param params    EventParameter
+ */
 Button.prototype.unsetHoverImage = function(params){
     object = params.event.currentTarget.nextNode;
     if(object.mActice)
@@ -129,6 +151,11 @@ Button.prototype.unsetHoverImage = function(params){
     object.mDomTreeObject.src = object.mImageNormal;
 }
 
+/**
+ * Start Button Specific actions. ActionName has to be set on first element of params.parameter
+ * \param params    EventParameter
+ * \definition: Special Actions: Button: activate, deactivate
+ */
 Button.prototype.specificAction = function(params){
     actionName = params.parameter[0];
     object = params.event.currentTarget.nextNode;
@@ -137,6 +164,7 @@ Button.prototype.specificAction = function(params){
             object.setActiveImage();
         break;
         case "deactivate":
+            object.setNormalImage();
         break;
         case "default":
             if(globals.debug > 0)
@@ -145,36 +173,12 @@ Button.prototype.specificAction = function(params){
     }
 }
 
-function onMouseOver(event){
-    object = event.currentTarget.nextNode;
-    for(var i=0; i< object.mMouseOverEvents.length; i++){
-        params = new EventParameter();
-        params.parameter = object.mMouseOverParams[i];
-        params.event = event;
-        object.mMouseOverEvents[i](params);
-    }
-}
 
-function onMouseOut(event){
-    object = event.currentTarget.nextNode;
-    for(var i=0; i< object.mMouseOutEvents.length; i++){
-        params = new EventParameter();
-        params.parameter = object.mMouseOutParams[i];
-        params.event = event;
-        object.mMouseOutEvents[i](params);
-    }
-}
-
-function onMouseClick(event){
-    object = event.currentTarget.nextNode;
-    for(var i=0; i< object.mMouseClickEvents.length; i++){
-        params = new EventParameter();
-        params.parameter = object.mMouseClickParams[i];
-        params.event = event;
-        object.mMouseClickEvents[i](params);
-    }
-}
-
+/**
+ * Adds an Function that is called everytime Mouse is over the Button
+ * \param: functionName    string           Name of the Function
+ * \param: params          EventParameter   Parameter for the called functions
+ */
 Button.prototype.registerOnMouseOverEvent = function(functionName, params){
     if(params == null)
         params = new EventParameter();
@@ -183,6 +187,11 @@ Button.prototype.registerOnMouseOverEvent = function(functionName, params){
 
 }
 
+/**
+ * Adds an Function that is called everytime Button is clicked
+ * \param: functionName    string           Name of the Function
+ * \param: params          EventParameter   Parameter for the called functions
+ */
 Button.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
@@ -191,6 +200,11 @@ Button.prototype.registerOnMouseClickEvent = function(functionName,  params){
     this.mMouseClickParams[this.mMouseClickParams.length] = params;
 }
 
+/**
+ * Adds an Function that is called everytime Mouse leave the Button
+ * \param: functionName    string           Name of the Function
+ * \param: params          EventParameter   Parameter for the called functions
+ */
 Button.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
