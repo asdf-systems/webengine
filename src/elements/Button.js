@@ -2,38 +2,45 @@
  * Base Class for all Buttons
  */
 //* class Button{
-function Button(id, parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class){
+function Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class){
+    
     
     //* public: 
-    if(id == null){
-        //! \todo some error output
-        return;
+    if(_id == null){
+
+      if(globals.debug > 0)
+           alert("Button: Id is not set - cancel");
+        return null;
     }
 
-    if(parent == null){
-        //! \todo some error out
-        return;
+    if(_parent == null){
+
+        if(globals.debug > 0)
+            alert("Button: Parent is null - cancel");
+        return null;
     }
 
     if(image_normal == null){
-        //! \todo some error out
-        return;
+        if(globals.debug > 0)
+           alert("Button: Image_normal is not set - cancel");
+        return null;
     }
     
     if(image_active == null){
-        //! \todo some error out
-        return;
+        image_active = image_normal;
+
     }
     
     if(image_hover == null){
-        //! \todo some error out
+        image_hover = image_active;
         return;
     }    
 
+    this.mId = _id;
     this.mImageNormal   = image_normal;
     this.mImageHover   = image_hover;
     this.mImageActive   = image_active;
-    this.mParent        = parent; 
+    this.mParent        = _parent; 
     this.mType          = "Button";
 
     if(positionX == null)
@@ -46,32 +53,42 @@ function Button(id, parent, positionX, positionY, image_normal, image_active, im
     else
         this.mPosY      = positionY;
     
-    if(extra_class_css == null)
+    if(extra_css_class == null)
         this.mExtraClassCSS = "EXTRA_NOTSET";
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    this.mDomTreeObject = createDomObject("img", mId, mType, extra_css_class, mImageNormal);
+    
+
+    this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.extra_css_class, this.mImageNormal);
+
     // set Position
-    mDomTreeObject.style.left = mPosX + "px";
-    mDomTreeObject.style.top = mPosY + "px";
+    this.mDomTreeObject.style.left = this.mPosX + "px";
+    this.mDomTreeObject.style.top = this.mPosY + "px";
     
     //* private:
-    this.mMouseOverEvents;
-    this.mMouseOutEvents;
-    this.mMouseClickEvents;
-    $(this.mDomTreeObject).mouseover(this.onMouseOverEvent);
-    $(this.mDomTreeObject).mouseout(this.onMouseOutEvent);
-    $(this.mDomTreeObject).mouseclick(this.onMouseClickEvent);
+    this.mMouseOverEvents = new Array();
+    this.mMouseOutEvents = new Array();
+    this.mMouseClickEvents = new Array();
     
-    mMouseClickEvents[0] = test;
+    this.mMouseOverParams = new Array();
+    this.mMouseOutParams = new Array();
+    this.mMouseClickParams = new Array()
+    
+    $(this.mDomTreeObject).mouseover(onMouseOver);
+    $(this.mDomTreeObject).mouseout(onMouseOut);
+    $(this.mDomTreeObject).click(onMouseClick);
+    
+    this.registerOnMouseOverEvent(this.setHoverImage);
+    this.registerOnMouseOutEvent(this.unsetHoverImage);
+    this.mActice = false;
+    
+    
+    return this;
 }
 
 
-function test(event){
-    alert("test");
-    alert(event.currentTarget.id);
-}
+
 /**
  * instant hide Button
  */
@@ -86,41 +103,100 @@ Button.prototype.show = function(){
     $(this.mDomTreeObject).show();
 }
 
-Button.prototype.specificAction = function(actionName){
+Button.prototype.setActiveImage = function(){
+    //object = event.currentTarget.nextNode;
+    this.mActice = true;
+    this.mDomTreeObject.src = this.mImageActive;
+}
+
+Button.prototype.setNormalImage = function(){
+    this.mActice = false;
+    this.mDomTreeObject.src = this.mImageNormal;
+}
+
+
+Button.prototype.setHoverImage = function(params){
+    if(object.mActice)
+        return;
+    object = params.event.currentTarget.nextNode;
+    object.mDomTreeObject.src = object.mImageHover;
+}
+
+Button.prototype.unsetHoverImage = function(params){
+    object = params.event.currentTarget.nextNode;
+    if(object.mActice)
+        return;
+    object.mDomTreeObject.src = object.mImageNormal;
+}
+
+Button.prototype.specificAction = function(params){
+    actionName = params.parameter[0];
+    object = params.event.currentTarget.nextNode;
     switch(actionName){
+        case "activate":
+            object.setActiveImage();
+        break;
+        case "deactivate":
+        break;
         case "default":
-            //! \todo make some error Output
+            if(globals.debug > 0)
+                alert("Button: action name: " + actionName + " unknown!");
         break;
     }
 }
 
-Button.prototype.onMouseOver = function(event){
-    for(f in this.mMouseOverEvents){
-        f(event);
+function onMouseOver(event){
+    object = event.currentTarget.nextNode;
+    for(var i=0; i< object.mMouseOverEvents.length; i++){
+        params = new EventParameter();
+        params.parameter = object.mMouseOverParams[i];
+        params.event = event;
+        object.mMouseOverEvents[i](params);
     }
 }
 
-Button.prototype.onMouseOut = function(event){
-    for(f in this.mMouseOutEvents){
-        f(event);
+function onMouseOut(event){
+    object = event.currentTarget.nextNode;
+    for(var i=0; i< object.mMouseOutEvents.length; i++){
+        params = new EventParameter();
+        params.parameter = object.mMouseOutParams[i];
+        params.event = event;
+        object.mMouseOutEvents[i](params);
     }
 }
 
-Button.prototype.onMouseClick = function(event){
-    for(f in this.mMouseClickEvents){
-        f(event);
+function onMouseClick(event){
+    object = event.currentTarget.nextNode;
+    for(var i=0; i< object.mMouseClickEvents.length; i++){
+        params = new EventParameter();
+        params.parameter = object.mMouseClickParams[i];
+        params.event = event;
+        object.mMouseClickEvents[i](params);
     }
 }
 
-Button.prototype.registerOnMouseOverEvent = function(functionName){
-    mMouseOverEvents[mMouseOverEvents.size] = functionName;
+Button.prototype.registerOnMouseOverEvent = function(functionName, params){
+    if(params == null)
+        params = new EventParameter();
+    this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
+    this.mMouseOverParams[this.mMouseOverParams.length] = params;
+
 }
 
-Button.prototype.registerOnMouseClickEvent = function(functionName){
-    mMouseClickEvents[mMouseClickEvents.size] = functionName;
+Button.prototype.registerOnMouseClickEvent = function(functionName,  params){
+    if(params == null)
+        params = new Array();
+        
+    this.mMouseClickEvents[this.mMouseClickEvents.length] = functionName;
+    this.mMouseClickParams[this.mMouseClickParams.length] = params;
 }
 
-Button.prototype.registerOnMouseOutEvent = function(functionName){
-    mMouseOutEvents[mMouseOutEvents.size] = functionName;
+Button.prototype.registerOnMouseOutEvent = function(functionName,  params){
+    if(params == null)
+        params = new Array();
+        
+    this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
+    this.mMouseOutParams[this.mMouseOutParams.length] = params;
+    
 }
 //*};

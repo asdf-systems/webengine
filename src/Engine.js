@@ -1,21 +1,24 @@
 function main(){
 
 	var elem = jsonObject.root[0];
-	init(elem);
+    var body = $("body[id=mainBody]").get(0);
+    init(elem, body);
 }
 
 
-function init(elem){
+function init(elem, parentObject){
 
 	// create Dom Object
-	alert(elem.type);
-    var body = $("body[id=mainBofy]").get(0);
+	//alert("parentObject: " + parentObject.id);
+
 	// check Type 
 	switch(elem.type){
 		case "Button":
-			alert("Button");
-            elem.object = new Button(elem.id, elem.positionX, elem.positionY, elem.image_normal,elem.image_activ, image_hover, extra_css );
-			elem.object.registerOnMouseClickEvent(eventHandler);
+            elem.object = new Button(elem.id, parentObject, elem.positionX, elem.positionY, elem.image_normal,elem.image_active, elem.image_hover, elem.extra_css );
+            //var params = new Array();
+            //params[0] = "activate";
+            //this.registerOnMouseClickEvent(this.specificAction,  params);
+			//elem.object.registerOnMouseClickEvent(eventHandler);
 		break;
 		/*case "InputField":
 			elem.domObject = new InputField(elem.positionX, elem.positionY);
@@ -43,14 +46,20 @@ function init(elem){
 		break;
 	}
 	// call all Childs
-	for(child in elem.childs){
-		init(child);
-	}
+    if(elem.childs != null){
+        if(elem.object != null)
+	       parentObject = elem.object.mDomTreeObject;
+        for(i=0; i< elem.childs.length;  i++){
+	   	   init(elem.childs[i], parentObject);
+    	}
+   	}
 }
 
 /**
  * Erstellt ein neues DomTreeObject und hängt es beim angegebenen Parent ein
  * \return: newDomTreeObject or null if error occurs
+ * returned DomTreeObject saves parent in nextNode
+ * \definition: HTML Objecttag: nextNode is reserved to save Wrapper Elements
  * \param:  parent      Element Element where the new Element should add to
  * \param:  id          string  id of the ne HTML Object
  * \param:  type        string  HTML-Type of the new DomTreeObject. Default: div
@@ -60,16 +69,14 @@ function init(elem){
  */
 function createDomObject(parent, id, type, css, extra_css, src){
     // check Params
+
     if(parent == null){
         if(globals.debug > 0)
             alert("Error Creating Dom Object - no parent set!");
         return null;
     }
-    if(id == null){
-        if(globals.debug > 0)
-            alert("Error Creating Dom Object - no parent set!");
-        return null;
-    }
+   id = parent.mId;
+   
     
     if(type == null)
         type = "div";
@@ -86,11 +93,14 @@ function createDomObject(parent, id, type, css, extra_css, src){
      //create HTML command
      var cmd;
      if(type == "img")
-        cmd = "<" + type + " id=\"" +id+ "\ class =\""+ css +"\" class=\""+extra_css+"\ src=\""+src+"\">";
+        cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" " +extra_css+ "\" src=\""+src+"\">";
      else
-        cmd = "<" + type + " id=\"" +id+ "\ class =\""+ css +"\" class=\""+extra_css+"\">";
-     // \FIXME: check if its possible like this
-     var domId = $(parent.mDomTreeObject).append(cmd);
- 	return domId;         
+        cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" "+ extra_css+"\">";
+    
+    $(parent.mParent).append(cmd);
+    var domObject = $(type+"[id="+id+"]").get(0);
+    domObject.nextNode = parent;
+    
+    return domObject;         
          
 }

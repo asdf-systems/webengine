@@ -30,9 +30,9 @@ var jsonObject = {
                         positionX:250,
                         positionY:100,
                         extra_css:"nextPage",
-                        image_normal:"elements/nextPageButton/normal.jpg",
-                        image_active:"elements/nextPageButton/active.jpg",
-                        image_hover:"elements/nextPageButton/hover.jpg"
+                        image_normal:"elements/nextPageButton/nextPage_normal.jpg",
+                        image_active:"elements/nextPageButton/nextPage_active.jpg",
+                        image_hover:"elements/nextPageButton/nextPage_hover.jpg"
                     
                     } ,
                     {   id:"/MasterPanel/PagePanel1/prevButton.txt",
@@ -41,9 +41,9 @@ var jsonObject = {
                         positionX:10,
                         positionY:100,
                         extra_css:"prevPage",
-                        image_normal:"elements/prevPageButton/normal.jpg",
-                        image_active:"elements/prevPageButton/active.jpg",
-                        image_hover:"elements/prevPageButton/hover.jpg"
+                        image_normal:"elements/prevPageButton/prevPage_normal.jpg",
+                        image_active:"elements/prevPageButton/prevPage_active.jpg",
+                        image_hover:"elements/prevPageButton/prevPage_hover.jpg"
                     
                     }                
                 ]
