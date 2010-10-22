@@ -2,6 +2,11 @@
 	require_once("errorhandling.php");
 	require_once("debug.php");
 
+	function parseReferenceFile($file) {
+		$object = Array("message" => "To Be done");
+		return $object;
+	}
+
 	function parseElementIncludeFile($file) {
 		debug("Parsing \"".$file."\"");
 		$object = Array();

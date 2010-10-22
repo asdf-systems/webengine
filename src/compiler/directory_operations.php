@@ -38,11 +38,18 @@
 		return true;
 	}
 
+	/**
+	 * Gets all available information on a file
+	 */
 	function getFileInformation($file) {
 		$data = dieOnError(stat($file));
 		return array_merge($data, getExtraData($file));
 	}
 
+	/**
+	 * Adds the filename to the getFileInformation() result
+	 * according to convention
+	 */
 	function getExtraData($file) {
 		$filedata = Array();
 
@@ -67,6 +74,9 @@
 		return $filedata;
 	}
 
+	/**
+	 * Rebuilds the filename according to convention
+	 */
 	function rebuildFilename($file) {
 		if($file["extension"] == "") {
 			return $file["name"];
