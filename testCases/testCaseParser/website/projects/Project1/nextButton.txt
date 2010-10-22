@@ -1,7 +1,4 @@
-[Button]
-position_x=0
-position_y=100
-element_path=/elements/nextButton
-action_click=SPECIFIC(../project1.txt, nextPage)
-action_mouseOver=
-action_mouseOut=
+[/elements/nextButton]
+action_click=SPECIFIC(., nextPage)
+position_x=440px
+position_y=0px

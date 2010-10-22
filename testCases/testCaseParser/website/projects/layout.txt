@@ -1,0 +1,3 @@
+[Panel]
+position_x=100px
+position_y=100px
