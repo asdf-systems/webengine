@@ -7,6 +7,7 @@ function main(){
 	var elem = jsonObject.root[0];
     var body = $("body[id=mainBody]").get(0);
     init(elem, body);
+    showObjects(globals.start);
 }
 
 
@@ -108,4 +109,7 @@ function createDomObject(parent, id, type, css, extra_css, src){
     return domObject;         
          
 }
+
+
+
 //*};

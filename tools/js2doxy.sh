@@ -15,7 +15,8 @@
 	        DOC=`echo $JS|sed 's/\(.*\)\.js/\1.cpp/g'`;
 	        if [ $JS -nt $DOC ]; then
 	            echo "rebuild $DOC"
-	            grep -e '^\s*\(///\|//\*\|/\*\*\|//\!\| \* \| \*/\|^function.*\|^}\|.*\.prototype.*\)' $JS |  sed 's!=.*function!!' | sed 's!function!!' | sed 's!.*prototype\.!!' | sed 's/^\s*\/\/\*\(.*\)$/\1/g'> $DOC
+	            grep -e '^\s*\(///\|//\*\|/\*\*\|//\!\| \* \| \*/\|^function.*\|^}\|.*\.prototype.*\)' $JS | sed 's!=.*function!!' | sed 's!function!!' | sed 's!.*prototype\.!!' | sed 's/^\s*\/\/\*\(.*\)$/\1/g'> $DOC
+	            
 	        fi
 	    done
 	 

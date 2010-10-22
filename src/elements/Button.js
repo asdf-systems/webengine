@@ -4,7 +4,9 @@
  */
 //* class Button{
 /**
- * \param: _id          string      unique Id for the Element (used also for the HTML elements)
+ * Create a Button - but images dont show up till Button.show() is called
+ * 
+ * \param: id	        string		unique Id for the Element (used also for the HTML elements)
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the Button - relative to parent
  * \param: positionY    int         y Position of the Button - relative to parent
@@ -71,11 +73,7 @@ function Button(_id, _parent, positionX, positionY, image_normal, image_active, 
 
     
 
-    this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.extra_css_class, this.mImageNormal);
-
-    // set Position
-    this.mDomTreeObject.style.left = this.mPosX + "px";
-    this.mDomTreeObject.style.top = this.mPosY + "px";
+    this.mDomTreeObject = null;
     
     //* private:
     this.mMouseOverEvents = new Array();
@@ -109,9 +107,18 @@ Button.prototype.hide = function(){
 
 /**
  * instant show Button
+ * and create all needed DomObjects if not exists
  */
 Button.prototype.show = function(){
+    if(this.mDomTreeObject == null)
+        this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.extra_css_class, this.mImageNormal);
+    
+    // set Position
+    this.mDomTreeObject.style.left = this.mPosX + "px";
+    this.mDomTreeObject.style.top = this.mPosY + "px";
+        
     $(this.mDomTreeObject).show();
+
 }
 
 /**
