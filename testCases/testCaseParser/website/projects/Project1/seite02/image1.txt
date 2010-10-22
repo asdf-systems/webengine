@@ -1,7 +1,0 @@
-[Image]
-position_x=25
-position_y=25
-element_path=image1.jpg
-action_click=
-action_mouseOver=
-action_mouseOut=

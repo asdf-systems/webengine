@@ -1,7 +1,2 @@
-[Button]
-position_x=100
-position_y=200
-element_path=/elements/standardButton
-action_click=/website/page01
-action_mouseOver=
-action_mouseOut=
+[/elements/standardButton]
+action_click=SHOW(/website/projects)

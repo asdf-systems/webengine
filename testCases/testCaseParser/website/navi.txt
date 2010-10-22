@@ -1,5 +1,0 @@
-[Panel]
-position_x=200
-position_y=200
-element_path=navi
-

@@ -1,4 +1,0 @@
-[Panel]
-position_x=200
-position_y=600
-element_path=projects
