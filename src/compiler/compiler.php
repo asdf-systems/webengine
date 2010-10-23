@@ -60,20 +60,29 @@
 	}
 
 	function getChildren($path) {
-		$object = Array();
+		$object = null;
 		$content = getDirectoryContent($path);
 		foreach($content as $file) {
 			$fullpath = $path."/".rebuildFilename($file);
 			if(is_dir($fullpath)) {
+				$object = initObject($object);
 				$elem = compile($fullpath);
-				array_push($object, $elem);
+				$object[basename($fullpath)] = $elem;
 			} else if(isRelevantFile($file)) {
+				$object = initObject($object);
 				$elem = parseReferenceFile($fullpath);
 				$elem = checkForSpecialAttributes($elem);
-				array_push($object, $elem);
+				$object[basename($fullpath)] = $elem;
 			} else {
 				debug("Dismissed \"".$fullpath."\"");
 			}
+		}
+		return $object;
+	}
+
+	function initObject($object) {
+		if($object == null) {
+			return Array();
 		}
 		return $object;
 	}
