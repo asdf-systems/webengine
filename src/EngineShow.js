@@ -5,7 +5,11 @@ function showObjects(objects){
     elements = objects.split(",");
 
     for(var i=0; i< elements.length; i++){
-        show(idToElement(elements[i]));
+        elem = idToElement(elements[i])
+		if(elem.object == null) // not initialised now
+			init(elem);
+        
+        show(elem);
     }
 }
 function show(element){
@@ -29,10 +33,13 @@ function hide(element){
  */
 function idToElement(id){
     //! \fixme: implement better search than jQuerySelector
-    alert(id);
-    object  =  $("*[id="+id+"]") ;
-    alert(object);
-    element = object.nextNode;
-    alert(element.mId);
-    return element;
+    var path = id.split("/");
+	var elem = jsonData.root;
+    for(var i=0; i < path.length; i++){
+    	elem = elem[path[i]];
+    }
+	alert("idToELement; Element : " + elem);
+    alert("idToELement; Element Id: " + elem.mId);
+    alert("idToELement; Element Object: " + elem.object);
+    return elem.object;
 }

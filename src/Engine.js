@@ -6,7 +6,7 @@ function main(){
 
 	var elem = jsonObject.root[0];
     var body = $("body[id=mainBody]").get(0);
-    init(elem, body);
+    //init(elem, body);
     showObjects(globals.start);
 }
 
@@ -57,6 +57,8 @@ function init(elem, parentObject){
         for(i=0; i< elem.childs.length;  i++){
 	   	   init(elem.childs[i], parentObject);
     	}
+   	} else { // something went wrong on creation - alert
+   		alert("Error on create Element");
    	}
 }
 
