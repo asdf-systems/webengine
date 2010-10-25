@@ -1,31 +1,30 @@
 /**
- * Creates an Image that changes Background Images on MouseOver and Out.
- * Image can hold an image if activatet.
+ * Creates an Panel is only an placing Element without any visible Elements
+ * In Contrast to normal Elements Panels load DomObject onInit not on Show
  */
-//* class Image{
+//* class Panel{
 /**
  * \param: _id          string      unique Id for the Element (used also for the HTML elements)
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
- * \param: positionX    int         x Position of the Image - relative to parent
- * \param: positionY    int         y Position of the Image - relative to parent
+ * \param: positionX    int         x Position of the Panel - relative to parent
+ * \param: positionY    int         y Position of the Panel - relative to parent
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
- * \param: src		    string      path to the Image that sould be show
  */
-function Image(_id, _parent, positionX, positionY, extra_css_class, src){
+function Panel(_id, _parent, positionX, positionY, extra_css_class){
     
     
     //* public: 
     if(_id == null){
 
       if(globals.debug > 0)
-           alert("Image: Id is not set - cancel");
+           alert("Panel: Id is not set - cancel");
         return null;
     }
 
     if(_parent == null){
 
         if(globals.debug > 0)
-            alert("Image: Parent is null - cancel");
+            alert("Panel: Parent is null - cancel");
         return null;
     }
 
@@ -33,7 +32,7 @@ function Image(_id, _parent, positionX, positionY, extra_css_class, src){
 
     this.mId = _id;
     this.mParent        = _parent; 
-    this.mType          = "Image";
+    this.mType          = "Panel";
 
     if(positionX == null)
         this.mPosX = 0;
@@ -50,17 +49,9 @@ function Image(_id, _parent, positionX, positionY, extra_css_class, src){
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    if(src == null){
-		if(globals.debug > 0)
-            alert("Image: imageSource is null - cancel");
-        return null;
-    }
     
-    this.mSource = src;
-    else    
-        this.mExtraClassCSS = extra_css_class;
 
-    this.mDomTreeObject = null; 
+    this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
 
     // set Position
     this.mDomTreeObject.style.left = this.mPosX + "px";
@@ -75,7 +66,9 @@ function Image(_id, _parent, positionX, positionY, extra_css_class, src){
     this.mMouseOutParams = new Array();
     this.mMouseClickParams = new Array()
     
-  
+    $(this.mDomTreeObject).mouseover(onMouseOver);
+    $(this.mDomTreeObject).mouseout(onMouseOut);
+    $(this.mDomTreeObject).click(onMouseClick);
     
     return this;
 }
@@ -83,55 +76,43 @@ function Image(_id, _parent, positionX, positionY, extra_css_class, src){
 
 
 /**
- * instant hide Image
+ * instant hide Panel
  */
-Image.prototype.hide = function(){
+Panel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
 }
 
 /**
- * instant show Image
+ * instant show Panel
  */
-Image.prototype.show = function(){
-	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.extra_css_class, this.mSource);
-        $(this.mDomTreeObject).mouseover(onMouseOver);
-        $(this.mDomTreeObject).mouseout(onMouseOut);
-        $(this.mDomTreeObject).click(onMouseClick);
-    }
-		
+Panel.prototype.show = function(){
+	
     $(this.mDomTreeObject).show();
 }
 
 
 /**
- * Start Image Specific actions. ActionName has to be set on first element of params.parameter
+ * Start Panel Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter
- * \param params[0]	actionName
- * \param params[1] newSource Path
  */
-Image.prototype.specificAction = function(params){
-    actionName 	= params.parameter[0];
-    newSource	= params.parameter[1];
+Panel.prototype.specificAction = function(params){
+    actionName = params.parameter[0];
     object = params.event.currentTarget.nextNode;
     switch(actionName){
-		case "changeSource":
-			$(object.mDomTreeObject).src = newSource;
-		break;
         case "default":
             if(globals.debug > 0)
-                alert("Image: action name: " + actionName + " unknown!");
+                alert("Panel: action name: " + actionName + " unknown!");
         break;
     }
 }
 
 
 /**
- * Adds an Function that is called everytime Mouse is over the Image
+ * Adds an Function that is called everytime Mouse is over the Panel
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Image.prototype.registerOnMouseOverEvent = function(functionName, params){
+Panel.prototype.registerOnMouseOverEvent = function(functionName, params){
     if(params == null)
         params = new EventParameter();
     this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
@@ -140,11 +121,11 @@ Image.prototype.registerOnMouseOverEvent = function(functionName, params){
 }
 
 /**
- * Adds an Function that is called everytime Image is clicked
+ * Adds an Function that is called everytime Panel is clicked
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Image.prototype.registerOnMouseClickEvent = function(functionName,  params){
+Panel.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         
@@ -153,11 +134,11 @@ Image.prototype.registerOnMouseClickEvent = function(functionName,  params){
 }
 
 /**
- * Adds an Function that is called everytime Mouse leave the Image
+ * Adds an Function that is called everytime Mouse leave the Panel
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Image.prototype.registerOnMouseOutEvent = function(functionName,  params){
+Panel.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         

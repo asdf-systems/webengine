@@ -84,10 +84,6 @@ function Button(_id, _parent, positionX, positionY, image_normal, image_active, 
     this.mMouseOutParams = new Array();
     this.mMouseClickParams = new Array()
     
-    $(this.mDomTreeObject).mouseover(onMouseOver);
-    $(this.mDomTreeObject).mouseout(onMouseOut);
-    $(this.mDomTreeObject).click(onMouseClick);
-    
     this.registerOnMouseOverEvent(this.setHoverImage);
     this.registerOnMouseOutEvent(this.unsetHoverImage);
     this.mActice = false;
@@ -110,8 +106,12 @@ Button.prototype.hide = function(){
  * and create all needed DomObjects if not exists
  */
 Button.prototype.show = function(){
-    if(this.mDomTreeObject == null)
+    if(this.mDomTreeObject == null){
         this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.extra_css_class, this.mImageNormal);
+        $(this.mDomTreeObject).mouseover(onMouseOver);
+        $(this.mDomTreeObject).mouseout(onMouseOut);
+        $(this.mDomTreeObject).click(onMouseClick);
+    }
     
     // set Position
     this.mDomTreeObject.style.left = this.mPosX + "px";

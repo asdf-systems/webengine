@@ -4,28 +4,39 @@
 //* class Engine{
 function main(){
 
-	var elem = jsonObject.root[0];
+	var elem = jsonObject[0];
     var body = $("body[id=mainBody]").get(0);
     //init(elem, body);
     showObjects(globals.start);
 }
 
 
+/**
+ * Create Javaclasses for Elements and put the in DomHirachy
+ * \param:  elem            Element     Element to initialise
+ * \param:  parentObject    DomObject   ParentDomObject in DomTree. Default=Body
+ */
 function init(elem, parentObject){
 
 	// create Dom Object
-	//alert("parentObject: " + parentObject.id);
-
+    // put Object on Body if parent is null
+    if(parentObject == null)
+        parentObject = $("body[id=mainBody]").get(0);
 	// check Type 
-	switch(elem.type){
+    alert(elem.type);
+    switch(elem.type){
+
 		case "Button":
-            elem.object = new Button(elem.id, parentObject, elem.positionX, elem.positionY, elem.image_normal,elem.image_active, elem.image_hover, elem.extra_css );
+            elem.object = new Button(elem.id, parentObject, elem.positionX, elem.positionY, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css );
             //var params = new Array();
             //params[0] = "activate";
             //this.registerOnMouseClickEvent(this.specificAction,  params);
 			//elem.object.registerOnMouseClickEvent(eventHandler);
 		break;
-		/*case "InputField":
+		case "Panel":
+			elem.object = new Panel(elem.id, parentObject, elem.positionX, elem.positionY, elem.extra_css );
+		break;
+        /*case "InputField":
 			elem.domObject = new InputField(elem.positionX, elem.positionY);
 		break;
 		case "TextField":
@@ -43,22 +54,23 @@ function init(elem, parentObject){
 		case "GridPanel":
 			elem.domObject = new Button(elem.positionX, elem.positionY);
 		break;
-		case "Panel":
-			// Do nothing
-		break;*/
+        */
 		case "default":
 			alert("Unknown type:" + elem.type + "on Element: " + elem.id);
 		break;
 	}
-	// call all Childs
-    if(elem.childs != null){
+	// call all Children
+    if(elem.children != null){
         if(elem.object != null)
 	       parentObject = elem.object.mDomTreeObject;
-        for(i=0; i< elem.childs.length;  i++){
-	   	   init(elem.childs[i], parentObject);
+        for(i=0; i< elem.children.length;  i++){
+	   	   init(elem.children[i], parentObject);
     	}
-   	} else { // something went wrong on creation - alert
-   		alert("Error on create Element");
+   	} 
+   	
+    if(elem.object == null) { // something went wrong on creation - alert
+   		if(globals.debug>0)
+           alert("Error on create Element");
    	}
 }
 
