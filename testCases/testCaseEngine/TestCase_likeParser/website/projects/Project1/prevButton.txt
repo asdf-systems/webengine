@@ -1,0 +1,4 @@
+[/elements/nextButton]
+action_click=SPECIFIC(., prevPage)
+position_x=40px
+position_y=0px

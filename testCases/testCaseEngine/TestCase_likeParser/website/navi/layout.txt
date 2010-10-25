@@ -1,0 +1,4 @@
+[HVPanel]
+orientation=horizontal
+position_x=20px
+position_y=20px

@@ -1,5 +1,5 @@
 [Button]
-image_normal=prevPage_normal.jpg
-image_hover=prevPage_hover.jpg
-image_activ=prevPage_activ.jpg
-extra_css=prevPage
+standard_src=normal.jpg
+activ_src=activ.jpg
+hover_src=hover.jpg
+extra_css=standardButton

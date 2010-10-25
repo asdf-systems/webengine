@@ -1,0 +1,7 @@
+[PagePanel]
+animation_speed=200
+extra_css=projectPagePanel
+position_x=0px
+position_y=0px
+pages=page01,page02
+circular=false

@@ -33,10 +33,12 @@ function hide(element){
  */
 function idToElement(id){
     //! \fixme: implement better search than jQuerySelector
+
     var path = id.split("/");
 	var elem = jsonData.root;
     for(var i=0; i < path.length; i++){
-    	elem = elem[path[i]];
+    	alert("Path" + path[i]);
+        elem = elem[path[i]];
     }
 	alert("idToELement; Element : " + elem);
     alert("idToELement; Element Id: " + elem.mId);

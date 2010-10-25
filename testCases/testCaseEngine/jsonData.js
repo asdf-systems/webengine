@@ -1,58 +1,288 @@
-// Json TestFile
 var jsonObject = {
-    root : [
-        {
-        id:"MasterPanel.txt",
-        type:"Panel",
-        object:null,
-        positionX:100,
-        positionY:25,
-        extra_css_class:"masterPanel",
-        bgImage_normal:"mainbg_normal.jpg",
-        bgImage_active:"",
-        bgImage_hover:"",
-        childs : [
-            {   id:"/MasterPanel/PagePanel1.txt",
-                type:"PagePanel",
-                object:null,
-                positionX:20,
-                positionY:20,
-                extra_css:"news_main",
-                bgImage_normal:"",
-                bgImage_active:"",
-                bgImage_hover:"",
-                animationSpeed:200,
-                pages: [ {page1:"seite01",page2:"seite02",page3:"seite03"}],
-                childs : [
-                    {   id:"/MasterPanel/PagePanel1/nextButton.txt",
-                        type:"Button",
-                        object:null,
-                        positionX:250,
-                        positionY:100,
-                        extra_css:"nextPage",
-                        image_normal:"/elements/nextPageButton/nextPage_normal.jpg",
-                        image_active:"/elements/nextPageButton/nextPage_active.jpg",
-                        image_hover:"/elements/nextPageButton/nextPage_hover.jpg"
-                    
-                    } ,
-                    {   id:"/MasterPanel/PagePanel1/prevButton.txt",
-                        type:"Button",
-                        object:null,
-                        positionX:10,
-                        positionY:100,
-                        extra_css:"prevPage",
-                        image_normal:"/elements/prevPageButton/prevPage_normal.jpg",
-                        image_active:"/elements/prevPageButton/prevPage_active.jpg",
-                        image_hover:"/elements/prevPageButton/prevPage_hover.jpg"
-                    
-                    }                
-                ]
-            }
-        
-        ]
+  "id": ".\/",
+  "type": "Panel",
+  "object": null,
+  "position_x": "0px",
+  "position_y": "0px",
+  "width": "",
+  "height": "",
+  "children": {
+    "elements": {
+      "id": ".\/\/elements",
+      "type": "Panel",
+      "object": null,
+      "position_x": "0px",
+      "position_y": "0px",
+      "width": "",
+      "height": "",
+      "children": {
+        "nextButton": {
+          "id": ".\/\/elements\/nextButton",
+          "type": "Button",
+          "object": null,
+          "position_x": "0px",
+          "position_y": "0px",
+          "width": "",
+          "height": "",
+          "children": null,
+          "standard_src": "normal.jpg",
+          "activ_src": "activ.jpg",
+          "hover_src": "hover.jpg",
+          "extra_css": "standardButton"
+        },
+        "prevButton": {
+          "id": ".\/\/elements\/prevButton",
+          "type": "Button",
+          "object": null,
+          "position_x": "0px",
+          "position_y": "0px",
+          "width": "",
+          "height": "",
+          "children": null,
+          "standard_src": "normal.jpg",
+          "activ_src": "activ.jpg",
+          "hover_src": "hover.jpg",
+          "extra_css": "standardButton"
+        },
+        "standardButton": {
+          "id": ".\/\/elements\/standardButton",
+          "type": "Button",
+          "object": null,
+          "position_x": "0px",
+          "position_y": "0px",
+          "width": "",
+          "height": "",
+          "children": null,
+          "standard_src": "normal.jpg",
+          "activ_src": "activ.jpg",
+          "hover_src": "hover.jpg",
+          "extra_css": "standardButton"
         }
-                
-                   
-        
-    ] 
-};
+      }
+    },
+    "website": {
+      "id": ".\/\/website",
+      "type": "Panel",
+      "object": null,
+      "position_x": "0px",
+      "position_y": "0px",
+      "width": "100%",
+      "height": "100%",
+      "children": {
+        "navi": {
+          "id": ".\/\/website\/navi",
+          "type": "HVPanel",
+          "object": null,
+          "position_x": "20px",
+          "position_y": "20px",
+          "width": "",
+          "height": "",
+          "children": {
+            "button01.txt": {
+              "id": ".\/\/website\/navi\/button01.txt",
+              "type": "Button",
+              "object": null,
+              "position_x": "0px",
+              "position_y": "0px",
+              "width": "",
+              "height": "",
+              "children": null,
+              "standard_src": "normal.jpg",
+              "activ_src": "activ.jpg",
+              "hover_src": "hover.jpg",
+              "extra_css": "standardButton",
+              "action_click": [
+                {
+                  "name": "SHOW",
+                  "parameters": [
+                    "\/website\/projects"
+                  ]
+                }
+              ]
+            }
+          },
+          "orientation": "horizontal"
+        },
+        "projects": {
+          "id": ".\/\/website\/projects",
+          "type": "Panel",
+          "object": null,
+          "position_x": "100px",
+          "position_y": "100px",
+          "width": "",
+          "height": "",
+          "children": {
+            "ChangePanel": {
+              "id": ".\/\/website\/projects\/ChangePanel",
+              "type": "ChangePanel",
+              "object": null,
+              "position_x": "0px",
+              "position_y": "0px",
+              "width": "",
+              "height": "",
+              "children": {
+                "page0": {
+                  "id": ".\/\/website\/projects\/ChangePanel\/page0",
+                  "type": "Panel",
+                  "object": null,
+                  "position_x": "0px",
+                  "position_y": "0px",
+                  "width": "",
+                  "height": "",
+                  "children": {
+                    "image01": {
+                      "id": ".\/\/website\/projects\/ChangePanel\/page0\/image01",
+                      "type": "Image",
+                      "object": null,
+                      "position_x": "20px",
+                      "position_y": "20px",
+                      "width": "",
+                      "height": "",
+                      "children": null,
+                      "src": ".\/image01.jpg"
+                    }
+                  }
+                },
+                "page1": {
+                  "id": ".\/\/website\/projects\/ChangePanel\/page1",
+                  "type": "Panel",
+                  "object": null,
+                  "position_x": "0px",
+                  "position_y": "0px",
+                  "width": "",
+                  "height": "",
+                  "children": {
+                    "image01": {
+                      "id": ".\/\/website\/projects\/ChangePanel\/page1\/image01",
+                      "type": "Image",
+                      "object": null,
+                      "position_x": "20px",
+                      "position_y": "20px",
+                      "width": "",
+                      "height": "",
+                      "children": null,
+                      "src": ".\/image01.jpg"
+                    }
+                  }
+                }
+              },
+              "variable_name": "loginStatus",
+              "pages": [
+                "page0",
+                "page1"
+              ]
+            },
+            "Project1": {
+              "id": ".\/\/website\/projects\/Project1",
+              "type": "PagePanel",
+              "object": null,
+              "position_x": "0px",
+              "position_y": "0px",
+              "width": "",
+              "height": "",
+              "children": {
+                "nextButton.txt": {
+                  "id": ".\/\/website\/projects\/Project1\/nextButton.txt",
+                  "type": "Button",
+                  "object": null,
+                  "position_x": "440px",
+                  "position_y": "0px",
+                  "width": "",
+                  "height": "",
+                  "children": null,
+                  "standard_src": "normal.jpg",
+                  "activ_src": "activ.jpg",
+                  "hover_src": "hover.jpg",
+                  "extra_css": "standardButton",
+                  "action_click": [
+                    {
+                      "name": "SPECIFIC",
+                      "parameters": [
+                        ".",
+                        " nextPage"
+                      ]
+                    }
+                  ]
+                },
+                "page01": {
+                  "id": ".\/\/website\/projects\/Project1\/page01",
+                  "type": "Panel",
+                  "object": null,
+                  "position_x": "0px",
+                  "position_y": "0px",
+                  "width": "",
+                  "height": "",
+                  "children": {
+                    "image01": {
+                      "id": ".\/\/website\/projects\/Project1\/page01\/image01",
+                      "type": "Image",
+                      "object": null,
+                      "position_x": "20px",
+                      "position_y": "20px",
+                      "width": "",
+                      "height": "",
+                      "children": null,
+                      "src": ".\/image01.jpg"
+                    }
+                  }
+                },
+                "page02": {
+                  "id": ".\/\/website\/projects\/Project1\/page02",
+                  "type": "Panel",
+                  "object": null,
+                  "position_x": "0px",
+                  "position_y": "0px",
+                  "width": "",
+                  "height": "",
+                  "children": {
+                    "image01": {
+                      "id": ".\/\/website\/projects\/Project1\/page02\/image01",
+                      "type": "Image",
+                      "object": null,
+                      "position_x": "20px",
+                      "position_y": "20px",
+                      "width": "",
+                      "height": "",
+                      "children": null,
+                      "src": ".\/image01.jpg"
+                    }
+                  }
+                },
+                "prevButton.txt": {
+                  "id": ".\/\/website\/projects\/Project1\/prevButton.txt",
+                  "type": "Button",
+                  "object": null,
+                  "position_x": "40px",
+                  "position_y": "0px",
+                  "width": "",
+                  "height": "",
+                  "children": null,
+                  "standard_src": "normal.jpg",
+                  "activ_src": "activ.jpg",
+                  "hover_src": "hover.jpg",
+                  "extra_css": "standardButton",
+                  "action_click": [
+                    {
+                      "name": "SPECIFIC",
+                      "parameters": [
+                        ".",
+                        " prevPage"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "animation_speed": "200",
+              "extra_css": "projectPagePanel",
+              "pages": [
+                "page01",
+                "page02"
+              ],
+              "circular": "false"
+            }
+          }
+        }
+      }
+    }
+  }
+}

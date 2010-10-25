@@ -1,0 +1,2 @@
+[/elements/standardButton]
+action_click=SHOW(/website/projects)
