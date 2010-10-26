@@ -90,6 +90,11 @@ Panel.prototype.show = function(){
     $(this.mDomTreeObject).show();
 }
 
+Panel.prototype.getDomTreeObject = function(){
+	alert("Panel GEt: "+ this.mId);
+    return this.mDomTreeObject;
+}
+
 
 /**
  * Start Panel Specific actions. ActionName has to be set on first element of params.parameter

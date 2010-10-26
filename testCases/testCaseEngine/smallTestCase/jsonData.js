@@ -7,8 +7,31 @@ var jsonObject = {
   "width": "",
   "height": "",
   "children": {
-    "MasterPanel": {
-      "id": "/MasterPanel",
+    "firstPanel": {
+      "id": "/firstPanel",
+      "type": "Panel",
+      "object": null,
+      "position_x": "0px",
+      "position_y": "0px",
+      "width": "",
+      "height": "",
+      "children": {
+        "image01": {
+          "id": "firstPanel/image01",
+          "type": "Image",
+          "object": null,
+          "position_x": "50px",
+          "position_y": "150px",
+          "width": "",
+          "height": "",
+          "children": null,
+          "src": "firstPanel/image01.jpg",
+          "extra_css": "standardImage"
+        }
+      }
+    },
+      "secondPanel": {
+      "id": "/secondPanel",
       "type": "Panel",
       "object": null,
       "position_x": "0px",
@@ -17,33 +40,56 @@ var jsonObject = {
       "height": "",
       "children": {
         "nextPageButton": {
-          "id": "MasterPanel/nextPageButton",
-          "type": "Button",
+          "id": "secondPanel/image01",
+          "type": "Image",
           "object": null,
           "position_x": "50px",
-          "position_y": "50px",
+          "position_y": "150px",
           "width": "",
           "height": "",
           "children": null,
-          "standard_src": "MasterPanel/nextPageButton/inactiv.jpg",
-          "activ_src": "MasterPanel/nextPageButton/activ.jpg",
-          "hover_src": "MasterPanel/nextPageButton/hover.jpg",
-          "extra_css": "standardButton"
-        },
-        "prevPageButton": {
-          "id": "MasterPanel/prevPageButton",
-          "type": "Button",
+          "src": "secondPanel/image01.jpg",
+          "extra_css": "standardImage"
+        }
+      }
+    },
+    "naviPanel": {
+          "id": "/naviPanel",
+          "type": "Panel",
           "object": null,
           "position_x": "0px",
-          "position_y": "50px",
+          "position_y": "0px",
           "width": "",
           "height": "",
-          "children": null,
-          "standard_src": "MasterPanel/prevPageButton/inactiv.jpg",
-          "activ_src": "MasterPanel/prevPageButton/activ.jpg",
-          "hover_src": "MasterPanel/prevPageButton/hover.jpg",
-          "extra_css": "standardButton"
-        }
+          "children": {
+            "nextPageButton": {
+              "id": "naviPanel/nextPageButton",
+              "type": "Button",
+              "object": null,
+              "position_x": "50px",
+              "position_y": "50px",
+              "width": "",
+              "height": "",
+              "children": null,
+              "standard_src": "naviPanel/nextPageButton/inactiv.jpg",
+              "activ_src": "naviPanel/nextPageButton/activ.jpg",
+              "hover_src": "naviPanel/nextPageButton/hover.jpg",
+              "extra_css": "standardButton"
+            },
+            "prevPageButton": {
+              "id": "naviPanel/prevPageButton",
+              "type": "Button",
+              "object": null,
+              "position_x": "0px",
+              "position_y": "50px",
+              "width": "",
+              "height": "",
+              "children": null,
+              "standard_src": "naviPanel/prevPageButton/inactiv.jpg",
+              "activ_src": "naviPanel/prevPageButton/activ.jpg",
+              "hover_src": "naviPanel/prevPageButton/hover.jpg",
+              "extra_css": "standardButton"
+           }
       }
     }
   }

@@ -1,6 +1,20 @@
 var gTimer;
 
 /**
+ * Take a colon seperated list of ids, and show the corresponding Elements 
+ * also show all static objects
+ * \param   objectList  string  Colon seperated list of ids
+ */
+function changeContent(objectList){
+
+    // \todo maybe Hide currentContent
+    showObjects(objectList);
+    showObjects(globals.static);
+    
+}
+
+
+/**
  * Take a colon seperated list of ids, and show the corresponding Elements
  * \param   objectList  string  Colon seperated list of ids
  */
@@ -13,7 +27,10 @@ function showObjects(objectList){
         showElement(elements[i]);
         
     }
+    
 }
+
+
 
 /**
  * Show up an Element by id 
@@ -24,33 +41,52 @@ function showElement(elementId){
     //elem = getJsonObject(elements[i])
     var path = elementId.split("/");
 	var elem = jsonObject;
-    initAndShowElements(elem);
+	var parentObject = $("body[id=mainBody]").get(0);
+    parentObject = initAndShowElements(elem, parentObject);
     for(var i=0; i < path.length; i++){
          
         //alert("Path:" + path[i]);
         name = path[i];
-        //alert("Name:" + name);
+        alert("Name:" + name);
         elem = elem.children[name];
-        initAndShowElements(elem);
+        parentObject = initAndShowElements(elem);
         
     }
+    showChildren(elem);
     
     
 		
 
 }
 
+function showChildren(elem){
+    if(elem.children != null){
+        if(elem.object != null)
+            parentObject = elem.object.mDomTreeObject;
+        for(i=0; i< elem.children.length;  i++){
+            init(elem.children[i], parentObject);
+        }
+    } else{
+        if(globals.debug > 0)
+            alert("ShowChildren: Element is null!" );
+    }
+} 
+	
 /**
  * Check if JsonElement already initialised, init if need and show 
  * \param:  element     jsonElement     element in jsonTree that should show up
+ * \param:  parentObject    DomObject   ParentDomObject in DomTree
+ * \return  domTreeObject   from init() created DomObject
  */
-function initAndShowElements(element){
+function initAndShowElements(element, parentObject){
     
     //alert("Element to show:" + element.id);
     if(element.object == null) // not initialised now
-        init(element);
+        init(element, parentObject);
         
     element.object.show();
+    alert("Element after init: " + element.getDomTreeObject());
+    return element.mDomTreeObject;
 }
 
 

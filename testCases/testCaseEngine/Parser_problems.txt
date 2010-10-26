@@ -3,3 +3,4 @@ Root / Variable hat keine Bezeichnung
 Pfade sind scheiße \/ warum?
 Der Parser schmeißt doch eh nur absolute Pfade raus? -> dann bitte ersten / weglassen das spart arbeit
 Die Engine muss überall absolute Pfade raushauen - auch bei den Sourcen
+Warum sind images bei dir immer in einem extra Ordner - das sind doch keine Panels

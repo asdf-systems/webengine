@@ -8,10 +8,10 @@
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the Image - relative to parent
  * \param: positionY    int         y Position of the Image - relative to parent
- * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: src		    string      path to the Image that sould be show
+ * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function Image(_id, _parent, positionX, positionY, extra_css_class, src){
+function Image(_id, _parent, positionX, positionY, src, extra_css_class){
     
     
     //* public: 

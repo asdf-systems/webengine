@@ -5,9 +5,8 @@
 function main(){
 
 	var elem = jsonObject[0];
-    var body = $("body[id=mainBody]").get(0);
     //init(elem, body);
-    showObjects(globals.start);
+    changeContent(globals.start);
 }
 
 
@@ -20,10 +19,13 @@ function init(elem, parentObject){
 
 	// create Dom Object
     // put Object on Body if parent is null
-    if(parentObject == null)
-        parentObject = $("body[id=mainBody]").get(0);
+    if(parentObject == null){
+        if(globals.debug > 0)
+            alert("init: ParentObject is null - cancel");
+        return;
+    }
+        
 	// check Type 
-    alert(elem.type);
     switch(elem.type){
 
 		case "Button":
@@ -35,6 +37,9 @@ function init(elem, parentObject){
 		break;
 		case "Panel":
 			elem.object = new Panel(elem.id, parentObject, elem.positionX, elem.positionY, elem.extra_css );
+		break;
+        case "Image":
+			elem.object = new Panel(elem.id, parentObject, elem.positionX, elem.positionY, elem.src, elem.extra_css );
 		break;
         /*case "InputField":
 			elem.domObject = new InputField(elem.positionX, elem.positionY);
@@ -60,13 +65,7 @@ function init(elem, parentObject){
 		break;
 	}
 	// call all Children
-    if(elem.children != null){
-        if(elem.object != null)
-	       parentObject = elem.object.mDomTreeObject;
-        for(i=0; i< elem.children.length;  i++){
-	   	   init(elem.children[i], parentObject);
-    	}
-   	} 
+   showChildren(elem);
    	
     if(elem.object == null) { // something went wrong on creation - alert
    		if(globals.debug>0)
