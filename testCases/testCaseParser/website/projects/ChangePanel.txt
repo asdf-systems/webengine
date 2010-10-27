@@ -1,0 +1,7 @@
+[ChangePanel]
+position_x=10
+position_y=
+element_path=
+action_click=
+action_mouseOver=
+action_mouseOut=

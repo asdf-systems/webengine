@@ -1,0 +1,5 @@
+[Button]
+image_normal=prevPage_normal.jpg
+image_hover=prevPage_hover.jpg
+image_activ=prevPage_activ.jpg
+extra_css=prevPage
