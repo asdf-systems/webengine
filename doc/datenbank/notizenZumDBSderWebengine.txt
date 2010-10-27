@@ -1,0 +1,9 @@
+DBMS: MySQL und phpMyAdmin
+Anmerkungen zum Benutzermanagement:
+      - Kunde kann aus mehreren Benutzerkonten bestehen (Kundenkontos)
+      - Mitarbeiterkonto als Benutzerkontotyp hinzugefuegt
+      - Benutzerkonten sind entweder Kunden, Mitarbeiter oder Administratoren (ja ich weiss)
+Anmerkungen zum Rechtemanagement:
+      - A < B := A darf hoechstens so viel wie B
+      - Kundenkonto < Mitarbeiterkonto < Adminkonto
+
