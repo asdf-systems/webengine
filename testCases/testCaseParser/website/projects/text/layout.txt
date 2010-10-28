@@ -1,0 +1,4 @@
+[TextPanel]
+position_x=100px
+position_y=100px
+texts=/website/projects/text/blafasel.rtf
