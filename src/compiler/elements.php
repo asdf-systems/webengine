@@ -65,4 +65,16 @@
 		debug("Parsing generic list \"".$list."\"");
 		return explode(",", $list);
 	}
+
+	function readTextFiles($list) {
+		$texts = Array();
+		foreach(parseList($list) as $file) {
+			$data = file("./".$file);
+			if(!$data) {
+				return false;
+			}
+			array_push($texts, implode("\n", $data));
+		}
+		return $texts;
+	}
 ?>

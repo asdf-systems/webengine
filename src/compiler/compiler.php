@@ -45,7 +45,10 @@
 			$object["action_click"] = dieOnError(parseEventChain($object["action_mouseOver"]), "Found invalid event chain in \"".$object["id"]."\"");
 		}
 		if(array_key_exists("pages", $object)) {
-			$object["pages"] = dieOnError(parseList($object["pages"]));
+			$object["pages"] = dieOnError(parseList($object["pages"]), "Could not parse pages list in \"".$object["id"]."\"");
+		}
+		if(array_key_exists("texts", $object)) {
+			$object["texts"] = dieOnError(readTextFiles($object["texts"]), "Could not include texts in \"".$object["id"]."\"");
 		}
 		return $object;
 	}
