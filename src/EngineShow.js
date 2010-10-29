@@ -39,6 +39,7 @@ function showObjects(objectList){
 function showElement(elementId){
     
     //elem = getJsonObject(elements[i])
+    //alert("Element Id:" + elementId);
     var path = elementId.split("/");
 	var elem = jsonObject;
 	var parentObject = $("body[id=mainBody]").get(0);
@@ -47,9 +48,12 @@ function showElement(elementId){
          
         //alert("Path:" + path[i]);
         name = path[i];
-        alert("Name:" + name);
+        //alert("Name:" + name);
+        if(name == "")
+            break;
         elem = elem.children[name];
-        parentObject = initAndShowElements(elem);
+        
+        parentObject = initAndShowElements(elem, parentObject);
         
     }
     showChildren(elem);
@@ -58,12 +62,18 @@ function showElement(elementId){
 		
 
 }
-
+/**
+ * Show all Children of an jsonObject
+ * @param: elem     jsonObject
+ */
 function showChildren(elem){
+    alert("Show Children From: " + elem.id);
     if(elem.children != null){
         if(elem.object != null)
             parentObject = elem.object.mDomTreeObject;
+        alert("Size:" + elem.children);
         for(i=0; i< elem.children.length;  i++){
+            alert("Init Children: " + elem.children[i].id);
             init(elem.children[i], parentObject);
         }
     } else{
@@ -81,12 +91,13 @@ function showChildren(elem){
 function initAndShowElements(element, parentObject){
     
     //alert("Element to show:" + element.id);
+    //alert("Parent Object:" + parentObject.id);
     if(element.object == null) // not initialised now
         init(element, parentObject);
         
     element.object.show();
-    alert("Element after init: " + element.getDomTreeObject());
-    return element.mDomTreeObject;
+    //alert("Element after init: " + element.object.mDomTreeObject.id);
+    return element.object.mDomTreeObject;
 }
 
 

@@ -90,10 +90,10 @@ Panel.prototype.show = function(){
     $(this.mDomTreeObject).show();
 }
 
-Panel.prototype.getDomTreeObject = function(){
+/*Panel.prototype.getDomTreeObject = function(){
 	alert("Panel GEt: "+ this.mId);
     return this.mDomTreeObject;
-}
+}*/
 
 
 /**
