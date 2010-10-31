@@ -107,7 +107,7 @@
 				$object = initObject($object);
 				$elem = compile($fullpath);
 				$object[basename($fullpath)] = $elem;
-			} else if(isRelevantChildFile($file)) { // Reference file
+			} else if(isRelevantChildFile($file) && isINIFile($file)) { // Reference file
 				$object = initObject($object);
 				$elem = parseReferenceFile($fullpath);
 				$elem = checkForSpecialAttributes($elem);

@@ -29,6 +29,15 @@
 	}
 
 	/**
+	 * Checks, if a file is (likely to be) a INI file
+	 */
+	function isINIFile($file) {
+		$data = dieOnError(file($file), "Could not read INI file \"".$file."\"");
+		$line = $data[0];
+		return preg_match("/^\s*\[[^\]]+\]\s*$/", $line);
+	}
+
+	/**
 	 * Returns the name of the first INI section
 	 */
 	function getFirstINISection($ini) {
