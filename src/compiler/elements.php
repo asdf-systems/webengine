@@ -7,16 +7,31 @@
 		debug("Resolving reference from \"".$file."\"");
 		$ini = readINIFile($file);
 		$first_section_name = getFirstINISection($ini);
-
-		$refpath = simplifyPath(basename($file), $first_section_name);
+		$refpath = simplifyPath(dirname($file), $first_section_name);
 		debug("Reference to \"".$refpath."\"");
-		$elem = compile($refpath);
-		$elem = array_merge($elem, $ini[$first_section_name]);
+		if(hasImageExtension($refpath)) {
+			$elem = $ini[$first_section_name];
+			$elem["type"] = "Image";
+			$elem["src"] = $refpath;
+		} else {
+			$elem = compile($refpath);
+			$elem = array_merge($elem, $ini[$first_section_name]);
+		}
 		$elem["id"] = $file;
 		debug("Done.");
 		return $elem;
 	}
 
+	function hasImageExtension($filename) {
+		$extensions = Array("jpg", "jpeg", "gif", "png");
+		$fileinfo = getFileInformation($filename);
+		foreach($extensions as $extension) {
+			if($fileinfo["extension"] == $extension) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Parses a event chain.
