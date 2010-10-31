@@ -8,7 +8,9 @@ var gTimer;
 function changeContent(objectList){
 
     // \todo maybe Hide currentContent
+    //alert("changeContent(): showObjectList")
     showObjects(objectList);
+    //alert("changeContent(): showStatics")
     showObjects(globals.static);
     
 }
@@ -20,7 +22,7 @@ function changeContent(objectList){
  */
 function showObjects(objectList){
 
-    //alert("Objects::" + objects);
+    //alert("showObjects(): ObjectList:" + objectList);
     elements = objectList.split(",");
     
     for(var i=0; i< elements.length; i++){
@@ -38,21 +40,18 @@ function showObjects(objectList){
  */
 function showElement(elementId){
     
-    //elem = getJsonObject(elements[i])
-    //alert("Element Id:" + elementId);
+    //alert("showElement(): Element Id:" + elementId);
     var path = elementId.split("/");
 	var elem = jsonObject;
 	var parentObject = $("body[id=mainBody]").get(0);
+    //alert("showElement(): ElementName:" + elem.id);
     parentObject = initAndShowElements(elem, parentObject);
     for(var i=0; i < path.length; i++){
-         
-        //alert("Path:" + path[i]);
         name = path[i];
-        //alert("Name:" + name);
         if(name == "")
             break;
         elem = elem.children[name];
-        
+        //alert("showElement(): ElementName:" + elem.id);
         parentObject = initAndShowElements(elem, parentObject);
         
     }
@@ -62,26 +61,7 @@ function showElement(elementId){
 		
 
 }
-/**
- * Show all Children of an jsonObject
- * @param: elem     jsonObject
- */
-function showChildren(elem){
-    alert("Show Children From: " + elem.id);
-    if(elem.children != null){
-        if(elem.object != null)
-            parentObject = elem.object.mDomTreeObject;
-        alert("Size:" + elem.children);
-        for(i=0; i< elem.children.length;  i++){
-            alert("Init Children: " + elem.children[i].id);
-            init(elem.children[i], parentObject);
-        }
-    } else{
-        if(globals.debug > 0)
-            alert("ShowChildren: Element is null!" );
-    }
-} 
-	
+
 /**
  * Check if JsonElement already initialised, init if need and show 
  * \param:  element     jsonElement     element in jsonTree that should show up
@@ -90,15 +70,39 @@ function showChildren(elem){
  */
 function initAndShowElements(element, parentObject){
     
-    //alert("Element to show:" + element.id);
-    //alert("Parent Object:" + parentObject.id);
+    //alert("initAndShowE(): Element to show:" + element.id);
+    //alert("intiAndShowE(): Parent Object:" + parentObject.id);
     if(element.object == null) // not initialised now
         init(element, parentObject);
-        
+    
     element.object.show();
-    //alert("Element after init: " + element.object.mDomTreeObject.id);
     return element.object.mDomTreeObject;
 }
+
+/**
+ * Show all Children of an jsonObject
+ * @param: elem     jsonObject
+ */
+function showChildren(elem){
+    //alert("showChildren(): Element: " + elem.id);
+    if(elem.children != null){
+        if(elem.object != null)
+            parentObject = elem.object.mDomTreeObject;
+       else{
+            if(global.debug > 0)
+                alert("showChildren(): parentObject is null")
+       }
+       for(var child in elem.children ){
+            //alert("showChildren(): Init Children: " + child);
+            initAndShowElements(elem.children[child], parentObject);
+        }
+    } else{
+        if(globals.debug > 0)
+            alert("ShowChildren: Element is null!" );
+    }
+} 
+	
+
 
 
 function showDomObject(element){
@@ -121,11 +125,6 @@ function hide(element){
  * \return: corresponding Element in the jsonTree
  */
 function getJsonObject(id){
-    //! \fixme: implement better search than jQuerySelector
-
-    //var test = jsonObject.children["MasterPanel"];
-    //alert("TEST: " + test.id);
-    //alert("ID to Split:" + id);
     var path = id.split("/");
 	var elem = jsonObject;
     for(var i=0; i < path.length; i++){

@@ -17,7 +17,8 @@ function main(){
  */
 function init(elem, parentObject){
 
-	// create Dom Object
+	//alert("init():");
+    // create Dom Object
     // put Object on Body if parent is null
     if(parentObject == null){
         if(globals.debug > 0)
@@ -65,7 +66,7 @@ function init(elem, parentObject){
 		break;
 	}
 	// call all Children
-   showChildren(elem);
+   //showChildren(elem);
    	
     if(elem.object == null) { // something went wrong on creation - alert
    		if(globals.debug>0)
