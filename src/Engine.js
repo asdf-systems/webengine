@@ -78,18 +78,19 @@ function init(elem, parentObject){
 function registerActions(element){
 	var actions = ["action_click", "action_hover", "action_out"];
 	for(var i=0; i < actions.length; i++){
-		actionElement = element[actions[i]];
-		if(actionElement != null){
-			for(var i =0; i < actionElement.length; i++){
-				var actionHandler = getActionHandler(actionElement[i]);
-				var actionParameter = getActionParameter(actionElement[i]);
+        var name = actions[i];
+        actionElement = element[name];
+        if(actionElement != null && actionElement != undefined){
+			for(var x =0; x < actionElement.length; x++){
+                var actionHandler = getActionHandler(actionElement[x]);
+				var actionParameter = getActionParameter(actionElement[x]);
 				//alert("Action Parameter: " + actionParameter.parameter[0]);
 				switch(i){
 					case 0:
 						element.object.registerOnMouseClickEvent(actionHandler, actionParameter);
 					break;
 					case 1:
-						element.object.registerOnMouseOverEvent(actionHandler, actionParameter);
+                        element.object.registerOnMouseOverEvent(actionHandler, actionParameter);
 					break;
 					case 2:
 						element.object.registerOnMouseOutEvent(actionHandler, actionParameter);
@@ -117,7 +118,7 @@ function getActionHandler(actionElement){
     if(actionElement.name == "HIDE")
         return ActionHandlerHide;
     if(actionElement.name == "DELAY")
-        return ActionHandlerHide;   
+        return ActionHandlerDelay;   
     if(actionElement.name == "SPECIFIC")
         return ActionHandlerSpecific;    
     if(actionElement.name == "SEND")
@@ -210,6 +211,8 @@ function getJsonObject(id){
     	//alert("Path:" + path[i]);
         name = path[i];
         //alert("Name:" + name);
+        if(name == "")
+            break;
         elem = elem.children[name];
         //alert("Current Element:" + elem.id);
     }

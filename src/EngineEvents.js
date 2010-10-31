@@ -14,8 +14,7 @@ function ActionHandlerShow(params){
 }
 
 function ActionHandlerHide(params){
-    //! \todo implement
-    //hideElement(params.parameter[0]);
+    hideElement(params.parameter[0]);
 }
 
 function ActionHandlerSpecific(params){

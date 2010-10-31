@@ -33,7 +33,11 @@ function showObjectList(objectList){
 }
 
 
-
+function hideElement(elementId){
+    
+    var object = getJsonObject(elementId).object;
+    object.hide();
+}
 /**
  * Show up an Element by id 
  * \param   elementId   string  id of the Element
