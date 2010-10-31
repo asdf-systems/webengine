@@ -112,14 +112,17 @@ asdf_Image.prototype.show = function(){
  * \param params    EventParameter
  * \param params[0]	actionName
  * \param params[1] newSource Path
+ * \definition Image actions:
+ * "changeImage"    change the source of an image element
  */
 asdf_Image.prototype.specificAction = function(params){
     actionName 	= params.parameter[0];
     newSource	= params.parameter[1];
     object = params.event.currentTarget.nextNode;
+
     switch(actionName){
-		case "changeSource":
-			$(object.mDomTreeObject).src = newSource;
+		case "changeImage":
+            object.mDomTreeObject.src = newSource;
 		break;
         case "default":
             if(globals.debug > 0)
@@ -149,7 +152,7 @@ asdf_Image.prototype.registerOnMouseOverEvent = function(functionName, params){
  */
 asdf_Image.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
-        params = new Array();
+        params = new EventParameter();
         
     this.mMouseClickEvents[this.mMouseClickEvents.length] = functionName;
     this.mMouseClickParams[this.mMouseClickParams.length] = params;
@@ -162,7 +165,7 @@ asdf_Image.prototype.registerOnMouseClickEvent = function(functionName,  params)
  */
 asdf_Image.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
-        params = new Array();
+        params = new EventParameter();
         
     this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
     this.mMouseOutParams[this.mMouseOutParams.length] = params;

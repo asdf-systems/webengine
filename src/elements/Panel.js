@@ -139,7 +139,7 @@ asdf_Panel.prototype.registerOnMouseOverEvent = function(functionName, params){
  */
 asdf_Panel.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
-        params = new Array();
+        params = new EventParameter();
         
     this.mMouseClickEvents[this.mMouseClickEvents.length] = functionName;
     this.mMouseClickParams[this.mMouseClickParams.length] = params;
@@ -152,7 +152,7 @@ asdf_Panel.prototype.registerOnMouseClickEvent = function(functionName,  params)
  */
 asdf_Panel.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
-        params = new Array();
+        params = new EventParameter();
         
     this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
     this.mMouseOutParams[this.mMouseOutParams.length] = params;

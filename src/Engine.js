@@ -28,19 +28,17 @@ function init(elem, parentObject){
         
 	// check Type 
     switch(elem.type){
-
 		case "Button":
             elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css );
-            //var params = new Array();
-            //params[0] = "activate";
-            //this.registerOnMouseClickEvent(this.specificAction,  params);
-			//elem.object.registerOnMouseClickEvent(eventHandler);
+            registerActions(elem);           
 		break;
 		case "Panel":
 			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.extra_css );
+            registerActions(elem);           
 		break;
         case "Image":
             elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css );
+            registerActions(elem);           
 		break;
         /*case "InputField":
 			elem.domObject = new InputField(elem.positionX, elem.positionY);
@@ -72,6 +70,71 @@ function init(elem, parentObject){
    		if(globals.debug>0)
            alert("Error on create Element");
    	}
+}
+
+/** 
+ * register all known actions to the element
+ */
+function registerActions(element){
+	var actions = ["action_click", "action_hover", "action_out"];
+	for(var i=0; i < actions.length; i++){
+		actionElement = element[actions[i]];
+		if(actionElement != null){
+			for(var i =0; i < actionElement.length; i++){
+				var actionHandler = getActionHandler(actionElement[i]);
+				var actionParameter = getActionParameter(actionElement[i]);
+				//alert("Action Parameter: " + actionParameter.parameter[0]);
+				switch(i){
+					case 0:
+						element.object.registerOnMouseClickEvent(actionHandler, actionParameter);
+					break;
+					case 1:
+						element.object.registerOnMouseOverEvent(actionHandler, actionParameter);
+					break;
+					case 2:
+						element.object.registerOnMouseOutEvent(actionHandler, actionParameter);
+					break;
+					case "default":
+						if(globals.debug > 0)
+						alert("Error: registeAction(): unknown MouseAction: " + mouseAction);
+					break;
+			}
+		}
+		} else{ // put out some warning
+			if(globals.debug>1)
+				alert("Warning: init(): Elemement " + element.id + " has no " + actions[i]+ " action defined");
+		}
+		
+	} //for in actions    
+}
+
+/**
+ * Takes ans jsonOject actionParameter and retrun Handler function
+ */
+function getActionHandler(actionElement){
+    if(actionElement.name == "SHOW")
+        return ActionHandlerShow;
+    if(actionElement.name == "HIDE")
+        return ActionHandlerHide;
+    if(actionElement.name == "DELAY")
+        return ActionHandlerHide;   
+    if(actionElement.name == "SPECIFIC")
+        return ActionHandlerSpecific;    
+    if(actionElement.name == "SEND")
+        return ActionHandlerSend;          
+                    
+}
+
+/**
+ * read all parameter from ActionElement and returns new EventParameter 
+ * with e.paramter = actionElements.parameter
+ * \return EventParameter
+ */
+function getActionParameter(actionElement){
+    var parameter = new EventParameter();
+    parameter.parameter = actionElement.parameters;
+    return parameter;
+
 }
 
 /**
@@ -136,6 +199,25 @@ function createDomObject(parent, id, type, css, extra_css, src){
          
 }
 
-
+/**
+ * Search for Element Matches the named Id
+ * \return: corresponding Element in the jsonTree
+ */
+function getJsonObject(id){
+    var path = id.split("/");
+	var elem = jsonObject;
+    for(var i=0; i < path.length; i++){
+    	//alert("Path:" + path[i]);
+        name = path[i];
+        //alert("Name:" + name);
+        elem = elem.children[name];
+        //alert("Current Element:" + elem.id);
+    }
+	
+    //alert("idToELement; Element : " + elem);
+    //alert("idToELement; Element Id: " + elem.id);
+    //alert("idToELement; Element Object: " + elem.object.mId);
+    return elem;
+}
 
 //*};

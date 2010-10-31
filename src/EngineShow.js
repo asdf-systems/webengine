@@ -9,9 +9,9 @@ function changeContent(objectList){
 
     // \todo maybe Hide currentContent
     //alert("changeContent(): showObjectList")
-    showObjects(objectList);
+    showObjectList(objectList);
     //alert("changeContent(): showStatics")
-    showObjects(globals.static);
+    showObjectList(globals.static);
     
 }
 
@@ -20,7 +20,7 @@ function changeContent(objectList){
  * Take a colon seperated list of ids, and show the corresponding Elements
  * \param   objectList  string  Colon seperated list of ids
  */
-function showObjects(objectList){
+function showObjectList(objectList){
 
     //alert("showObjects(): ObjectList:" + objectList);
     elements = objectList.split(",");
@@ -107,37 +107,7 @@ function showChildren(elem){
 
 
 
-function showDomObject(element){
-	$(element.domObject).show();
-}
 
-function delay(time, nextAction, event){
-	
-	gTimer=setTimeout(function(){nextAction(event)}, time);
-	
-}
 
-function hide(element){
-	$(element.domObject).hide();
-	// hide all childs
-}
 
-/**
- * Search for Element Matches the named Id
- * \return: corresponding Element in the jsonTree
- */
-function getJsonObject(id){
-    var path = id.split("/");
-	var elem = jsonObject;
-    for(var i=0; i < path.length; i++){
-    	//alert("Path:" + path[i]);
-        name = path[i];
-        //alert("Name:" + name);
-        elem = elem.children[name];
-    }
-	
-    //alert("idToELement; Element : " + elem);
-    //alert("idToELement; Element Id: " + elem.mId);
-    //alert("idToELement; Element Object: " + elem.object);
-    return elem;
-}
+

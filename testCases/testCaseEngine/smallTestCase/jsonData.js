@@ -26,7 +26,17 @@ var jsonObject = {
           "height": "",
           "children": null,
           "src": "firstPanel/image01.jpg",
-          "extra_css": "standardImage"
+          "extra_css": "standardImage",
+           "action_click": [
+                {
+                  "name": "SPECIFIC",
+                  "parameters": [
+                    "firstPanel/image01",
+                    "changeImage",
+                    "secondPanel/image01.jpg"
+                  ]
+                }
+           ]
         }
       }
     },
@@ -74,7 +84,21 @@ var jsonObject = {
               "standard_src": "naviPanel/nextPageButton/inactiv.jpg",
               "activ_src": "naviPanel/nextPageButton/activ.jpg",
               "hover_src": "naviPanel/nextPageButton/hover.jpg",
-              "extra_css": "standardButton"
+              "extra_css": "standardButton",
+              "action_click": [
+                {
+                  "name": "SHOW",
+                  "parameters": [
+                    "secondPanel/"
+                  ]
+                },
+                {
+                  "name": "HIDE",
+                  "parameters": [
+                    "firstPanel/"
+                  ]
+                }
+              ]
             },
             "prevPageButton": {
               "id": "naviPanel/prevPageButton",
@@ -88,7 +112,21 @@ var jsonObject = {
               "standard_src": "naviPanel/prevPageButton/inactiv.jpg",
               "activ_src": "naviPanel/prevPageButton/activ.jpg",
               "hover_src": "naviPanel/prevPageButton/hover.jpg",
-              "extra_css": "standardButton"
+              "extra_css": "standardButton",
+              "action_click": [
+                {
+                  "name": "SHOW",
+                  "parameters": [
+                    "firstPanel/"
+                  ]
+                },
+                {
+                  "name": "HIDE",
+                  "parameters": [
+                    "secondPanel/"
+                  ]
+                }
+              ]
            }
       }
     }

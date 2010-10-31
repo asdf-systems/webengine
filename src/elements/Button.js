@@ -87,7 +87,7 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     
     this.mMouseOverParams = new Array();
     this.mMouseOutParams = new Array();
-    this.mMouseClickParams = new Array()
+    this.mMouseClickParams = new Array();
     
     this.registerOnMouseOverEvent(this.setHoverImage);
     this.registerOnMouseOutEvent(this.unsetHoverImage);
@@ -208,7 +208,7 @@ asdf_Button.prototype.registerOnMouseOverEvent = function(functionName, params){
  */
 asdf_Button.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
-        params = new Array();
+        params = new EventParameter();
         
     this.mMouseClickEvents[this.mMouseClickEvents.length] = functionName;
     this.mMouseClickParams[this.mMouseClickParams.length] = params;
@@ -221,7 +221,7 @@ asdf_Button.prototype.registerOnMouseClickEvent = function(functionName,  params
  */
 asdf_Button.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
-        params = new Array();
+        params = new EventParameter();
         
     this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
     this.mMouseOutParams[this.mMouseOutParams.length] = params;

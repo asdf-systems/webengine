@@ -59,10 +59,12 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, extra_css_class){
     this.mDomTreeObject = null;
 
     //* private:
+    // Holds function Pointer
     this.mMouseOverEvents = new Array();
     this.mMouseOutEvents = new Array();
     this.mMouseClickEvents = new Array();
     
+    // ParameterEvents typ: EventParameter()
     this.mMouseOverParams = new Array();
     this.mMouseOutParams = new Array();
     this.mMouseClickParams = new Array()
@@ -134,7 +136,7 @@ asdf_BaseElement.prototype.registerOnMouseOverEvent = function(functionName, par
  */
 asdf_BaseElement.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
-        params = new Array();
+        params = new EventParameter();
         
     this.mMouseClickEvents[this.mMouseClickEvents.length] = functionName;
     this.mMouseClickParams[this.mMouseClickParams.length] = params;
@@ -147,7 +149,7 @@ asdf_BaseElement.prototype.registerOnMouseClickEvent = function(functionName,  p
  */
 asdf_BaseElement.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
-        params = new Array();
+        params = new EventParameter();
         
     this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
     this.mMouseOutParams[this.mMouseOutParams.length] = params;

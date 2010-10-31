@@ -1,5 +1,5 @@
 var globals = {
-    debug : 2,
+    debug : 1,
     start : "firstPanel/image01",
     static : "naviPanel/",
     stdUnit : "px"
