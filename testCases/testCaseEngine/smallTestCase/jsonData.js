@@ -66,7 +66,7 @@ var jsonObject = {
               "id": "naviPanel/nextPageButton",
               "type": "Button",
               "object": null,
-              "position_x": "50px",
+              "position_x": "250px",
               "position_y": "50px",
               "width": "",
               "height": "",

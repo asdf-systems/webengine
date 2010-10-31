@@ -56,13 +56,18 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     this.mParent        = _parent; 
     this.mType          = "Button";
 
-    if(positionX == null)
-        this.mPosX = 0;
+    if(positionX == null){
+        if(globals.debug > 1)
+           alert("Warning: Button: potitionX is not set");
+    }
     else
         this.mPosX      = positionX;
 
-    if(positionY == null)
+    if(positionY == null){
+        if(globals.debug > 1)
+           alert("Warning: Button: potitionY is not set");
         this.mPosY = 0;
+    }
     else
         this.mPosY      = positionY;
     
@@ -111,12 +116,12 @@ asdf_Button.prototype.show = function(){
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
+        // set Position
+        this.mDomTreeObject.style.position= "absolute";
+        this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
+        this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
     }
     
-    // set Position
-    this.mDomTreeObject.style.left = this.mPosX + "px";
-    this.mDomTreeObject.style.top = this.mPosY + "px";
-        
     $(this.mDomTreeObject).show();
 
 }

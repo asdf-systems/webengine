@@ -35,13 +35,19 @@ function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class){
     this.mParent        = _parent; 
     this.mType          = "Image";
 
-    if(positionX == null)
+    if(positionX == null){
+        if(globals.debug > 1)
+           alert("Warning: Image: potitionX is not set");
         this.mPosX = 0;
+    }
     else
         this.mPosX      = positionX;
 
-    if(positionY == null)
+    if(positionY == null){
+        if(globals.debug > 1)
+           alert("Warning: Image: potitionY is not set");
         this.mPosY = 0;
+    }
     else
         this.mPosY      = positionY;
     
@@ -92,8 +98,9 @@ asdf_Image.prototype.show = function(){
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
-        this.mDomTreeObject.style.left = this.mPosX + "px";
-        this.mDomTreeObject.style.top = this.mPosY + "px";
+        this.mDomTreeObject.style.position= "absolute";
+        this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
+        this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
     }
 		
     $(this.mDomTreeObject).show();

@@ -99,8 +99,8 @@ function showChildren(elem){
             initAndShowElements(elem.children[child], parentObject);
         }
     } else{
-        if(globals.debug > 0)
-            alert("ShowChildren: Element is null!" );
+        if(globals.debug > 1)
+            alert("Warning: ShowChildren: Element is null!" );
     }
 } 
 	

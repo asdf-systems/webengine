@@ -30,17 +30,17 @@ function init(elem, parentObject){
     switch(elem.type){
 
 		case "Button":
-            elem.object = new asdf_Button(elem.id, parentObject, elem.positionX, elem.positionY, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css );
+            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css );
             //var params = new Array();
             //params[0] = "activate";
             //this.registerOnMouseClickEvent(this.specificAction,  params);
 			//elem.object.registerOnMouseClickEvent(eventHandler);
 		break;
 		case "Panel":
-			elem.object = new asdf_Panel(elem.id, parentObject, elem.positionX, elem.positionY, elem.extra_css );
+			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.extra_css );
 		break;
         case "Image":
-            elem.object = new asdf_Image(elem.id, parentObject, elem.positionX, elem.positionY, elem.src, elem.extra_css );
+            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css );
 		break;
         /*case "InputField":
 			elem.domObject = new InputField(elem.positionX, elem.positionY);
@@ -72,6 +72,18 @@ function init(elem, parentObject){
    		if(globals.debug>0)
            alert("Error on create Element");
    	}
+}
+
+/**
+ * adds standart unit of measurement to the value if no unit is specified
+ * \return  value + right unit of measurement like 50px or 50%
+ */
+function getValueWitdhUnits(value){
+   
+   if(value.match(".*%") || value.match(".*px"))
+        return value;
+   return (value + globals.stdUnit);
+     
 }
 
 /**

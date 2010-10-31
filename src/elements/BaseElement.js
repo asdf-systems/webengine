@@ -34,13 +34,18 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, extra_css_class){
     this.mParent        = _parent; 
     this.mType          = "BaseElement";
 
-    if(positionX == null)
+    if(positionX == null){
+        if(globals.debug > 1)
+           alert("Warning: BaseElement: potitionX is not set");
         this.mPosX = 0;
+    }
     else
         this.mPosX      = positionX;
 
-    if(positionY == null)
-        this.mPosY = 0;
+    if(positionY == null){
+        if(globals.debug > 1)
+           alert("Warning: BaseElement: potitionY is not set");
+    }
     else
         this.mPosY      = positionY;
     
@@ -53,10 +58,6 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, extra_css_class){
 
     this.mDomTreeObject = null;
 
-    // set Position
-    this.mDomTreeObject.style.left = this.mPosX + "px";
-    this.mDomTreeObject.style.top = this.mPosY + "px";
-    
     //* private:
     this.mMouseOverEvents = new Array();
     this.mMouseOutEvents = new Array();
@@ -89,6 +90,9 @@ asdf_BaseElement.prototype.show = function(){
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
+            this.mDomTreeObject.style.position= "absolute";
+            this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
+            this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
     }
     $(this.mDomTreeObject).show();
 }

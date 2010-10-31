@@ -34,13 +34,19 @@ function asdf_Panel(_id, _parent, positionX, positionY, extra_css_class){
     this.mParent        = _parent; 
     this.mType          = "Panel";
 
-    if(positionX == null)
+    if(positionX == null){
+        if(globals.debug > 1)
+           alert("Warning: Panel: positionX is not set");
         this.mPosX = 0;
+    }
     else
         this.mPosX      = positionX;
 
-    if(positionY == null)
+    if(positionY == null){
+        if(globals.debug > 1)
+           alert("Warning: Panel: positionY is not set");
         this.mPosY = 0;
+    }
     else
         this.mPosY      = positionY;
     
@@ -52,10 +58,11 @@ function asdf_Panel(_id, _parent, positionX, positionY, extra_css_class){
     
 
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
-
+    
     // set Position
-    this.mDomTreeObject.style.left = this.mPosX + "px";
-    this.mDomTreeObject.style.top = this.mPosY + "px";
+    this.mDomTreeObject.style.position= "absolute";
+    this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
+    this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
     
     //* private:
     this.mMouseOverEvents = new Array();
@@ -86,7 +93,7 @@ asdf_Panel.prototype.hide = function(){
  * instant show Panel
  */
 asdf_Panel.prototype.show = function(){
-	
+
     $(this.mDomTreeObject).show();
 }
 
