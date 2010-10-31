@@ -1,5 +1,6 @@
 <?
 	require_once("errorhandling.php");
+	require_once("paths.php");
 
 	/**
 	 * Returns the stat()-value for all the files
@@ -10,9 +11,9 @@
 		$dirhandle = dieOnError(opendir($path));
 
 		while(($file = readdir($dirhandle)) !== false) {
-			$fullfile = $path."/".$file;
-			if(isFileOfInterest($fullfile)) {
-				$data = getFileInformation($fullfile);
+			$fullpath = simplifyPath($path, $file);
+			if(isFileOfInterest($fullpath)) {
+				$data = getFileInformation($fullpath);
 				array_push($content, $data);
 			}
 		}

@@ -1,13 +1,16 @@
 <?
 	require_once("errorhandling.php");
 	require_once("debug.php");
+	require_once("paths.php");
 
 	function parseReferenceFile($file) {
 		debug("Resolving reference from \"".$file."\"");
 		$ini = readINIFile($file);
 		$first_section_name = getFirstINISection($ini);
-		debug("Reference to \"./".$first_section_name."\"");
-		$elem = compile("./".$first_section_name);
+
+		$refpath = simplifyPath(basename($file), $first_section_name);
+		debug("Reference to \"".$refpath."\"");
+		$elem = compile($refpath);
 		$elem = array_merge($elem, $ini[$first_section_name]);
 		$elem["id"] = $file;
 		debug("Done.");
@@ -93,10 +96,11 @@
 	 * @param $list Array of file paths
 	 * @returns Array with the contents of a file (files in the same order as in input)
 	 */
-	function readTextFiles($list) {
+	function readTextFiles($curdir, $list) {
 		$texts = Array();
 		foreach(parseList($list) as $file) {
-			$data = file("./".$file);
+			debug("Reading textfile \"".$file."\"");
+			$data = file(simplifyPath($curdir, $file));
 			if(!$data) {
 				return false;
 			}

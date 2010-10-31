@@ -6,15 +6,29 @@
 	require_once("errorhandling.php");
 	require_once("elements.php");
 	require_once("ini.php");
+	require_once("paths.php");
 
 	debug("Starting main routine");
 	$output = dieOnError(getOutputHandle(), "Could not open outputfie\n");
-	$result = json_encode(compile("./"))."\n";
+	$result = my_json_encode(compile("./"))."\n";
 	debug("Result:\n".$result);
 	fwrite($output, $result);
 	fclose($output);
 
 	/** Functions **/
+
+	/**
+	 * PHP's json_encode() has a bug which escapse
+	 * slashes - which is wrong. This is handled here
+	 * (poorly, though).
+	 * @param $obj Object to convert into a json string
+	 * @returns json string describing $obj
+	 */
+	function my_json_encode($obj) {
+		$str = json_encode($obj);
+		$str = str_replace("\\/", "/", $str);
+		return $str;
+	}
 
 	/**
 	 * Returns the handle to file, to which the output,
@@ -36,7 +50,7 @@
 	function compile($path) {
 		debug("Compiling \"".$path."\"");
 		$object = getDefaultObject($path);
-		$compiled = readLayoutFile($path."/layout.txt");
+		$compiled = readLayoutFile(simplifyPath($path, "layout.txt"));
 		// With array_merge is left-associative
 		// so for any duplicate keys, the value in
 		// $compiled will be seen in the result.
@@ -69,7 +83,9 @@
 			$object["pages"] = dieOnError(parseList($object["pages"]), "Could not parse pages list in \"".$object["id"]."\"");
 		}
 		if(array_key_exists("texts", $object)) {
-			$object["texts"] = dieOnError(readTextFiles($object["texts"]), "Could not include texts in \"".$object["id"]."\"");
+			// $object["id"] = path of the layout.txt or rather reference file
+			// that's why passing id as a directory works
+			$object["texts"] = dieOnError(readTextFiles($object["id"], $object["texts"]), "Could not include texts in \"".$object["id"]."\"");
 		}
 		return $object;
 	}
@@ -99,15 +115,16 @@
 	 * panels children map.
 	 */
 	function getChildren($path) {
+		debug("Looking for children of \"".$path."\"");
 		$object = null;
 		$content = getDirectoryContent($path);
 		foreach($content as $file) {
-			$fullpath = $path."/".rebuildFilename($file);
-			if(is_dir($fullpath)) { // Subpanel
+			$fullpath = simplifyPath($path, rebuildFilename($file));
+			if(is_dir($fullpath) && $file[0] != '.') { // Subpanel
 				$object = initObject($object);
 				$elem = compile($fullpath);
 				$object[basename($fullpath)] = $elem;
-			} else if(isRelevantChildFile($file) && isINIFile($file)) { // Reference file
+			} else if(isRelevantChildFile($file) && isINIFile($fullpath)) { // Reference file
 				$object = initObject($object);
 				$elem = parseReferenceFile($fullpath);
 				$elem = checkForSpecialAttributes($elem);
@@ -115,19 +132,6 @@
 			} else { // Stray file
 				debug("Dismissed \"".$fullpath."\"");
 			}
-		}
-		return $object;
-	}
-
-	/**
-	 * Checks if an object has been created, yet, and if not,
-	 * does so.
-	 * @param $object Object, whose existence to check
-	 * @returns A new array, if $object was null, the $object itself otherwise
-	 */
-	function initObject($object) {
-		if($object == null) {
-			return Array();
 		}
 		return $object;
 	}
