@@ -15,7 +15,7 @@
  * \param: image_hover  string      Path to Image that showed if Mouse is over Button. Default: =image_normal
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class){
+function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class){
     
     
     //* public: 
@@ -97,7 +97,7 @@ function Button(_id, _parent, positionX, positionY, image_normal, image_active, 
 /**
  * instant hide Button
  */
-Button.prototype.hide = function(){
+asdf_Button.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
 }
 
@@ -105,7 +105,7 @@ Button.prototype.hide = function(){
  * instant show Button
  * and create all needed DomObjects if not exists
  */
-Button.prototype.show = function(){
+asdf_Button.prototype.show = function(){
     if(this.mDomTreeObject == null){
         this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.extra_css_class, this.mImageNormal);
         $(this.mDomTreeObject).mouseover(onMouseOver);
@@ -124,7 +124,7 @@ Button.prototype.show = function(){
 /**
  * Changes Background Image to active Image
  */
-Button.prototype.setActiveImage = function(){
+asdf_Button.prototype.setActiveImage = function(){
     //object = event.currentTarget.nextNode;
     this.mActice = true;
     this.mDomTreeObject.src = this.mImageActive;
@@ -133,7 +133,7 @@ Button.prototype.setActiveImage = function(){
 /**
  * Changes Background Image to normal Image
  */
-Button.prototype.setNormalImage = function(){
+asdf_Button.prototype.setNormalImage = function(){
     this.mActice = false;
     this.mDomTreeObject.src = this.mImageNormal;
 }
@@ -143,7 +143,7 @@ Button.prototype.setNormalImage = function(){
  * Change Background Image to hover Image - if Buttion is not active
  * \param params    EventParameter
  */
-Button.prototype.setHoverImage = function(params){
+asdf_Button.prototype.setHoverImage = function(params){
     if(object.mActice)
         return;
     object = params.event.currentTarget.nextNode;
@@ -153,7 +153,7 @@ Button.prototype.setHoverImage = function(params){
  * Change Background Image to normal Image - if Buttion is not active
  * \param params    EventParameter
  */
-Button.prototype.unsetHoverImage = function(params){
+asdf_Button.prototype.unsetHoverImage = function(params){
     object = params.event.currentTarget.nextNode;
     if(object.mActice)
         return;
@@ -165,7 +165,7 @@ Button.prototype.unsetHoverImage = function(params){
  * \param params    EventParameter
  * \definition: Special Actions: Button: activate, deactivate
  */
-Button.prototype.specificAction = function(params){
+asdf_Button.prototype.specificAction = function(params){
     actionName = params.parameter[0];
     object = params.event.currentTarget.nextNode;
     switch(actionName){
@@ -188,7 +188,7 @@ Button.prototype.specificAction = function(params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Button.prototype.registerOnMouseOverEvent = function(functionName, params){
+asdf_Button.prototype.registerOnMouseOverEvent = function(functionName, params){
     if(params == null)
         params = new EventParameter();
     this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
@@ -201,7 +201,7 @@ Button.prototype.registerOnMouseOverEvent = function(functionName, params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Button.prototype.registerOnMouseClickEvent = function(functionName,  params){
+asdf_Button.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         
@@ -214,7 +214,7 @@ Button.prototype.registerOnMouseClickEvent = function(functionName,  params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Button.prototype.registerOnMouseOutEvent = function(functionName,  params){
+asdf_Button.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         

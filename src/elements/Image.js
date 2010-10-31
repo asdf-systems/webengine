@@ -11,7 +11,7 @@
  * \param: src		    string      path to the Image that sould be show
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function Image(_id, _parent, positionX, positionY, src, extra_css_class){
+function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class){
     
     
     //* public: 
@@ -57,15 +57,8 @@ function Image(_id, _parent, positionX, positionY, src, extra_css_class){
     }
     
     this.mSource = src;
-    else    
-        this.mExtraClassCSS = extra_css_class;
-
     this.mDomTreeObject = null; 
 
-    // set Position
-    this.mDomTreeObject.style.left = this.mPosX + "px";
-    this.mDomTreeObject.style.top = this.mPosY + "px";
-    
     //* private:
     this.mMouseOverEvents = new Array();
     this.mMouseOutEvents = new Array();
@@ -85,19 +78,22 @@ function Image(_id, _parent, positionX, positionY, src, extra_css_class){
 /**
  * instant hide Image
  */
-Image.prototype.hide = function(){
+asdf_Image.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
 }
 
 /**
  * instant show Image
  */
-Image.prototype.show = function(){
+asdf_Image.prototype.show = function(){
 	if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.extra_css_class, this.mSource);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
+        // set Position
+        this.mDomTreeObject.style.left = this.mPosX + "px";
+        this.mDomTreeObject.style.top = this.mPosY + "px";
     }
 		
     $(this.mDomTreeObject).show();
@@ -110,7 +106,7 @@ Image.prototype.show = function(){
  * \param params[0]	actionName
  * \param params[1] newSource Path
  */
-Image.prototype.specificAction = function(params){
+asdf_Image.prototype.specificAction = function(params){
     actionName 	= params.parameter[0];
     newSource	= params.parameter[1];
     object = params.event.currentTarget.nextNode;
@@ -131,7 +127,7 @@ Image.prototype.specificAction = function(params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Image.prototype.registerOnMouseOverEvent = function(functionName, params){
+asdf_Image.prototype.registerOnMouseOverEvent = function(functionName, params){
     if(params == null)
         params = new EventParameter();
     this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
@@ -144,7 +140,7 @@ Image.prototype.registerOnMouseOverEvent = function(functionName, params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Image.prototype.registerOnMouseClickEvent = function(functionName,  params){
+asdf_Image.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         
@@ -157,7 +153,7 @@ Image.prototype.registerOnMouseClickEvent = function(functionName,  params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Image.prototype.registerOnMouseOutEvent = function(functionName,  params){
+asdf_Image.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         

@@ -75,7 +75,9 @@ function initAndShowElements(element, parentObject){
     if(element.object == null) // not initialised now
         init(element, parentObject);
     
+
     element.object.show();
+    
     return element.object.mDomTreeObject;
 }
 

@@ -10,7 +10,7 @@
  * \param: positionY    int         y Position of the Panel - relative to parent
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function Panel(_id, _parent, positionX, positionY, extra_css_class){
+function asdf_Panel(_id, _parent, positionX, positionY, extra_css_class){
     
     
     //* public: 
@@ -78,19 +78,19 @@ function Panel(_id, _parent, positionX, positionY, extra_css_class){
 /**
  * instant hide Panel
  */
-Panel.prototype.hide = function(){
+asdf_Panel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
 }
 
 /**
  * instant show Panel
  */
-Panel.prototype.show = function(){
+asdf_Panel.prototype.show = function(){
 	
     $(this.mDomTreeObject).show();
 }
 
-/*Panel.prototype.getDomTreeObject = function(){
+/*asdf_Panel.prototype.getDomTreeObject = function(){
 	alert("Panel GEt: "+ this.mId);
     return this.mDomTreeObject;
 }*/
@@ -100,7 +100,7 @@ Panel.prototype.show = function(){
  * Start Panel Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter
  */
-Panel.prototype.specificAction = function(params){
+asdf_Panel.prototype.specificAction = function(params){
     actionName = params.parameter[0];
     object = params.event.currentTarget.nextNode;
     switch(actionName){
@@ -117,7 +117,7 @@ Panel.prototype.specificAction = function(params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Panel.prototype.registerOnMouseOverEvent = function(functionName, params){
+asdf_Panel.prototype.registerOnMouseOverEvent = function(functionName, params){
     if(params == null)
         params = new EventParameter();
     this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
@@ -130,7 +130,7 @@ Panel.prototype.registerOnMouseOverEvent = function(functionName, params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Panel.prototype.registerOnMouseClickEvent = function(functionName,  params){
+asdf_Panel.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         
@@ -143,7 +143,7 @@ Panel.prototype.registerOnMouseClickEvent = function(functionName,  params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-Panel.prototype.registerOnMouseOutEvent = function(functionName,  params){
+asdf_Panel.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         

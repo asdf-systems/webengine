@@ -10,7 +10,7 @@
  * \param: positionY    int         y Position of the BaseElement - relative to parent
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function BaseElement(_id, _parent, positionX, positionY, extra_css_class){
+function asdf_BaseElement(_id, _parent, positionX, positionY, extra_css_class){
     
     
     //* public: 
@@ -76,14 +76,14 @@ function BaseElement(_id, _parent, positionX, positionY, extra_css_class){
 /**
  * instant hide BaseElement
  */
-BaseElement.prototype.hide = function(){
+asdf_BaseElement.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
 }
 
 /**
  * instant show BaseElement
  */
-BaseElement.prototype.show = function(){
+asdf_BaseElement.prototype.show = function(){
 	if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
             $(this.mDomTreeObject).mouseover(onMouseOver);
@@ -98,7 +98,7 @@ BaseElement.prototype.show = function(){
  * Start BaseElement Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter
  */
-BaseElement.prototype.specificAction = function(params){
+asdf_BaseElement.prototype.specificAction = function(params){
     actionName = params.parameter[0];
     object = params.event.currentTarget.nextNode;
     switch(actionName){
@@ -115,7 +115,7 @@ BaseElement.prototype.specificAction = function(params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-BaseElement.prototype.registerOnMouseOverEvent = function(functionName, params){
+asdf_BaseElement.prototype.registerOnMouseOverEvent = function(functionName, params){
     if(params == null)
         params = new EventParameter();
     this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
@@ -128,7 +128,7 @@ BaseElement.prototype.registerOnMouseOverEvent = function(functionName, params){
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-BaseElement.prototype.registerOnMouseClickEvent = function(functionName,  params){
+asdf_BaseElement.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         
@@ -141,7 +141,7 @@ BaseElement.prototype.registerOnMouseClickEvent = function(functionName,  params
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-BaseElement.prototype.registerOnMouseOutEvent = function(functionName,  params){
+asdf_BaseElement.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
         params = new Array();
         

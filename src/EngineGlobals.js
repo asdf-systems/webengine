@@ -3,4 +3,3 @@ var globals = {
     start : "firstPanel/image01",
     static : "naviPanel/"
 };
-

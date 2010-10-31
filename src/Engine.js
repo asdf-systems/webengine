@@ -30,35 +30,35 @@ function init(elem, parentObject){
     switch(elem.type){
 
 		case "Button":
-            elem.object = new Button(elem.id, parentObject, elem.positionX, elem.positionY, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css );
+            elem.object = new asdf_Button(elem.id, parentObject, elem.positionX, elem.positionY, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css );
             //var params = new Array();
             //params[0] = "activate";
             //this.registerOnMouseClickEvent(this.specificAction,  params);
 			//elem.object.registerOnMouseClickEvent(eventHandler);
 		break;
 		case "Panel":
-			elem.object = new Panel(elem.id, parentObject, elem.positionX, elem.positionY, elem.extra_css );
+			elem.object = new asdf_Panel(elem.id, parentObject, elem.positionX, elem.positionY, elem.extra_css );
 		break;
         case "Image":
-			elem.object = new Panel(elem.id, parentObject, elem.positionX, elem.positionY, elem.src, elem.extra_css );
+            elem.object = new asdf_Image(elem.id, parentObject, elem.positionX, elem.positionY, elem.src, elem.extra_css );
 		break;
         /*case "InputField":
 			elem.domObject = new InputField(elem.positionX, elem.positionY);
 		break;
 		case "TextField":
-			elem.domObject = new Button(elem.positionX, elem.positionY);
+			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
 		case "PagePanel":
-			elem.domObject = new Button(elem.positionX, elem.positionY);
+			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;		"
 		case "RollOutPanel":
-			elem.domObject = new Button(elem.positionX, elem.positionY);
+			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
 		case "Formular":
-			elem.domObject = new Button(elem.positionX, elem.positionY);
+			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
 		case "GridPanel":
-			elem.domObject = new Button(elem.positionX, elem.positionY);
+			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
         */
 		case "default":
