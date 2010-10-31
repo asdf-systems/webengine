@@ -1,0 +1,3 @@
+[image01.jpg]
+position_x=200px
+position_y=200px
