@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>MaterialLib_CC: W:/asdf_systems/Projekte/webengine/src/EngineShow.cpp File Reference</title>
+<title>asdf WebEngine: EngineShow.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -12,6 +12,8 @@
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
@@ -23,36 +25,80 @@
   </div>
 </div>
 <div class="contents">
-<h1>W:/asdf_systems/Projekte/webengine/src/EngineShow.cpp File Reference</h1><table border="0" cellpadding="0" cellspacing="0">
+<h1>EngineShow.cpp File Reference</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#a1e08ea8522cb2c42d3f23d5c7195e9c8">show</a> (element)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#a1e6e266742b2d1ffd7ce50f8d68243ed">delay</a> (time,&amp;<a class="el" href="jquery-1_84_82_8min_8cpp.html#aef915316f784c9063d942974538301a6">nbsp</a>;nextAction,&amp;<a class="el" href="jquery-1_84_82_8min_8cpp.html#aef915316f784c9063d942974538301a6">nbsp</a>;event)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#a9646834de0563c64052eb0518eb9e4b6">hide</a> (element)</td></tr>
-<tr><td colspan="2"><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#aef915316f784c9063d942974538301a6">nbsp</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#a504532b43c6729845daa5d031273b920">changeContent</a> (objectList)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Take a colon seperated list of ids, and show the corresponding Elements also show all static objects.  <a href="#a504532b43c6729845daa5d031273b920"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#ac3f0152c3ac80569d255ea987800c031">showObjectList</a> (objectList)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Take a colon seperated list of ids, and show the corresponding Elements.  <a href="#ac3f0152c3ac80569d255ea987800c031"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#a3c9dc599cbf3df372605c45dee6d15ab">hideElement</a> (elementId)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#ac50d6567049fdfab5630d7190f13cf90">showElement</a> (elementId)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Show up an Element by id.  <a href="#ac50d6567049fdfab5630d7190f13cf90"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#a611764b182da87e92abb7b3b3f9b31d8">initAndShowElements</a> (element, parentObject)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if JsonElement already initialised, init if need and show.  <a href="#a611764b182da87e92abb7b3b3f9b31d8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="EngineShow_8cpp.html#a4594b5801f39848f30c2e9b6814420e4">showChildren</a> (elem)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Show all Children of an jsonObject.  <a href="#a4594b5801f39848f30c2e9b6814420e4"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a1e6e266742b2d1ffd7ce50f8d68243ed"></a><!-- doxytag: member="EngineShow.cpp::delay" ref="a1e6e266742b2d1ffd7ce50f8d68243ed" args="(time,&amp;nbsp;nextAction,&amp;nbsp;event)" -->
+<a class="anchor" id="a504532b43c6729845daa5d031273b920"></a><!-- doxytag: member="EngineShow.cpp::changeContent" ref="a504532b43c6729845daa5d031273b920" args="(objectList)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">delay </td>
+          <td class="memname">changeContent </td>
           <td>(</td>
-          <td class="paramtype">time&nbsp;</td>
+          <td class="paramtype">objectList&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Take a colon seperated list of ids, and show the corresponding Elements also show all static objects. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>objectList</em>&nbsp;</td><td>string Colon seperated list of ids </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3c9dc599cbf3df372605c45dee6d15ab"></a><!-- doxytag: member="EngineShow.cpp::hideElement" ref="a3c9dc599cbf3df372605c45dee6d15ab" args="(elementId)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">hideElement </td>
+          <td>(</td>
+          <td class="paramtype">elementId&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a611764b182da87e92abb7b3b3f9b31d8"></a><!-- doxytag: member="EngineShow.cpp::initAndShowElements" ref="a611764b182da87e92abb7b3b3f9b31d8" args="(element, parentObject)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">initAndShowElements </td>
+          <td>(</td>
+          <td class="paramtype">element&nbsp;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&amp;<a class="el" href="jquery-1_84_82_8min_8cpp.html#aef915316f784c9063d942974538301a6">nbsp</a>;&nbsp;</td>
-          <td class="paramname"> <em>nextAction</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&amp;<a class="el" href="jquery-1_84_82_8min_8cpp.html#aef915316f784c9063d942974538301a6">nbsp</a>;&nbsp;</td>
-          <td class="paramname"> <em>event</em></td><td>&nbsp;</td>
+          <td class="paramtype">parentObject&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -63,16 +109,26 @@
 </div>
 <div class="memdoc">
 
+<p>Check if JsonElement already initialised, init if need and show. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>element jsonElement element in jsonTree that should show up </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>parentObject DomObject ParentDomObject in DomTree </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>domTreeObject from init() created DomObject </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="a9646834de0563c64052eb0518eb9e4b6"></a><!-- doxytag: member="EngineShow.cpp::hide" ref="a9646834de0563c64052eb0518eb9e4b6" args="(element)" -->
+<a class="anchor" id="a4594b5801f39848f30c2e9b6814420e4"></a><!-- doxytag: member="EngineShow.cpp::showChildren" ref="a4594b5801f39848f30c2e9b6814420e4" args="(elem)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">hide </td>
+          <td class="memname">showChildren </td>
           <td>(</td>
-          <td class="paramtype">element&nbsp;</td>
+          <td class="paramtype">elem&nbsp;</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -81,16 +137,24 @@
 </div>
 <div class="memdoc">
 
+<p>Show all Children of an jsonObject. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em></em>&nbsp;</td><td>elem jsonObject </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a class="anchor" id="a1e08ea8522cb2c42d3f23d5c7195e9c8"></a><!-- doxytag: member="EngineShow.cpp::show" ref="a1e08ea8522cb2c42d3f23d5c7195e9c8" args="(element)" -->
+<a class="anchor" id="ac50d6567049fdfab5630d7190f13cf90"></a><!-- doxytag: member="EngineShow.cpp::showElement" ref="ac50d6567049fdfab5630d7190f13cf90" args="(elementId)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">show </td>
+          <td class="memname">showElement </td>
           <td>(</td>
-          <td class="paramtype">element&nbsp;</td>
+          <td class="paramtype">elementId&nbsp;</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -99,24 +163,44 @@
 </div>
 <div class="memdoc">
 
+<p>Show up an Element by id. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>elementId</em>&nbsp;</td><td>string id of the Element </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="aef915316f784c9063d942974538301a6"></a><!-- doxytag: member="EngineShow.cpp::nbsp" ref="aef915316f784c9063d942974538301a6" args="" -->
+<a class="anchor" id="ac3f0152c3ac80569d255ea987800c031"></a><!-- doxytag: member="EngineShow.cpp::showObjectList" ref="ac3f0152c3ac80569d255ea987800c031" args="(objectList)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">&amp; <a class="el" href="jquery-1_84_82_8min_8cpp.html#aef915316f784c9063d942974538301a6">nbsp</a></td>
+          <td class="memname">showObjectList </td>
+          <td>(</td>
+          <td class="paramtype">objectList&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
+<p>Take a colon seperated list of ids, and show the corresponding Elements. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>objectList</em>&nbsp;</td><td>string Colon seperated list of ids </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on Fri Oct 22 21:16:54 2010 for MaterialLib_CC by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on Sun Oct 31 14:49:36 2010 for asdf WebEngine by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>
