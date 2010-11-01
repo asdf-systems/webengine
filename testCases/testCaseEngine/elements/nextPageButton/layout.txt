@@ -1,5 +1,0 @@
-[Button]
-image_normal=nextPage_normal.jpg
-image_hover=nextPage_hover.jpg
-image_activ=nextPage_activ.jpg
-extra_css=nextPage
