@@ -8,9 +8,14 @@
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the InputField - relative to parent
  * \param: positionY    int         y Position of the InputField - relative to parent
+ * \param: width        int         width of the inputsensitiv field
+ * \param: height       int         height of the inputsensitiv field
+ * \param: offsetX      int         offset in px for the inputsensitiv Field relativ to inputField position    
+ * \param: offsetY      int         offset in px for the inputsensitiv Field relativ to inputField position    
+ * \param: src          string      path to the BackgroundImage to define inputField design
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function asdf_InputField(_id, _parent, positionX, positionY, extra_css_class){
+function asdf_InputField(_id, _parent, positionX, positionY, width, height, inputFieldOffsetX, inputFieldOffsetY, src,extra_css_class){
     
     
     //* public: 
@@ -32,7 +37,7 @@ function asdf_InputField(_id, _parent, positionX, positionY, extra_css_class){
 
     this.mId = _id;
     this.mParent        = _parent; 
-    this.mType          = "InputField";
+    this.mType          = "asdf_engine_inputField";
 
     if(positionX == null){
         if(globals.debug > 1)
@@ -48,15 +53,53 @@ function asdf_InputField(_id, _parent, positionX, positionY, extra_css_class){
     }
     else
         this.mPosY      = positionY;
+
+
+    if(width == null){
+        if(globals.debug > 0)
+           alert("Error: InputField: width is not set - cancel");
+        return null;
+    }
+    else
+        this.mWidth      = width;
+
+    if(height == null){
+        if(globals.debug > 0)
+           alert("Error: InputField: height is not set - cancel");
+        return null;
+    }
+    else
+        this.mHeight      = height;
+        
+    if(inputFieldOffsetX == null){
+        if(globals.debug > 0)
+           alert("Error: InputField: inputFieldOffsetX is not set - cancel");
+        return null;
+    }
+    else
+        this.mInputOffsetX      = inputFieldOffsetX;
+
+
+    if(inputFieldOffsetY == null){
+        if(globals.debug > 0)
+           alert("Error: InputField: inputFieldOffsetY is not set - cancel");
+        return null;
+    }
+    else
+        this.mInputOffsetY      = inputFieldOffsetY;
+                            
+    this.mBgImage = src;
     
     if(extra_css_class == null)
         this.mExtraClassCSS = "EXTRA_NOTSET";
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    
+
 
     this.mDomTreeObject = null;
+    this.mDomBackground = null;
+    this.mDomInputField = null;
 
     //* private:
     // Holds function Pointer
@@ -87,15 +130,28 @@ asdf_InputField.prototype.hide = function(){
  * instant show InputField
  */
 asdf_InputField.prototype.show = function(){
-	alert("InputField Show()");
+	//alert("InputField Show()");
     if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, this.mId, "input", this.mType, this.extra_css_class);
+		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+            this.mDomInputField = createDomObjectDOM(this.mDomTreeObject, (this.mId+"_inputField"), "input", this.mType, this.extra_css_class);
+            this.mDomBackground = createDomObjectDOM(this.mDomTreeObject, this.mId, "img", (this.mType+"_bgImage"), this.extra_css_class, this.mBgImage);
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
             this.mDomTreeObject.style.position= "absolute";
-            this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
-            this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
+            this.mDomTreeObject.style.left = getValueWitdhUnits(this.mPosX);
+            this.mDomTreeObject.style.top = getValueWitdhUnits(this.mPosY);
+            this.mDomTreeObject.style.width = getValueWitdhUnits(this.mWidth);
+            this.mDomTreeObject.style.height = getValueWitdhUnits(this.mHeight);            
+            if(this.mBgImage != null){
+                alert("InputField - Set Image:" + this.mBgImage);
+                this.mDomTreeObject.style.border= 0;
+                this.mDomTreeObject.style.background = "transparent";
+            }
+            this.mDomInputField.style.left = getValueWitdhUnits(this.mInputOffsetX);
+            this.mDomInputField.style.top = getValueWitdhUnits(this.mInputOffsetY);
+            this.mDomBackground.style.top = getValueWitdhUnits(0);
+            this.mDomBackground.style.left = getValueWitdhUnits(0);
     }
     $(this.mDomTreeObject).show();
 }
