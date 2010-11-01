@@ -16,27 +16,17 @@ var jsonObject = {
       "width": "",
       "height": "",
       "children": {
-        "image01": {
-          "id": "firstPanel/image01",
-          "type": "Image",
+        "input01": {
+          "id": "firstPanel/input01",
+          "type": "InputField",
           "object": null,
           "position_x": "50px",
-          "position_y": "150px",
+          "position_y": "250px",
           "width": "",
           "height": "",
           "children": null,
           "src": "firstPanel/image01.jpg",
           "extra_css": "standardImage",
-           "action_click": [
-                {
-                  "name": "SPECIFIC",
-                  "parameters": [
-                    "firstPanel/image01",
-                    "changeImage",
-                    "secondPanel/image01.jpg"
-                  ]
-                }
-           ]
         }
       }
     },

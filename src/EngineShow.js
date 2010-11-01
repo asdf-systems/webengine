@@ -55,7 +55,9 @@ function showElement(elementId){
         if(name == "")
             break;
         elem = elem.children[name];
+        //alert(name);
         //alert("showElement(): ElementName:" + elem.id);
+        
         parentObject = initAndShowElements(elem, parentObject);
         
     }
@@ -74,8 +76,8 @@ function showElement(elementId){
  */
 function initAndShowElements(element, parentObject){
     
-    //alert("initAndShowE(): Element to show:" + element.id);
-    //alert("intiAndShowE(): Parent Object:" + parentObject.id);
+    alert("initAndShowE(): Element to show:" + element.id);
+    alert("intiAndShowE(): Parent Object:" + parentObject.id);
     if(element.object == null) // not initialised now
         init(element, parentObject);
     
@@ -108,7 +110,6 @@ function showChildren(elem){
     }
 } 
 	
-
 
 
 
