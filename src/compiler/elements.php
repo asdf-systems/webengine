@@ -8,14 +8,22 @@
 		$ini = readINIFile($file);
 		$first_section_name = getFirstINISection($ini);
 		$refpath = simplifyPath(dirname($file), $first_section_name);
+		$elem = $ini[$first_section_name];
 		debug("Reference to \"".$refpath."\"");
 		if(hasImageExtension($refpath)) {
-			$elem = $ini[$first_section_name];
 			$elem["type"] = "Image";
 			$elem["src"] = $refpath;
 		} else {
-			$elem = compile($refpath);
-			$elem = array_merge($elem, $ini[$first_section_name]);
+			// compile() will call checkForSpecialAttributes
+			// Calling it twice on an object will cause corrupted paths
+			// and destroy EVERYTHING!
+			// However, because some special attributes may be listed
+			// in the reference file (and those still need proper handling)
+			// checkForSpecialAttributes() is called upon the object
+			// containing only the data from the reference file.
+			$refelem = compile($refpath);
+			checkForSpecialAttributes(dirname($file), $elem);
+			$elem = array_merge($refelem, $elem);
 		}
 		$elem["id"] = $file;
 		debug("Done.");

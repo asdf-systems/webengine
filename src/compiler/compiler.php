@@ -57,7 +57,7 @@
 		$object = array_merge($object, $compiled);
 		$object["children"] = getChildren($path);
 		debug("Done.");
-		$object = checkForSpecialAttributes($object);
+		$object = checkForSpecialAttributes($path, $object);
 		return $object;
 	}
 
@@ -65,27 +65,48 @@
 	 * Here, an object is being checked for special attributes,
 	 * which need special handling, like EventHandler definitions etc
 	 * @param $object Object to investigate
+	 * @param $path Path to which references might be relative to.
 	 * @returns The object, where special attributes have been handled.
 	 */
-	function checkForSpecialAttributes($object) {
+	function checkForSpecialAttributes($path, $object) {
 		debug("Checking for special attributes");
 
-		if(array_key_exists("action_click", $object)) {
-			$object["action_click"] = dieOnError(parseEventChain($object["action_click"]), "Found invalid event chain in \"".$object["id"]."\"");
-		}
-		if(array_key_exists("action_mouseOut", $object)) {
-			$object["action_click"] = dieOnError(parseEventChain($object["action_mouseOut"]), "Found invalid event chain in \"".$object["id"]."\"");
-		}
-		if(array_key_exists("action_mouseOver", $object)) {
-			$object["action_click"] = dieOnError(parseEventChain($object["action_mouseOver"]), "Found invalid event chain in \"".$object["id"]."\"");
-		}
 		if(array_key_exists("pages", $object)) {
 			$object["pages"] = dieOnError(parseList($object["pages"]), "Could not parse pages list in \"".$object["id"]."\"");
 		}
 		if(array_key_exists("texts", $object)) {
-			// $object["id"] = path of the layout.txt or rather reference file
-			// that's why passing id as a directory works
-			$object["texts"] = dieOnError(readTextFiles($object["id"], $object["texts"]), "Could not include texts in \"".$object["id"]."\"");
+			$object["texts"] = dieOnError(readTextFiles($path, $object["texts"]), "Could not include texts in \"".$object["id"]."\"");
+		}
+		$object = fixActionFields($object);
+		$object = fixSrcFields($path, $object);
+		return $object;
+	}
+
+	/**
+	 * Every field beginning with "action_" is presumed to have an
+	 * event chain as a value. This functions parses those fields.
+	 */
+	function fixActionFields($object) {
+		foreach($object as $key => $value) {
+			if(preg_match("/^action_.+$/", $key)) {
+				$object[$key] = dieOnError(parseEventChain($object[$key]), "Found invalid event chain in \"".$object["id"]."\"");
+			}
+		}
+		return $object;
+	}
+
+	/**
+	 * Every field ending with "_src" is presumed to reference a
+	 * for which an absolute path is required. This function handles
+	 * these fields.
+	 * @param $path Path to which the references are relative to
+	 * @param $object Object to fix up
+	 */
+	function fixSrcFields($path, $object) {
+		foreach($object as $key => $value) {
+			if(preg_match("/^.+_src$/", $key)) {
+				$object[$key] = dieOnError(simplifyPath($path, $value), "Couldn't resolve reference to src file in \"".$object["id"]."\"");
+			}
 		}
 		return $object;
 	}
@@ -127,7 +148,6 @@
 			} else if(isRelevantChildFile($file) && isINIFile($fullpath)) { // Reference file
 				$object = initObject($object);
 				$elem = parseReferenceFile($fullpath);
-				$elem = checkForSpecialAttributes($elem);
 				$object[basename($fullpath)] = $elem;
 			} else { // Stray file
 				debug("Dismissed \"".$fullpath."\"");
