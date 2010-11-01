@@ -9,9 +9,10 @@ function changeContent(objectList){
 
     // \todo maybe Hide currentContent
     //alert("changeContent(): showObjectList")
-    showObjectList(objectList);
+    
     //alert("changeContent(): showStatics")
     showObjectList(globals.static);
+    showObjectList(objectList);
     
 }
 
@@ -76,8 +77,8 @@ function showElement(elementId){
  */
 function initAndShowElements(element, parentObject){
     
-    alert("initAndShowE(): Element to show:" + element.id);
-    alert("intiAndShowE(): Parent Object:" + parentObject.id);
+    //alert("initAndShowE(): Element to show:" + element.id);
+    //alert("intiAndShowE(): Parent Object:" + parentObject.id);
     if(element.object == null) // not initialised now
         init(element, parentObject);
     

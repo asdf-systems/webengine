@@ -41,7 +41,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.extra_css );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src,elem.extra_css );
 			registerActions(elem);           
 		break;
 		/*case "TextField":
@@ -145,6 +145,7 @@ function getActionParameter(actionElement){
  */
 function getValueWitdhUnits(value){
    
+   value += "";
    if(value.match(".*%") || value.match(".*px"))
         return value;
    return (value + globals.stdUnit);
@@ -164,6 +165,13 @@ function getValueWitdhUnits(value){
  * \param:  src\t       string  for HTML types that need a sourcePath like img. Default: ""
  */
 function createDomObject(parent, id, type, css, extra_css, src){
+  createDomObjectDOM(parent.mParent, id, type, css, extra_css, src);
+}
+
+/**
+ * same like createDomObject - just take an DomObject as parent
+ */
+function createDomObjectDOM(parent, id, type, css, extra_css, src){
     // check Params
 
     if(parent == null){
@@ -183,17 +191,14 @@ function createDomObject(parent, id, type, css, extra_css, src){
     if(extra_css == null)
         extra_css == "EXTRA_NOTSET";
     
-    if(src == null)
-        src = "";
-        
      //create HTML command
      var cmd;
-     if(type == "img")
+     if(src != null)
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" " +extra_css+ "\" src=\""+src+"\">";
      else
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" "+ extra_css+"\">";
     
-    $(parent.mParent).append(cmd);
+    $(parent).append(cmd);
     var domObject = $(type+"[id="+id+"]").get(0);
     domObject.nextNode = parent;
     
