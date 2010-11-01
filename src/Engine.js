@@ -40,10 +40,11 @@ function init(elem, parentObject){
             elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css );
             registerActions(elem);           
 		break;
-        /*case "InputField":
-			elem.domObject = new InputField(elem.positionX, elem.positionY);
+        case "InputField":
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.extra_css );
+			registerActions(elem);           
 		break;
-		case "TextField":
+		/*case "TextField":
 			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
 		case "PagePanel":
