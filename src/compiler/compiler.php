@@ -10,9 +10,11 @@
 
 	debug("Starting main routine");
 	$output = dieOnError(getOutputHandle(), "Could not open outputfie\n");
-	$result = my_json_encode(compile("./"))."\n";
-	debug("Result:\n".$result);
-	fwrite($output, $result);
+	$result = compile("./");
+	$result = makePositionsRelative($result);
+	$json = my_json_encode($result)."\n";
+	debug("Result:\n".$json);
+	fwrite($output, $json);
 	fclose($output);
 
 	/** Functions **/
@@ -38,6 +40,40 @@
 	function getOutputHandle() {
 		$filename = "object.js";
 		return fopen($filename, "w+");
+	}
+
+	/**
+	 * Assumes all positions are given absolute, traverses
+	 * the whole tree and converts to relative positions.
+	 * Percent-positionings is ignored
+	 */
+	function makePositionsRelative($object, $pos_x = 0, $pos_y = 0) {
+		$newx = 0;
+		$newy = 0;
+		debug("Positioning \"".$object["id"]."\" with x=".$pos_x." and y=".$pos_y);
+		if(isPixelPosition($object["position_x"]) && isPixelPosition($object["position_y"])) {
+			$extract_x = extractPosition($object["position_x"]);
+			$object["position_x"] = sprintf("%dpx", $extract_x - $pos_x);
+			$extract_y = extractPosition($object["position_y"]);
+			$object["position_y"] = sprintf("%dpx", $extract_y - $pos_y);
+			$newx = $pos_x + $extract_x;
+			$newy = $pos_y + $extract_y;
+		}
+		if(count($object["children"]) > 0) {
+			foreach($object["children"] as $child => $childobj) {
+				$object["children"][$child] = makePositionsRelative($childobj, $newx, $newy);
+			}
+		}
+		return $object;
+	}
+
+	function isPixelPosition($pos) {
+		return preg_match("/^[0-9]+px$/", $pos);
+	}
+
+	function extractPosition($pos) {
+		// I know... *cough cough*
+		return str_replace("px", "", $pos);
 	}
 
 	/**
