@@ -1,5 +1,6 @@
 <?
-	$ROOT = getcwd()."/../../testCases/testCaseParser";
+	if(!isset($ROOT))
+		$ROOT = getcwd()."/../../testCases/testCaseParser";
 	chdir($ROOT);
 	define(DEBUG, true);
 	require_once("directory_operations.php");
