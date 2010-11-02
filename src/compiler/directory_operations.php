@@ -47,6 +47,9 @@
 
 	/**
 	 * Gets all available information on a file
+	 * @definition The file information table consists
+	 * of everything stat() returns plus a disseciton of
+	 * the filename.
 	 */
 	function getFileInformation($file) {
 		$data = dieOnError(stat($file));

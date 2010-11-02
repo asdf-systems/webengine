@@ -5,7 +5,7 @@
 	/**
 	 * Assumes all positions are given absolute, traverses
 	 * the whole tree and converts to relative positions.
-	 * Percent-positionings is ignored
+	 * @definition Percent-positionings are ignored
 	 */
 	function makePositionsRelative($object, $pos_x = 0, $pos_y = 0) {
 		$newx = 0;
@@ -52,6 +52,10 @@
 	/**
 	 * Here, an object is being checked for special attributes,
 	 * which need special handling, like EventHandler definitions etc
+	 * @definition Every field starting with "action_" assumend to have
+	 * a parsable event chain string as a value.
+	 * @definition Every fiel ending with "_src" is assumed to reference
+	 * some file and the path will be saved in it's absolute form.
 	 * @param $object Object to investigate
 	 * @param $path Path to which references might be relative to.
 	 * @returns The object, where special attributes have been handled.
@@ -104,6 +108,8 @@
 	/**
 	 * Creates an index.html from a template in the panel's folder
 	 * and fills it with the textual content.
+	 * @definition Panels which are referenced (and therefore don't
+	 * have a folder on their own) are ignored.
 	 */
 	function createHTMLDummy($object) {
 		debug("Creating html dummy for \"".$object["id"]."\"");

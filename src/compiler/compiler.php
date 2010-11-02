@@ -54,6 +54,8 @@
 	 * That means, it reads it like a common INI file,
 	 * only takes the first section and uses the section name
 	 * as the value for the "type" key.
+	 * @definition Only the first section of the INI file
+	 * will be taken into account.
 	 * @param $file to parse
 	 * @returns Hash map with the section's key=value pairs
 	 */
