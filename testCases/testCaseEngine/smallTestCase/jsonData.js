@@ -16,27 +16,20 @@ var jsonObject = {
       "width": "",
       "height": "",
       "children": {
-        "image01": {
-          "id": "firstPanel/image01",
-          "type": "Image",
+        "input01": {
+          "id": "firstPanel/input01",
+          "type": "InputField",
           "object": null,
           "position_x": "50px",
-          "position_y": "150px",
-          "width": "",
-          "height": "",
+          "position_y": "100px",
+          "input_sensitiv_field_offsetX" : "20px",
+          "input_sensitiv_field_offsetY" : "20px",
+          "offsetX" : "20px",
+          "width": "150px",
+          "height": "50px",
           "children": null,
           "src": "firstPanel/image01.jpg",
           "extra_css": "standardImage",
-           "action_click": [
-                {
-                  "name": "SPECIFIC",
-                  "parameters": [
-                    "firstPanel/image01",
-                    "changeImage",
-                    "secondPanel/image01.jpg"
-                  ]
-                }
-           ]
         }
       }
     },
