@@ -1,4 +1,7 @@
 <?
+	require_once("directory_operations.php");
+	require_once("errorhandling.php");
+
 	/**
 	 * Assumes all positions are given absolute, traverses
 	 * the whole tree and converts to relative positions.
@@ -72,6 +75,7 @@
 	 * event chain as a value. This functions parses those fields.
 	 */
 	function fixActionFields($object) {
+		debug("Fixing up action_ fields");
 		foreach($object as $key => $value) {
 			if(preg_match("/^action_.+$/", $key)) {
 				$object[$key] = dieOnError(parseEventChain($object[$key]), "Found invalid event chain in \"".$object["id"]."\"");
@@ -88,11 +92,54 @@
 	 * @param $object Object to fix up
 	 */
 	function fixSrcFields($path, $object) {
+		debug("Fixing up *_src fields");
 		foreach($object as $key => $value) {
 			if(preg_match("/^.+_src$/", $key)) {
 				$object[$key] = dieOnError(simplifyPath($path, $value), "Couldn't resolve reference to src file in \"".$object["id"]."\"");
 			}
 		}
 		return $object;
+	}
+
+	/**
+	 * Creates an index.html from a template in the panel's folder
+	 * and fills it with the textual content.
+	 */
+	function createHTMLDummy($object) {
+		debug("Creating html dummy for \"".$object["id"]."\"");
+		$data = readTemplate();
+		$data = replacePlaceholder($data, "text", $object["texts"]);
+		$data = replacePlaceholder($data, "id", $object["id"]);
+		writeToFile(simplifyPath($object["id"], "index.html"), $data);
+	}
+
+	/**
+	 * @returns the content of "index_template.html"
+	 */
+	function readTemplate() {
+		debug("Reading template file");
+		static $data = null;
+		if($data == null) {
+			$data = dieOnError(file("index_template.html"), "Could not read template file");
+			$data = implode("", $data);
+		}
+		return $data;
+	}
+
+	/**
+	 * Looks for placeholders like "{placeholder_name}" in $data
+	 * to replace it with val.
+	 * @param $data Data to look through
+	 * @param $name Name of the placeholder
+	 * @param $val Value to replace placeholder with. This can be an array.
+	 * If this is the case, the array's elements will be concatenated.
+	 * @return Replaced $data
+	 */
+	function replacePlaceholder($data, $name, $val) {
+		// If $val is an array, turn it into a string.
+		if(is_array($val)) {
+			$val = implode(" ", $val);
+		}
+		return str_replace("{".$name."}", $val, $data);
 	}
 ?>

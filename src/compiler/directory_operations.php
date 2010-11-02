@@ -20,6 +20,12 @@
 		return $content;
 	}
 
+	function writeToFile($path, $data) {
+		$file = dieOnError(fopen($path, "w+"), "Could not open file \"".$path."\"");
+		fwrite($file, $data);
+		fclose($file);
+	}
+
 	/**
 	 * Filter function to filter out files not
 	 * relevant for creating the JSON tree

@@ -8,26 +8,22 @@
 	require_once("elements.php");
 	require_once("ini.php");
 	require_once("paths.php");
+	require_once("hacks.php");
 
 	debug("Starting main routine");
-	$output = dieOnError(getOutputHandle(), "Could not open outputfie\n");
 	$result = compile("./");
 	$result = makePositionsRelative($result);
 	$json = my_json_encode($result)."\n";
 	debug("Result:\n".$json);
-	fwrite($output, $json);
-	fclose($output);
+	writeToFile(getOutputFileName(), $json);
 
 	/** Functions **/
 
 	/**
-	 * Returns the handle to file, to which the output,
-	 * i.e. the json tree is supposed to be written.
-	 * @returns File handle or null on error
+	 * @returns the filename of the outputfile
 	 */
-	function getOutputHandle() {
-		$filename = "object.js";
-		return fopen($filename, "w+");
+	function getOutputFileName() {
+		return "object.js";
 	}
 
 
