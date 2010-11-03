@@ -111,7 +111,30 @@ function showChildren(elem){
     }
 } 
 	
+	
+/**
+ * Placing and Object relative to Parent
+ * @param   element DOMObject   Element to Place
+ * @param   left    int         Position left
+ * @param   top     int         Position top
+ * @param   type    string      position type like relative or absoulte
+ */
+function setObjectPosition(element, left, top, type){
+    element.style.position = type;
+    element.style.left = getValueWithUnits(left);
+    element.style.top = getValueWithUnits(top);
+}
 
+/**
+ * Set Width and height if an Element
+ * @param   element DOMObject   Element to Place
+ * @param   width   int         Position left
+ * @param   height  int         Position top
+ */
+function setObjectSize(element, width ,height){
+    element.style.width = getValueWithUnits(width);
+    element.style.height = getValueWithUnits(height);
+}
 
 
 

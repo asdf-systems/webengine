@@ -143,7 +143,7 @@ function getActionParameter(actionElement){
  * adds standart unit of measurement to the value if no unit is specified
  * \return  value + right unit of measurement like 50px or 50%
  */
-function getValueWitdhUnits(value){
+function getValueWithUnits(value){
    
    value += "";
    if(value.match(".*%") || value.match(".*px"))

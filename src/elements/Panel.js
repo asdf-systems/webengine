@@ -60,9 +60,7 @@ function asdf_Panel(_id, _parent, positionX, positionY, extra_css_class){
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
 
     // set Position
-    this.mDomTreeObject.style.position= "absolute";
-    this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
-    this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
 
     //* private:
     this.mMouseOverEvents = new Array();

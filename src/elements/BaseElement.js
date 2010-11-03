@@ -92,9 +92,8 @@ asdf_BaseElement.prototype.show = function(){
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
-            this.mDomTreeObject.style.position= "absolute";
-            this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
-            this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
+            setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+
     }
     $(this.mDomTreeObject).show();
 }

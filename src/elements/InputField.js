@@ -139,21 +139,15 @@ asdf_InputField.prototype.show = function(){
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
-            this.mDomTreeObject.style.position= "absolute";
-            this.mDomTreeObject.style.left = getValueWitdhUnits(this.mPosX);
-            this.mDomTreeObject.style.top = getValueWitdhUnits(this.mPosY);
-            this.mDomTreeObject.style.width = getValueWitdhUnits(this.mWidth);
-            this.mDomTreeObject.style.height = getValueWitdhUnits(this.mHeight);            
+            setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+            setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight)
             if(this.mBgImage != null){
                 this.mDomInputField.style.border= 0;
                 this.mDomInputField.style.background = "transparent";
             }
-            this.mDomInputField.style.position = "absolute";
-            this.mDomInputField.style.left = getValueWitdhUnits(this.mInputOffsetX);
-            this.mDomInputField.style.top = getValueWitdhUnits(this.mInputOffsetY);
-            this.mDomBackground.style.position = "absolute";
-            this.mDomBackground.style.top = getValueWitdhUnits(0);
-            this.mDomBackground.style.left = getValueWitdhUnits(0);
+            setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute");
+            setObjectPosition(this.mDomBackground, 0,0,"absolute");
+
     }
     $(this.mDomTreeObject).show();
 }
