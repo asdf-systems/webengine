@@ -133,8 +133,9 @@ asdf_InputField.prototype.show = function(){
 	//alert("InputField Show()");
     if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
-            this.mDomInputField = createDomObjectDOM(this.mDomTreeObject, (this.mId+"_inputField"), "input", this.mType, this.extra_css_class);
-            this.mDomBackground = createDomObjectDOM(this.mDomTreeObject, this.mId, "img", (this.mType+"_bgImage"), this.extra_css_class, this.mBgImage);
+            this.mDomBackground = createDomObjectDOM(this, this.mDomTreeObject, this.mId, "img", (this.mType+"_bgImage"), this.extra_css_class, this.mBgImage);
+            this.mDomInputField = createDomObjectDOM(this, this.mDomTreeObject, (this.mId+"_inputField"), "input", this.mType, this.extra_css_class);
+    
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
@@ -144,12 +145,13 @@ asdf_InputField.prototype.show = function(){
             this.mDomTreeObject.style.width = getValueWitdhUnits(this.mWidth);
             this.mDomTreeObject.style.height = getValueWitdhUnits(this.mHeight);            
             if(this.mBgImage != null){
-                alert("InputField - Set Image:" + this.mBgImage);
-                this.mDomTreeObject.style.border= 0;
-                this.mDomTreeObject.style.background = "transparent";
+                this.mDomInputField.style.border= 0;
+                this.mDomInputField.style.background = "transparent";
             }
+            this.mDomInputField.style.position = "absolute";
             this.mDomInputField.style.left = getValueWitdhUnits(this.mInputOffsetX);
             this.mDomInputField.style.top = getValueWitdhUnits(this.mInputOffsetY);
+            this.mDomBackground.style.position = "absolute";
             this.mDomBackground.style.top = getValueWitdhUnits(0);
             this.mDomBackground.style.left = getValueWitdhUnits(0);
     }

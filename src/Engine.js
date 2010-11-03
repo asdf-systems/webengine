@@ -165,23 +165,33 @@ function getValueWitdhUnits(value){
  * \param:  src\t       string  for HTML types that need a sourcePath like img. Default: ""
  */
 function createDomObject(parent, id, type, css, extra_css, src){
-  createDomObjectDOM(parent.mParent, id, type, css, extra_css, src);
+  return ( createDomObjectDOM(parent, parent.mParent, id, type, css, extra_css, src) ) ;
 }
 
 /**
  * same like createDomObject - just take an DomObject as parent
  */
-function createDomObjectDOM(parent, id, type, css, extra_css, src){
+function createDomObjectDOM(parent, domparent, id, type, css, extra_css, src){
     // check Params
 
+   
     if(parent == null){
         if(globals.debug > 0)
             alert("Error Creating Dom Object - no parent set!");
         return null;
     }
-   id = parent.mId;
-   
+     if(domparent == null){
+        if(globals.debug > 0)
+            alert("Error Creating Dom Object - no DOM parent set!");
+        return null;
+    }
     
+    if(id == null){
+        if(globals.debug > 0)
+            alert("Error Creating Dom Object - no id set!");
+        return null;
+    }
+   
     if(type == null)
         type = "div";
         
@@ -192,13 +202,15 @@ function createDomObjectDOM(parent, id, type, css, extra_css, src){
         extra_css == "EXTRA_NOTSET";
     
      //create HTML command
+
      var cmd;
      if(src != null)
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" " +extra_css+ "\" src=\""+src+"\">";
      else
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" "+ extra_css+"\">";
     
-    $(parent).append(cmd);
+    
+    $(domparent).append(cmd);
     var domObject = $(type+"[id="+id+"]").get(0);
     domObject.nextNode = parent;
     
