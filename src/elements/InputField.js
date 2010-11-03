@@ -13,9 +13,10 @@
  * \param: offsetX      int         offset in px for the inputsensitiv Field relativ to inputField position    
  * \param: offsetY      int         offset in px for the inputsensitiv Field relativ to inputField position    
  * \param: src          string      path to the BackgroundImage to define inputField design
+ * \param: signs        string      signs that are not allowed in notation like abc123[1..9]
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function asdf_InputField(_id, _parent, positionX, positionY, width, height, inputFieldOffsetX, inputFieldOffsetY, src,extra_css_class){
+function asdf_InputField(_id, _parent, positionX, positionY, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, extra_css_class){
     
     
     //* public: 
@@ -95,8 +96,11 @@ function asdf_InputField(_id, _parent, positionX, positionY, width, height, inpu
     else    
         this.mExtraClassCSS = extra_css_class;
 
-
-
+    if(forbiddenSigns == null)
+        this.mForbiddenSigns = "";
+    else
+        this.mForbiddenSigns = forbiddenSigns;
+    
     this.mDomTreeObject = null;
     this.mDomBackground = null;
     this.mDomInputField = null;
@@ -106,11 +110,15 @@ function asdf_InputField(_id, _parent, positionX, positionY, width, height, inpu
     this.mMouseOverEvents = new Array();
     this.mMouseOutEvents = new Array();
     this.mMouseClickEvents = new Array();
+    this.mKeyPressEvents = new Array();
     
     // ParameterEvents typ: EventParameter()
     this.mMouseOverParams = new Array();
     this.mMouseOutParams = new Array();
     this.mMouseClickParams = new Array()
+    this.mKeyPressParams = new Array();
+    
+    this.registerKeyPressEvent(this.checkSign);
     
   
     
@@ -118,6 +126,27 @@ function asdf_InputField(_id, _parent, positionX, positionY, width, height, inpu
 }
 
 
+/**
+ * Change Background Image to hover Image - if Buttion is not active
+ * \param params    EventParameter
+ */
+asdf_InputField.prototype.checkSign = function(params){
+    var object = params.event.currentTarget.nextNode;
+    //    alert("KeyCode" + event.keyCode);
+    var asciiCode = event.keyCode;
+    if(object.mForbiddenSigns.length == 0)
+        return;
+        
+    //! \todo implement stuff like[1..9] [a..z]
+    //! \todo connvert ascci sign to string
+    if(isSubstringOf(asciiCode, object.mForbiddenSigns)){
+        // delete last element
+        object.mDomInputField.value = object.mDomInputField.value.substring(0, object.mDomInputField.value.length-2);
+    }
+    
+
+
+}
 
 /**
  * instant hide InputField
@@ -136,9 +165,11 @@ asdf_InputField.prototype.show = function(){
             this.mDomBackground = createDomObjectDOM(this, this.mDomTreeObject, this.mId, "img", (this.mType+"_bgImage"), this.extra_css_class, this.mBgImage);
             this.mDomInputField = createDomObjectDOM(this, this.mDomTreeObject, (this.mId+"_inputField"), "input", this.mType, this.extra_css_class);
     
+            //! \todo - check if events handled right - maybe have to change handler to mDomBackground
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
+            $(this.mDomInputField).keypress(onKeyPress);
             setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
             setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight)
             if(this.mBgImage != null){
@@ -156,12 +187,16 @@ asdf_InputField.prototype.show = function(){
 /**
  * Start InputField Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter
+ * \definition      InputField Actions: getValue (return string)
  */
 asdf_InputField.prototype.specificAction = function(params){
     actionName = params.parameter[0];
     object = params.event.currentTarget.nextNode;
     switch(actionName){
-        case "default":
+        case "getValue":
+            return this.mDomInputField.value;
+        break;
+        default:
             if(globals.debug > 0)
                 alert("InputField: action name: " + actionName + " unknown!");
         break;
@@ -208,4 +243,18 @@ asdf_InputField.prototype.registerOnMouseOutEvent = function(functionName,  para
     this.mMouseOutParams[this.mMouseOutParams.length] = params;
     
 }
+/**
+ * Adds an Function that is called everytime a key is pressed
+ * \param: functionName    string           Name of the Function
+ * \param: params          EventParameter   Parameter for the called functions
+ */
+asdf_InputField.prototype.registerKeyPressEvent = function(functionName,  params){
+    if(params == null)
+        params = new EventParameter();
+        
+    this.mKeyPressEvents[this.mKeyPressEvents.length] = functionName;
+    this.mKeyPressParams[this.mKeyPressParams.length] = params;
+    
+}
+
 //*};

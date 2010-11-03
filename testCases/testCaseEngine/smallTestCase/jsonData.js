@@ -29,7 +29,8 @@ var jsonObject = {
           "height": "50px",
           "children": null,
           "src": "firstPanel/image01.jpg",
-          "extra_css": "standardImage",
+          "forbidden_signs" : "abc",
+          "extra_css": "standardImage"
         }
       }
     },

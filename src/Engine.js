@@ -41,7 +41,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src,elem.extra_css );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src, elem.forbidden_signs, elem.extra_css );
 			registerActions(elem);           
 		break;
 		/*case "TextField":
@@ -241,4 +241,24 @@ function getJsonObject(id){
     return elem;
 }
 
+/**
+ * Check if one string is substring oof another
+ * @param   small   string  string that is maybe in the other one
+ * @param   big     string  string that maybe contaisn the other one
+ * @return true if big contains small, false else
+ */
+function isSubstringOf(small ,big){
+    //! \todop check
+    var subLen = small.length;
+    var flag = false;
+    for(var i=0; i < ( big.length-subLen ); i++){
+        if(small == big.substring(i, i+subLen)){
+            flag = true;
+            break;
+        }
+            
+    }
+    
+    return flag;
+}
 //*};

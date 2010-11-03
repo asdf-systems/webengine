@@ -179,7 +179,7 @@ asdf_Button.prototype.specificAction = function(params){
         case "deactivate":
             object.setNormalImage();
         break;
-        case "default":
+        default:
             if(globals.debug > 0)
                 alert("Button: action name: " + actionName + " unknown!");
         break;
