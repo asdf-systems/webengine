@@ -41,7 +41,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src, elem.forbidden_signs, elem.extra_css );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src, elem.forbidden_signs, elem.password, elem.extra_css );
 			registerActions(elem);           
 		break;
 		/*case "TextField":
@@ -204,12 +204,20 @@ function createDomObjectDOM(parent, domparent, id, type, css, extra_css, src){
      //create HTML command
 
      var cmd;
-     if(src != null)
+        
+     if(type.match(/input.*password/)){
+       cmd = "<input id=\"" +id+ "\" type=\"password\" class =\""+ css +" "+ extra_css+"\">";
+       type = "input";
+      
+     }
+        
+     else if(src != null)
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" " +extra_css+ "\" src=\""+src+"\">";
+     
      else
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" "+ extra_css+"\">";
     
-    
+
     $(domparent).append(cmd);
     var domObject = $(type+"[id="+id+"]").get(0);
     domObject.nextNode = parent;
@@ -261,4 +269,31 @@ function isSubstringOf(small ,big){
     
     return flag;
 }
+
+/**
+ * removes an elemnt at index from array
+ * @return array without element
+ */
+function removeElementFromArray(index, array){
+    var ret = new Array();
+    for(var i=0; i < array.length ;i++){
+        if(i!=index)
+            ret[ret.length] = array[i];
+    }
+    return ret;
+}
+
+/**
+ * removes an elemnt at index from array
+ * @return array without element
+ */
+function removeElementFromString(index, string){
+    var ret = "";
+    for(var i=0; i < string.length ;i++){
+        if(i!=index)
+            ret+= string[i];
+    }
+    return ret;
+}
+
 //*};

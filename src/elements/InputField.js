@@ -14,9 +14,10 @@
  * \param: offsetY      int         offset in px for the inputsensitiv Field relativ to inputField position    
  * \param: src          string      path to the BackgroundImage to define inputField design
  * \param: signs        string      signs that are not allowed in notation like abc123[1..9]
+ * \param: password     string      true or false to show input as * 
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function asdf_InputField(_id, _parent, positionX, positionY, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, extra_css_class){
+function asdf_InputField(_id, _parent, positionX, positionY, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password , extra_css_class){
     
     
     //* public: 
@@ -101,6 +102,14 @@ function asdf_InputField(_id, _parent, positionX, positionY, width, height, inpu
     else
         this.mForbiddenSigns = forbiddenSigns;
     
+    if(password == null)
+        password = "false";
+    
+    if(password == "true")
+        this.mPassword = true;
+    else
+        this.mPassword = false;
+        
     this.mDomTreeObject = null;
     this.mDomBackground = null;
     this.mDomInputField = null;
@@ -125,7 +134,32 @@ function asdf_InputField(_id, _parent, positionX, positionY, width, height, inpu
     return this;
 }
 
-
+/**
+ * called if inputField lost Focus and some stuff was changed
+ * validate the input for forbidden signs 
+ */
+asdf_InputField.prototype.validate = function(event){
+    object = event.currentTarget.nextNode;
+    var value = object.mDomInputField.value;
+    var wrongSigns = "";
+    object.mDomInputField.style.background = "transparent"; 
+    var flag = false;
+    for(var i=0; i<value.length; i++){
+        if(isSubstringOf(value[i], object.mForbiddenSigns)){
+            wrongSigns += value[i];
+            value = removeElementFromString(i,value);
+            flag = true;
+        }
+        
+    }
+    if(flag){
+        object.mDomInputField.value = value;
+    }
+    
+    
+        
+        
+}
 /**
  * Change Background Image to hover Image - if Buttion is not active
  * \param params    EventParameter
@@ -134,17 +168,18 @@ asdf_InputField.prototype.checkSign = function(params){
     var object = params.event.currentTarget.nextNode;
     //    alert("KeyCode" + event.keyCode);
     var asciiCode = event.keyCode;
+    var insertedSign = String.fromCharCode(asciiCode);
     if(object.mForbiddenSigns.length == 0)
         return;
         
     //! \todo implement stuff like[1..9] [a..z]
     //! \todo connvert ascci sign to string
-    if(isSubstringOf(asciiCode, object.mForbiddenSigns)){
-        // delete last element
-        object.mDomInputField.value = object.mDomInputField.value.substring(0, object.mDomInputField.value.length-2);
+    if(isSubstringOf(insertedSign, object.mForbiddenSigns)){
+        // infoprm user - delete sign is not possible because sign is added after this routine
+        alert("Sign: " + insertedSign + " is not allowed in this InputField");
+        object.mDomInputField.focus();
+        
     }
-    
-
 
 }
 
@@ -163,13 +198,17 @@ asdf_InputField.prototype.show = function(){
     if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
             this.mDomBackground = createDomObjectDOM(this, this.mDomTreeObject, this.mId, "img", (this.mType+"_bgImage"), this.extra_css_class, this.mBgImage);
-            this.mDomInputField = createDomObjectDOM(this, this.mDomTreeObject, (this.mId+"_inputField"), "input", this.mType, this.extra_css_class);
+            if(this.mPassword)
+                this.mDomInputField = createDomObjectDOM(this, this.mDomTreeObject, (this.mId+"_inputField"), "input type=password ", this.mType, this.extra_css_class);
+            else
+                this.mDomInputField = createDomObjectDOM(this, this.mDomTreeObject, (this.mId+"_inputField"), "input", this.mType, this.extra_css_class);
     
             //! \todo - check if events handled right - maybe have to change handler to mDomBackground
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
             $(this.mDomInputField).keypress(onKeyPress);
+            $(this.mDomInputField).change(this.validate);
             setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
             setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight)
             if(this.mBgImage != null){

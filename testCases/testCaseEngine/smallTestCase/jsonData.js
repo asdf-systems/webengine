@@ -28,6 +28,7 @@ var jsonObject = {
           "width": "150px",
           "height": "50px",
           "children": null,
+          "password" : "false",
           "src": "firstPanel/image01.jpg",
           "forbidden_signs" : "abc",
           "extra_css": "standardImage"
