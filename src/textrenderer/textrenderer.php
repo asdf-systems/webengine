@@ -9,10 +9,26 @@
 
 	$bgcolor = imagecolorallocatealpha($image, 0, 0, 0, 127);
 	$textcolor = imagecolorallocate($image, $color[0], $color[1], $color[2]);
-
 	imagefill($image, 0, 0, $bgcolor);
 	imagettftext($image, $size, 0, 0, $size, $textcolor, $fontfile, $text);
-	imagepng($image, "./file.png", 9);
+	output($image);
+
+	/**
+	 * Outputs the image according to mode
+	 * \TODO Secure against evil assholes
+	 */
+	function output($image) {
+		if(isSaveToFileMode()) {
+			imagepng($image, $_GET["output"], 9);
+		} else {
+			header('Content-type: image/png');
+			imagepng($image);
+		}
+	}
+
+	function isSaveToFileMode() {
+		return $_GET["mode"] == "file";
+	}
 
 	/**
 	 * Calculates the width and height of $text,
