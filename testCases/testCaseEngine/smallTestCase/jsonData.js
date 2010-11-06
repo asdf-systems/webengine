@@ -11,10 +11,11 @@ var jsonObject = {
       "id": "/firstPanel",
       "type": "Panel",
       "object": null,
-      "position_x": "0px",
-      "position_y": "0px",
-      "width": "",
-      "height": "",
+      "position_x": "10px",
+      "position_y": "10px",
+      "width": "100",
+      "height": "100",
+      "bgColor" : "red",
       "children": {
         "input01": {
           "id": "firstPanel/input01",

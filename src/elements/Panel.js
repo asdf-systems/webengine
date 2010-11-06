@@ -9,9 +9,11 @@
  * \param: positionX    int         x Position of the Panel - relative to parent
  * \param: positionY    int         y Position of the Panel - relative to parent
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
+ * \param: width        int         width of the Panel (need if filled with bg Color) : Default: 0
+ * \param: height       int         height of the Panel (need if filled with bg Color) : Default: 0
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function asdf_Panel(_id, _parent, positionX, positionY, bgColor, extra_css_class){
+function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class){
     
     
     //* public: 
@@ -61,7 +63,16 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, extra_css_class
      else   
         this.mBgColor = bgColor;
         
+    if(width == null)
+        this.mWidth = "0";
+    else 
+        this.mWidth = width;
 
+    if(height == null)
+        this.mHeight = "0";
+    else 
+        this.mHeight = height;        
+    
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
 
     // set Position
@@ -99,6 +110,8 @@ asdf_Panel.prototype.show = function(){
 
     $(this.mDomTreeObject).show();
     this.mDomTreeObject.style.background = this.mBgColor;
+    this.mDomTreeObject.style.width = this.mWidth;
+    this.mDomTreeObject.style.height = this.mHeight;
 }
 
 /*asdf_Panel.prototype.getDomTreeObject = function(){

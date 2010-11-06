@@ -33,7 +33,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
 		case "Panel":
-			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.src, elem.extra_css );
+			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height, elem.src, elem.extra_css );
             registerActions(elem);           
 		break;
         case "Image":
