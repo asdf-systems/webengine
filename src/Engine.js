@@ -33,19 +33,19 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
 		case "Panel":
-			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.extra_css );
+			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.src, elem.extra_css );
             registerActions(elem);           
 		break;
         case "Image":
-            
+            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css );
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src, elem.forbidden_signs, elem.password, elem.extra_css );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src, elem.forbidden_signs, elem.password, elem.extra_css );
 			registerActions(elem);           
 		break;
 		case "TextField":
-			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.text, elem.extra_css );
+			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.text, elem.fontFamily, elem.fontSize, elem.extra_css );
             registerActions(elem);           
 		break;
 		/*case "PagePanel":
@@ -226,7 +226,7 @@ function createDomObjectDOM(parent, domparent, id, type, css, extra_css, src, ex
      if(ending)
         cmd += extraContent + "</"+type+">";
     
-    alert("Command: " + cmd);
+    
     $(domparent).append(cmd);
     var domObject = $(type+"[id="+id+"]").get(0);
     domObject.nextNode = parent;

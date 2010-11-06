@@ -8,9 +8,10 @@
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the Panel - relative to parent
  * \param: positionY    int         y Position of the Panel - relative to parent
+ * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function asdf_Panel(_id, _parent, positionX, positionY, extra_css_class){
+function asdf_Panel(_id, _parent, positionX, positionY, bgColor, extra_css_class){
     
     
     //* public: 
@@ -55,7 +56,11 @@ function asdf_Panel(_id, _parent, positionX, positionY, extra_css_class){
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    
+     if(bgColor == null)
+        this.mBgColor = "transparent";
+     else   
+        this.mBgColor = bgColor;
+        
 
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
 
@@ -93,6 +98,7 @@ asdf_Panel.prototype.hide = function(){
 asdf_Panel.prototype.show = function(){
 
     $(this.mDomTreeObject).show();
+    this.mDomTreeObject.style.background = this.mBgColor;
 }
 
 /*asdf_Panel.prototype.getDomTreeObject = function(){

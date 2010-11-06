@@ -8,11 +8,12 @@
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the Textfield - relative to parent
  * \param: positionY    int         y Position of the Textfield - relative to parent
+ * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: text         int         text to show
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * todo klären wer das übersetze der Textfiles übernimmt (also formatierung (rtf, txt, html) -> html)
  */
-function asdf_Textfield(_id, _parent, positionX, positionY, text, extra_css_class){
+function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, extra_css_class){
     
     
     //* public: 
@@ -63,8 +64,21 @@ function asdf_Textfield(_id, _parent, positionX, positionY, text, extra_css_clas
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    
-    
+    if(fontFamily == null){
+        this.mFontFamily = globals.standardFontFamily;
+    } else  
+        this.mFontFamily = fontFamily;
+
+    if(fontSize == null){
+        this.mFontSize = globals.standardFontSize;
+    } else  
+        this.mFontSize = fontSize;
+        
+    if(bgColor == null)
+        this.mBgColor = "transparent";
+    else   
+        this.mBgColor = bgColor;
+        
     this.mDomTreeObject = null;
 
     //* private:
@@ -101,7 +115,10 @@ asdf_Textfield.prototype.show = function(){
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
+            this.mDomTreeObject.style.fontFamily = this.mFontFamily;
+            this.mDomTreeObject.style.fontSize = this.mFontSize;
             setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+            this.mDomTreeObject.style.background = this.mBgColor;
 
     }
     $(this.mDomTreeObject).show();

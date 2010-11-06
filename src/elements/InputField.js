@@ -8,6 +8,7 @@
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the InputField - relative to parent
  * \param: positionY    int         y Position of the InputField - relative to parent
+ * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: width        int         width of the inputsensitiv field
  * \param: height       int         height of the inputsensitiv field
  * \param: offsetX      int         offset in px for the inputsensitiv Field relativ to inputField position    
@@ -17,7 +18,7 @@
  * \param: password     string      true or false to show input as * 
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function asdf_InputField(_id, _parent, positionX, positionY, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password , extra_css_class){
+function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password , extra_css_class){
     
     
     //* public: 
@@ -109,6 +110,11 @@ function asdf_InputField(_id, _parent, positionX, positionY, width, height, inpu
         this.mPassword = true;
     else
         this.mPassword = false;
+        
+    if(bgColor == null)
+        this.mBgColor = "transparent";
+    else   
+        this.mBgColor = bgColor;
         
     this.mDomTreeObject = null;
     this.mDomBackground = null;
@@ -217,6 +223,7 @@ asdf_InputField.prototype.show = function(){
             }
             setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute");
             setObjectPosition(this.mDomBackground, 0,0,"absolute");
+            this.mDomTreeObject.style.background = this.mBgColor;
 
     }
     $(this.mDomTreeObject).show();
