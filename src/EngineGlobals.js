@@ -4,5 +4,6 @@ var globals = {
     static : "naviPanel/",
     stdUnit : "px", 
     standardFontSize : "12pt",
-    standardFontFamily : "Arial, Tahoma"
+    standardFontFamily : "Arial, Tahoma",
+    defaultAnimationSpeed : 100
 };
