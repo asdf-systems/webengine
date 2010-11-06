@@ -37,17 +37,18 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "Image":
-            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css );
+            
             registerActions(elem);           
 		break;
         case "InputField":
 			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src, elem.forbidden_signs, elem.password, elem.extra_css );
 			registerActions(elem);           
 		break;
-		/*case "TextField":
-			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
+		case "TextField":
+			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.text, elem.extra_css );
+            registerActions(elem);           
 		break;
-		case "PagePanel":
+		/*case "PagePanel":
 			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;		"
 		case "RollOutPanel":
@@ -162,16 +163,17 @@ function getValueWithUnits(value){
  * \param:  type\t      string  HTML-Type of the new DomTreeObject. Default: div
  * \param:  css\t       string  normal css class. Default: "NOTSET"
  * \param:  extra_css\t string  secoond css class. Default: "EXTRA_NOTSET"
- * \param:  src\t       string  for HTML types that need a sourcePath like img. Default: ""
+ * \param:  src\t       string  for HTML types that need a sourcePath like img. Default: NULL
+ * \param:  extraContent    string  Conent that shoul come after > so for <p>extraContent</p>
  */
-function createDomObject(parent, id, type, css, extra_css, src){
-  return ( createDomObjectDOM(parent, parent.mParent, id, type, css, extra_css, src) ) ;
+function createDomObject(parent, id, type, css, extra_css, src, extraContent){
+  return ( createDomObjectDOM(parent, parent.mParent, id, type, css, extra_css, src, extraContent) ) ;
 }
 
 /**
  * same like createDomObject - just take an DomObject as parent
  */
-function createDomObjectDOM(parent, domparent, id, type, css, extra_css, src){
+function createDomObjectDOM(parent, domparent, id, type, css, extra_css, src, extraContent){
     // check Params
 
    
@@ -216,14 +218,39 @@ function createDomObjectDOM(parent, domparent, id, type, css, extra_css, src){
      
      else
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" "+ extra_css+"\">";
+        
+    if(extraContent == null)
+        extraContent = "";
+        
+     var ending = checkForTypesWithEnding(type);
+     if(ending)
+        cmd += extraContent + "</"+type+">";
     
-
+    alert("Command: " + cmd);
     $(domparent).append(cmd);
     var domObject = $(type+"[id="+id+"]").get(0);
     domObject.nextNode = parent;
     
     return domObject;         
          
+}
+
+/**
+ * check if type need an ending like <p>, <a>, <h> etc
+ * \return true if nedded false else
+ */
+function checkForTypesWithEnding(type){
+   var flag = false
+   flag |= type.match(/^h?/);
+   flag |= type == "p";
+   flag |= type == "pre";
+   flag |= type == "b";
+   flag |= type == "div";
+   
+   return flag;
+   
+    
+   
 }
 
 /**

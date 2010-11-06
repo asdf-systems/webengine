@@ -1,6 +1,6 @@
 var globals = {
     debug : 1,
-    start : "firstPanel/input01",
+    start : "firstPanel/",
     static : "naviPanel/",
     stdUnit : "px"
 };

@@ -32,6 +32,19 @@ var jsonObject = {
           "src": "firstPanel/image01.jpg",
           "forbidden_signs" : "abc",
           "extra_css": "standardImage"
+        },
+        "textField1": {
+          "id": "firstPanel/textField01",
+          "type": "TextField",
+          "object": null,
+          "position_x": "550px",
+          "position_y": "100px",
+          "width": "150px",
+          "height": "50px",
+          "children": null,
+          "src": "firstPanel/image01.jpg",
+          "text" : "hallo \n du alter arsch dies ist \n ein Textfield",
+          "extra_css": "standardImage"
         }
       }
     },
