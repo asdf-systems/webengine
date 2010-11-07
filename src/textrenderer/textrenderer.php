@@ -4,18 +4,31 @@
 	$text = getText();
 	$size = getFontSize();
 	$color = getColor();
-	$dimensions = getRenderedSize($text, $size, $fontfile);
-	$image = createImage($dimensions[0], $dimensions[1]);
-
-	$bgcolor = imagecolorallocatealpha($image, 0, 0, 0, 127);
-	$textcolor = imagecolorallocate($image, $color[0], $color[1], $color[2]);
-	imagefill($image, 0, 0, $bgcolor);
-	imagettftext($image, $size, 0, 0, $size, $textcolor, $fontfile, $text);
+	$image = renderText($fontfile, $size, $color, $text);
 	output($image);
 
 	/**
+	 * Renders $text on a transparent background.
+	 * The image size is calculated to exactly fit the text.
+	 * @param $fontfile Path to the ttf file
+	 * @param $size Font size
+	 * @param $color Array with red, green and blue value, respectively
+	 * @param $text Text to render
+	 * @returns Returns the image handle with the rendered text
+	 */
+	function renderText($fontfile, $size, $color, $text) {
+		$dimensions = getRenderedSize($text, $size, $fontfile);
+		$image = createImage($dimensions[0], $dimensions[1]);
+
+		$bgcolor = imagecolorallocatealpha($image, 0, 0, 0, 127);
+		$textcolor = imagecolorallocate($image, $color[0], $color[1], $color[2]);
+		imagefill($image, 0, 0, $bgcolor);
+		imagettftext($image, $size, 0, 0, $size, $textcolor, $fontfile, $text);
+		return $image;
+	}
+
+	/**
 	 * Outputs the image according to mode
-	 * \TODO Secure against evil assholes
 	 */
 	function output($image) {
 		if(isSaveToFileMode()) {
@@ -26,8 +39,11 @@
 		}
 	}
 
+	/**
+	 * \TODO Use saner password checking
+	 */
 	function isSaveToFileMode() {
-		return $_GET["mode"] == "file";
+		return $_GET["mode"] == "file" && md5($_GET["password"]) == "e93f092e3c2d5d2cf82cbfc1f13a37d3";
 	}
 
 	/**
