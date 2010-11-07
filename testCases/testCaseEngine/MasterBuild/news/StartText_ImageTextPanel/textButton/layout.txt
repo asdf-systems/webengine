@@ -1,6 +1,6 @@
 [Button]
-position_x=px
-position_y=px
+position_x=440px
+position_y=740px
 standard_src=startText.jpg
 action_click=SHOW(../realText/)
 extra_css=imageTextField

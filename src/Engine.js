@@ -37,7 +37,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "Image":
-            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css );
+            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css );
             registerActions(elem);           
 		break;
         case "InputField":
@@ -61,8 +61,8 @@ function init(elem, parentObject){
 			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
         */
-		case "default":
-			alert("Unknown type:" + elem.type + "on Element: " + elem.id);
+		default:
+			alert("Unknown type: " + elem.type + " on Element: " + elem.id);
 		break;
 	}
 	// call all Children
@@ -70,7 +70,7 @@ function init(elem, parentObject){
    	
     if(elem.object == null) { // something went wrong on creation - alert
    		if(globals.debug>0)
-           alert("Error on create Element");
+           alert("Error on create Element" + elem.id);
    	}
 }
 

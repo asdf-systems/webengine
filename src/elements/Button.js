@@ -35,7 +35,7 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
 
     if(image_normal == null){
         if(globals.debug > 0)
-           alert("Button: Image_normal is not set - cancel");
+           alert("Button: Image_normal is not set - cancel " + _id);
         return null;
     }
     
@@ -46,7 +46,6 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     
     if(image_hover == null){
         image_hover = image_active;
-        return;
     }    
 
     this.mId = _id;

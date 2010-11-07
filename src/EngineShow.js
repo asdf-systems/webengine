@@ -62,6 +62,7 @@ function showElement(elementId){
         parentObject = initAndShowElements(elem, parentObject);
         
     }
+    //! \todo: showChildren dont work
     showChildren(elem);
     
     
@@ -93,7 +94,7 @@ function initAndShowElements(element, parentObject){
  * @param: elem     jsonObject
  */
 function showChildren(elem){
-    //alert("showChildren(): Element: " + elem.id);
+    alert("showChildren(): Element: " + elem.id);
     if(elem.children != null){
         if(elem.object != null)
             parentObject = elem.object.mDomTreeObject;
@@ -103,7 +104,8 @@ function showChildren(elem){
        }
        for(var child in elem.children ){
             //alert("showChildren(): Init Children: " + child);
-            initAndShowElements(elem.children[child], parentObject);
+            parentObject = initAndShowElements(elem.children[child], parentObject);
+            showChildren(elem.children[child], parentObject);
         }
     } else{
         if(globals.debug > 1)
