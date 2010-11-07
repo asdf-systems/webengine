@@ -1,0 +1,4 @@
+[./footerImage.jpg]
+position_x=270
+position_y=1150
+extra_css=static_image

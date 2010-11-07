@@ -1,0 +1,4 @@
+[logo.jpg]
+position_x=900px
+position_y=70px
+extra_css=static_image

@@ -1,0 +1,11 @@
+[TextField]
+font_size=12pt
+font_family=Arial, Tahoma
+position_x=100px
+position_y=100px
+width=200px
+height=200px
+#Path to textfile
+background_color=#ffffff
+text=startText.txt
+extra_css=textField
