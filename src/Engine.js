@@ -25,7 +25,7 @@ function init(elem, parentObject){
             alert("init: ParentObject is null - cancel");
         return;
     }
-        
+    
 	// check Type 
     switch(elem.type){
 		case "Button":
@@ -48,9 +48,12 @@ function init(elem, parentObject){
 			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.text, elem.font_family, elem.font_size, elem.extra_css );
             registerActions(elem);           
 		break;
-		/*case "PagePanel":
-			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
-		break;		"
+		case "PagePanel":
+			pages = getPages(elem);
+            elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height, pages, elem.animation_speed, elem.extra_css );
+            registerActions(elem);           
+		break;		
+		/*
 		case "RollOutPanel":
 			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
@@ -74,6 +77,23 @@ function init(elem, parentObject){
    	}
 }
 
+function getPages(elem){
+    if(elem.type != "PagePanel"){
+        if(globals.debug > 0 )
+            alert("Error: getPages(): getPages not supported on : " + elem.type);
+        return null;
+    }
+    
+    var pageNames = elem.pages.split(",");
+    var pages = new Array();
+    for(var i = 0; i < pageNames.length; i++){
+        var name = pageNames[i];
+        if(elem.children[name] != null && elem.children[name] != undefined)
+            pages[pages.length] = elem.children[name];
+    }
+    
+    return pages;
+}
 /** 
  * register all known actions to the element
  */

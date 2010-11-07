@@ -50,16 +50,19 @@ function showElement(elementId){
 	var elem = jsonObject;
 	var parentObject = $("body[id=mainBody]").get(0);
     //alert("showElement(): ElementName:" + elem.id);
-    parentObject = initAndShowElements(elem, parentObject);
+    initAndShowElements(elem, parentObject);
     for(var i=0; i < path.length; i++){
         name = path[i];
         if(name == "")
             break;
+        var oldObject = elem;
         elem = elem.children[name];
         //alert(name);
         //alert("showElement(): ElementName:" + elem.id);
         
-        parentObject = initAndShowElements(elem, parentObject);
+        parentObject = getParent(oldObject, elem);
+        initAndShowElements(elem, parentObject);
+        
         
     }
     //! \todo: showChildren dont work
@@ -71,10 +74,33 @@ function showElement(elementId){
 }
 
 /**
+ * check where the childObject should be added in DomTree
+ * normally parent.object.mDomTreeObject but diffrent for some special Panels
+ * like PagePanel
+ * 
+ */
+function getParent(parent ,child){
+    if(parent.object.mType == "PagePanel"){
+        for(var i=0; i< parent.object.mPages.length; i++){ // check if child is a Page 
+            if(parent.object.mPages[i].id == child.id){ // is an Page
+                //put it under special Div for pages
+                if(i%2 == 0)
+                    return parent.object.mDomEvenPages;
+                else
+                    return parent.object.mDomOddPages;
+
+            }
+        }
+        
+    }
+
+    return parent.object.mDomTreeObject;    
+}
+
+/**
  * Check if JsonElement already initialised, init if need and show 
  * \param:  element     jsonElement     element in jsonTree that should show up
  * \param:  parentObject    DomObject   ParentDomObject in DomTree
- * \return  domTreeObject   from init() created DomObject
  */
 function initAndShowElements(element, parentObject){
     
@@ -85,8 +111,8 @@ function initAndShowElements(element, parentObject){
     
 
     element.object.show();
-    
-    return element.object.mDomTreeObject;
+
+
 }
 
 /**
@@ -141,7 +167,6 @@ function setObjectSize(element, width ,height){
     element.style.width = getValueWithUnits(width);
     element.style.height = getValueWithUnits(height);
 }
-
 
 
 
