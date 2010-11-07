@@ -13,10 +13,11 @@
 		$data = dieOnError(file($file), "Could not read INI file \"".$file."\"");
 		$current_section = null;
 		foreach($data as $line) {
+			$line = stripComments($line);
 			if(preg_match("/^\s*\[[^\]]+\]\s*$/", $line)) { // New Section
-				$current_section = trim(preg_replace("/^\s*\[([^\]]+)\]\s*$/", "$1", $line));
+				$current_section = trim(preg_replace("/^\s*\[([^\]]+)\]\s*(#.+)?$/", "$1", $line));
 				$ret[$current_section] = Array();
-			} else { // Key-value pair
+			} else if(preg_match("/^[^=]+=.+$/", $line)) { // Key-value pair
 				if($current_section == null) {
 					issueWarning("Stray data in \"".$file."\"\n");
 					continue;
@@ -26,6 +27,14 @@
 			}
 		}
 		return $ret;
+	}
+
+	/**
+	 * Removes comments from the end of the line
+	 * @returns the line without the comment section
+	 */
+	function stripComments($line) {
+		return preg_replace("/^([^#]*)#.+$/", "$1", $line);
 	}
 
 	/**

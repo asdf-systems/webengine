@@ -69,7 +69,7 @@
 		if(array_key_exists("texts", $object)) {
 			$object["texts"] = dieOnError(readTextFiles($path, $object["texts"]), "Could not include texts in \"".$object["id"]."\"");
 		}
-		$object = fixActionFields($object);
+		$object = fixActionFields($path, $object);
 		$object = fixSrcFields($path, $object);
 		return $object;
 	}
@@ -78,11 +78,11 @@
 	 * Every field beginning with "action_" is presumed to have an
 	 * event chain as a value. This functions parses those fields.
 	 */
-	function fixActionFields($object) {
-		debug("Fixing up action_ fields");
+	function fixActionFields($path, $object) {
+		debug("Fixing up action_* fields");
 		foreach($object as $key => $value) {
 			if(preg_match("/^action_.+$/", $key)) {
-				$object[$key] = dieOnError(parseEventChain($object[$key]), "Found invalid event chain in \"".$object["id"]."\"");
+				$object[$key] = dieOnError(parseEventChain($path, $object[$key]), "Found invalid event chain in \"".$object["id"]."\"");
 			}
 		}
 		return $object;
