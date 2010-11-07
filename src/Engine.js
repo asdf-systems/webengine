@@ -50,7 +50,7 @@ function init(elem, parentObject){
 		break;
 		case "PagePanel":
 			pages = getPages(elem);
-            elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height, pages, elem.animation_speed, elem.extra_css );
+            elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height, pages, elem.page_size_x, elem.page_size_y, elem.animation_speed, elem.extra_css );
             registerActions(elem);           
 		break;		
 		/*
