@@ -1,7 +1,7 @@
 <?
 	$fontfile = "./testfont.ttf";
 
-	$text = getText();
+	$text = getTextvar();
 	$size = getFontSize();
 	$color = getColor();
 	$image = renderText($fontfile, $size, $color, $text);
@@ -87,7 +87,7 @@
 	 * @definition The text is passed via GET. If this is
 	 * not the case, a default text will be used.
 	 */
-	function getText() {
+	function getTextvar() {
 		if(!isset($_GET["text"])) {
 			return "No text given";
 		}
