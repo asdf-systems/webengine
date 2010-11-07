@@ -1,6 +1,0 @@
-[Panel]
-position_x=430px
-position_y=315px
-width=0px
-height=0px
-extra_css=newsPanel
