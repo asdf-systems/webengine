@@ -135,14 +135,14 @@
 	 * @returns Array with the contents of a file (files in the same order as in input)
 	 */
 	function readTextFiles($curdir, $list) {
-		$texts = Array();
+		$texts = "";
 		foreach(parseList($list) as $file) {
 			debug("Reading textfile \"".$file."\"");
 			$data = file(simplifyPath($curdir, $file));
 			if(!$data) {
 				return false;
 			}
-			array_push($texts, implode("\n", $data));
+			$texts .= $data;
 		}
 		return $texts;
 	}
