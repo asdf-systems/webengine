@@ -71,7 +71,42 @@
 		}
 		$object = fixActionFields($path, $object);
 		$object = fixSrcFields($path, $object);
+		$object = sanitizeBooleans($object);
 		return $object;
+	}
+
+	/**
+	 * Checks, if a value describes a boolean and replaces it
+	 * with its proper boolean value.
+	 * I.e:
+	 * "On, 1, True, Yes" => "true"
+	 * "Off, 0, False, No" => false"
+	 * The mapping is done case-insensitive
+	 */
+	function sanitizeBooleans($object) {
+		foreach($object as $key => $value) {
+			if(hasBooleanStringValue($value, true)) {
+				$object[$key] = "true";
+			} else if(hasBooleanStringValue($value, false)) {
+				$object[$key] = "false";
+			}
+		}
+		return $object;
+	}
+
+	/**
+	 * Checks, if $string can be interpreted as a bool and has the value $val.
+	 * @see santizeBooleans
+	 */
+	function hasBooleanStringValue($string, $val) {
+		$stringbools = Array(true => Array("on", "1", "true", "yes"),
+			false => Array("off", "0", "false", "no"));
+		foreach($stringbools[$val] as $bool) {
+			if(strtolower($string) == $bool) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
