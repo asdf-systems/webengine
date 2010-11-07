@@ -1,0 +1,7 @@
+alt_text für alle Elemente
+Generelles umbauen der Shows
+	-> Panels müssen entscheiden welche Childs sie shown
+	-> Generell zeigen normale Panels alle Kinder an
+		-> inital_show um das für bestimmte Kinder zu verhindern
+	-> ./ -> "" wegmachen in der Engine
+	

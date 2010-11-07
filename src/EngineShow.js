@@ -94,7 +94,7 @@ function initAndShowElements(element, parentObject){
  * @param: elem     jsonObject
  */
 function showChildren(elem){
-    alert("showChildren(): Element: " + elem.id);
+    //alert("showChildren(): Element: " + elem.id);
     if(elem.children != null){
         if(elem.object != null)
             parentObject = elem.object.mDomTreeObject;
@@ -104,9 +104,9 @@ function showChildren(elem){
        }
        for(var child in elem.children ){
             //alert("showChildren(): Init Children: " + child);
-            parentObject = initAndShowElements(elem.children[child], parentObject);
-            showChildren(elem.children[child], parentObject);
-        }
+            var parentObject2 = initAndShowElements(elem.children[child], parentObject);
+            showChildren(elem.children[child], parentObject2);
+        } 
     } else{
         if(globals.debug > 1)
             alert("Warning: ShowChildren: Element is null!" );
@@ -122,6 +122,10 @@ function showChildren(elem){
  * @param   type    string      position type like relative or absoulte
  */
 function setObjectPosition(element, left, top, type){
+    if(left == null || top == null || left == "px" || top == "px" || left == "" || top == ""){
+    	if(globals.debug > 0)
+    		alert("setObjectPosition(): Invalid Value on element " + element.id);
+    }
     element.style.position = type;
     element.style.left = getValueWithUnits(left);
     element.style.top = getValueWithUnits(top);

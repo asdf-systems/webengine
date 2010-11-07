@@ -63,12 +63,12 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
      else   
         this.mBgColor = bgColor;
         
-    if(width == null)
+    if(width == null || width == "")
         this.mWidth = "0";
     else 
         this.mWidth = width;
 
-    if(height == null)
+    if(height == null || height == "")
         this.mHeight = "0";
     else 
         this.mHeight = height;        
