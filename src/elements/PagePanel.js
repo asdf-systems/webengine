@@ -166,8 +166,9 @@ asdf_PagePanel.prototype.show = function(){
  * \param params    EventParameter
  */
 asdf_PagePanel.prototype.specificAction = function(params){
-    actionName = params.parameter[0];
+    var actionName = trimString(params.parameter[0]);
     object = params.event.currentTarget.nextNode;
+    
     switch(actionName){
         case "forward" : // no break for runThrough
         case "nextPage":
@@ -208,7 +209,8 @@ asdf_PagePanel.prototype.changePage = function(direction){
             this.mCurrentPage+= direction;
             this.mPages[this.mCurrentPage].object.show();
             $(this.mDomOddPages).show();
-            $(this.mDomPages).animate({left : -this.mPageSizeX}, this.mAnimSpeed, this.evenToOddCallback());
+            var value = getValueWithUnits(this.mPageSizeX)*(-1);
+            $(this.mDomPages).animate({left : value}, this.mAnimSpeed, this.evenToOddCallback());
  
         } else { // change odd to even
             // Put Odd Page in the right Position for Animation
@@ -219,7 +221,8 @@ asdf_PagePanel.prototype.changePage = function(direction){
             this.mCurrentPage+=direction;
             this.mPages[this.mCurrentPage].object.show();
             $(this.mDomEvenPages).show();
-            $(this.mDomPages).animate({left : +this.mPageSizeX}, this.mAnimSpeed, this.oddToEvenCallback());       
+            var value = getValueWithUnits(this.mPageSizeX);
+            $(this.mDomPages).animate({left : value}, this.mAnimSpeed, this.oddToEvenCallback());       
         }
 
 
@@ -229,7 +232,7 @@ asdf_PagePanel.prototype.changePage = function(direction){
  * Called when sliding an animation is finished - fast switch of panel position as
  * prepare for the next Animation
  */
-asdf_PagePanel.prototype.evenToOddCallback(){
+asdf_PagePanel.prototype.evenToOddCallback = function(){
 
     $(this.mDomEvenPages).hide();
     setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
@@ -241,7 +244,7 @@ asdf_PagePanel.prototype.evenToOddCallback(){
  * Called when sliding an animation is finished - fast switch of panel position as
  * prepare for the next Animation
  */
-asdf_PagePanel.prototype.oddToEvenCallback(){
+asdf_PagePanel.prototype.oddToEvenCallback = function(){
 
     $(this.mDomOddPages).hide();
     setObjectPosition(this.mDomOddPages, 0, 0, "absolute");

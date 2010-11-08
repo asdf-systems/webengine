@@ -122,16 +122,19 @@ function initAndShowElements(element, parentObject){
 function showChildren(elem){
     //alert("showChildren(): Element: " + elem.id);
     if(elem.children != null){
-        if(elem.object != null)
-            parentObject = elem.object.mDomTreeObject;
-       else{
+        if(elem.object != null){
+            //parentObject = elem.object.mDomTreeObject;
+            // do nothing
+       } else{
             if(global.debug > 0)
                 alert("showChildren(): parentObject is null")
        }
        for(var child in elem.children ){
             //alert("showChildren(): Init Children: " + child);
-            var parentObject2 = initAndShowElements(elem.children[child], parentObject);
-            showChildren(elem.children[child], parentObject2);
+            var parentObject = getParent(elem, elem.children[child]);
+            //alert(parentObject.id);
+            initAndShowElements(elem.children[child], parentObject);
+            showChildren(elem.children[child]);
         } 
     } else{
         if(globals.debug > 1)
@@ -148,9 +151,15 @@ function showChildren(elem){
  * @param   type    string      position type like relative or absoulte
  */
 function setObjectPosition(element, left, top, type){
-    if(left == null || top == null || left == "px" || top == "px" || left == "" || top == ""){
+    left += "";
+    top += "";
+    if(left == null  || left == "px"  || left == "" ){
     	if(globals.debug > 0)
-    		alert("setObjectPosition(): Invalid Value on element " + element.id);
+    		alert("setObjectPosition(): Invalid Value(Left): X" + left + "X on element " + element.id);
+    }
+    if(top == null || top == "px" || top == "" ){
+        if(globals.debug > 0)
+    		alert("setObjectPosition(): Invalid Value(Top): X" + top + "X on element " + element.id);
     }
     element.style.position = type;
     element.style.left = getValueWithUnits(left);
@@ -167,7 +176,6 @@ function setObjectSize(element, width ,height){
     element.style.width = getValueWithUnits(width);
     element.style.height = getValueWithUnits(height);
 }
-
 
 
 

@@ -7,7 +7,7 @@ var jsonObject = {
   "width": "",
   "height": "",
   "children": {
-     "Project1": {
+     "PagePanel": {
               "id": "PagePanel/",
               "type": "PagePanel",
               "object": null,
@@ -27,9 +27,9 @@ var jsonObject = {
                   "width": "",
                   "height": "",
                   "children": null,
-                  "standard_src": "inactiv.jpg",
-                  "activ_src": "activ.jpg",
-                  "hover_src": "hover.jpg",
+                  "standard_src": "PagePanel/nextPageButton/inactiv.jpg",
+                  "activ_src": "PagePanel/nextPageButton/activ.jpg",
+                  "hover_src": "PagePanel/nextPageButton/hover.jpg",
                   "extra_css": "standardButton",
                   "action_click": [
                     {
@@ -94,9 +94,9 @@ var jsonObject = {
                   "width": "",
                   "height": "",
                   "children": null,
-                  "standard_src": "inactiv.jpg",
-                  "activ_src": "activ.jpg",
-                  "hover_src": "hover.jpg",
+                  "standard_src": "PagePanel/prevPageButton/inactiv.jpg",
+                  "activ_src": "PagePanel/prevPageButton/activ.jpg",
+                  "hover_src": "PagePanel/prevPageButton/hover.jpg",
                   "extra_css": "standardButton",
                   "action_click": [
                     {

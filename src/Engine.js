@@ -84,7 +84,7 @@ function getPages(elem){
         return null;
     }
     
-    var pageNames = elem.pages.split(",");
+    var pageNames = elem.pages;
     var pages = new Array();
     for(var i = 0; i < pageNames.length; i++){
         var name = pageNames[i];
@@ -341,6 +341,15 @@ function removeElementFromString(index, string){
             ret+= string[i];
     }
     return ret;
+}
+
+/**
+ * trims whitespaces of a string start and end
+ * @param string string to trim
+ * @return trimmed string
+ */
+function trimString(string){
+     return string.replace(/^\s*/, "").replace(/\s*$/, "");
 }
 
 //*};
