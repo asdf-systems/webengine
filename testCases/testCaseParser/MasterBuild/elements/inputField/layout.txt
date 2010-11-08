@@ -1,0 +1,12 @@
+[InputField]
+position_x=270px
+position_y=0px
+width=202px
+height=25px
+input_sensitiv_field_offsetX=23px
+input_sensitiv_field_offsetY=0px
+backgroundImage_source=inputField_bg.jpg
+#like: abc[a..z]
+forbidden_signs=asdf
+password_modus=no
+extra_css=standartInputField

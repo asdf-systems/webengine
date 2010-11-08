@@ -1,0 +1,6 @@
+[Button]
+position_x=440px
+position_y=570px
+standard_src=textNews01.jpg
+action_click=SHOW(../realText/)
+extra_css=imageTextField

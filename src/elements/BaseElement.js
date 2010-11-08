@@ -8,9 +8,10 @@
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the BaseElement - relative to parent
  * \param: positionY    int         y Position of the BaseElement - relative to parent
+ * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function asdf_BaseElement(_id, _parent, positionX, positionY, extra_css_class){
+function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css_class){
     
     
     //* public: 
@@ -54,7 +55,10 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, extra_css_class){
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    
+    if(bgColor == null)
+        this.mBgColor = "transparent";
+    else   
+        this.mBgColor = bgColor;
 
     this.mDomTreeObject = null;
 
@@ -67,7 +71,7 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, extra_css_class){
     // ParameterEvents typ: EventParameter()
     this.mMouseOverParams = new Array();
     this.mMouseOutParams = new Array();
-    this.mMouseClickParams = new Array()
+    this.mMouseClickParams = new Array();
     
   
     
@@ -92,9 +96,9 @@ asdf_BaseElement.prototype.show = function(){
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
-            this.mDomTreeObject.style.position= "absolute";
-            this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
-            this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
+            setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+            this.mDomTreeObject.style.background = this.mBgColor;
+
     }
     $(this.mDomTreeObject).show();
 }

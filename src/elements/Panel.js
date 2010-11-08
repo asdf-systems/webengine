@@ -8,9 +8,12 @@
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
  * \param: positionX    int         x Position of the Panel - relative to parent
  * \param: positionY    int         y Position of the Panel - relative to parent
+ * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
+ * \param: width        int         width of the Panel (need if filled with bg Color) : Default: 0
+ * \param: height       int         height of the Panel (need if filled with bg Color) : Default: 0
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  */
-function asdf_Panel(_id, _parent, positionX, positionY, extra_css_class){
+function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class){
     
     
     //* public: 
@@ -55,15 +58,26 @@ function asdf_Panel(_id, _parent, positionX, positionY, extra_css_class){
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    
+     if(bgColor == null)
+        this.mBgColor = "transparent";
+     else   
+        this.mBgColor = bgColor;
+        
+    if(width == null || width == "")
+        this.mWidth = "0";
+    else 
+        this.mWidth = width;
 
+    if(height == null || height == "")
+        this.mHeight = "0";
+    else 
+        this.mHeight = height;        
+    
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
-    
+
     // set Position
-    this.mDomTreeObject.style.position= "absolute";
-    this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
-    this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
-    
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+
     //* private:
     this.mMouseOverEvents = new Array();
     this.mMouseOutEvents = new Array();
@@ -95,6 +109,9 @@ asdf_Panel.prototype.hide = function(){
 asdf_Panel.prototype.show = function(){
 
     $(this.mDomTreeObject).show();
+    this.mDomTreeObject.style.background = this.mBgColor;
+    this.mDomTreeObject.style.width = this.mWidth;
+    this.mDomTreeObject.style.height = this.mHeight;
 }
 
 /*asdf_Panel.prototype.getDomTreeObject = function(){

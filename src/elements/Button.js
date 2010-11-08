@@ -35,7 +35,7 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
 
     if(image_normal == null){
         if(globals.debug > 0)
-           alert("Button: Image_normal is not set - cancel");
+           alert("Button: Image_normal is not set - cancel " + _id);
         return null;
     }
     
@@ -46,7 +46,6 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     
     if(image_hover == null){
         image_hover = image_active;
-        return;
     }    
 
     this.mId = _id;
@@ -117,9 +116,8 @@ asdf_Button.prototype.show = function(){
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
-        this.mDomTreeObject.style.position= "absolute";
-        this.mDomTreeObject.style.left = getValueWitdhUnits("" + this.mPosX);
-        this.mDomTreeObject.style.top = getValueWitdhUnits("" +this.mPosY);
+        setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+
     }
     
     $(this.mDomTreeObject).show();
@@ -180,7 +178,7 @@ asdf_Button.prototype.specificAction = function(params){
         case "deactivate":
             object.setNormalImage();
         break;
-        case "default":
+        default:
             if(globals.debug > 0)
                 alert("Button: action name: " + actionName + " unknown!");
         break;

@@ -1,0 +1,4 @@
+[Ueberschrift1.jpg]
+position_x=421px
+position_y=321px
+extra_css=bla

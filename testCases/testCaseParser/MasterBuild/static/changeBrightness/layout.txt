@@ -1,0 +1,5 @@
+[Button]
+position_x=1100px
+position_y=0px
+standard_src=changeBrightnessButton.jpg
+extra_css=imageButton

@@ -25,7 +25,7 @@ function init(elem, parentObject){
             alert("init: ParentObject is null - cancel");
         return;
     }
-        
+    
 	// check Type 
     switch(elem.type){
 		case "Button":
@@ -33,7 +33,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
 		case "Panel":
-			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.extra_css );
+			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css );
             registerActions(elem);           
 		break;
         case "Image":
@@ -41,15 +41,19 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.src,elem.extra_css );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_source, elem.forbidden_signs, elem.password_modus, elem.extra_css );
 			registerActions(elem);           
 		break;
-		/*case "TextField":
-			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
+		case "TextField":
+			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.text, elem.font_family, elem.font_size, elem.extra_css );
+            registerActions(elem);           
 		break;
 		case "PagePanel":
-			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
-		break;		"
+			pages = getPages(elem);
+            elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height, pages, elem.page_size_x, elem.page_size_y, elem.animation_speed, elem.extra_css );
+            registerActions(elem);           
+		break;		
+		/*
 		case "RollOutPanel":
 			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
@@ -60,8 +64,8 @@ function init(elem, parentObject){
 			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
         */
-		case "default":
-			alert("Unknown type:" + elem.type + "on Element: " + elem.id);
+		default:
+			alert("Unknown type: " + elem.type + " on Element: " + elem.id);
 		break;
 	}
 	// call all Children
@@ -69,10 +73,27 @@ function init(elem, parentObject){
    	
     if(elem.object == null) { // something went wrong on creation - alert
    		if(globals.debug>0)
-           alert("Error on create Element");
+           alert("Error on create Element" + elem.id);
    	}
 }
 
+function getPages(elem){
+    if(elem.type != "PagePanel"){
+        if(globals.debug > 0 )
+            alert("Error: getPages(): getPages not supported on : " + elem.type);
+        return null;
+    }
+    
+    var pageNames = elem.pages;
+    var pages = new Array();
+    for(var i = 0; i < pageNames.length; i++){
+        var name = pageNames[i];
+        if(elem.children[name] != null && elem.children[name] != undefined)
+            pages[pages.length] = elem.children[name];
+    }
+    
+    return pages;
+}
 /** 
  * register all known actions to the element
  */
@@ -143,13 +164,31 @@ function getActionParameter(actionElement){
  * adds standart unit of measurement to the value if no unit is specified
  * \return  value + right unit of measurement like 50px or 50%
  */
-function getValueWitdhUnits(value){
+function getValueWithUnits(value){
    
    value += "";
    if(value.match(".*%") || value.match(".*px"))
         return value;
    return (value + globals.stdUnit);
      
+}
+
+/**
+ * takes an pixel or prozent value, invert the value and return
+ */
+function invertValue(value){
+    value += "";
+    var number = 0;
+    var unit = globals.stdUnit;
+    if(value.match(".*%")){
+        number = Number(value.replace(/%/, ""));
+        unit = "%";
+    }
+    else if(value.match(".*px")){
+        number = Number(value.replace(/px/, ""));
+        unit = "px";
+    }
+    return (number*-1 + unit );
 }
 
 /**
@@ -162,26 +201,37 @@ function getValueWitdhUnits(value){
  * \param:  type\t      string  HTML-Type of the new DomTreeObject. Default: div
  * \param:  css\t       string  normal css class. Default: "NOTSET"
  * \param:  extra_css\t string  secoond css class. Default: "EXTRA_NOTSET"
- * \param:  src\t       string  for HTML types that need a sourcePath like img. Default: ""
+ * \param:  src\t       string  for HTML types that need a sourcePath like img. Default: NULL
+ * \param:  extraContent    string  Conent that shoul come after > so for <p>extraContent</p>
  */
-function createDomObject(parent, id, type, css, extra_css, src){
-  createDomObjectDOM(parent.mParent, id, type, css, extra_css, src);
+function createDomObject(parent, id, type, css, extra_css, src, extraContent){
+  return ( createDomObjectDOM(parent, parent.mParent, id, type, css, extra_css, src, extraContent) ) ;
 }
 
 /**
  * same like createDomObject - just take an DomObject as parent
  */
-function createDomObjectDOM(parent, id, type, css, extra_css, src){
+function createDomObjectDOM(parent, domparent, id, type, css, extra_css, src, extraContent){
     // check Params
 
+   
     if(parent == null){
         if(globals.debug > 0)
             alert("Error Creating Dom Object - no parent set!");
         return null;
     }
-   id = parent.mId;
-   
+     if(domparent == null){
+        if(globals.debug > 0)
+            alert("Error Creating Dom Object - no DOM parent set!");
+        return null;
+    }
     
+    if(id == null){
+        if(globals.debug > 0)
+            alert("Error Creating Dom Object - no id set!");
+        return null;
+    }
+   
     if(type == null)
         type = "div";
         
@@ -192,18 +242,53 @@ function createDomObjectDOM(parent, id, type, css, extra_css, src){
         extra_css == "EXTRA_NOTSET";
     
      //create HTML command
+
      var cmd;
-     if(src != null)
+        
+     if(type.match(/input.*password/)){
+       cmd = "<input id=\"" +id+ "\" type=\"password\" class =\""+ css +" "+ extra_css+"\">";
+       type = "input";
+      
+     }
+        
+     else if(src != null)
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" " +extra_css+ "\" src=\""+src+"\">";
+     
      else
         cmd = "<" + type + " id=\"" +id+ "\" class =\""+ css +" "+ extra_css+"\">";
+        
+    if(extraContent == null)
+        extraContent = "";
+        
+     var ending = checkForTypesWithEnding(type);
+     if(ending)
+        cmd += extraContent + "</"+type+">";
     
-    $(parent).append(cmd);
+    
+    $(domparent).append(cmd);
     var domObject = $(type+"[id="+id+"]").get(0);
     domObject.nextNode = parent;
     
     return domObject;         
          
+}
+
+/**
+ * check if type need an ending like <p>, <a>, <h> etc
+ * \return true if nedded false else
+ */
+function checkForTypesWithEnding(type){
+   var flag = false
+   flag |= type.match(/^h?/);
+   flag |= type == "p";
+   flag |= type == "pre";
+   flag |= type == "b";
+   flag |= type == "div";
+   
+   return flag;
+   
+    
+   
 }
 
 /**
@@ -227,6 +312,62 @@ function getJsonObject(id){
     //alert("idToELement; Element Id: " + elem.id);
     //alert("idToELement; Element Object: " + elem.object.mId);
     return elem;
+}
+
+/**
+ * Check if one string is substring oof another
+ * @param   small   string  string that is maybe in the other one
+ * @param   big     string  string that maybe contaisn the other one
+ * @return true if big contains small, false else
+ */
+function isSubstringOf(small ,big){
+    //! \todop check
+    var subLen = small.length;
+    var flag = false;
+    for(var i=0; i < ( big.length-subLen ); i++){
+        if(small == big.substring(i, i+subLen)){
+            flag = true;
+            break;
+        }
+            
+    }
+    
+    return flag;
+}
+
+/**
+ * removes an elemnt at index from array
+ * @return array without element
+ */
+function removeElementFromArray(index, array){
+    var ret = new Array();
+    for(var i=0; i < array.length ;i++){
+        if(i!=index)
+            ret[ret.length] = array[i];
+    }
+    return ret;
+}
+
+/**
+ * removes an elemnt at index from array
+ * @return array without element
+ */
+function removeElementFromString(index, string){
+    var ret = "";
+    for(var i=0; i < string.length ;i++){
+        if(i!=index)
+            ret+= string[i];
+    }
+    return ret;
+}
+
+/**
+ * trims whitespaces of a string start and end
+ * @param string string to trim
+ * @return trimmed string
+ */
+function trimString(string){
+     return string.replace(/^\s*/, "").replace(/\s*$/, "");
 }
 
 //*};

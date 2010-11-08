@@ -72,3 +72,21 @@ function onMouseClick(event){
         object.mMouseClickEvents[i](params);
     }
 }
+
+/**
+ * React on MouseOut Events and call all saved Functions for the object
+ */
+function onKeyPress(event){
+    object = event.currentTarget.nextNode;
+    if(object.mKeyPressEvents == null){ // Object can not Handle KeypressEvents
+        if(globals.debug > 1)
+            alert("Warning: Object: " + object.mId + " cannot handle Keypress Events");
+        return ;
+    }
+    for(var i=0; i< object.mKeyPressEvents.length; i++){
+        params = new EventParameter();
+        params = object.mKeyPressParams[i];
+        params.event = event;
+        object.mKeyPressEvents[i](params);
+    }
+}
