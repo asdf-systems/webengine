@@ -85,6 +85,28 @@ var jsonObject = {
                     }
                   }
                 },
+                 "page2": {
+                  "id": "PagePanel/page2",
+                  "type": "Panel",
+                  "object": null,
+                  "position_x": "0px",
+                  "position_y": "0px",
+                  "width": "",
+                  "height": "",
+                  "children": {
+                    "image01": {
+                      "id": "PagePanel/page2/image01",
+                      "type": "Image",
+                      "object": null,
+                      "position_x": "20px",
+                      "position_y": "20px",
+                      "width": "",
+                      "height": "",
+                      "children": null,
+                      "src": "PagePanel/page2/image01.jpg"
+                    }
+                  }
+                },
                 "prevPageButton.txt": {
                   "id": "PagePanel/prevPageButton.txt",
                   "type": "Button",
@@ -113,7 +135,8 @@ var jsonObject = {
               "extra_css": "projectPagePanel",
               "pages": [
                 "page0",
-                "page1"
+                "page1",
+                "page2",
               ],
               "circular": "false"
             }

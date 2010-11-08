@@ -113,7 +113,6 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
 
     setObjectPosition(this.mDomPages, 0, 0, "absolute");
     setObjectSize(this.mDomPages, this.mPageSizeX*2, this.mPageSizeY, "absolute");
-    //this.mDomPages.style.background = "#0000ff";
     
     setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
     setObjectSize(this.mDomEvenPages, this.mPageSizeX, this.mPageSizeX, "absolute");    
