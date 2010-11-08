@@ -174,6 +174,24 @@ function getValueWithUnits(value){
 }
 
 /**
+ * takes an pixel or prozent value, invert the value and return
+ */
+function invertValue(value){
+    value += "";
+    var number = 0;
+    var unit = globals.stdUnit;
+    if(value.match(".*%")){
+        number = Number(value.replace(/%/, ""));
+        unit = "%";
+    }
+    else if(value.match(".*px")){
+        number = Number(value.replace(/px/, ""));
+        unit = "px";
+    }
+    return (number*-1 + unit );
+}
+
+/**
  * Erstellt ein neues DomTreeObject und hängt es beim angegebenen Parent ein
  * \return: newDomTreeObject or null if error occurs
  * returned DomTreeObject saves parent in nextNode

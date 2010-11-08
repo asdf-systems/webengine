@@ -36,7 +36,7 @@ var jsonObject = {
                       "name": "SPECIFIC",
                       "parameters": [
                         "PagePanel/",
-                        " nextPage"
+                        "nextPage"
                       ]
                     }
                   ]
@@ -103,13 +103,13 @@ var jsonObject = {
                       "name": "SPECIFIC",
                       "parameters": [
                         "PagePanel/",
-                        " prevPage"
+                        "prevPage"
                       ]
                     }
                   ]
                 }
               },
-              "animation_speed": "200",
+              "animation_speed": "200000",
               "extra_css": "projectPagePanel",
               "pages": [
                 "page0",
