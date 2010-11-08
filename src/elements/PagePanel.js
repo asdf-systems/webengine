@@ -189,7 +189,7 @@ asdf_PagePanel.prototype.specificAction = function(params){
         break;
     }
 }
-var speed = 29099;
+
 /**
  * Functions change the Panel Content animated
  * @param: direction    +1/-1   direction to change the Pages
@@ -202,7 +202,7 @@ asdf_PagePanel.prototype.changePage = function(direction){
     if(firstPage && direction < 0) // cannot go any further - return
         return;        
 
-    this.mPages[this.mCurrentPage].object.hide(); // hide current
+    //this.mPages[this.mCurrentPage].object.hide(); // hide current
     if(this.mCurrentPage%2 == 0){ // Change Even to odd
         // Put Odd Page in the right Position for Animation
         if(direction < 0)
@@ -215,21 +215,21 @@ asdf_PagePanel.prototype.changePage = function(direction){
             $(this.mDomOddPages).show();
             var value = getValueWithUnits(this.mPageSizeX);
             value = "+="+ invertValue(value);
-            //var speed = this.mAnimSpeed;
-            $(this.mDomPages).animate({"left" : value}, speed,  this.evenToOddCallback());
+            gCurrentAnimationSpeed = this.mAnimSpeed;
+            $(this.mDomPages).animate({"left" : value}, gCurrentAnimationSpeed, this.evenToOddCallback());
  
         } else { // change odd to even
             // Put Odd Page in the right Position for Animation
             if(direction < 0) 
-                setObjectPosition(this.mDomEvenPages, invertValue(this.mPageSizeX), this.mPosY, "absolute");
+                setObjectPosition(this.mDomEvenPages, 0, this.mPosY, "absolute");
             else
-                setObjectPosition(this.mDomEvenPages, this.mPageSizeX, this.mPosY, "absolute");
+                setObjectPosition(this.mDomEvenPages, this.mPageSizeX*2, this.mPosY, "absolute");
             this.mCurrentPage+=direction;
             this.mPages[this.mCurrentPage].object.show();
             $(this.mDomEvenPages).show();
             var value = "+=" + getValueWithUnits(this.mPageSizeX);
-            //var speed = this.mAnimSpeed;
-            $(this.mDomPages).animate({left : value}, speed, this.oddToEvenCallback());       
+            gCurrentAnimationSpeed = this.mAnimSpeed;
+            $(this.mDomPages).animate({left : value}, gCurrentAnimationSpeed, this.oddToEvenCallback());       
         }
 
 
@@ -242,9 +242,9 @@ asdf_PagePanel.prototype.changePage = function(direction){
 asdf_PagePanel.prototype.evenToOddCallback = function(){
 
     //$(this.mDomEvenPages).hide();
-    setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
-    setObjectPosition(this.mDomEvenPages, this.mPageSizeX, this.mPosY, "absolute");
-    setObjectPosition(this.mDomOddPages, 0,0, "absolute");
+    //setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
+    //setObjectPosition(this.mDomEvenPages, this.mPageSizeX, this.mPosY, "absolute");
+    //setObjectPosition(this.mDomOddPages, 0,0, "absolute");
 
 }
 
@@ -255,9 +255,9 @@ asdf_PagePanel.prototype.evenToOddCallback = function(){
 asdf_PagePanel.prototype.oddToEvenCallback = function(){
 
     //$(this.mDomOddPages).hide();
-    setObjectPosition(this.mDomOddPages, 0, 0, "absolute");
-    setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
-    setObjectPosition(this.mDomEvenPages, 0,0, "absolute");
+    //setObjectPosition(this.mDomOddPages, 0, 0, "absolute");
+    //setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
+    //setObjectPosition(this.mDomEvenPages, 0,0, "absolute");
 
 }
 
