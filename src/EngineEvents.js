@@ -29,6 +29,13 @@ function ActionHandlerSpecific(params){
 
 function ActionHandlerSend(params){
     //! \todo implement
+    // Definition Send -> definitions.odt
+    // inputFieldNames = params.parameter
+    // for(i=1; i < inputFieldNames.length; i++){
+    // check if lastElemement is url -> if not set standart url to server
+    // if(.object.getValue != undefined) -> sonst Warnig ausgeben if(globals.debug > 0) alert("Warning: Object: " 
+    // var value = inputFieldNames.object.getValue(); //! todo null etc auf object abfangen //
+    
 
 }
 

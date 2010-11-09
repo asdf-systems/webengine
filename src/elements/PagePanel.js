@@ -251,35 +251,46 @@ asdf_PagePanel.prototype.changePage = function(direction){
     if(firstPage && direction < 0) // cannot go any further - return
         return;        
 
-    //this.mPages[this.mCurrentPage].object.hide(); // hide current
+    var oldPage = this.mPages[this.mCurrentPage];
     if(this.mCurrentPage%2 == 0){ // Change Even to odd
         // Put Odd Page in the right Position for Animation
-        if(direction < 0)
+        var value = "";
+        if(direction < 0){
             setObjectPosition(this.mDomOddPages, invertValue(this.mPageSizeX), this.mPosY, "absolute");
-        else
+            value = "+=" + getValueWithUnits(this.mPageSizeX);
+            
+        }
+        else{
             setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
+            value = "-=" + getValueWithUnits(this.mPageSizeX);
+            
+        }
                     
-            this.mCurrentPage+= direction;
-            this.mPages[this.mCurrentPage].object.show();
-            $(this.mDomOddPages).show();
-            var value = getValueWithUnits(this.mPageSizeX);
-            value = "+="+ invertValue(value);
-            gCurrentAnimationSpeed = this.mAnimSpeed;
-            $(this.mDomPages).animate({"left" : value}, gCurrentAnimationSpeed, this.evenToOddCallback());
+        this.mCurrentPage+= direction;
+        this.mPages[this.mCurrentPage].object.show();
+        $(this.mDomOddPages).show();
+        gCurrentAnimationSpeed = this.mAnimSpeed;
+        $(this.mDomPages).animate({"left" : value}, gCurrentAnimationSpeed, this.evenToOddCallback);
  
         } else { // change odd to even
             // Put Odd Page in the right Position for Animation
-            if(direction < 0) 
+            var value = "";
+            if(direction < 0) {
                 setObjectPosition(this.mDomEvenPages, 0, this.mPosY, "absolute");
-            else
+                value = "+=" + getValueWithUnits(this.mPageSizeX);
+            }
+            else{
                 setObjectPosition(this.mDomEvenPages, this.mPageSizeX*2, this.mPosY, "absolute");
+                value = "-=" + getValueWithUnits(this.mPageSizeX);
+            }
+            
             this.mCurrentPage+=direction;
             this.mPages[this.mCurrentPage].object.show();
             $(this.mDomEvenPages).show();
-            var value = "+=" + getValueWithUnits(this.mPageSizeX);
+            
             gCurrentAnimationSpeed = this.mAnimSpeed;
             $(this.mDomPages).animate({left : value}, gCurrentAnimationSpeed, this.oddToEvenCallback());       
-        }
+    }
 
 
 }
@@ -290,10 +301,12 @@ asdf_PagePanel.prototype.changePage = function(direction){
  */
 asdf_PagePanel.prototype.evenToOddCallback = function(){
 
-    //$(this.mDomEvenPages).hide();
-    //setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
-    //setObjectPosition(this.mDomEvenPages, this.mPageSizeX, this.mPosY, "absolute");
-    //setObjectPosition(this.mDomOddPages, 0,0, "absolute");
+    // ACHTUNG: this is pointing to mDomPages - dont ask me why - ask f*** jQuery
+    var object = this.parentElement.nextNode;
+    //$(object.mDomEvenPages).hide();
+    setObjectPosition(object.mDomPages, 0, 0, "absolute");
+    setObjectPosition(object.mDomEvenPages, object.mPageSizeX, object.mPosY, "absolute");
+    setObjectPosition(object.mDomOddPages, 0,0, "absolute");
 
 }
 
@@ -303,10 +316,12 @@ asdf_PagePanel.prototype.evenToOddCallback = function(){
  */
 asdf_PagePanel.prototype.oddToEvenCallback = function(){
 
-    //$(this.mDomOddPages).hide();
-    //setObjectPosition(this.mDomOddPages, 0, 0, "absolute");
-    //setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
-    //setObjectPosition(this.mDomEvenPages, 0,0, "absolute");
+    // ACHTUNG: this is pointing to mDomPages - dont ask me why - ask f*** jQuery
+    var object = this.parentElement.nextNode;
+    //$(object.mDomOddPages).hide();
+    setObjectPosition(object.mDomPages, 0, 0, "absolute");
+    setObjectPosition(object.mDomOddPages, object.mPageSizeX, object.mPosY, "absolute");
+    setObjectPosition(object.mDomEvenPages, 0,0, "absolute");
 
 }
 

@@ -119,8 +119,12 @@ asdf_Panel.prototype.show = function(){
 
     $(this.mDomTreeObject).show();
     this.mDomTreeObject.style.background = this.mBgColor;
-    this.mDomTreeObject.style.width = this.mWidth;
-    this.mDomTreeObject.style.height = this.mHeight;
+    setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
+    for(var i = 0; i < this.mChildren.length; i++){
+        var child = this.mChildren[i];
+        if(child.object.mInitialShow != false)
+            child.object.show();
+    }
 }
 
 /**
@@ -131,15 +135,17 @@ asdf_Panel.prototype.addChild = function(child){
    if(child.object == null){ // child not initialised yet
         init(child, this.mDomTreeObject);
    
-        this.mChildren[this.mChildren.length] = child;
+        this.mChildren.push(child);
 
         if(child.object.mInitialShow != false){
             child.object.show();
-            // init and add all grandChildren
+                    // init and add all grandChildren
             for(var grandChild in child.children){
-                showElement(child.children[grandChild].id);
+                 showElement(child.children[grandChild].id);
             }
         }
+        
+
     }
 }
 
