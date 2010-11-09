@@ -6,8 +6,9 @@
 	makeSession();
 	login();
 
+	require_once("header.php");
 	if(isAuthenticated()) {
-		echo "logged in";
+		require_once("mainpage.php");
 	} else {
 ?>
 		<form action="<?=$PHP_SELF;?>" method=post>
@@ -16,4 +17,5 @@
 		</form>
 <?
 	}
+	require_once("footer.php");
 ?>
