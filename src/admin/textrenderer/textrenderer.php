@@ -3,7 +3,7 @@
 
 	$text = getTextvar();
 	$size = getFontSize();
-	$color = getColor();
+	$color = hex2array(getColor());
 	$image = renderText($fontfile, $size, $color, $text);
 	output($image);
 
@@ -25,6 +25,18 @@
 		imagefill($image, 0, 0, $bgcolor);
 		imagettftext($image, $size, 0, 0, $size, $textcolor, $fontfile, $text);
 		return $image;
+	}
+
+	/**
+	 * Converts HTML-like color string (e.g "#FF0033") to
+	 * an array containing red, green and blue.
+	 */
+	function hex2array($string) {
+		$ret = Array();
+		array_push($ret, hexdec(substr($string,1,2)));
+		array_push($ret, hexdec(substr($string,3,2)));
+		array_push($ret, hexdec(substr($string,5,2)));
+		return $ret;
 	}
 
 	/**
@@ -79,7 +91,10 @@
 	 * Returns the color of the text
 	 */
 	function getColor() {
-		return Array(255, 0, 0);
+		if(!isset($_GET["color"])) {
+			return "#000000";
+		}
+		return $_GET["color"];
 	}
 
 	/**
@@ -99,6 +114,9 @@
 	 * it returns a fixed value.
 	 */
 	function getFontSize() {
-		return 10;
+		if(!isset($_GET["size"])) {
+			return 10;
+		}
+		return $_GET["size"];
 	}
 ?>
