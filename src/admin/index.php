@@ -1,8 +1,8 @@
 <?
 	require_once("auth.php");
 
-	$ROOT="../";
-	$OUTPUT="../jsonObject.js";
+	$ROOT=getcwd()."/../";
+	$OUTPUT=getcwd()."/../jsonObject.js";
 	makeSession();
 	login();
 

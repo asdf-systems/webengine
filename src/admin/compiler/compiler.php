@@ -1,14 +1,16 @@
 <?
-	if(!isset($ROOT))
-		$ROOT = getcwd()."/../../testCases/testCaseParser";
-	chdir($ROOT);
-	define(DEBUG, true);
 	require_once("directory_operations.php");
 	require_once("errorhandling.php");
 	require_once("elements.php");
 	require_once("ini.php");
 	require_once("paths.php");
 	require_once("hacks.php");
+
+	if(!isset($ROOT))
+		$ROOT = getcwd()."/../";
+	debug("Jailig to \"".$ROOT."\"");
+	chdir($ROOT);
+	define(DEBUG, true);
 
 	debug("Starting main routine");
 	$result = compile("./");
@@ -23,7 +25,11 @@
 	 * @returns the filename of the outputfile
 	 */
 	function getOutputFileName() {
-		return "object.js";
+		global $OUTPUT;
+		if(!isset($OUTPUT)) {
+			$OUTPUT = "../jsonData.js";
+		}
+		debug("Writing to \"".$OUTPUT."\"");
 	}
 
 
