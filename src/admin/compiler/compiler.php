@@ -30,6 +30,7 @@
 			$OUTPUT = "../jsonData.js";
 		}
 		debug("Writing to \"".$OUTPUT."\"");
+		return $OUTPUT;
 	}
 
 
