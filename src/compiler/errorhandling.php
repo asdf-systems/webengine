@@ -15,6 +15,6 @@
 	}
 
 	function issueWarning($str) {
-		echo "Warning: ", $str;
+		echo "Warning: ", $str, "\n";
 	}
 ?>

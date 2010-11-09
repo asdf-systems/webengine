@@ -12,9 +12,9 @@
 		$newy = 0;
 		debug("Positioning \"".$object["id"]."\" with x=".$pos_x." and y=".$pos_y);
 		if(isPixelPosition($object["position_x"]) && isPixelPosition($object["position_y"])) {
-			$extract_x = extractPosition($object["position_x"]);
+			$extract_x = extractPosition($object["id"], $object["position_x"]);
 			$object["position_x"] = sprintf("%dpx", $extract_x - $pos_x);
-			$extract_y = extractPosition($object["position_y"]);
+			$extract_y = extractPosition($object["id"], $object["position_y"]);
 			$object["position_y"] = sprintf("%dpx", $extract_y - $pos_y);
 			$newx = $pos_x + $extract_x;
 			$newy = $pos_y + $extract_y;
@@ -28,12 +28,18 @@
 	}
 
 	function isPixelPosition($pos) {
-		return preg_match("/^[0-9]+px$/", $pos);
+		return preg_match("/px$/", $pos);
 	}
 
-	function extractPosition($pos) {
+	function extractPosition($path, $pos) {
 		// I know... *cough cough*
-		return str_replace("px", "", $pos);
+		$pos = str_replace("px", "", $pos);
+		if(trim($pos) == "") {
+			issueWarning("Empty positions found in \"".$path."\"");
+			$pos = "0";
+		}
+		return $pos;
+
 	}
 
 	/**
