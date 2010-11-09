@@ -17,8 +17,9 @@
  * \param: signs        string      signs that are not allowed in notation like abc123[1..9]
  * \param: password     string      true or false to show input as * 
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password , extra_css_class){
+function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password , extra_css_class, initialShow){
     
     
     //* public: 
@@ -115,7 +116,12 @@ function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, hei
         this.mBgColor = "transparent";
     else   
         this.mBgColor = bgColor;
-        
+
+    if(initialShow == null)
+        this.mInitialShow = true;
+    else
+        this.mInitialShow = initialShow;
+                
     this.mDomTreeObject = null;
     this.mDomBackground = null;
     this.mDomInputField = null;

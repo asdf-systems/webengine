@@ -71,6 +71,7 @@ var jsonObject = {
                   "position_y": "0px",
                   "width": "",
                   "height": "",
+                  "initial_show" : "false",
                   "children": {
                     "image01": {
                       "id": "PagePanel/page1/image01",

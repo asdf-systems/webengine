@@ -39,8 +39,10 @@ function hideElement(elementId){
     var object = getJsonObject(elementId).object;
     object.hide();
 }
+
 /**
- * Show up an Element by id 
+ * Init all Objects in a Path, and show Up exact them - elments decide which childs they are show up 
+ * \definition Panels show up all Children - instead inital_show = false
  * \param   elementId   string  id of the Element
  */
 function showElement(elementId){
@@ -49,52 +51,33 @@ function showElement(elementId){
     var path = elementId.split("/");
 	var elem = jsonObject;
 	var parentObject = $("body[id=mainBody]").get(0);
-    //alert("showElement(): ElementName:" + elem.id);
     initAndShowElements(elem, parentObject);
     for(var i=0; i < path.length; i++){
-        name = path[i];
+        if(elem.children == null)
+            break;
+
+        var name = path[i];
         if(name == "")
             break;
-        var oldObject = elem;
-        elem = elem.children[name];
-        //alert(name);
-        //alert("showElement(): ElementName:" + elem.id);
+
+        var child = elem.children[name];
+        if(child == null || child == undefined){
+            if(globals.debug> 1)
+                alert("showElement(): Warning: ElementChild: " + name + "was not found");
+            break;
+        }
         
-        parentObject = getParent(oldObject, elem);
-        initAndShowElements(elem, parentObject);
-        
+        if(child.object == null && elem.object.addChild != undefined)
+            elem.object.addChild(child);
+        elem = child;
         
     }
-    //! \todo: showChildren dont work
-    showChildren(elem);
+    // Now Show all Children in the tree
+    //showChildren(elem);
     
     
 		
 
-}
-
-/**
- * check where the childObject should be added in DomTree
- * normally parent.object.mDomTreeObject but diffrent for some special Panels
- * like PagePanel
- * 
- */
-function getParent(parent ,child){
-    if(parent.object.mType == "PagePanel"){
-        for(var i=0; i< parent.object.mPages.length; i++){ // check if child is a Page 
-            if(parent.object.mPages[i].id == child.id){ // is an Page
-                //put it under special Div for pages
-                if(i%2 == 0)
-                    return parent.object.mDomEvenPages;
-                else
-                    return parent.object.mDomOddPages;
-
-            }
-        }
-        
-    }
-
-    return parent.object.mDomTreeObject;    
 }
 
 /**
@@ -176,6 +159,5 @@ function setObjectSize(element, width ,height){
     element.style.width = getValueWithUnits(width);
     element.style.height = getValueWithUnits(height);
 }
-
 
 

@@ -10,8 +10,9 @@
  * \param: positionY    int         y Position of the Image - relative to parent
  * \param: src		    string      path to the Image that sould be show
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class){
+function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, initialShow){
     
     
     //* public: 
@@ -62,6 +63,11 @@ function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class){
         return null;
     }
     
+     if(initialShow == null)
+        this.mInitialShow = true;
+    else
+        this.mInitialShow = initialShow;
+        
     this.mSource = src;
     this.mDomTreeObject = null; 
 

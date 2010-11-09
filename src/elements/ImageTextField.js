@@ -12,8 +12,9 @@
  * \param: textField    Element     textField that should be shown if click on : showText
  * \param: showTextBtn  Element     Button that opens the TextField
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_ImageTextField(_id, _parent, positionX, positionY, src, textField, showButton, extra_css_class){
+function asdf_ImageTextField(_id, _parent, positionX, positionY, src, textField, showButton, extra_css_class, initialShow){
     
     
     //* public: 
@@ -64,6 +65,11 @@ function asdf_ImageTextField(_id, _parent, positionX, positionY, src, textField,
         return null;
     }
     
+    if(initialShow == null)
+        this.mInitialShow = true;
+    else
+        this.mInitialShow = initialShow;
+        
     this.mSource = src;
     this.mDomTreeObject = null; 
 

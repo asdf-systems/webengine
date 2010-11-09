@@ -11,9 +11,10 @@
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: text         int         text to show
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  * todo klären wer das übersetze der Textfiles übernimmt (also formatierung (rtf, txt, html) -> html)
  */
-function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, extra_css_class){
+function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, extra_css_class, initialShow){
     
     
     //* public: 
@@ -78,6 +79,11 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
         this.mBgColor = "transparent";
     else   
         this.mBgColor = bgColor;
+        
+    if(initialShow == null)
+        this.mInitialShow = true;
+    else
+        this.mInitialShow = initialShow;
         
     this.mDomTreeObject = null;
 

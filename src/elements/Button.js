@@ -14,8 +14,9 @@
  * \param: image_active string      Path to Image that showd if Button is activated. Default: = image_normal
  * \param: image_hover  string      Path to Image that showed if Mouse is over Button. Default: =image_normal
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class){
+function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class, initialShow){
     
     
     //* public: 
@@ -75,7 +76,10 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     else    
         this.mExtraClassCSS = extra_css_class;
 
-    
+     if(initialShow == null)
+        this.mInitialShow = true;
+    else
+        this.mInitialShow = initialShow;
 
     this.mDomTreeObject = null;
     

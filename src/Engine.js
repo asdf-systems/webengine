@@ -29,28 +29,28 @@ function init(elem, parentObject){
 	// check Type 
     switch(elem.type){
 		case "Button":
-            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css );
+            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css, elem.initial_show );
             registerActions(elem);           
 		break;
 		case "Panel":
-			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css );
+			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css,elem.initial_show );
             registerActions(elem);           
 		break;
         case "Image":
-            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css );
+            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css,elem.initial_show );
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_source, elem.forbidden_signs, elem.password_modus, elem.extra_css );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_source, elem.forbidden_signs, elem.password_modus, elem.extra_css, elem.initial_show );
 			registerActions(elem);           
 		break;
 		case "TextField":
-			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.text, elem.font_family, elem.font_size, elem.extra_css );
+			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.text, elem.font_family, elem.font_size, elem.extra_css, elem.initial_show );
             registerActions(elem);           
 		break;
 		case "PagePanel":
-			pages = getPages(elem);
-            elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height, pages, elem.page_size_x, elem.page_size_y, elem.animation_speed, elem.extra_css );
+            var pages = getPages(elem);
+			elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height, elem.page_size_x, elem.page_size_y, elem.animation_speed, pages, elem.extra_css , elem.initial_show );
             registerActions(elem);           
 		break;		
 		/*
@@ -77,23 +77,7 @@ function init(elem, parentObject){
    	}
 }
 
-function getPages(elem){
-    if(elem.type != "PagePanel"){
-        if(globals.debug > 0 )
-            alert("Error: getPages(): getPages not supported on : " + elem.type);
-        return null;
-    }
-    
-    var pageNames = elem.pages;
-    var pages = new Array();
-    for(var i = 0; i < pageNames.length; i++){
-        var name = pageNames[i];
-        if(elem.children[name] != null && elem.children[name] != undefined)
-            pages[pages.length] = elem.children[name];
-    }
-    
-    return pages;
-}
+
 /** 
  * register all known actions to the element
  */
@@ -368,6 +352,18 @@ function removeElementFromString(index, string){
  */
 function trimString(string){
      return string.replace(/^\s*/, "").replace(/\s*$/, "");
+}
+
+/**
+ * check if an element is part of an Array
+ */
+function isElementOf(element, array){
+    for(var i=0; i < array.length; i++){
+        if(array[i] == element)
+            return true;
+    }
+    
+    return false;
 }
 
 //*};

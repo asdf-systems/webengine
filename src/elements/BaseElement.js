@@ -10,8 +10,9 @@
  * \param: positionY    int         y Position of the BaseElement - relative to parent
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css_class){
+function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css_class, initialShow){
     
     
     //* public: 
@@ -60,6 +61,11 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css
     else   
         this.mBgColor = bgColor;
 
+    if(initialShow == null)
+        this.mInitialShow = true;
+    else
+        this.mInitialShow = initialShow;
+        
     this.mDomTreeObject = null;
 
     //* private:

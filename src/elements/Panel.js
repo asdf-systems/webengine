@@ -12,8 +12,9 @@
  * \param: width        int         width of the Panel (need if filled with bg Color) : Default: 0
  * \param: height       int         height of the Panel (need if filled with bg Color) : Default: 0
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class){
+function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class, initialShow){
     
     
     //* public: 
@@ -72,9 +73,17 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
         this.mHeight = "0";
     else 
         this.mHeight = height;        
-    
-    this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
 
+    if(initialShow == null)
+        this.mInitialShow = true;
+    else if(initialShow == "false")
+        this.mInitialShow = false;
+    else
+        this.mInitialShow = true;
+        
+    this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+    this.mChildren = new Array();
+    
     // set Position
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
 
@@ -114,10 +123,26 @@ asdf_Panel.prototype.show = function(){
     this.mDomTreeObject.style.height = this.mHeight;
 }
 
-/*asdf_Panel.prototype.getDomTreeObject = function(){
-	alert("Panel GEt: "+ this.mId);
-    return this.mDomTreeObject;
-}*/
+/**
+ * Add Child to the DomTree and save as Child
+ * @param child     jsonElement     childElement to addd
+ */
+asdf_Panel.prototype.addChild = function(child){
+   if(child.object == null){ // child not initialised yet
+        init(child, this.mDomTreeObject);
+   
+        this.mChildren[this.mChildren.length] = child;
+
+        if(child.object.mInitialShow != false){
+            child.object.show();
+            // init and add all grandChildren
+            for(var grandChild in child.children){
+                showElement(child.children[grandChild].id);
+            }
+        }
+    }
+}
+
 
 
 /**

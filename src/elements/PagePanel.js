@@ -11,10 +11,11 @@
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: width        int         width of the PagePanel (need if filled with bg Color) : Default: 0
  * \param: height       int         height of the PagePanel (need if filled with bg Color) : Default: 0
- * \param: pages        jsonObject[] Childs that are Panels   
+ * \param: pages        jsonObject[] all Pages
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , height, pages, pageSizeX, pageSizeY, animationSpeed, extra_css_class){
+function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , height, pageSizeX, pageSizeY, animationSpeed, pages, extra_css_class, initialShow){
     
     
     //* public: 
@@ -74,13 +75,6 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     else 
         this.mHeight = height;        
     
-    if(pages == null){
-        if(globals.debug > 0)
-           alert("Error: PagePanel: Cannot create PagePanel without Pages - cancel!");
-        return null;
-           
-    }
-    
     if(pageSizeX == null){
         if(globals.debug > 1)
            alert("Warning: PagePanel: PageSizeX is not set");
@@ -95,11 +89,24 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     } else 
         this.mPageSizeY = pageSizeY;
     
+    if(pages == null){
+        if(globals.debug > 0)
+            alert("PagePanel: Error on PagePanel : " + this.mId + " cannot create PagePanel without Pages - cancel!!");
+        return null;
+    }
     if(animationSpeed == null)
         this.mAnimationSpeed = globals.defaultAnimtionSpeed;
     else    
         this.mAnimationSpeed = animationSpeed;
          
+    if(initialShow == null)
+        this.mInitialShow = true;
+    else if(initialShow == "false")
+        this.mInitialShow = false;
+    else
+        this.mInitialShow = true;
+        
+    this.mChildren = new Array();
     this.mPages = pages;
     this.mCurrentPage = 0;
     
@@ -119,6 +126,7 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
 
     setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
     setObjectSize(this.mDomOddPages, this.mPageSizeX, this.mPageSizeX, "absolute");    
+    
      
     $(this.mDomPages).show();   
     $(this.mDomEvenPages).show();   
@@ -158,10 +166,52 @@ asdf_PagePanel.prototype.show = function(){
 
 }
 
-/*asdf_PagePanel.prototype.getDomTreeObject = function(){
-	alert("PagePanel GEt: "+ this.mId);
-    return this.mDomTreeObject;
-}*/
+
+/**
+ * Add Child to the DomTree and save as Child
+ * @param child     jsonElement     childElement to addd
+ */
+asdf_PagePanel.prototype.addChild = function(child){
+     var parent = this.getParent(child);
+     if(child.object == null){ // child not initialised yet
+
+         if(child.object == null) // child not initialised yet
+                init(child, parent);
+        this.mChildren[this.mChildren.length] = child;
+        
+        if(child.object.mInitialShow != false){
+            if(!isElementOf(child, this.mPages) || child == this.mPages[0])
+                child.object.show();
+            else
+                child.object.hide();
+            // init and add all grandChildren
+            for(var grandChild in child.children){
+                showElement(child.children[grandChild].id);
+            }
+        } 
+    }
+    if(parent == this.mDomEvenPages || parent == this.mDomOddPages) // child is page
+            this.mPages[this.mPages.length] = child;
+    
+}
+
+
+/**
+ * check where the childObject should be added in DomTree
+ */
+asdf_PagePanel.prototype.getParent = function(child){
+    for(var i=0; i< this.mPages.length; i++){ // check if child is a Page 
+        if(this.mPages[i].id == child.id){ // is an Page
+            //put it under special Div for pages
+            if(i%2 == 0)
+                return this.mDomEvenPages;
+            else
+                return this.mDomOddPages;
+        }
+    }
+    return this.mDomTreeObject;    
+}
+
 
 
 /**
@@ -298,5 +348,23 @@ asdf_PagePanel.prototype.registerOnMouseOutEvent = function(functionName,  param
     this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
     this.mMouseOutParams[this.mMouseOutParams.length] = params;
     
+}
+// STATIC FUNCTIONS
+function getPages(elem){
+    if(elem.type != "PagePanel"){
+        if(globals.debug > 0 )
+            alert("Error: getPages(): getPages not supported on : " + elem.type);
+        return null;
+    }
+    
+    var pageNames = elem.pages;
+    var pages = new Array();
+    for(var i = 0; i < pageNames.length; i++){
+        var name = pageNames[i];
+        if(elem.children[name] != null && elem.children[name] != undefined)
+            pages[pages.length] = elem.children[name];
+    }
+    
+    return pages;
 }
 //*};

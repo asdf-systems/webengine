@@ -2,7 +2,7 @@ var gCurrentAnimationSpeed;
 var gCurrentCallbackFunction;
 var globals = {
     debug : 1,
-    start : "pagePanel/",
+    start : "PagePanel/",
     static : "",
     stdUnit : "px", 
     standardFontSize : "12pt",
