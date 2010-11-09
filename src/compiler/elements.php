@@ -11,6 +11,7 @@
 		$elem = $ini[$first_section_name];
 		debug("Reference to \"".$refpath."\"");
 		if(hasImageExtension($refpath)) {
+			$elem["object"] = null;
 			$elem["type"] = "Image";
 			$elem["src"] = $refpath;
 		} else {

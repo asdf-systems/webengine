@@ -62,6 +62,9 @@
 	function readLayoutFile($file) {
 		debug("Reading layout file \"".$file."\"");
 		$ini = readINIFile($file);
+		if($ini === false) {
+			return Array();
+		}
 		$first_section_name = getFirstINISection($ini);
 		debug("Declared type is \"".$first_section_name."\"");
 		$ini[$first_section_name]["type"] = $first_section_name;

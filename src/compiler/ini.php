@@ -10,7 +10,10 @@
 	function readINIFile($file) {
 		debug("Parsing generic INI file \"".$file."\"");
 		$ret = Array();
-		$data = dieOnError(file($file), "Could not read INI file \"".$file."\"");
+		$data = file($file);
+		if($data === false) {
+			return false;
+		}
 		$current_section = null;
 		foreach($data as $line) {
 			$line = stripComments($line);
