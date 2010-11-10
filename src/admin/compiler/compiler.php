@@ -17,7 +17,7 @@
 	$result = makePositionsRelative($result);
 	$json = my_json_encode($result)."\n";
 	debug("Result:\n".$json);
-	writeToFile(getOutputFileName(), $json);
+	writeToFile(getOutputFileName(), "var jsonObject = ".$json);
 
 	/** Functions **/
 
