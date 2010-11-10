@@ -9,6 +9,11 @@ function main(){
     changeContent(globals.start);
 }
 
+function linkCalled(id){
+    if(id == "./")
+        main();
+    
+}
 
 /**
  * Create Javaclasses for Elements and put the in DomHirachy
@@ -25,6 +30,7 @@ function init(elem, parentObject){
             alert("init: ParentObject is null - cancel");
         return;
     }
+    elem.id =   elem.id.replace(/\.\//, "");
     
 	// check Type 
     switch(elem.type){
@@ -299,6 +305,20 @@ function getJsonObject(id){
     return elem;
 }
 
+/** 
+ * @returns path to element from root
+ * (if elememt id = /bla/root/blubb/element than functions returns: blubb/element)
+ */
+function getPathWithFromRoot(element, root){
+    if(element.id.match(root.id+/.+/)){
+        return element.id.replace(root.id, "");
+    } else{
+        if(globals.debug > 0){
+            alert("Error: getPathWithNewRoot(): element: " + element.id + "is no child of :" +  root.id);
+            return "";
+        }    
+    }
+}
 /**
  * Check if one string is substring oof another
  * @param   small   string  string that is maybe in the other one

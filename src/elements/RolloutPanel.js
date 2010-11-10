@@ -147,7 +147,9 @@ asdf_RollOutPanel.prototype.addChild = function(child){
         this.mChildren.push(child);
 
         for(var grandChild in child.children){
-            showElement(child.children[grandChild].id);
+            var thisJson = getJsonObject(this.mId);
+            var path = getPathWithFromRoot(child.children[grandChild], thisJson);
+            showElement(path, thisJson);
         }
         if(child.object.mInitialShow != false){
             child.object.show();

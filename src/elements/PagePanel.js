@@ -178,7 +178,9 @@ asdf_PagePanel.prototype.addChild = function(child){
         this.mChildren[this.mChildren.length] = child;
         
         for(var grandChild in child.children){
-            showElement(child.children[grandChild].id);
+            var thisJson = getJsonObject(this.mId);
+            var path = getPathWithFromRoot(child.children[grandChild], thisJson);
+            showElement(path, thisJson);
         }
         if(child.object.mInitialShow != false){
             child.object.show();

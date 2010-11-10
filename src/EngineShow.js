@@ -27,11 +27,13 @@ function showObjectList(objectList){
     elements = objectList.split(",");
     
     for(var i=0; i< elements.length; i++){
-        if(elements[i] == "/"){
+        var elem = elements[i];
+        elem = elem.replace(/\.\//, "");
+        if(elem == "/"){
             if(globals.debug > 1)
                 alert("Warning: show up / will show nothing!!");
         }    
-        showElement(elements[i]);
+        showElement(elem);
         
     }
     
@@ -47,15 +49,19 @@ function hideElement(elementId){
 /**
  * Init all Objects in a Path, and show Up exact them - elments decide which childs they are show up 
  * \definition Panels show up all Children - instead inital_show = false
- * \param   elementId   string  id of the Element
+ * \param   elementId   string      id of the Element (first element in path has to be = elem)
+ * \parem   elem        jsonObject  elem where the path should start: Default = jsonObject
  */
-function showElement(elementId){
+function showElement(elementId, elem){
     
     //alert("showElement(): Element Id:" + elementId);
+    elementId = elementId.replace(/\.\//, "");
     var path = elementId.split("/");
-	var elem = jsonObject;
-	var parentObject = $("body[id=mainBody]").get(0);
-    initAndShowElements(elem, parentObject);
+    if(elem == null){
+        elem = jsonObject;
+	    var parentObject = $("body[id=mainBody]").get(0);
+        initAndShowElements(elem, parentObject);
+    }
     for(var i=0; i < path.length; i++){
         if(elem.children == null)
             break;
