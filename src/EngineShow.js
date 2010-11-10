@@ -1,5 +1,5 @@
 var gTimer;
-
+//var gCurrentShow;
 /**
  * Take a colon seperated list of ids, and show the corresponding Elements 
  * also show all static objects

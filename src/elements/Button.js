@@ -94,7 +94,7 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     
     this.registerOnMouseOverEvent(this.setHoverImage);
     this.registerOnMouseOutEvent(this.unsetHoverImage);
-    this.mActice = false;
+    this.mActive = false;
     
     
     return this;
@@ -133,7 +133,7 @@ asdf_Button.prototype.show = function(){
  */
 asdf_Button.prototype.setActiveImage = function(){
     //object = event.currentTarget.nextNode;
-    this.mActice = true;
+    this.mActive = true;
     this.mDomTreeObject.src = this.mImageActive;
 }
 
@@ -141,7 +141,7 @@ asdf_Button.prototype.setActiveImage = function(){
  * Changes Background Image to normal Image
  */
 asdf_Button.prototype.setNormalImage = function(){
-    this.mActice = false;
+    this.mActive = false;
     this.mDomTreeObject.src = this.mImageNormal;
 }
 
@@ -151,7 +151,8 @@ asdf_Button.prototype.setNormalImage = function(){
  * \param params    EventParameter
  */
 asdf_Button.prototype.setHoverImage = function(params){
-    if(object.mActice)
+    object = params.event.currentTarget.nextNode;
+    if(object.mActive)
         return;
     object = params.event.currentTarget.nextNode;
     object.mDomTreeObject.src = object.mImageHover;
@@ -162,7 +163,7 @@ asdf_Button.prototype.setHoverImage = function(params){
  */
 asdf_Button.prototype.unsetHoverImage = function(params){
     object = params.event.currentTarget.nextNode;
-    if(object.mActice)
+    if(object.mActive)
         return;
     object.mDomTreeObject.src = object.mImageNormal;
 }
@@ -174,13 +175,12 @@ asdf_Button.prototype.unsetHoverImage = function(params){
  */
 asdf_Button.prototype.specificAction = function(params){
     actionName = params.parameter[0];
-    object = params.event.currentTarget.nextNode;
     switch(actionName){
         case "activate":
-            object.setActiveImage();
+            this.setActiveImage();
         break;
         case "deactivate":
-            object.setNormalImage();
+            this.setNormalImage();
         break;
         default:
             if(globals.debug > 0)

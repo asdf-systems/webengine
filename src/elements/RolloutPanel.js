@@ -118,6 +118,10 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
  */
 asdf_RollOutPanel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+    for(var i = 0; i < this.mChildren.length; i++){
+        var child = this.mChildren[i];
+        child.object.hide();
+    }
 }
 
 /**

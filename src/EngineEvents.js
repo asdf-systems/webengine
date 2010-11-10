@@ -14,7 +14,14 @@ function ActionHandlerShow(params){
 }
 
 function ActionHandlerHide(params){
-    hideElement(params.parameter[0]);
+    var elementName = params.parameter[0];
+    //elementName = elementName.toLowerCase();
+    /*if(element == "#current"){ // hide current Element
+        var jsonElement = getJsonObject(gCurrentShow);
+        jsonElement.object.hide();
+        
+    } else*/
+        hideElement(elementName);
 }
 
 function ActionHandlerSpecific(params){
