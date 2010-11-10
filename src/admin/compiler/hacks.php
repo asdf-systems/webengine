@@ -10,7 +10,8 @@
 	function makePositionsRelative($object, $pos_x = 0, $pos_y = 0) {
 		$newx = 0;
 		$newy = 0;
-		debug("Positioning \"".$object["id"]."\" with x=".$pos_x." and y=".$pos_y);
+		debug("Positioning \"".$object["id"]."\", parent coords: x=".$pos_x." and y=".$pos_y);
+		debug("Original positions: x=".$object["position_x"]." and y=".$object["position_y"]);
 		if(isPixelPosition($object["position_x"]) && isPixelPosition($object["position_y"])) {
 			$extract_x = extractPosition($object["id"], $object["position_x"]);
 			$object["position_x"] = sprintf("%dpx", $extract_x - $pos_x);
@@ -24,6 +25,7 @@
 				$object["children"][$child] = makePositionsRelative($childobj, $newx, $newy);
 			}
 		}
+		debug("New positions: x=".$object["position_x"]." and y=".$object["position_y"]);
 		return $object;
 	}
 
