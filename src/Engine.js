@@ -128,16 +128,23 @@ function registerActions(element){
  * Takes ans jsonOject actionParameter and retrun Handler function
  */
 function getActionHandler(actionElement){
-    if(actionElement.name == "SHOW")
+    actionElement.name = trimString(actionElement.name);
+    actionElement.name = actionElement.name.toLowerCase();
+    if(actionElement.name == "show")
         return ActionHandlerShow;
-    if(actionElement.name == "HIDE")
+    if(actionElement.name == "hide")
         return ActionHandlerHide;
-    if(actionElement.name == "DELAY")
+    if(actionElement.name == "delay")
         return ActionHandlerDelay;   
-    if(actionElement.name == "SPECIFIC")
+    if(actionElement.name == "specific")
         return ActionHandlerSpecific;    
-    if(actionElement.name == "SEND")
-        return ActionHandlerSend;          
+    if(actionElement.name == "send")
+        return ActionHandlerSend;  
+    else{
+        if(globals.debug > 0){
+            alert("Warning: ActionName: <" + actionElement + "> is unkown");
+        }
+    }        
                     
 }
 

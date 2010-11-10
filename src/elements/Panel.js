@@ -78,6 +78,7 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
+
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
     this.mChildren = new Array();

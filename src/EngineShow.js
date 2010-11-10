@@ -63,6 +63,7 @@ function showElement(elementId, elem){
         initAndShowElements(elem, parentObject);
     }
     for(var i=0; i < path.length; i++){
+        elem.object.show();
         if(elem.children == null)
             break;
 
@@ -79,6 +80,7 @@ function showElement(elementId, elem){
         
         if(child.object == null && elem.object.addChild != undefined)
             elem.object.addChild(child);
+        
         elem = child;
         
     }

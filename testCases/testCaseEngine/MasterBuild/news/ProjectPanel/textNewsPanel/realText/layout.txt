@@ -4,3 +4,4 @@ position_y=750px
 width=0px
 height=0px
 extra_css=textToImageField
+initial_show=false
