@@ -57,7 +57,8 @@
 		}
 
 		$object = Array();
-		$splittable = preg_replace("/([^(]+\([^)]*\)),/", "${1};", $chain);
+		$splittable = preg_replace("/([^(]+\([^)]*\)),/", "$1;", $chain);
+		debug("Lexer returned \"".$splittable."\"");
 		$functions = explode(";", $splittable);
 
 		foreach($functions as $function) {

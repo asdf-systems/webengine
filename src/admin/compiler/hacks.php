@@ -94,9 +94,9 @@
 	function sanitizeBooleans($object) {
 		foreach($object as $key => $value) {
 			if(hasBooleanStringValue($value, true)) {
-				$object[$key] = "true";
+				$object[$key] = true;
 			} else if(hasBooleanStringValue($value, false)) {
-				$object[$key] = "false";
+				$object[$key] = false;
 			}
 		}
 		return $object;
