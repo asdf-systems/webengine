@@ -16,10 +16,13 @@
  * \param: src          string      path to the BackgroundImage to define inputField design
  * \param: signs        string      signs that are not allowed in notation like abc123[1..9]
  * \param: password     string      true or false to show input as * 
+ * \param: fontColor    string      color of the text typed in the field
+ * \param: fontSize     string      size of the text typed in the field
+ * \param: fontFamily   string      family of the text typed in the field
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password , extra_css_class, initialShow){
+function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password ,fontColor, fontSize, fontFamily,  extra_css_class, initialShow){
     
     
     //* public: 
@@ -117,6 +120,27 @@ function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, hei
     else   
         this.mBgColor = bgColor;
 
+    if(fontColor == null)
+        this.mFontColor = "black";
+    else
+        this.mFontColor = fontColor;
+
+    if(fontColor == null)
+        this.mFontColor = "black";
+    else
+        this.mFontColor = fontColor;
+    
+    if(fontSize == null)
+        this.mFontSize = "10pt";
+    else
+        this.mFontSize = fontSize;
+        
+    if(fontFamily == null)
+        this.mFontFamily = "Arial";
+    else
+        this.mFontFamily = fontFamily;
+        
+                
     if(initialShow == null)
         this.mInitialShow = true;
     else
@@ -230,7 +254,10 @@ asdf_InputField.prototype.show = function(){
             setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute");
             setObjectPosition(this.mDomBackground, 0,0,"absolute");
             this.mDomTreeObject.style.background = this.mBgColor;
-
+            
+            this.mDomInputField.style.color = this.mFontColor;
+            this.mDomInputField.style.fontFamily = this.mFontFamily;
+            this.mDomInputField.style.fontSize = this.mFontSize;
     }
     $(this.mDomTreeObject).show();
 }

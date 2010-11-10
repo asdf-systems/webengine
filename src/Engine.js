@@ -47,7 +47,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_source, elem.forbidden_signs, elem.password_modus, elem.extra_css, elem.initial_show );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_src, elem.forbidden_signs, elem.password_modus, elem.font_color, elem.font_size, elem.font_family, elem.extra_css, elem.initial_show );
 			registerActions(elem);           
 		break;
 		case "TextField":
