@@ -10,7 +10,9 @@
 		$ROOT = getcwd()."/../";
 	debug("Jailig to \"".$ROOT."\"");
 	chdir($ROOT);
-	define(DEBUG, true);
+
+	if(!isset($DEBUG))
+		$DEBUG = false;
 
 	debug("Starting main routine");
 	$result = compile("./");

@@ -5,6 +5,8 @@
 		require_once("logged_out_page.php");
 		break;
 	case "compile":
+		if(isset($_POST["debug"]))
+			$DEBUG = true;
 		echo "<pre>";
 		require_once("compiler/compiler.php");
 		echo "</pre>";

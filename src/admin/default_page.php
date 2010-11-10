@@ -30,6 +30,7 @@
 				<form action="<?=$PHP_SELF;?>" method="post">
 					<input type="hidden" name="action" value="compile">
 					<input type="submit" value="Refresh website">
+					<input type="checkbox" name="debug" value="test"> Debug output
 				</form>
 			</td>
 		</tr>
