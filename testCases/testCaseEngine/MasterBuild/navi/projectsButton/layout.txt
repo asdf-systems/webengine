@@ -2,5 +2,5 @@
 position_x=276px
 position_y=167px
 standard_src=projectsButton.jpg
-action_click=HIDE(.)
+action_click=HIDE(../../news/),SHOW(../../projects/)
 extra_css=bla

@@ -49,7 +49,7 @@ function ActionHandlerSend(params){
  * React on MouseOver Events and call all saved Functions for the object
  */
 function onMouseOver(event){
-    object = event.currentTarget.nextNode;
+    var object = event.currentTarget.nextNode;
     for(var i=0; i< object.mMouseOverEvents.length; i++){
         params =new EventParameter();
         params = object.mMouseOverParams[i];
@@ -62,7 +62,7 @@ function onMouseOver(event){
  * React on MouseOut Events and call all saved Functions for the object
  */
 function onMouseOut(event){
-    object = event.currentTarget.nextNode;
+    var object = event.currentTarget.nextNode;
     for(var i=0; i< object.mMouseOutEvents.length; i++){
         params = new EventParameter();
         params = object.mMouseOutParams[i];
@@ -75,7 +75,7 @@ function onMouseOut(event){
  * React on MouseOut Events and call all saved Functions for the object
  */
 function onMouseClick(event){
-    object = event.currentTarget.nextNode;
+    var object = event.currentTarget.nextNode;
     for(var i=0; i< object.mMouseClickEvents.length; i++){
         params = new EventParameter();
         params = object.mMouseClickParams[i];

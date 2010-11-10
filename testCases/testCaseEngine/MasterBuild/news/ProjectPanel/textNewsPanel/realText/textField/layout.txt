@@ -1,8 +1,8 @@
 [TextField]
 font_size=12pt
 font_family=Arial, Tahoma
-position_x=100px
-position_y=100px
+position_x=470px
+position_y=750px
 width=200px
 height=200px
 #Path to textfile

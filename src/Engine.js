@@ -92,8 +92,10 @@ function registerActions(element){
 	var actions = ["action_click", "action_hover", "action_out"];
 	for(var i=0; i < actions.length; i++){
         var name = actions[i];
-        actionElement = element[name];
+        var actionElement = element[name];
         if(actionElement != null && actionElement != undefined){
+            if(actionElement.length > 1)
+                var lalal = 100;
 			for(var x =0; x < actionElement.length; x++){
                 var actionHandler = getActionHandler(actionElement[x]);
 				var actionParameter = getActionParameter(actionElement[x]);
