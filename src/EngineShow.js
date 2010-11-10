@@ -28,7 +28,7 @@ function showObjectList(objectList){
     
     for(var i=0; i< elements.length; i++){
         var elem = elements[i];
-        elem = elem.replace(/\.\//, "");
+        elem = cleanPath(elem);
         if(elem == "/"){
             if(globals.debug > 1)
                 alert("Warning: show up / will show nothing!!");
@@ -55,7 +55,7 @@ function hideElement(elementId){
 function showElement(elementId, elem){
     
     //alert("showElement(): Element Id:" + elementId);
-    elementId = elementId.replace(/\.\//, "");
+    elementId = cleanPath(elementId);
     var path = elementId.split("/");
     if(elem == null){
         elem = jsonObject;
@@ -108,10 +108,11 @@ function initAndShowElements(element, parentObject){
 
 }
 
+
 /**
  * Show all Children of an jsonObject
  * @param: elem     jsonObject
- */
+ *//*
 function showChildren(elem){
     //alert("showChildren(): Element: " + elem.id);
     if(elem.children != null){
@@ -134,7 +135,7 @@ function showChildren(elem){
             alert("Warning: ShowChildren: Element is null!" );
     }
 } 
-	
+*/	
 	
 /**
  * Placing and Object relative to Parent

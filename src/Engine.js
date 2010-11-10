@@ -30,7 +30,7 @@ function init(elem, parentObject){
             alert("init: ParentObject is null - cancel");
         return;
     }
-    elem.id =   elem.id.replace(/\.\//, "");
+    elem.id =   cleanPath(elem.id);
     
 	// check Type 
     switch(elem.type){
@@ -287,6 +287,7 @@ function checkForTypesWithEnding(type){
  * \return: corresponding Element in the jsonTree
  */
 function getJsonObject(id){
+    id = cleanPath(id);
     var path = id.split("/");
 	var elem = jsonObject;
     for(var i=0; i < path.length; i++){
@@ -311,7 +312,8 @@ function getJsonObject(id){
  */
 function getPathWithFromRoot(element, root){
     if(element.id.match(root.id+/.+/)){
-        return element.id.replace(root.id, "");
+        var path = element.id.replace(root.id, "");
+        return cleanPath(path);
     } else{
         if(globals.debug > 0){
             alert("Error: getPathWithNewRoot(): element: " + element.id + "is no child of :" +  root.id);
@@ -387,4 +389,12 @@ function isElementOf(element, array){
     return false;
 }
 
+/**
+ * @return cleaned path (deleted // and ./ )
+ */
+function cleanPath(path){
+    path = path.replace(/\/\//, "/");
+    path = path.replace(/\.\//, "");
+    return path;
+}
 //*};
