@@ -190,8 +190,7 @@ asdf_PagePanel.prototype.addChild = function(child){
             }
         } 
     }
-    if(parent == this.mDomEvenPages || parent == this.mDomOddPages) // child is page
-            this.mPages[this.mPages.length] = child;
+   
     
 }
 
@@ -251,7 +250,6 @@ asdf_PagePanel.prototype.changePage = function(direction){
     if(firstPage && direction < 0) // cannot go any further - return
         return;        
 
-    var oldPage = this.mPages[this.mCurrentPage];
     if(this.mCurrentPage%2 == 0){ // Change Even to odd
         // Put Odd Page in the right Position for Animation
         var value = "";
@@ -289,7 +287,7 @@ asdf_PagePanel.prototype.changePage = function(direction){
             $(this.mDomEvenPages).show();
             
             gCurrentAnimationSpeed = this.mAnimSpeed;
-            $(this.mDomPages).animate({left : value}, gCurrentAnimationSpeed, this.oddToEvenCallback());       
+            $(this.mDomPages).animate({left : value}, gCurrentAnimationSpeed, this.oddToEvenCallback);       
     }
 
 
@@ -303,13 +301,23 @@ asdf_PagePanel.prototype.evenToOddCallback = function(){
 
     // ACHTUNG: this is pointing to mDomPages - dont ask me why - ask f*** jQuery
     var object = this.parentElement.nextNode;
-    //$(object.mDomEvenPages).hide();
+    $(object.mDomEvenPages).hide();
     setObjectPosition(object.mDomPages, 0, 0, "absolute");
     setObjectPosition(object.mDomEvenPages, object.mPageSizeX, object.mPosY, "absolute");
     setObjectPosition(object.mDomOddPages, 0,0, "absolute");
+    
+    // hide left and right
+    object.hideLeftAndRightPages(object);
+        
 
 }
 
+asdf_PagePanel.prototype.hideLeftAndRightPages = function(object){
+    if(object.mCurrentPage-1 >= 0)
+        object.mPages[object.mCurrentPage-1].object.hide();
+    if(object.mCurrentPage+1 < object.mPages.length)
+        object.mPages[object.mCurrentPage+1].object.hide();
+}
 /**
  * Called when sliding an animation is finished - fast switch of panel position as
  * prepare for the next Animation
@@ -318,11 +326,11 @@ asdf_PagePanel.prototype.oddToEvenCallback = function(){
 
     // ACHTUNG: this is pointing to mDomPages - dont ask me why - ask f*** jQuery
     var object = this.parentElement.nextNode;
-    //$(object.mDomOddPages).hide();
+    $(object.mDomOddPages).hide();
     setObjectPosition(object.mDomPages, 0, 0, "absolute");
     setObjectPosition(object.mDomOddPages, object.mPageSizeX, object.mPosY, "absolute");
     setObjectPosition(object.mDomEvenPages, 0,0, "absolute");
-
+    object.hideLeftAndRightPages(object);    
 }
 
 /**
@@ -377,7 +385,7 @@ function getPages(elem){
     for(var i = 0; i < pageNames.length; i++){
         var name = pageNames[i];
         if(elem.children[name] != null && elem.children[name] != undefined)
-            pages[pages.length] = elem.children[name];
+            pages.push(elem.children[name]);
     }
     
     return pages;
