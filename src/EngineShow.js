@@ -27,6 +27,10 @@ function showObjectList(objectList){
     elements = objectList.split(",");
     
     for(var i=0; i< elements.length; i++){
+        if(elements[i] == "/"){
+            if(globals.debug > 1)
+                alert("Warning: show up / will show nothing!!");
+        }    
         showElement(elements[i]);
         
     }
@@ -159,5 +163,3 @@ function setObjectSize(element, width ,height){
     element.style.width = getValueWithUnits(width);
     element.style.height = getValueWithUnits(height);
 }
-
-

@@ -18,7 +18,11 @@ function ActionHandlerHide(params){
 }
 
 function ActionHandlerSpecific(params){
+    var object = getJsonObject(params.parameter[0]).object;
+    if(object == null && getJsonObject(params.parameter[0]) != null) // object exists - but nnot initialised yet
+        showElement(params.parameter[0])
     object = getJsonObject(params.parameter[0]).object;
+    
     var actionParameter = new EventParameter();
     for(i=1; i< params.parameter.length; i++)
         actionParameter.parameter[actionParameter.parameter.length] = params.parameter[i];  

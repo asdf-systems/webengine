@@ -74,12 +74,10 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
     else 
         this.mHeight = height;        
 
-    if(initialShow == null)
+    if(initialShow != false)
         this.mInitialShow = true;
-    else if(initialShow == "false")
-        this.mInitialShow = false;
     else
-        this.mInitialShow = true;
+        this.mInitialShow = initialShow;
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
     this.mChildren = new Array();
@@ -137,13 +135,15 @@ asdf_Panel.prototype.addChild = function(child){
    
         this.mChildren.push(child);
 
+       for(var grandChild in child.children){
+            showElement(child.children[grandChild].id);
+        }
         if(child.object.mInitialShow != false){
             child.object.show();
                     // init and add all grandChildren
-            for(var grandChild in child.children){
-                 showElement(child.children[grandChild].id);
-            }
-        }
+            
+        } else
+            child.object.hide();
         
 
     }

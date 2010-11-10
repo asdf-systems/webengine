@@ -1,30 +1,34 @@
 /**
- * Creates an RolloutPanel is only an placing Element without any visible Elements
- * In Contrast to normal Elements RolloutPanels load DomObject onInit not on Show
+ * Creates an RollOutPanel is only an placing Element without any visible Elements
+ * In Contrast to normal Elements RollOutPanels load DomObject onInit not on Show
  */
-//* class RolloutPanel{
+//* class RollOutPanel{
 /**
  * \param: _id          string      unique Id for the Element (used also for the HTML elements)
  * \param: _parent      Element     parent Element (need to know where HTML elements add to)
- * \param: positionX    int         x Position of the RolloutPanel - relative to parent
- * \param: positionY    int         y Position of the RolloutPanel - relative to parent
+ * \param: positionX    int         x Position of the RollOutPanel - relative to parent
+ * \param: positionY    int         y Position of the RollOutPanel - relative to parent
+ * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
+ * \param: width        int         width of the Panel (need if filled with bg Color) : Default: 0
+ * \param: height       int         height of the Panel (need if filled with bg Color) : Default: 0
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
+ * \param: initialShow  bool        state if child should be shwon if parent is show
  */
-function asdf_RolloutPanel(_id, _parent, positionX, positionY, animationSpeed, extra_css_class){
+function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , height,animationSpeed, extra_css_class, initialShow){
     
 	//! \todo add BGColor width and height - not in because working offline    
     //* public: 
     if(_id == null){
 
       if(globals.debug > 0)
-           alert("RolloutPanel: Id is not set - cancel");
+           alert("RollOutPanel: Id is not set - cancel");
         return null;
     }
 
     if(_parent == null){
 
         if(globals.debug > 0)
-            alert("RolloutPanel: Parent is null - cancel");
+            alert("RollOutPanel: Parent is null - cancel");
         return null;
     }
 
@@ -32,11 +36,11 @@ function asdf_RolloutPanel(_id, _parent, positionX, positionY, animationSpeed, e
 
     this.mId = _id;
     this.mParent        = _parent; 
-    this.mType          = "RolloutPanel";
+    this.mType          = "RollOutPanel";
 
     if(positionX == null){
         if(globals.debug > 1)
-           alert("Warning: RolloutPanel: positionX is not set");
+           alert("Warning: RollOutPanel: positionX is not set");
         this.mPosX = 0;
     }
     else
@@ -44,7 +48,7 @@ function asdf_RolloutPanel(_id, _parent, positionX, positionY, animationSpeed, e
 
     if(positionY == null){
         if(globals.debug > 1)
-           alert("Warning: RolloutPanel: positionY is not set");
+           alert("Warning: RollOutPanel: positionY is not set");
         this.mPosY = 0;
     }
     else
@@ -56,11 +60,32 @@ function asdf_RolloutPanel(_id, _parent, positionX, positionY, animationSpeed, e
         this.mExtraClassCSS = extra_css_class;
 
     if(animationSpeed == null){
-    	this.mAnimationSpeed = globals.standartAnimSpeed:
+    	this.mAnimationSpeed = globals.defaultAnimationSpeed;
     } else
     	this.mAnimationSpeed = animationSpeed;
+    
+     if(bgColor == null)
+        this.mBgColor = "transparent";
+     else   
+        this.mBgColor = bgColor;
+        
+    if(width == null || width == "")
+        this.mWidth = "0";
+    else 
+        this.mWidth = width;
 
+    if(height == null || height == "")
+        this.mHeight = "0";
+    else 
+        this.mHeight = height;        
+
+    if(initialShow != false)
+        this.mInitialShow = true;
+    else
+        this.mInitialShow = initialShow;
+        
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+    this.mChildren = new Array();
     
     // set Position
 	setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
@@ -79,9 +104,9 @@ function asdf_RolloutPanel(_id, _parent, positionX, positionY, animationSpeed, e
     $(this.mDomTreeObject).click(onMouseClick);
     
 	var params = new EventParameter();
-	params.parameter[0] = this.mId;
+  	params.parameter[0] = this.mId;
 	params.parameter[1] = "rollup";
-    this.registerOnMouseOutAction(this.specificAction, params);
+    this.registerOnMouseOutEvent( ActionHandlerSpecific, params);
     
     return this;
 }
@@ -89,67 +114,117 @@ function asdf_RolloutPanel(_id, _parent, positionX, positionY, animationSpeed, e
 
 
 /**
- * instant hide RolloutPanel
+ * instant hide RollOutPanel
  */
-asdf_RolloutPanel.prototype.hide = function(){
+asdf_RollOutPanel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
 }
 
 /**
- * instant show RolloutPanel
+ * instant show Panel
  */
-asdf_RolloutPanel.prototype.show = function(){
+asdf_RollOutPanel.prototype.show = function(){
 
     $(this.mDomTreeObject).show();
+    this.mDomTreeObject.style.background = this.mBgColor;
+    setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
+    for(var i = 0; i < this.mChildren.length; i++){
+        var child = this.mChildren[i];
+        if(child.object.mInitialShow != false)
+            child.object.show();
+    }
+}
+
+
+/**
+ * Add Child to the DomTree and save as Child
+ * @param child     jsonElement     childElement to addd
+ */
+asdf_RollOutPanel.prototype.addChild = function(child){
+   if(child.object == null){ // child not initialised yet
+        init(child, this.mDomTreeObject);
+   
+        this.mChildren.push(child);
+
+        for(var grandChild in child.children){
+            showElement(child.children[grandChild].id);
+        }
+        if(child.object.mInitialShow != false){
+            child.object.show();
+                    // init and add all grandChildren
+            
+        } else
+            child.object.hide();
+        
+        
+
+    }
 }
 
 /**
- * Start RolloutPanel Specific actions. ActionName has to be set on first element of params.parameter
+ * Start Panel Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter
  */
-asdf_RolloutPanel.prototype.specificAction = function(params){
-    actionName = trimString(params.parameter[0]);
-	//! \todo implement to lower or check if exists
-    actionName = toLower(actionName);
-    object = params.event.currentTarget.nextNode;
+asdf_RollOutPanel.prototype.specificAction = function(params){
+    var actionName = params.parameter[0];
+    actionName = actionName.toLowerCase();
     switch(actionName){
 		case "rollout": // no break for runthrough
 		case "down":
 		case "slidedown":
-			this.show();
-			$(this.mDomTreeObject).slideUp(this.mAnimationSpeed, this.rollDownCallback);
+            setObjectSize(this.mDomTreeObject, 0,0);
+			// for slideDown - hav to be hidden, but need show to initialise childs
+            this.show(); this.hide();
+            $(this.mDomTreeObject).slideDown(this.mAnimationSpeed, this.rollDownCallback);
 		break;
 		case "rollup":
 		case "up":
 		case "slideup":
-			$(this.mDomTreeObject).slideUp(this.mAnimationSpeed, this.rollUpCallback);
+            if(!this.mouseOverPanel(params))
+    			$(this.mDomTreeObject).slideUp(this.mAnimationSpeed, this.rollUpCallback);
 		break;
         default:
             if(globals.debug > 0)
-                alert("RolloutPanel: action name: " + actionName + " unknown!");
+                alert("RollOutPanel: action name: " + actionName + " unknown!");
         break;
     }
 }
 
 /**
+ * check if mouse is over the rollOurPanel - and return true if so
+ * \return true if mouse over the Panel - false else
+ */
+asdf_RollOutPanel.prototype.mouseOverPanel = function(params){
+    var e = params.event;
+    var x = e.pageX - this.mDomTreeObject.offsetLeft;
+	var y = e.pageY - this.mDomTreeObject.offsetTop;
+	if(x > this.mWidth || y > this.mHeight || x < 0 || y < 0)
+	   return false;
+    
+     return true;
+}
+/**
   * function called if animation for rollup is finished
   */
-asdf_RolloutPanel.prototype.rollDownCallback = function (){
-	
+asdf_RollOutPanel.prototype.rollDownCallback = function (){
+	// ACHTUNG: this is pointing to mDomTreeObject
+    //var object = this.parentElement.nextNode;
 }
 
 /**
   * function called if animation for rollup is finished
   */
-asdf_RolloutPanel.prototype.rollUpCallback = function (){
-	this.hide();
+asdf_RollOutPanel.prototype.rollUpCallback = function (){
+	// ACHTUNG: this is pointing to mDomTreeObject
+    //var object = this.parentElement.nextNode;
+    //object.hide();
 }
 /**
- * Adds an Function that is called everytime Mouse is over the RolloutPanel
+ * Adds an Function that is called everytime Mouse is over the RollOutPanel
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-asdf_RolloutPanel.prototype.registerOnMouseOverEvent = function(functionName, params){
+asdf_RollOutPanel.prototype.registerOnMouseOverEvent = function(functionName, params){
     if(params == null)
         params = new EventParameter();
     this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
@@ -158,11 +233,11 @@ asdf_RolloutPanel.prototype.registerOnMouseOverEvent = function(functionName, pa
 }
 
 /**
- * Adds an Function that is called everytime RolloutPanel is clicked
+ * Adds an Function that is called everytime RollOutPanel is clicked
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-asdf_RolloutPanel.prototype.registerOnMouseClickEvent = function(functionName,  params){
+asdf_RollOutPanel.prototype.registerOnMouseClickEvent = function(functionName,  params){
     if(params == null)
         params = new EventParameter();
         
@@ -171,11 +246,11 @@ asdf_RolloutPanel.prototype.registerOnMouseClickEvent = function(functionName,  
 }
 
 /**
- * Adds an Function that is called everytime Mouse leave the RolloutPanel
+ * Adds an Function that is called everytime Mouse leave the RollOutPanel
  * \param: functionName    string           Name of the Function
  * \param: params          EventParameter   Parameter for the called functions
  */
-asdf_RolloutPanel.prototype.registerOnMouseOutEvent = function(functionName,  params){
+asdf_RollOutPanel.prototype.registerOnMouseOutEvent = function(functionName,  params){
     if(params == null)
         params = new EventParameter();
         

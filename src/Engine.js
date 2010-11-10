@@ -53,11 +53,12 @@ function init(elem, parentObject){
 			elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.bgColor, elem.width, elem.height, elem.page_size_x, elem.page_size_y, elem.animation_speed, pages, elem.extra_css , elem.initial_show );
             registerActions(elem);           
 		break;		
-		/*
 		case "RollOutPanel":
-			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
+			elem.object = new asdf_RollOutPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.animation_speed, elem.extra_css,elem.initial_show );
+            registerActions(elem);           
 		break;
-		case "Formular":
+		/*
+        case "Formular":
 			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
 		case "GridPanel":
@@ -108,7 +109,7 @@ function registerActions(element){
 			}
 		}
 		} else{ // put out some warning
-			if(globals.debug>1)
+			if(globals.debug>2)
 				alert("Warning: init(): Elemement " + element.id + " has no " + actions[i]+ " action defined");
 		}
 		
@@ -284,7 +285,7 @@ function getJsonObject(id){
 	var elem = jsonObject;
     for(var i=0; i < path.length; i++){
     	//alert("Path:" + path[i]);
-        name = path[i];
+        var name = path[i];
         //alert("Name:" + name);
         if(name == "")
             break;

@@ -98,13 +98,11 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
         this.mAnimationSpeed = globals.defaultAnimtionSpeed;
     else    
         this.mAnimationSpeed = animationSpeed;
-         
-    if(initialShow == null)
+   
+    if(initialShow != false)
         this.mInitialShow = true;
-    else if(initialShow == "false")
-        this.mInitialShow = false;
     else
-        this.mInitialShow = true;
+        this.mInitialShow = initialShow;
         
     this.mChildren = new Array();
     this.mPages = pages;
@@ -179,16 +177,16 @@ asdf_PagePanel.prototype.addChild = function(child){
                 init(child, parent);
         this.mChildren[this.mChildren.length] = child;
         
+        for(var grandChild in child.children){
+            showElement(child.children[grandChild].id);
+        }
         if(child.object.mInitialShow != false){
-            if(!isElementOf(child, this.mPages) || child == this.mPages[0])
-                child.object.show();
-            else
-                child.object.hide();
-            // init and add all grandChildren
-            for(var grandChild in child.children){
-                showElement(child.children[grandChild].id);
-            }
-        } 
+            child.object.show();
+                    // init and add all grandChildren
+            
+        } else
+            child.object.hide();
+        
     }
    
     
