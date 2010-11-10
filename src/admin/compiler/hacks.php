@@ -17,8 +17,8 @@
 			$object["position_x"] = sprintf("%dpx", $extract_x - $pos_x);
 			$extract_y = extractPosition($object["id"], $object["position_y"]);
 			$object["position_y"] = sprintf("%dpx", $extract_y - $pos_y);
-			$newx = $pos_x + $extract_x;
-			$newy = $pos_y + $extract_y;
+			$newx = $extract_x;
+			$newy = $extract_y;
 		}
 		if(count($object["children"]) > 0) {
 			foreach($object["children"] as $child => $childobj) {
