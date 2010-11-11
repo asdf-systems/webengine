@@ -1,8 +1,9 @@
 <?
 	require_once("auth.php");
 
-	$ROOT=getcwd()."/../";
-	$OUTPUT=getcwd()."/../jsonObject.js";
+	$ROOT = getcwd()."/../";
+	$OUTPUT = getcwd()."/../jsonObject.js";
+	$FONTDIRS = Array("/var/www/fonts/");
 	makeSession();
 	login();
 

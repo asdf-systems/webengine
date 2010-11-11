@@ -1,10 +1,50 @@
+<?
+	/**
+	 * Little brother of the compiler's function
+	 */
+
+	function isFileOfInterest_f($file) {
+		if($file[0] == '.') {
+			return false;
+		}
+		if(is_dir($file)) {
+			return false;
+		}
+		return true;
+	}
+
+	function getDirectoryContent_f($path) {
+		$content = Array();
+		$dirhandle = opendir($path);
+		if(!$dirhandle) {
+			die("Font directory \"".$path."\" could not be openend");
+		}
+
+		while(($file = readdir($dirhandle)) !== false) {
+			if(isFileOfInterest_f($file)) {
+				array_push($content, $file);
+			}
+		}
+		return $content;
+	}
+
+	$FONTS = Array();
+	foreach($FONTDIRS as $FONTDIR) {
+		$LOCALFONTS = getDirectoryContent_f($FONTDIR);
+		foreach($LOCALFONTS as $LOCALFONT) {
+			array_push($FONTS, $FONTDIR."/".$LOCALFONT);
+		}
+	}
+?>
 <script>
 	function refreshImage() {
 		var image = document.getElementById("renderimage");
 		var text = escape(document.getElementById("renderinput").value);
 		var col = escape(document.getElementById("fcolor").value);
 		var size = escape(document.getElementById("fsize").value);
-		image.src="textrenderer/textrenderer.php?color="+col+"&size="+size+"&text="+text;
+		var fontselect = document.getElementById("ffont");
+		var font = escape(fontselect.options[fontselect.selectedIndex].value);
+		image.src="textrenderer/textrenderer.php?color="+col+"&size="+size+"&text="+text+"&font="+font;
 	}
 </script>
 <center>
@@ -16,7 +56,13 @@
 		</tr>
 		<tr>
 			<td align="center">
-				Size: <input type="text" id="fsize" value="10"> Color: <input type="text" id="fcolor" value="#000000">
+			Font: <select id="ffont">
+<?
+	foreach($FONTS as $FONT) {
+		echo "<option value=\"".$FONT."\">".basename($FONT)."</option>";
+	}
+?>
+			</select> Size: <input type="text" id="fsize" value="10"> Color: <input type="text" id="fcolor" value="#000000">
 			</td>
 		</tr>
 		<tr>

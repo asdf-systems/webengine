@@ -1,5 +1,5 @@
 <?
-	$fontfile = "./testfont.ttf";
+	$fontfile = getFont();
 
 	$text = getTextvar();
 	$size = getFontSize();
@@ -118,5 +118,12 @@
 			return 10;
 		}
 		return $_GET["size"];
+	}
+
+	function getFont() {
+		if(!isset($_GET["font"])) {
+			return "./testfont.ttf";
+		}
+		return $_GET["font"];
 	}
 ?>
