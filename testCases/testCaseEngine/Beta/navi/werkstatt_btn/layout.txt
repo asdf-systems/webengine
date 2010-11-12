@@ -10,3 +10,4 @@ action_click=HIDE(/), SHOW(/werkstatt/)
 alt_text="werkstatt"
 extra_css=naviButton
 initial_show=true
+layer_level=800

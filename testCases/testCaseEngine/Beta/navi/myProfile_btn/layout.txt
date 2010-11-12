@@ -10,3 +10,4 @@ action_click=HIDE(/),SHOW(/myProfile/)
 alt_text=my profile
 extra_css=naviButon
 initial_show=false
+layer_level=800

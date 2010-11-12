@@ -10,3 +10,4 @@ action_click=HIDE(/),SHOW(/news/)
 alt_text="news"
 extra_css=news_btn
 initial_show=true
+layer_level=800

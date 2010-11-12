@@ -10,3 +10,4 @@ action_click=HIDE(/), SHOW(/contact/)
 alt_text=contact us
 extra_css=naviButton
 initial_show=true
+layer_level=800
