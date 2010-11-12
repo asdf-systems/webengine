@@ -22,6 +22,7 @@
 			// in the reference file (and those still need proper handling)
 			// checkForSpecialAttributes() is called upon the object
 			// containing only the data from the reference file.
+			dieOnError(is_dir($refpath), "Found invalid reference in \"".$file."\"");
 			$refelem = compile($refpath);
 			$elem = checkForSpecialAttributes(dirname($file), $elem);
 			$elem = array_merge($refelem, $elem);
