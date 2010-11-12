@@ -52,7 +52,7 @@
 	 * the filename.
 	 */
 	function getFileInformation($file) {
-		$data = dieOnError(stat($file));
+		$data = dieOnError(stat($file), "Could not open \"".$file."\"");
 		return array_merge($data, getExtraData($file));
 	}
 
