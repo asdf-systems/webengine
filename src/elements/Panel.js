@@ -109,11 +109,24 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
  */
 asdf_Panel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+   this.hideChildren();
+}
+
+asdf_Panel.prototype.hideChildren = function(){
     for(var i = 0; i < this.mChildren.length; i++){
         var child = this.mChildren[i];
         child.object.hide();
     }
 }
+
+asdf_Panel.prototype.showChildren = function(){
+    for(var i = 0; i < this.mChildren.length; i++){
+        var child = this.mChildren[i];
+        if(child.object.mInitialShow != false)
+            child.object.show();
+    }
+}
+
 
 /**
  * instant show Panel
@@ -123,11 +136,7 @@ asdf_Panel.prototype.show = function(){
     $(this.mDomTreeObject).show();
     this.mDomTreeObject.style.background = this.mBgColor;
     setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
-    for(var i = 0; i < this.mChildren.length; i++){
-        var child = this.mChildren[i];
-        if(child.object.mInitialShow != false)
-            child.object.show();
-    }
+    this.showChildren();
 }
 
 /**

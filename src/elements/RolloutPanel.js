@@ -118,11 +118,24 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
  */
 asdf_RollOutPanel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+    this.hideChildren();
+}
+
+asdf_RollOutPanel.prototype.hideChildren = function(){
     for(var i = 0; i < this.mChildren.length; i++){
         var child = this.mChildren[i];
         child.object.hide();
     }
 }
+
+asdf_RollOutPanel.prototype.showChildren = function(){
+    for(var i = 0; i < this.mChildren.length; i++){
+        var child = this.mChildren[i];
+        if(child.object.mInitialShow != false)
+            child.object.show();
+    }
+}
+
 
 /**
  * instant show Panel
@@ -132,11 +145,7 @@ asdf_RollOutPanel.prototype.show = function(){
     $(this.mDomTreeObject).show();
     this.mDomTreeObject.style.background = this.mBgColor;
     setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
-    for(var i = 0; i < this.mChildren.length; i++){
-        var child = this.mChildren[i];
-        if(child.object.mInitialShow != false)
-            child.object.show();
-    }
+    this.showChildren();
 }
 
 
@@ -178,9 +187,9 @@ asdf_RollOutPanel.prototype.specificAction = function(params){
 		case "rollout": // no break for runthrough
 		case "down":
 		case "slidedown":
-            setObjectSize(this.mDomTreeObject, 0,0);
+            //setObjectSize(this.mDomTreeObject, 0,0);
 			// for slideDown - hav to be hidden, but need show to initialise childs
-            this.show(); this.hide();
+            this.show(); this.hide(); this.showChildren();
             $(this.mDomTreeObject).slideDown(this.mAnimationSpeed, this.rollDownCallback);
 		break;
 		case "rollup":
