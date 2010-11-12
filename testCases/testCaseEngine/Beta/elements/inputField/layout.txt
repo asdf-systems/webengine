@@ -1,0 +1,16 @@
+[InputField]
+position_x=491px
+position_y=0px
+width=176px
+height=24px
+input_sensitiv_field_offsetX=0px
+input_sensitiv_field_offsetY=0px
+backgroundImage_src=inputField_bg.png
+#like: abc[a..z]
+forbidden_signs=""
+password_modus=off
+font_color=#ababa4
+font_size=12pt
+font_family=Tahoma, Arial
+extra_css=asdf_stdInputField
+initial_show=true

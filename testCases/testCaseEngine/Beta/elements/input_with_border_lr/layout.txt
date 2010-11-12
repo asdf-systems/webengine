@@ -1,0 +1,17 @@
+[InputField]
+position_x=499px
+position_y=0px
+width=181px
+height=24px
+input_sensitiv_field_offsetX=3px
+input_sensitiv_field_offsetY=0px
+backgroundImage_src=input_with_border_lr.png
+#like: abc[a..z]
+forbidden_signs=""
+password_modus=off
+font_color=#ababa4
+font_size=12pt
+font_family=Tahoma, Arial
+extra_css=asdf_input_with_border
+default_value=""
+initial_show=true

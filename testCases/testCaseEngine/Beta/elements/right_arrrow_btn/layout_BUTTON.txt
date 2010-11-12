@@ -1,0 +1,9 @@
+[Button]
+position_x=657px
+position_y=32px
+width=13px
+height=13px
+standard_src=right_arrow_btn.png
+alt_text="right_arrow_btn"
+extra_css=asdf_right_arrow_btn
+initial_show=true

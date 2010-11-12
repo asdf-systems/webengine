@@ -1,0 +1,12 @@
+[Button]
+position_x=491px
+position_y=0px
+width=175px
+height=24px
+standard_src=logout_btn.png
+activ_src=
+hover_src=
+action_click=
+alt_text=
+extra_css=
+initial_show=false

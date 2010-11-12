@@ -1,0 +1,10 @@
+[/elements/inputField]
+position_x=302px
+position_y=0px
+width=176px
+height=24px
+#like: abc[a..z]
+forbidden_signs=""
+extra_css=asdf_searchField
+default_value=search
+initial_show=true

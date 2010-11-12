@@ -1,0 +1,5 @@
+[/elements/right_arrow_btn/]
+action_click=SEND(., login)
+alt_text="login"
+extra_css=asdf_login_btn
+initial_show=true

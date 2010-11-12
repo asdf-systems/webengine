@@ -1,0 +1,8 @@
+[RollOutPanel]
+position_x=498px
+position_y=24px
+width=181px
+height=30px
+animation_speed=200
+extra_css=asdf_password_rollout
+initial_show=false

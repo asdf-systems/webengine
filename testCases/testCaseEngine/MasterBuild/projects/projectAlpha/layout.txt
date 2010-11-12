@@ -5,5 +5,4 @@ width=720px
 height=586px
 background_color=#aaaaaa
 animation_speed=200
-action_click=SPECIFIC(.,rollup)
 initial_show=false
