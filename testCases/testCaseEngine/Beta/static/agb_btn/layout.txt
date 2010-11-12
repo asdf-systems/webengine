@@ -1,0 +1,10 @@
+[Button]
+position_x=1099px
+position_y=1179px
+width=29px
+height=13px
+standard_src=agb_bg.png
+action_click=HIDE(/), SHOW(/agb/)
+alt_text=Allgemeine Geschäfts Bestimmungen
+extra_css=footer_button
+initial_show=true
