@@ -1,5 +1,5 @@
 [header_panel.png]
-position_x=478px
+position_x=298px
 position_y=0px
 extra_css=asdf_headerPanel
 initial_show=true

@@ -1,0 +1,6 @@
+[header_panel.png]
+position_x=278px
+position_y=0px
+alt_key=
+extra_css=
+initial_show=false

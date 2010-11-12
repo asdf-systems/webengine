@@ -1,0 +1,8 @@
+[Panel]
+position_x=278px
+position_y=130px
+background_color=
+width=150px
+height=210px
+extra_css=naviBg
+initial_show=true

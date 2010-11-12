@@ -1,0 +1,12 @@
+[Button]
+position_x=278px
+position_y=208px
+width=150px
+height=25px
+standard_src=werkstatt_normal_bg.png
+activ_src=werkstatt_hover_bg.png
+hover_src=werkstatt_hover_bg.png
+action_click=HIDE(/), SHOW(/werkstatt/)
+alt_text="werkstatt"
+extra_css=naviButton
+initial_show=true

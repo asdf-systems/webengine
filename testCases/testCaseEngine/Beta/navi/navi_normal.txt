@@ -1,0 +1,5 @@
+[navi_normal_bg.png]
+position_x=278px
+position_y=117px
+extra_css=navi_normal_bg
+initial_show=true

@@ -1,0 +1,12 @@
+[Button]
+position_x=278px
+position_y=241px
+width=150px
+height=25px
+standard_src=support_normal_bg.png
+activ_src=support_hover_bg.png
+hover_src=support_hover_bg.png
+action_click=HIDE(/), SHOW(/support/)
+alt_text=support
+extra_css=naviButton
+initial_show=true

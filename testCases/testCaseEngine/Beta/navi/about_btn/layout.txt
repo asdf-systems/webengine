@@ -1,0 +1,12 @@
+[Button]
+position_x=278px
+position_y=275px
+width=150px
+height=25px
+standard_src=about_normal_bg.png
+activ_src=about_hover_bg.png
+hover_src=about_hover_bg.png
+action_click=HIDE(/), SHOW(/about/)
+alt_text=about us
+extra_css=naviButton
+initial_show=true

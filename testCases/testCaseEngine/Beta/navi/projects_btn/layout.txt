@@ -1,0 +1,12 @@
+[Button]
+position_x=278px
+position_y=169px
+width=150px
+height=25px
+standard_src=projects_normal_bg.png
+activ_src=projects_hover_bg.png
+hover_src=projects_hover_bg.png
+action_click=HIDE(/), SHOW(/projects/)
+alt_text="projects"
+extra_css=naviButton
+initial_show=true
