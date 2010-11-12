@@ -213,7 +213,7 @@ asdf_RollOutPanel.prototype.mouseOverPanel = function(params){
     var e = params.event;
     var x = e.pageX - this.mDomTreeObject.offsetLeft;
 	var y = e.pageY - this.mDomTreeObject.offsetTop;
-	if(x > this.mWidth || y > this.mHeight || x < 0 || y < 0)
+	if(x > getValueWithoutUnits(this.mWidth) || y > getValueWithoutUnits(this.mHeight) || x < 0 || y < 0)
 	   return false;
     
      return true;

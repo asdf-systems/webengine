@@ -173,6 +173,13 @@ function getValueWithUnits(value){
      
 }
 
+function getValueWithoutUnits(value){
+    value += "";
+    value = value.replace(/px/, "");
+    value = value.replace(/%/, "");
+    return Number(value);
+
+}
 /**
  * takes an pixel or prozent value, invert the value and return
  */
