@@ -103,10 +103,10 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
     $(this.mDomTreeObject).mouseout(onMouseOut);
     $(this.mDomTreeObject).click(onMouseClick);
     
-	var params = new EventParameter();
+	/*var params = new EventParameter();
   	params.parameter[0] = this.mId;
 	params.parameter[1] = "rollup";
-    this.registerOnMouseOutEvent( ActionHandlerSpecific, params);
+    this.registerOnMouseOutEvent( ActionHandlerSpecific, params);*/
     
     return this;
 }
