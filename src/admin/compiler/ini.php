@@ -37,7 +37,11 @@
 	 * @returns the line without the comment section
 	 */
 	function stripComments($line) {
-		return preg_replace("/^([^#]*)#.+$/", "$1", $line);
+		if($line[0] == '#') {
+			return "";
+		} else {
+			return $line;
+		}
 	}
 
 	/**
