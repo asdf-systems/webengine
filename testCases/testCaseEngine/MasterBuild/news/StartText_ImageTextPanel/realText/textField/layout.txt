@@ -7,5 +7,5 @@ width=200px
 height=200px
 #Path to textfile
 background_color=#ffffff
-text=startText.txt
+texts=startText.txt
 extra_css=textField

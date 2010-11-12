@@ -51,7 +51,7 @@ function init(elem, parentObject){
 			registerActions(elem);           
 		break;
 		case "TextField":
-			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.text, elem.font_family, elem.font_size, elem.extra_css, elem.initial_show );
+			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.texts, elem.font_family, elem.font_size, elem.extra_css, elem.initial_show );
             registerActions(elem);           
 		break;
 		case "PagePanel":
@@ -306,6 +306,10 @@ function getJsonObject(id){
         if(name == "")
             break;
         elem = elem.children[name];
+        if(elem == undefined || elem == null){
+            if(globals.debug > 0)
+                alert ("Warning: cannot found object: <" + id + "> Maybe wrong reference an action?\n getJsonObejct():  ")
+        }
         //alert("Current Element:" + elem.id);
     }
 	

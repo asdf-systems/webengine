@@ -7,4 +7,4 @@ page_size_x=719px
 page_size_y=612px
 animation_speed=200
 pages=page1,page2,page3
-initial_show=false
+initial_show=true
