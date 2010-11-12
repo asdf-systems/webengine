@@ -1,0 +1,4 @@
+[ProjectAlpha_text02.jpg]
+position_x=477px
+position_y=588px
+initial_show=false

@@ -1,0 +1,4 @@
+[ProjectAlpha_image01.jpg]
+position_x=432px
+position_y=200px
+initial_show=true

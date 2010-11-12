@@ -1,0 +1,4 @@
+Hallo dies ist 
+ein Starttext
+mi ner Menge Zeilenumbrüche
+Und auch weiteren Texten

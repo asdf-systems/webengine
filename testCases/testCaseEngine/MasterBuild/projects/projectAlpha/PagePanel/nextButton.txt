@@ -1,0 +1,5 @@
+[/elements/nextButton]
+position_x=1148px
+position_y=588px
+action_click=SPECIFIC(../PagePanel, nextPage)
+initial_show=false

@@ -1,0 +1,7 @@
+[Button]
+position_x=430px
+position_y=128px
+standard_src=balken_element.jpg
+activ_src=balken_element_activ.jpg
+hover_src=balken_element_hover.jpg
+initial_show=false

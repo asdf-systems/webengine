@@ -1,0 +1,8 @@
+[RollOutPanel]
+position_x=431px
+position_y=316px
+background_color=
+width=720px
+height=586px
+animation_speed=200
+initial_show=false

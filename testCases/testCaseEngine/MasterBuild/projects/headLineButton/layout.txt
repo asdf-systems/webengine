@@ -1,0 +1,5 @@
+[/elements/headLine/]
+standard_src=Projects_Header.jpg
+action_click=SPECIFIC(../ProjectAlpha/, rollout)
+extra_css=headLineButton
+initial_show=false
