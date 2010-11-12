@@ -8,3 +8,4 @@ forbidden_signs=""
 extra_css=asdf_searchField
 default_value=search
 initial_show=true
+layer_level=800

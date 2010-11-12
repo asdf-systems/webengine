@@ -140,6 +140,8 @@ asdf_Button.prototype.show = function(){
  */
 asdf_Button.prototype.setActiveImage = function(){
     //object = event.currentTarget.nextNode;
+    if(this.mDomTreeObject == null)
+        return;
     this.mActive = true;
     this.mDomTreeObject.src = this.mImageActive;
 }
@@ -148,6 +150,8 @@ asdf_Button.prototype.setActiveImage = function(){
  * Changes Background Image to normal Image
  */
 asdf_Button.prototype.setNormalImage = function(){
+    if(this.mDomTreeObject == null)
+        return;
     this.mActive = false;
     this.mDomTreeObject.src = this.mImageNormal;
 }

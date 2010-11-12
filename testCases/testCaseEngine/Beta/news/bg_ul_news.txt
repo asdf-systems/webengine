@@ -1,0 +1,8 @@
+[background_ul_news.png]
+position_x=0px
+position_y=0px
+width=133px
+height=507px
+extra_css=background
+initial_show=true
+layer_level=200

@@ -1,0 +1,8 @@
+[header_news_bg.png]
+position_x=432px
+position_y=115px
+width=721px
+height=47px
+extra_css=news_header
+initial_show=true
+layer_level=300

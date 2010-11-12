@@ -1,0 +1,9 @@
+[Panel]
+position_x=278px
+position_y=128px
+width=874px
+height=772px
+extra_css=news_panel
+initial_show=false
+# higher level - object more in front
+layer_level=400

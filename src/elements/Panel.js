@@ -181,11 +181,15 @@ asdf_Panel.prototype.addChild = function(child){
  */
 asdf_Panel.prototype.specificAction = function(params){
     actionName = params.parameter[0];
-    object = params.event.currentTarget.nextNode;
+    //object = params.event.currentTarget.nextNode;
     switch(actionName){
-        case "default":
-            if(globals.debug > 0)
-                alert("Panel: action name: " + actionName + " unknown!");
+        default:
+            // check if children has action
+            for(var i =0; i< this.mChildren.length; i++){
+                this.mChildren[i].object.specificAction(params);  
+            }
+            //if(globals.debug > 0)
+              //  alert("Panel: action name: " + actionName + " unknown!");
         break;
     }
 }
