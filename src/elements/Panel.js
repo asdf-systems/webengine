@@ -13,8 +13,9 @@
  * \param: height       int         height of the Panel (need if filled with bg Color) : Default: 0
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
+ * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class, initialShow){
+function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -78,6 +79,12 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
+        
+     
+    if(zIndex == null || zIndex == undefined)
+        this.mZIndex = 500;
+    else
+        this.mZIndex = zIndex;
 
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
@@ -137,6 +144,7 @@ asdf_Panel.prototype.show = function(){
     this.mDomTreeObject.style.background = this.mBgColor;
     setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
     this.showChildren();
+    this.mDomTreeObject.style.zIndex = this.mZIndex;
 }
 
 /**

@@ -14,8 +14,9 @@
  * \param: pages        jsonObject[] all Pages
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
+ * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , height, pageSizeX, pageSizeY, animationSpeed, pages, extra_css_class, initialShow){
+function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , height, pageSizeX, pageSizeY, animationSpeed, pages, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -103,7 +104,12 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
-        
+    
+    if(zIndex == null || zIndex == undefined)
+        this.mZIndex = 500;
+    else
+        this.mZIndex = zIndex;
+    
     this.mChildren = new Array();
     this.mPages = pages;
     this.mCurrentPage = 0;
@@ -183,6 +189,7 @@ asdf_PagePanel.prototype.show = function(){
     $(this.mDomPages).show();
     this.mDomTreeObject.style.background = this.mBgColor;
     this.showChildren();
+    this.mDomTreeObject.style.zIndex = this.mZIndex;
     
 }
 

@@ -1,4 +1,4 @@
-[pathtoImage]
+[copy_right_img.png]
 position_x=299px
 position_y=1176px
 width=120px

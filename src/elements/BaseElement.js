@@ -11,8 +11,9 @@
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
+ * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css_class, initialShow){
+function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -65,7 +66,12 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
-        
+    
+    if(zIndex == null || zIndex == undefined)
+        this.mZIndex = 500;
+    else
+        this.mZIndex = zIndex;
+           
     this.mDomTreeObject = null;
 
     //* private:
@@ -104,6 +110,7 @@ asdf_BaseElement.prototype.show = function(){
             $(this.mDomTreeObject).click(onMouseClick);
             setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
             this.mDomTreeObject.style.background = this.mBgColor;
+            this.mDomTreeObject.style.zIndex = this.mZIndex;
 
     }
     $(this.mDomTreeObject).show();

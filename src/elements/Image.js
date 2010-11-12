@@ -11,8 +11,9 @@
  * \param: src		    string      path to the Image that sould be show
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
+ * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, initialShow){
+function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, initialShow,zIndex){
     
     
     //* public: 
@@ -68,6 +69,12 @@ function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, in
     else
         this.mInitialShow = initialShow;
         
+     
+    if(zIndex == null || zIndex == undefined)
+        this.mZIndex = 500;
+    else
+        this.mZIndex = zIndex;
+        
     this.mSource = src;
     this.mDomTreeObject = null; 
 
@@ -105,6 +112,7 @@ asdf_Image.prototype.show = function(){
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
         setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+        this.mDomTreeObject.style.zIndex = this.mZIndex;
     }
 		
     $(this.mDomTreeObject).show();

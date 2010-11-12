@@ -1,5 +1,5 @@
 [RollOutPanel]
-position_x=498px
+position_x=499px
 position_y=24px
 width=181px
 height=30px

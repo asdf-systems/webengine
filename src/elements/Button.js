@@ -15,8 +15,9 @@
  * \param: image_hover  string      Path to Image that showed if Mouse is over Button. Default: =image_normal
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
+ * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class, initialShow){
+function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -80,7 +81,12 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
-
+    
+    if(zIndex == null || zIndex == undefined)
+        this.mZIndex = 500;
+    else
+        this.mZIndex = zIndex;
+    
     this.mDomTreeObject = null;
     
     //* private:
@@ -121,6 +127,7 @@ asdf_Button.prototype.show = function(){
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
         setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+        this.mDomTreeObject.style.zIndex = this.mZIndex;
 
     }
     

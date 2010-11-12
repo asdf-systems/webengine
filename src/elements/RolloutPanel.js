@@ -13,8 +13,9 @@
  * \param: height       int         height of the Panel (need if filled with bg Color) : Default: 0
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
+ * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , height,animationSpeed, extra_css_class, initialShow){
+function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , height,animationSpeed, extra_css_class, initialShow, zIndex){
     
 	//! \todo add BGColor width and height - not in because working offline    
     //* public: 
@@ -83,6 +84,11 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
+    
+    if(zIndex == null || zIndex == undefined)
+        this.mZIndex = 500;
+    else
+        this.mZIndex = zIndex;
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
     this.mChildren = new Array();
@@ -146,6 +152,7 @@ asdf_RollOutPanel.prototype.show = function(){
     this.mDomTreeObject.style.background = this.mBgColor;
     setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
     this.showChildren();
+    this.mDomTreeObject.style.zIndex = this.mZIndex;
 }
 
 

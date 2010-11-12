@@ -35,32 +35,32 @@ function init(elem, parentObject){
 	// check Type 
     switch(elem.type){
 		case "Button":
-            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css, elem.initial_show );
+            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css, elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		case "Panel":
-			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css,elem.initial_show );
+			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
         case "Image":
-            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css,elem.initial_show );
+            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_src, elem.forbidden_signs, elem.password_modus, elem.font_color, elem.font_size, elem.font_family, elem.extra_css, elem.initial_show );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_src, elem.forbidden_signs, elem.password_modus, elem.font_color, elem.font_size, elem.font_family, elem.extra_css, elem.initial_show, elem.layer_level );
 			registerActions(elem);           
 		break;
 		case "TextField":
-			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.texts, elem.font_family, elem.font_size, elem.extra_css, elem.initial_show );
+			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.texts, elem.font_family, elem.font_size, elem.extra_css, elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		case "PagePanel":
             var pages = getPages(elem);
-			elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.page_size_x, elem.page_size_y, elem.animation_speed, pages, elem.extra_css , elem.initial_show );
+			elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.page_size_x, elem.page_size_y, elem.animation_speed, pages, elem.extra_css , elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;		
 		case "RollOutPanel":
-			elem.object = new asdf_RollOutPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.animation_speed, elem.extra_css,elem.initial_show );
+			elem.object = new asdf_RollOutPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.animation_speed, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		/*

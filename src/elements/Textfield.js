@@ -12,9 +12,10 @@
  * \param: text         int         text to show
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
+ * \param: z-Index      int         number to show in fore or background - higer is more in Front
  * todo klären wer das übersetze der Textfiles übernimmt (also formatierung (rtf, txt, html) -> html)
  */
-function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, extra_css_class, initialShow){
+function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -84,6 +85,11 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
+    
+    if(zIndex == null || zIndex == undefined)
+        this.mZIndex = 500;
+    else
+        this.mZIndex = zIndex;
         
     this.mDomTreeObject = null;
 
@@ -125,6 +131,7 @@ asdf_Textfield.prototype.show = function(){
             this.mDomTreeObject.style.fontSize = this.mFontSize;
             setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
             this.mDomTreeObject.style.background = this.mBgColor;
+            this.mDomTreeObject.style.zIndex = this.mZIndex;
 
     }
     $(this.mDomTreeObject).show();

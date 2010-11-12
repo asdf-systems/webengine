@@ -21,8 +21,9 @@
  * \param: fontFamily   string      family of the text typed in the field
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
+ * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password ,fontColor, fontSize, fontFamily,  extra_css_class, initialShow){
+function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password ,fontColor, fontSize, fontFamily,  extra_css_class, initialShow,zIndex){
     
     
     //* public: 
@@ -145,7 +146,12 @@ function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, hei
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
-                
+    
+    if(zIndex == null || zIndex == undefined)
+        this.mZIndex = 500;
+    else
+        this.mZIndex = zIndex;
+                 
     this.mDomTreeObject = null;
     this.mDomBackground = null;
     this.mDomInputField = null;
@@ -258,6 +264,7 @@ asdf_InputField.prototype.show = function(){
             this.mDomInputField.style.color = this.mFontColor;
             this.mDomInputField.style.fontFamily = this.mFontFamily;
             this.mDomInputField.style.fontSize = this.mFontSize;
+            this.mDomTreeObject.style.zIndex = this.mZIndex;
     }
     $(this.mDomTreeObject).show();
 }
