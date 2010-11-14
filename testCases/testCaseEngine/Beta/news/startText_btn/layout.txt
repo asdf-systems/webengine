@@ -1,0 +1,14 @@
+[Button]
+position_x=431px
+position_y=162px
+width=722px
+height=151px
+standard_src=
+active_src=
+hover_src=
+action_click=
+alt_text=
+extra_css=
+initial_show=false
+# higher level - object more in front
+layer_level=500

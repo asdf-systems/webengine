@@ -1,5 +1,5 @@
 [navi_with_profile_bg.png]
-position_x=278px
+position_x=100px
 position_y=117px
 width=151px
 height=258px
