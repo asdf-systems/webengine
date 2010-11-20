@@ -119,6 +119,7 @@ asdf_ImageTextField.prototype.show = function(){
     }
 		
     $(this.mDomTreeObject).show();
+
 }
 
 /**
@@ -130,6 +131,7 @@ asdf_IamgeTextField.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    notifyParent(this);
 }
 
 /**

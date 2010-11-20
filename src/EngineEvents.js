@@ -50,6 +50,14 @@ function ActionHandlerSend(params){
 
 }
 
+/**
+ * check if parent has to be notified about changes - and call if necessary
+ */
+function notifyParent(object){
+    var parent = getParent(object);
+    if(parent.mType == HVPanel)
+        parent.arrangeChildren;
+}
 
 
 /**

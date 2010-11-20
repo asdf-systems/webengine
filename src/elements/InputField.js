@@ -305,12 +305,14 @@ asdf_InputField.prototype.setPosition = function(posX, posY){
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
     setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute");
     setObjectPosition(this.mDomBackground, 0,0,"absolute");
+    notifyParent(this);
 }
 
 asdf_InputField.prototype.setSize = function(sizeX, sizeY){
     this.mWidthX = sizeX;
     this.mHeightY = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
+    notifyParent(this);
 }
 /**
  * Start InputField Specific actions. ActionName has to be set on first element of params.parameter

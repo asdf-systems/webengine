@@ -146,10 +146,12 @@ asdf_Button.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    notifyParent(this);
 }
 
 asdf_Button.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomTreeObject, sizeX, sizeY);
+    notifyParent(this);
 }
 
 /**

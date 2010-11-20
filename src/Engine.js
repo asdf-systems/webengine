@@ -432,5 +432,11 @@ function checkBrowser(){
     return jQuery.browser;
 }
 
+/**
+ * @param   Element     object from which we want to know the parent
+ * @return  Elemnt      the parent Element
+ */
+function getParent(object){
+    return object.mDomTreeObject.nextNode;
+}
 //*};
-

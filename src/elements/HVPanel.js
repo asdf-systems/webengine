@@ -139,23 +139,6 @@ asdf_HVPanel.prototype.showChildren = function(){
 }
 
 /**
- * Function set Position for element
- * @param int posX  position X
- * @param int posY  position Y
- */
-asdf_HVPanel.prototype.setPosition = function(posX, posY){
-    this.mPosX = posX;
-    this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
-}
-
-asdf_HVPanel.prototype.setSize = function(sizeX, sizeY){
-    this.mWidthX = sizeX;
-    this.mHeightY = sizeY;
-    setObjectSize(this.mDomTreeObject, this.mWidthX, this.mHeightY);
-}
-
-/**
  * instant show Panel
  */
 asdf_HVPanel.prototype.show = function(){
@@ -165,6 +148,30 @@ asdf_HVPanel.prototype.show = function(){
     setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
+}
+
+/**
+ * Function set Position for element
+ * @param int posX  position X
+ * @param int posY  position Y
+ */
+asdf_HVPanel.prototype.setPosition = function(posX, posY){
+    this.mPosX = posX;
+    this.mPosY = posY;
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    notifyParent(this);
+}
+
+asdf_HVPanel.prototype.setSize = function(sizeX, sizeY){
+    this.mWidthX = sizeX;
+    this.mHeightY = sizeY;
+    setObjectSize(this.mDomTreeObject, this.mWidthX, this.mHeightY);
+    notifyParent(this);
+}
+
+
+asdf_HVPanel.prototype.arrangeChildren = function(sizeX, sizeY){
+
 }
 
 /**

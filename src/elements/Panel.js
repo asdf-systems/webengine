@@ -147,12 +147,14 @@ asdf_Panel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    notifyParent(this);
 }
 
 asdf_Panel.prototype.setSize = function(sizeX, sizeY){
     this.mWidthX = sizeX;
     this.mHeightY = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidthX, this.mHeightY);
+    notifyParent(this);
 }
 
 /**

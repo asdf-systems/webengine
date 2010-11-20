@@ -129,10 +129,12 @@ asdf_Image.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    notifyParent(this);
 }
 
 asdf_Image.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomTreeObject, sizeX, sizeY);
+    notifyParent(this);
 }
 /**
  * Start Image Specific actions. ActionName has to be set on first element of params.parameter
