@@ -102,6 +102,7 @@ function asdf_ImageTextField(_id, _parent, positionX, positionY, src, textField,
  */
 asdf_ImageTextField.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+    notifyParent(this);
 }
 
 /**
@@ -119,6 +120,7 @@ asdf_ImageTextField.prototype.show = function(){
     }
 		
     $(this.mDomTreeObject).show();
+    notifyParent(this);
 
 }
 

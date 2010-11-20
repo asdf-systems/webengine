@@ -118,6 +118,7 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
  */
 asdf_Textfield.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+    notifyParent(this);
 }
 
 /**
@@ -137,6 +138,7 @@ asdf_Textfield.prototype.show = function(){
 
     }
     $(this.mDomTreeObject).show();
+    notifyParent(this);
 }
 
 /**

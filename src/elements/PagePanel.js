@@ -154,6 +154,7 @@ asdf_PagePanel.prototype.hide = function(){
     $(this.mDomPages).hide();
     this.hideChildren();
     this.mCurrentPage = 0;
+    notifyParent(this);
     
 }
 
@@ -183,7 +184,7 @@ asdf_PagePanel.prototype.show = function(){
     this.mDomTreeObject.style.background = this.mBgColor;
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
-    
+    notifyParent(this);
 }
 
 /**

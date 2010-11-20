@@ -101,6 +101,7 @@ function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, in
  */
 asdf_Image.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+    notifyParent(this);
 }
 
 /**
@@ -118,6 +119,7 @@ asdf_Image.prototype.show = function(){
     }
 		
     $(this.mDomTreeObject).show();
+    notifyParent(this);
 }
 
 /**

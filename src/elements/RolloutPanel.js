@@ -127,6 +127,7 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
 asdf_RollOutPanel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
     this.hideChildren();
+    notifyParent(this);
 }
 
 asdf_RollOutPanel.prototype.hideChildren = function(){
@@ -155,6 +156,7 @@ asdf_RollOutPanel.prototype.show = function(){
     this.setSize(this.mWidth, this.mHeight);
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
+    notifyParent(this);
 }
 
 /**

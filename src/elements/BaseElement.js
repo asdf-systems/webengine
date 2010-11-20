@@ -99,6 +99,7 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css
  */
 asdf_BaseElement.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+    notifyParent(this);
 }
 
 /**
@@ -116,6 +117,7 @@ asdf_BaseElement.prototype.show = function(){
 
     }
     $(this.mDomTreeObject).show();
+    notifyParent(this);
 }
 
 /**

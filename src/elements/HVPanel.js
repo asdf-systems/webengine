@@ -11,11 +11,13 @@
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: width        int         width of the Panel (need if filled with bg Color) : Default: 0
  * \param: height       int         height of the Panel (need if filled with bg Color) : Default: 0
+ * \param: spacing      int         distance between Elements. Default : 5
+ * \param: orientaton   string      orientation of the Layout "horizintal" or "vertical": Default: vertical
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class, initialShow, zIndex){
+function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , height, spacing, orientation, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -88,7 +90,17 @@ function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , heigh
     else
         this.mZIndex = zIndex;
 
+    if(spacing == null || spacing == undefined)
+        this.mSpacing = 5;
+    else
+        this.mSpacing = spacing;
         
+    if(orientation == null || orientation == undefined)
+        this.mOrientation = "vertical";
+    else
+        this.mOrientation = "horizontal";
+    
+    
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
     this.mChildren = new Array();
     
@@ -119,6 +131,7 @@ function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , heigh
 asdf_HVPanel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
    this.hideChildren();
+   notifyParent(this);
 }
 
 asdf_HVPanel.prototype.hideChildren = function(){
@@ -148,6 +161,7 @@ asdf_HVPanel.prototype.show = function(){
     setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
+    notifyParent(this);
 }
 
 /**
@@ -170,10 +184,44 @@ asdf_HVPanel.prototype.setSize = function(sizeX, sizeY){
 }
 
 
-asdf_HVPanel.prototype.arrangeChildren = function(sizeX, sizeY){
-
+asdf_HVPanel.prototype.arrangeChildren = function(){
+     for(var i = 0; i < this.mChildren.length-1; i++){ // step through children - skip lastone
+        var child = this.mChildren[i];
+        var nextChild = this.getNextChild(i);
+        if(nextChild == null)
+            break;
+        var sizeX = child.mDomTreeObject.style.width;
+        var sizeY = child.mDomTreeObject.style.height;
+        var posX  = child.mDomTreeObject.style.left;
+        var posY  = child.mDomTreeObject.style.top;
+        var newPosX = nextChild.style.left;
+        var newPosY = nextChild.style.top;
+        if(this.mOrientation == "horizontal"){
+            newPosX = getValueWithUnits( getValueWithoutUnits(posX) + getValueWithoutUnits(sizeX) + this.mSpacing ) ;
+        } else { // vertical
+            newPosY = getValueWithUnits( getValueWithoutUnits(posY) + getValueWithoutUnits(sizeY) + this.mSpacing ) ;   
+        }
+        nextChild.setPosition(newPosX, newPosY);
+     }
 }
-
+/**
+ * PRIVATE
+ * checks for the next child element that has to be positioned (skip hidden elements)
+ */
+asdf_HVPanel.prototype.getNextChild = function(index){
+    var retElement = null;
+    // checks for next visible child - AND BREAK IF FOUND 
+    for(var i = index+1; i < this.mChildren.length-1; i++){
+        var child = this.mChildren[i];
+        if(child.mDomTreeObject.style.visibility == "hidden" || child.mDomTreeObject.style.display == "none")
+            continue;
+        retElement = child;
+        break;
+    }
+    
+    return retElement;
+}
+this.mChildren[i]
 /**
  * Add Child to the DomTree and save as Child
  * @param child     jsonElement     childElement to addd

@@ -248,6 +248,7 @@ asdf_InputField.prototype.checkSign = function(params){
  */
 asdf_InputField.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+    notifyParent(this);
 }
 
 /**
@@ -292,6 +293,7 @@ asdf_InputField.prototype.show = function(){
 
     }
     $(this.mDomTreeObject).show();
+    notifyParent(this);
 }
 
 /**

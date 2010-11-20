@@ -115,6 +115,7 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
  */
 asdf_Button.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
+    notifyParent(this);
 }
 
 /**
@@ -134,6 +135,7 @@ asdf_Button.prototype.show = function(){
     }
     
     $(this.mDomTreeObject).show();
+    notifyParent(this);
 
 }
 

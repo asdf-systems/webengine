@@ -119,6 +119,7 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
 asdf_Panel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
    this.hideChildren();
+   notifyParent(this);
 }
 
 asdf_Panel.prototype.hideChildren = function(){
@@ -126,6 +127,7 @@ asdf_Panel.prototype.hideChildren = function(){
         var child = this.mChildren[i];
         child.object.hide();
     }
+    notifyParent(this);
 }
 
 asdf_Panel.prototype.showChildren = function(){

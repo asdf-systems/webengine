@@ -56,7 +56,7 @@ function ActionHandlerSend(params){
 function notifyParent(object){
     var parent = getParent(object);
     if(parent.mType == HVPanel)
-        parent.arrangeChildren;
+        parent.arrangeChildren();
 }
 
 
