@@ -211,7 +211,23 @@ asdf_InputField.prototype.validate = function(event){
 asdf_InputField.prototype.checkSign = function(params){
     var object = params.event.currentTarget.nextNode;
     //    alert("KeyCode" + event.keyCode);
-    var asciiCode = event.keyCode;
+    var asciiCode;
+    /*if(navigator="Firefox")
+        alert("firefox");
+    if(navigator="Opera")
+        alert("opera");
+    if(navigator="Safari")
+        alert("safari");
+    if(navigator="chrome");
+        alert("chrome");
+    if(navigator="Microsoft Internet Explorer");
+        alert("IE - go home");*/
+    var browser = checkBrowser();
+    if(browser.mozilla)
+        var asciiCode = params.event.charCode;
+    else 
+        var asciiCode = params.event.keyCode;
+    
     var insertedSign = String.fromCharCode(asciiCode);
     if(object.mForbiddenSigns.length == 0)
         return;
@@ -241,6 +257,10 @@ asdf_InputField.prototype.show = function(){
 	//alert("InputField Show()");
     if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+         setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+         setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
+         this.mDomTreeObject.style.zIndex = this.mZIndex;
+         
             this.mDomBackground = createDomObjectDOM(this, this.mDomTreeObject, this.mId, "img", (this.mType+"_bgImage"), this.extra_css_class, this.mBgImage);
             if(this.mPassword)
                 this.mDomInputField = createDomObjectDOM(this, this.mDomTreeObject, (this.mId+"_inputField"), "input type=password ", this.mType, this.extra_css_class);
@@ -253,12 +273,7 @@ asdf_InputField.prototype.show = function(){
             $(this.mDomTreeObject).click(onMouseClick);
             $(this.mDomInputField).keypress(onKeyPress);
             $(this.mDomInputField).change(this.validate);
-            setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
-            setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight)
-            if(this.mBgImage != null){
-                this.mDomInputField.style.border= 0;
-                this.mDomInputField.style.background = "transparent";
-            }
+           
             setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute");
             setObjectPosition(this.mDomBackground, 0,0,"absolute");
             this.mDomTreeObject.style.background = this.mBgColor;
@@ -266,7 +281,15 @@ asdf_InputField.prototype.show = function(){
             this.mDomInputField.style.color = this.mFontColor;
             this.mDomInputField.style.fontFamily = this.mFontFamily;
             this.mDomInputField.style.fontSize = this.mFontSize;
-            this.mDomTreeObject.style.zIndex = this.mZIndex;
+            
+            this.mDomBackground.style.zIndex = Number(this.mZIndex)+10;
+            this.mDomInputField.style.zIndex = Number(this.mZIndex)+20;
+            
+            if(this.mBgImage != null){
+                this.mDomInputField.style.border= 0;
+                this.mDomInputField.style.background = "transparent";
+            }
+
     }
     $(this.mDomTreeObject).show();
 }
