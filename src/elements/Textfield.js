@@ -131,7 +131,7 @@ asdf_Textfield.prototype.show = function(){
             $(this.mDomTreeObject).click(onMouseClick);
             this.mDomTreeObject.style.fontFamily = this.mFontFamily;
             this.mDomTreeObject.style.fontSize = this.mFontSize;
-            setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+            this.setPosition(this.mPosX, this.mPosY, "absolute");
             this.mDomTreeObject.style.background = this.mBgColor;
             this.mDomTreeObject.style.zIndex = this.mZIndex;
 
@@ -139,6 +139,20 @@ asdf_Textfield.prototype.show = function(){
     $(this.mDomTreeObject).show();
 }
 
+/**
+ * Function set Position for element
+ * @param int posX  position X
+ * @param int posY  position Y
+ */
+asdf_TextField.prototype.setPosition = function(posX, posY){
+    this.mPosX = posX;
+    this.mPosY = posY;
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+}
+
+asdf_TextField.prototype.setSize = function(sizeX, sizeY){
+    setObjectSize(this.mDomTreeObject, sizeX, sizeY);
+}
 
 /**
  * Start Textfield Specific actions. ActionName has to be set on first element of params.parameter

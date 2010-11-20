@@ -128,13 +128,28 @@ asdf_Button.prototype.show = function(){
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
-        setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+        this.setPosition(this.mPosX,this.mPosY);
         this.mDomTreeObject.style.zIndex = this.mZIndex;
 
     }
     
     $(this.mDomTreeObject).show();
 
+}
+
+/**
+ * Function set Position for element
+ * @param int posX  position X
+ * @param int posY  position Y
+ */
+asdf_Button.prototype.setPosition = function(posX, posY){
+    this.mPosX = posX;
+    this.mPosY = posY;
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+}
+
+asdf_Button.prototype.setSize = function(sizeX, sizeY){
+    setObjectSize(this.mDomTreeObject, sizeX, sizeY);
 }
 
 /**

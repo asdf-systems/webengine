@@ -113,14 +113,27 @@ asdf_Image.prototype.show = function(){
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
-        setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+        this.setPosition(this.mPosX, this.mPosY);
         this.mDomTreeObject.style.zIndex = this.mZIndex;
     }
 		
     $(this.mDomTreeObject).show();
 }
 
+/**
+ * Function set Position for element
+ * @param int posX  position X
+ * @param int posY  position Y
+ */
+asdf_Image.prototype.setPosition = function(posX, posY){
+    this.mPosX = posX;
+    this.mPosY = posY;
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+}
 
+asdf_Image.prototype.setSize = function(sizeX, sizeY){
+    setObjectSize(this.mDomTreeObject, sizeX, sizeY);
+}
 /**
  * Start Image Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter

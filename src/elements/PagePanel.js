@@ -120,18 +120,9 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     this.mDomPages = createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_pages"), "div", this.mType, this.extra_css_class);
     this.mDomEvenPages = createDomObjectDOM(this, this.mDomPages, ( this.mId + "_evenPages"), "div", this.mType, this.extra_css_class);
     this.mDomOddPages = createDomObjectDOM(this, this.mDomPages, ( this.mId + "_oddPages"), "div", this.mType, this.extra_css_class);
-    // set Position for Panels
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
-    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, "absolute");
-
-    setObjectPosition(this.mDomPages, 0, 0, "absolute");
-    setObjectSize(this.mDomPages, this.mPageSizeX*2, this.mPageSizeY, "absolute");
     
-    setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
-    setObjectSize(this.mDomEvenPages, this.mPageSizeX, this.mPageSizeX, "absolute");    
-
-    setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
-    setObjectSize(this.mDomOddPages, this.mPageSizeX, this.mPageSizeX, "absolute");    
+    this.setPosition(this.mPosX, this.mPosY);
+    this.setSize(this.mWidth, this.mHeight);
     
      
     $(this.mDomPages).show();   
@@ -195,6 +186,30 @@ asdf_PagePanel.prototype.show = function(){
     
 }
 
+/**
+ * Function set Position for element
+ * @param int posX  position X
+ * @param int posY  position Y
+ */
+asdf_PagePanel.prototype.setPosition = function(posX, posY){
+    this.mPosX = posX;
+    this.mPosY = posY;
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomPages, 0, 0, "absolute");
+    setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
+    setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
+
+}
+
+asdf_PagePanel.prototype.setSize = function(sizeX, sizeY){
+    this.mWidthX = sizeX;
+    this.mHeightY = sizeY;
+    setObjectSize(this.mDomOddPages, this.mPageSizeX, this.mPageSizeX, "absolute");   
+    setObjectSize(this.mDomEvenPages, this.mPageSizeX, this.mPageSizeX, "absolute");    
+    setObjectSize(this.mDomPages, this.mPageSizeX*2, this.mPageSizeY, "absolute");
+    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, "absolute");    
+    
+}
 
 /**
  * Add Child to the DomTree and save as Child

@@ -93,7 +93,7 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
     this.mChildren = new Array();
     
     // set Position
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    this.setPosition(this.mPosX, this.mPosY);
 
     //* private:
     this.mMouseOverEvents = new Array();
@@ -138,6 +138,22 @@ asdf_Panel.prototype.showChildren = function(){
     }
 }
 
+/**
+ * Function set Position for element
+ * @param int posX  position X
+ * @param int posY  position Y
+ */
+asdf_Panel.prototype.setPosition = function(posX, posY){
+    this.mPosX = posX;
+    this.mPosY = posY;
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+}
+
+asdf_Panel.prototype.setSize = function(sizeX, sizeY){
+    this.mWidthX = sizeX;
+    this.mHeightY = sizeY;
+    setObjectSize(this.mDomTreeObject, this.mWidthX, this.mHeightY);
+}
 
 /**
  * instant show Panel

@@ -110,12 +110,27 @@ asdf_BaseElement.prototype.show = function(){
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
-            setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+            this.setPosition(this.mPosX, this.mPosY);
             this.mDomTreeObject.style.background = this.mBgColor;
             this.mDomTreeObject.style.zIndex = this.mZIndex;
 
     }
     $(this.mDomTreeObject).show();
+}
+
+/**
+ * Function set Position for element
+ * @param int posX  position X
+ * @param int posY  position Y
+ */
+asdf_BaseElement.prototype.setPosition = function(posX, posY){
+    this.mPosX = posX;
+    this.mPosY = posY;
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+}
+
+asdf_BaseElement.prototype.setSize = function(sizeX, sizeY){
+    setObjectSize(this.mDomTreeObject, sizeX, sizeY);
 }
 
 
