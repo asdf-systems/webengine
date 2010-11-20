@@ -1,0 +1,11 @@
+[pathtoImage]
+#we are in HV
+position_x=0px
+position_y=0px
+width=219px
+height=20px
+action_click=SPECIFIC(project1_rollOut, toggle)
+alt_key=tolles Project Header
+extra_css=hardware_header
+initial_show=true
+layer_level=600

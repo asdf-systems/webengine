@@ -10,12 +10,15 @@
  * \param: positionY    int         y Position of the Textfield - relative to parent
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: text         int         text to show
+ * \param: fontFamily   string      font Family of the Text : Default : global.standardText
+ * \param: fontSize     int         font Size of the Text : Default: global.textSize
+ * \param: fontColor    hex         font Family of the Text : Default : global.textColor
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  * todo klären wer das übersetze der Textfiles übernimmt (also formatierung (rtf, txt, html) -> html)
  */
-function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, extra_css_class, initialShow, zIndex){
+function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, fontColor, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -81,6 +84,11 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
     else   
         this.mBgColor = bgColor;
         
+    if(fontColor == null){
+        this.mFontColor = globals.standardFontColor;
+    } else  
+        this.mFontColor = fontColor;
+        
     if(initialShow == "false")
         this.mInitialShow = false;
     else if(initialShow != false)
@@ -132,6 +140,7 @@ asdf_Textfield.prototype.show = function(){
             $(this.mDomTreeObject).click(onMouseClick);
             this.mDomTreeObject.style.fontFamily = this.mFontFamily;
             this.mDomTreeObject.style.fontSize = this.mFontSize;
+            this.mDomTreeObject.style.color = this.mFontColor;
             this.setPosition(this.mPosX, this.mPosY, "absolute");
             this.mDomTreeObject.style.background = this.mBgColor;
             this.mDomTreeObject.style.zIndex = this.mZIndex;

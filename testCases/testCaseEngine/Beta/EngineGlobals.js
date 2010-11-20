@@ -7,6 +7,7 @@ var globals = {
     stdUnit : "px", 
     standardFontSize : "12pt",
     standardFontFamily : "Arial, Tahoma",
+    standardFontColor : "#ababa4",
     defaultAnimationSpeed : 200
     
 };

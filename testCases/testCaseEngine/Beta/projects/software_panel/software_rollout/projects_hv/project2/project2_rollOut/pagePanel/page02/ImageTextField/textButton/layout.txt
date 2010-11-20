@@ -1,0 +1,6 @@
+[Button]
+position_x=18
+position_y=417
+standard_src=project_description_text.png
+action_click=SHOW(../realText/)
+extra_css=imageTextField

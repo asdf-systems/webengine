@@ -1,0 +1,11 @@
+[HVPanel]
+position_x=431px
+position_y=109px
+width=722px
+height=1000px
+orientation=vertical
+space_between_elements=5
+extra_css=projects_hvPanel
+initial_show=true
+# higher level - object more in front
+layer_level=500

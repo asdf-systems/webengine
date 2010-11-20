@@ -51,7 +51,7 @@ function init(elem, parentObject){
 			registerActions(elem);           
 		break;
 		case "TextField":
-			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.texts, elem.font_family, elem.font_size, elem.extra_css, elem.initial_show, elem.layer_level );
+			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.texts, elem.font_family, elem.font_size, elem.font_color, elem.extra_css, elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		case "PagePanel":
@@ -64,11 +64,14 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
 		case "HVPanel":
-			elem.domObject = new asdf_HVPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.spacing, elem.orientation,  elem.extra_css,elem.initial_show, elem.layer_level );
+			elem.domObject = new asdf_HVPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.space_between_elements, elem.orientation,  elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);  
 		break;
         /*
         case "Formular":
+			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
+		break;
+        case "MacDocPanel":
 			elem.domObject = new asdf_Button(elem.positionX, elem.positionY);
 		break;
 	
