@@ -64,7 +64,9 @@ function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, in
         return null;
     }
     
-     if(initialShow == null)
+    if(initialShow == "false")
+        this.mInitialShow = false;
+    else if(initialShow != false)
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;

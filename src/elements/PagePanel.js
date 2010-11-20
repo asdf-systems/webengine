@@ -100,7 +100,9 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     else    
         this.mAnimationSpeed = animationSpeed;
    
-    if(initialShow != false)
+    if(initialShow == "false")
+        this.mInitialShow = false;
+    else if(initialShow != false)
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;

@@ -62,7 +62,9 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css
     else   
         this.mBgColor = bgColor;
 
-    if(initialShow == null)
+    if(initialShow == "false")
+        this.mInitialShow = false;
+    else if(initialShow != false)
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;

@@ -77,7 +77,9 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     else    
         this.mExtraClassCSS = extra_css_class;
 
-     if(initialShow == null)
+    if(initialShow == "false")
+        this.mInitialShow = false;
+    else if(initialShow != false)
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;

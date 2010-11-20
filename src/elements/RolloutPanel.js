@@ -80,7 +80,9 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
     else 
         this.mHeight = height;        
 
-    if(initialShow != false)
+    if(initialShow == "false")
+        this.mInitialShow = false;
+    else if(initialShow != false)
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;

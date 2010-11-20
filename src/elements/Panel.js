@@ -75,7 +75,9 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
     else 
         this.mHeight = height;        
 
-    if(initialShow != false)
+    if(initialShow == "false")
+        this.mInitialShow = false;
+    else if(initialShow != false)
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
@@ -131,6 +133,8 @@ asdf_Panel.prototype.showChildren = function(){
         var child = this.mChildren[i];
         if(child.object.mInitialShow != false)
             child.object.show();
+        else
+            child.object.hide();
     }
 }
 

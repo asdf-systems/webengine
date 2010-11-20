@@ -81,7 +81,9 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
     else   
         this.mBgColor = bgColor;
         
-    if(initialShow == null)
+    if(initialShow == "false")
+        this.mInitialShow = false;
+    else if(initialShow != false)
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;

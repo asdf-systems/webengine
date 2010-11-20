@@ -66,7 +66,9 @@ function asdf_ImageTextField(_id, _parent, positionX, positionY, src, textField,
         return null;
     }
     
-    if(initialShow == null)
+    if(initialShow == "false")
+        this.mInitialShow = false;
+    else if(initialShow != false)
         this.mInitialShow = true;
     else
         this.mInitialShow = initialShow;
