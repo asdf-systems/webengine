@@ -442,6 +442,11 @@ function checkBrowser(){
  * @return  Elemnt      the parent Element
  */
 function getParent(object){
+    if(object == null)
+        return null;
+    if(object.mDomTreeObject == null)
+        return null;
+        
     return object.mDomTreeObject.nextNode;
 }
 //*};

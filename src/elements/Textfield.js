@@ -155,14 +155,14 @@ asdf_Textfield.prototype.show = function(){
  * @param int posX  position X
  * @param int posY  position Y
  */
-asdf_TextField.prototype.setPosition = function(posX, posY){
+asdf_Textfield.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
     notifyParent(this);
 }
 
-asdf_TextField.prototype.setSize = function(sizeX, sizeY){
+asdf_Textfield.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomTreeObject, sizeX, sizeY);
     notifyParent(this);
 }

@@ -1,4 +1,4 @@
-[pathtoImage]
+[project_title.png]
 #we are in HV
 position_x=0px
 position_y=0px

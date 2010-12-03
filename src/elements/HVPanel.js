@@ -39,7 +39,7 @@ function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , heigh
 
     this.mId = _id;
     this.mParent        = _parent; 
-    this.mType          = "Panel";
+    this.mType          = "HVPanel";
 
     if(positionX == null){
         if(globals.debug > 1)
