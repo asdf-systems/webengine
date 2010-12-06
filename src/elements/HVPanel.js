@@ -221,7 +221,7 @@ asdf_HVPanel.prototype.getNextChild = function(index){
     
     return retElement;
 }
-this.mChildren[i]
+
 /**
  * Add Child to the DomTree and save as Child
  * @param child     jsonElement     childElement to addd

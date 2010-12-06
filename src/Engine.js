@@ -64,7 +64,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
 		case "HVPanel":
-			elem.domObject = new asdf_HVPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.space_between_elements, elem.orientation,  elem.extra_css,elem.initial_show, elem.layer_level );
+			elem.object = new asdf_HVPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.space_between_elements, elem.orientation,  elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);  
 		break;
         /*
@@ -97,10 +97,14 @@ function registerActions(element){
 	var actions = ["action_click", "action_hover", "action_out"];
 	for(var i=0; i < actions.length; i++){
         var name = actions[i];
-        var actionElement = element[name];
-        if(actionElement != null && actionElement != undefined){
-            if(actionElement.length > 1)
-                var lalal = 100;
+        
+        var actionElement = new Array();
+        if(element[name] != null || element[name] != undefined){
+
+            actionElement = element[name];
+            if(typeof actionElement != Array)
+                var bal = 5;
+                
 			for(var x =0; x < actionElement.length; x++){
                 var actionHandler = getActionHandler(actionElement[x]);
 				var actionParameter = getActionParameter(actionElement[x]);
@@ -399,6 +403,9 @@ function removeElementFromString(index, string){
  * @return trimmed string
  */
 function trimString(string){
+     if(string == null || string == undefined)
+        var bla = 5;
+        
      return string.replace(/^\s*/, "").replace(/\s*$/, "");
 }
 
