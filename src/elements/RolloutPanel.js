@@ -214,7 +214,18 @@ asdf_RollOutPanel.prototype.specificAction = function(params){
     var actionName = params.parameter[0];
     actionName = actionName.toLowerCase();
     switch(actionName){
-		case "rollout": // no break for runthrough
+		case "toggle": 
+            if(this.mDomTreeObject.visible){ // hide
+                params.parameter[0] = "rollup";
+                this.specificAction(params);
+            } else{ // show
+                params.parameter[0] = "rollout";
+                this.specificAction(params);
+            }
+            
+        break;
+		
+        case "rollout": // no break for runthrough
 		case "down":
 		case "slidedown":
             //setObjectSize(this.mDomTreeObject, 0,0);

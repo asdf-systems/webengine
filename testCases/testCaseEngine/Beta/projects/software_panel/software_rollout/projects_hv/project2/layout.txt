@@ -1,0 +1,8 @@
+[Panel]
+position_x=431px
+position_y=195px
+width=400px
+height=400px
+initial_show=true
+# higher level - object more in front
+layer_level=550

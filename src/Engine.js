@@ -403,8 +403,12 @@ function removeElementFromString(index, string){
  * @return trimmed string
  */
 function trimString(string){
-     if(string == null || string == undefined)
-        var bla = 5;
+     if(string == null || string == undefined){
+        if(globals.debug > 0)
+            alert("Error: trimString(), String is undefined ");
+        return string;
+     }
+     
         
      return string.replace(/^\s*/, "").replace(/\s*$/, "");
 }

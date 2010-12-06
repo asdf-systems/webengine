@@ -186,7 +186,7 @@ asdf_HVPanel.prototype.setSize = function(sizeX, sizeY){
 
 asdf_HVPanel.prototype.arrangeChildren = function(){
      for(var i = 0; i < this.mChildren.length-1; i++){ // step through children - skip lastone
-        var child = this.mChildren[i];
+        var child = this.mChildren[i].object;
         var nextChild = this.getNextChild(i);
         if(nextChild == null)
             break;
@@ -194,12 +194,12 @@ asdf_HVPanel.prototype.arrangeChildren = function(){
         var sizeY = child.mDomTreeObject.style.height;
         var posX  = child.mDomTreeObject.style.left;
         var posY  = child.mDomTreeObject.style.top;
-        var newPosX = nextChild.style.left;
-        var newPosY = nextChild.style.top;
+        var newPosX = nextChild.mDomTreeObject.style.left;
+        var newPosY = nextChild.mDomTreeObject.style.top;
         if(this.mOrientation == "horizontal"){
-            newPosX = getValueWithUnits( getValueWithoutUnits(posX) + getValueWithoutUnits(sizeX) + this.mSpacing ) ;
+            newPosX = Number (getValueWithUnits( getValueWithoutUnits(posX)) + Number(getValueWithoutUnits(sizeX) + this.mSpacing ) ) ;
         } else { // vertical
-            newPosY = getValueWithUnits( getValueWithoutUnits(posY) + getValueWithoutUnits(sizeY) + this.mSpacing ) ;   
+            newPosY = Number (getValueWithUnits( getValueWithoutUnits(posY)) + Number (getValueWithoutUnits(sizeY) + this.mSpacing ) ) ;   
         }
         nextChild.setPosition(newPosX, newPosY);
      }
@@ -212,7 +212,7 @@ asdf_HVPanel.prototype.getNextChild = function(index){
     var retElement = null;
     // checks for next visible child - AND BREAK IF FOUND 
     for(var i = index+1; i < this.mChildren.length-1; i++){
-        var child = this.mChildren[i];
+        var child = this.mChildren[i].object;
         if(child.mDomTreeObject.style.visibility == "hidden" || child.mDomTreeObject.style.display == "none")
             continue;
         retElement = child;
