@@ -14,6 +14,7 @@
 			$elem["object"] = null;
 			$elem["type"] = "Image";
 			$elem["src"] = $refpath;
+			$elem = checkForSpecialAttributes(dirname($file), $elem);
 		} else {
 			// compile() will call checkForSpecialAttributes
 			// Calling it twice on an object will cause corrupted paths
