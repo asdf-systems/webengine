@@ -2,6 +2,7 @@
 	require_once("errorhandling.php");
 	require_once("debug.php");
 	require_once("paths.php");
+	require_once("directory_operations.php");
 
 	function parseReferenceFile($file) {
 		debug("Resolving reference from \"".$file."\"");
@@ -22,14 +23,25 @@
 			// However, because some special attributes may be listed
 			// in the reference file (and those still need proper handling)
 			// checkForSpecialAttributes() is called upon the object
-			// containing only the data from the reference file.
-			dieOnError(is_dir($refpath), "Found invalid reference in \"".$file."\"");
-			$refelem = compile($refpath);
+			// containing only the data from the reference file
+			// and both objects will be merged *afterwards*
+			$refelem = resolveReference($refpath);
 			$elem = checkForSpecialAttributes(dirname($file), $elem);
 			$elem = array_merge($refelem, $elem);
 		}
 		$elem["id"] = $file;
 		debug("Done.");
+		return $elem;
+	}
+
+	function resolveReference($file) {
+		$data = getFileInformation($file);
+		if($data["extension"] == "txt") { // It's another reference
+			$elem = parseReferenceFile($file);
+		} else {
+			dieOnError(is_dir($file), "Found invalid reference in \"".$file."\"");
+			$elem = compile($file);
+		}
 		return $elem;
 	}
 
