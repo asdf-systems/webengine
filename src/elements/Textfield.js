@@ -113,7 +113,8 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
     this.mMouseOverParams = new Array();
     this.mMouseOutParams = new Array();
     this.mMouseClickParams = new Array()
-    
+
+
   
     
     return this;
@@ -135,15 +136,16 @@ asdf_Textfield.prototype.hide = function(){
 asdf_Textfield.prototype.show = function(){
 	if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, (this.mId+"_start") , "pre", this.mType, this.extra_css_class,null , this.mText);
-            $(this.mDomTreeObject).mouseover(onMouseOver);
-            $(this.mDomTreeObject).mouseout(onMouseOut);
-            $(this.mDomTreeObject).click(onMouseClick);
-            this.mDomTreeObject.style.fontFamily = this.mFontFamily;
-            this.mDomTreeObject.style.fontSize = this.mFontSize;
-            this.mDomTreeObject.style.color = this.mFontColor;
-            this.setPosition(this.mPosX, this.mPosY, "absolute");
-            this.mDomTreeObject.style.background = this.mBgColor;
-            this.mDomTreeObject.style.zIndex = this.mZIndex;
+        $(this.mDomTreeObject).mouseover(onMouseOver);
+        $(this.mDomTreeObject).mouseout(onMouseOut);
+        $(this.mDomTreeObject).click(onMouseClick);
+        this.mDomTreeObject.style.position = "absolute";
+        this.mDomTreeObject.style.fontFamily = this.mFontFamily;
+        this.mDomTreeObject.style.fontSize = this.mFontSize;
+        this.mDomTreeObject.style.color = this.mFontColor;
+        this.setPosition(this.mPosX, this.mPosY, "absolute");
+        this.mDomTreeObject.style.background = this.mBgColor;
+        this.mDomTreeObject.style.zIndex = this.mZIndex;
 
     }
     $(this.mDomTreeObject).show();
@@ -158,7 +160,7 @@ asdf_Textfield.prototype.show = function(){
 asdf_Textfield.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     notifyParent(this);
 }
 

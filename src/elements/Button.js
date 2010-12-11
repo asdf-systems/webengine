@@ -104,7 +104,6 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     this.registerOnMouseOutEvent(this.unsetHoverImage);
     this.mActive = false;
     
-    
     return this;
 }
 
@@ -129,6 +128,7 @@ asdf_Button.prototype.show = function(){
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
+        this.mDomTreeObject.style.position = "absolute";
         this.setPosition(this.mPosX,this.mPosY);
         this.mDomTreeObject.style.zIndex = this.mZIndex;
 
@@ -147,7 +147,7 @@ asdf_Button.prototype.show = function(){
 asdf_Button.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     notifyParent(this);
 }
 

@@ -93,6 +93,7 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
         this.mZIndex = zIndex;
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+    this.mDomTreeObject.style.position = "absolute";
     this.mChildren = new Array();
     
     // set Position
@@ -110,11 +111,7 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
     $(this.mDomTreeObject).mouseover(onMouseOver);
     $(this.mDomTreeObject).mouseout(onMouseOut);
     $(this.mDomTreeObject).click(onMouseClick);
-    
-	/*var params = new EventParameter();
-  	params.parameter[0] = this.mId;
-	params.parameter[1] = "rollup";
-    this.registerOnMouseOutEvent( ActionHandlerSpecific, params);*/
+
     
     return this;
 }
@@ -127,7 +124,7 @@ function asdf_RollOutPanel(_id, _parent, positionX, positionY, bgColor, width , 
 asdf_RollOutPanel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
     this.hideChildren();
-    notifyParent(this);
+    //this.setSize(0,0);
 }
 
 asdf_RollOutPanel.prototype.hideChildren = function(){
@@ -135,6 +132,7 @@ asdf_RollOutPanel.prototype.hideChildren = function(){
         var child = this.mChildren[i];
         child.object.hide();
     }
+    this.updateSize();
 }
 
 asdf_RollOutPanel.prototype.showChildren = function(){
@@ -143,6 +141,7 @@ asdf_RollOutPanel.prototype.showChildren = function(){
         if(child.object.mInitialShow != false)
             child.object.show();
     }
+    this.updateSize();
 }
 
 
@@ -156,7 +155,8 @@ asdf_RollOutPanel.prototype.show = function(){
     this.setSize(this.mWidth, this.mHeight);
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
-    notifyParent(this);
+    this.updateSize();
+
 }
 
 /**
@@ -167,41 +167,49 @@ asdf_RollOutPanel.prototype.show = function(){
 asdf_RollOutPanel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     notifyParent(this);
 }
 
 asdf_RollOutPanel.prototype.setSize = function(sizeX, sizeY){
-    this.mWidthX = sizeX;
-    this.mHeightY = sizeY;
-    setObjectSize(this.mDomTreeObject, this.mWidthX, this.mHeightY);
+    this.mWidth = sizeX;
+    this.mHeight = sizeY;
+    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
     notifyParent(this);
 }
 
 /**
- * return real size based on child Size and position
+ * return size of the Element
  * @return sizeX, sizeY
  */
 asdf_RollOutPanel.prototype.getSize = function(){
-    
-    if(!this.mDomTreeObject.visible){
-        return new Size(0,0);
-    }
-    
+
+    this.updateSize();
     var sizeX = getValueWithoutUnits(this.mWidth);
     var sizeY = getValueWithoutUnits(this.mHeight);
-    var x = getValueWithoutUnits(this.mDomTreeObject.style.width);
-    var y = getValueWithoutUnits(this.mDomTreeObject.style.height);
-    if(x > sizeX)
-        sizeX = x;
-    if(y > sizeY)
-        sizeY = y;
+       
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
+
+/**
+ * check the needed Size based on Child size and position
+ * and resize if needen
+ */
+asdf_RollOutPanel.prototype.updateSize = function(){
+    var sizeX = getValueWithoutUnits(this.mWidth);
+    var sizeY = getValueWithoutUnits(this.mHeight);
     
     for(var i = 0; i < this.mChildren.length; i++){
         var child = this.mChildren[i].object;
         if(child == null)
             continue;
-        // if child position + size > mySize -> I´m greater than I´m think
+        if(child.mDomTreeObject == null || child.mDomTreeObject == undefined)
+            continue;
+            
+        if(child.mDomTreeObject.style.display == "none" || child.mDomTreeObject.visibility == "hidden")
+            continue;
+        // if child position + size > mySize -> need resize
         var sz = child.getSize();
         x = sz.x + getValueWithoutUnits(child.mDomTreeObject.style.left);
         y = sz.y+ getValueWithoutUnits(child.mDomTreeObject.style.top);
@@ -210,8 +218,7 @@ asdf_RollOutPanel.prototype.getSize = function(){
         if(sz.y > sizeY)
             sizeY = y;
     }
-    var ret = new Size(sizeX, sizeY);
-    return ret;
+    this.setSize(sizeX, sizeY);
 }
 
 /**
@@ -235,8 +242,10 @@ asdf_RollOutPanel.prototype.addChild = function(child){
             
         } else
             child.object.hide();
+            
+        //this.updateSize();
         
-        
+                
 
     }
 }
@@ -250,7 +259,7 @@ asdf_RollOutPanel.prototype.specificAction = function(params){
     actionName = actionName.toLowerCase();
     switch(actionName){
 		case "toggle": 
-            if(this.mDomTreeObject.visible){ // hide
+            if(this.mDomTreeObject.style.visibility == "visible"){ // hide
                 params.parameter[0] = "rollup";
                 this.specificAction(params);
             } else{ // show

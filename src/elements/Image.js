@@ -89,9 +89,7 @@ function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, in
     this.mMouseOutParams = new Array();
     this.mMouseClickParams = new Array()
     
-  
-    
-    return this;
+     return this;
 }
 
 
@@ -114,6 +112,7 @@ asdf_Image.prototype.show = function(){
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
+        this.mDomTreeObject.style.position = "absolute";
         this.setPosition(this.mPosX, this.mPosY);
         this.mDomTreeObject.style.zIndex = this.mZIndex;
     }
@@ -130,7 +129,7 @@ asdf_Image.prototype.show = function(){
 asdf_Image.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     notifyParent(this);
 }
 

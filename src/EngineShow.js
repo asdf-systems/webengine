@@ -144,7 +144,7 @@ function showChildren(elem){
  * @param   element DOMObject   Element to Place
  * @param   left    int         Position left
  * @param   top     int         Position top
- * @param   type    string      position type like relative or absoulte
+ * @param   type    string      position type like relative or absoulte; if NotSet value will leave as is
  */
 function setObjectPosition(element, left, top, type){
     left += "";
@@ -157,7 +157,9 @@ function setObjectPosition(element, left, top, type){
         if(globals.debug > 0)
     		alert("setObjectPosition(): Invalid Value(Top): X" + top + "X on element " + element.id);
     }
-    element.style.position = type;
+    if(type != null)
+        element.style.position = type;
+        
     element.style.left = getValueWithUnits(left);
     element.style.top = getValueWithUnits(top);
 }
@@ -169,6 +171,7 @@ function setObjectPosition(element, left, top, type){
  * @param   height  int         Position top
  */
 function setObjectSize(element, width ,height){
+       
     element.style.width = getValueWithUnits(width);
     element.style.height = getValueWithUnits(height);
 }

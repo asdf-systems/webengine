@@ -90,6 +90,7 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
 
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+    this.mDomTreeObject.style.position = "absolute";
     this.mChildren = new Array();
     
     // set Position
@@ -107,7 +108,7 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
     $(this.mDomTreeObject).mouseover(onMouseOver);
     $(this.mDomTreeObject).mouseout(onMouseOut);
     $(this.mDomTreeObject).click(onMouseClick);
-    
+
     return this;
 }
 
@@ -119,7 +120,8 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
 asdf_Panel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
    this.hideChildren();
-   notifyParent(this);
+   this.setSize(0,0);
+
 }
 
 asdf_Panel.prototype.hideChildren = function(){
@@ -127,7 +129,7 @@ asdf_Panel.prototype.hideChildren = function(){
         var child = this.mChildren[i];
         child.object.hide();
     }
-    notifyParent(this);
+
 }
 
 asdf_Panel.prototype.showChildren = function(){
@@ -138,6 +140,7 @@ asdf_Panel.prototype.showChildren = function(){
         else
             child.object.hide();
     }
+    this.updateSize();
 }
 
 /**
@@ -148,37 +151,51 @@ asdf_Panel.prototype.showChildren = function(){
 asdf_Panel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     notifyParent(this);
+
 }
 
 asdf_Panel.prototype.setSize = function(sizeX, sizeY){
-    this.mWidthX = sizeX;
-    this.mHeightY = sizeY;
-    setObjectSize(this.mDomTreeObject, this.mWidthX, this.mHeightY);
+    this.mWidth = sizeX;
+    this.mHeight = sizeY;
+    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
     notifyParent(this);
+    
 }
 
 /**
- * return real size based on child Size and position
+ * return size of the Element
  * @return sizeX, sizeY
  */
 asdf_Panel.prototype.getSize = function(){
 
+    this.updateSize();
     var sizeX = getValueWithoutUnits(this.mWidth);
     var sizeY = getValueWithoutUnits(this.mHeight);
-    var x = getValueWithoutUnits(this.mDomTreeObject.width);
-    var y = getValueWithoutUnits(this.mDomTreeObject.height);
-    if(x > sizeX)
-        sizeX = x;
-    if(y > sizeY)
-        sizeY = y;
+       
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
+
+/**
+ * check the needed Size based on Child size and position
+ * and resize if needen
+ */
+asdf_Panel.prototype.updateSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mWidth);
+    var sizeY = getValueWithoutUnits(this.mHeight);
     
     for(var i = 0; i < this.mChildren.length; i++){
         var child = this.mChildren[i].object;
         if(child == null)
             continue;
-        // if child position + size > mySize -> I´m greater than I´m think
+        if(child.mDomTreeObject == null || child.mDomTreeObject == undefined)
+            continue;
+        if(child.mDomTreeObject.style.display == "none" || child.mDomTreeObject.visibility == "hidden")
+            continue;
+         // if child position + size > mySize -> need resize
         var sz = child.getSize();
         x = sz.x + getValueWithoutUnits(child.mDomTreeObject.style.left);
         y = sz.y+ getValueWithoutUnits(child.mDomTreeObject.style.top);
@@ -187,9 +204,10 @@ asdf_Panel.prototype.getSize = function(){
         if(sz.y > sizeY)
             sizeY = y;
     }
-    var ret = new Size(sizeX, sizeY);
-    return ret;
+    this.setSize(sizeX, sizeY);
+    
 }
+
 /**
  * instant show Panel
  */
@@ -200,6 +218,7 @@ asdf_Panel.prototype.show = function(){
     setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
+    this.updateSize();
 }
 
 /**
@@ -224,8 +243,9 @@ asdf_Panel.prototype.addChild = function(child){
         } else
             child.object.hide();
         
-
+        //this.updateSize();
     }
+    
 }
 
 

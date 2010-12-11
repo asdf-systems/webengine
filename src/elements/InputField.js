@@ -172,7 +172,6 @@ function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, hei
     this.mKeyPressParams = new Array();
     
     this.registerKeyPressEvent(this.checkSign);
-    
   
     
     return this;
@@ -258,6 +257,7 @@ asdf_InputField.prototype.show = function(){
 	//alert("InputField Show()");
     if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+        this.mDomTreeObject.style.position = "absolute";
          
          
             this.mDomBackground = createDomObjectDOM(this, this.mDomTreeObject, this.mId, "img", (this.mType+"_bgImage"), this.extra_css_class, this.mBgImage);
@@ -304,15 +304,15 @@ asdf_InputField.prototype.show = function(){
 asdf_InputField.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute");
     setObjectPosition(this.mDomBackground, 0,0,"absolute");
     notifyParent(this);
 }
 
 asdf_InputField.prototype.setSize = function(sizeX, sizeY){
-    this.mWidthX = sizeX;
-    this.mHeightY = sizeY;
+    this.mWidth = sizeX;
+    this.mHeight = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
     notifyParent(this);
 }

@@ -121,6 +121,7 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     this.mDomEvenPages = createDomObjectDOM(this, this.mDomPages, ( this.mId + "_evenPages"), "div", this.mType, this.extra_css_class);
     this.mDomOddPages = createDomObjectDOM(this, this.mDomPages, ( this.mId + "_oddPages"), "div", this.mType, this.extra_css_class);
     
+    this.mDomTreeObject.style.position = "absolute";
     this.setPosition(this.mPosX, this.mPosY);
     this.setSize(this.mWidth, this.mHeight);
     
@@ -140,6 +141,7 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     $(this.mDomTreeObject).mouseover(onMouseOver);
     $(this.mDomTreeObject).mouseout(onMouseOut);
     $(this.mDomTreeObject).click(onMouseClick);
+
     
     return this;
 }
@@ -163,6 +165,7 @@ asdf_PagePanel.prototype.hideChildren = function(){
         var child = this.mChildren[i];
         child.object.hide();
     }
+    
 }
 
 asdf_PagePanel.prototype.showChildren = function(){
@@ -171,6 +174,7 @@ asdf_PagePanel.prototype.showChildren = function(){
         if(child.object.mInitialShow != false)
             child.object.show();
     }
+    
 }
 
 
@@ -195,7 +199,7 @@ asdf_PagePanel.prototype.show = function(){
 asdf_PagePanel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     setObjectPosition(this.mDomPages, 0, 0, "absolute");
     setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
     setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
@@ -204,12 +208,12 @@ asdf_PagePanel.prototype.setPosition = function(posX, posY){
 }
 
 asdf_PagePanel.prototype.setSize = function(sizeX, sizeY){
-    this.mWidthX = sizeX;
-    this.mHeightY = sizeY;
-    setObjectSize(this.mDomOddPages, this.mPageSizeX, this.mPageSizeX, "absolute");   
-    setObjectSize(this.mDomEvenPages, this.mPageSizeX, this.mPageSizeX, "absolute");    
-    setObjectSize(this.mDomPages, this.mPageSizeX*2, this.mPageSizeY, "absolute");
-    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, "absolute");   
+    this.mWidth = sizeX;
+    this.mHeight = sizeY;
+    setObjectSize(this.mDomOddPages, this.mPageSizeX, this.mPageSizeX);   
+    setObjectSize(this.mDomEvenPages, this.mPageSizeX, this.mPageSizeX);    
+    setObjectSize(this.mDomPages, this.mPageSizeX*2, this.mPageSizeY);
+    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);   
     notifyParent(this); 
     
 }

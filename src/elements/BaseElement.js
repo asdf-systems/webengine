@@ -87,8 +87,6 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css
     this.mMouseOutParams = new Array();
     this.mMouseClickParams = new Array();
     
-  
-    
     return this;
 }
 
@@ -112,6 +110,7 @@ asdf_BaseElement.prototype.show = function(){
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
+            this.mDomTreeObject.style.position = "absolute";<b></b>
             this.setPosition(this.mPosX, this.mPosY);
             this.mDomTreeObject.style.background = this.mBgColor;
             this.mDomTreeObject.style.zIndex = this.mZIndex;
@@ -129,7 +128,7 @@ asdf_BaseElement.prototype.show = function(){
 asdf_BaseElement.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     notifyParent(this);
 }
 
