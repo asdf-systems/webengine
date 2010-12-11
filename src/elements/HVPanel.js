@@ -216,7 +216,7 @@ asdf_HVPanel.prototype.updateSize  = function(){
             continue;
         if(child.mDomTreeObject == null || child.mDomTreeObject == undefined)
             continue;
-        if(child.mDomTreeObject.style.display == "none" || child.mDomTreeObject.visibility == "hidden")
+        if(!$(child.mDomTreeObject).is(":visible"))
             continue;
           // if child position + size > mySize -> need resize
         var sz = child.getSize();
