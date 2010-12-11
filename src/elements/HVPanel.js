@@ -183,6 +183,37 @@ asdf_HVPanel.prototype.setSize = function(sizeX, sizeY){
     notifyParent(this);
 }
 
+/**
+ * return real size based on child Size and position
+ * @return sizeX, sizeY
+ */
+asdf_HVPanel.prototype.getSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mWidth);
+    var sizeY = getValueWithoutUnits(this.mHeight);
+    var x = getValueWithoutUnits(this.mDomTreeObject.style.width);
+    var y = getValueWithoutUnits(this.mDomTreeObject.style.height);
+    if(x > sizeX)
+        sizeX = x;
+    if(y > sizeY)
+        sizeY = y;
+    
+    for(var i = 0; i < this.mChildren.length; i++){
+        var child = this.mChildren[i].object;
+        if(child == null)
+            continue;
+        // if child position + size > mySize -> I´m greater than I´m think
+        var sz = child.getSize();
+        x = sz.x + getValueWithoutUnits(child.mDomTreeObject.style.left);
+        y = sz.y+ getValueWithoutUnits(child.mDomTreeObject.style.top);
+        if(x > sizeX)
+            sizeX = x;
+        if(sz.y > sizeY)
+            sizeY = y;
+    }
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
 
 asdf_HVPanel.prototype.arrangeChildren = function(){
      // Arrange first child
@@ -194,8 +225,9 @@ asdf_HVPanel.prototype.arrangeChildren = function(){
         var nextChild = this.getNextChild(i);
         if(nextChild == null)
             break;
-        var sizeX = child.mDomTreeObject.style.width;
-        var sizeY = child.mDomTreeObject.style.height;
+        var sz = child.getSize();
+        var sizeX = sz.x;
+        var sizeY = sz.y;
         var posX  = child.mDomTreeObject.style.left;
         var posY  = child.mDomTreeObject.style.top;
         var newPosX = nextChild.mDomTreeObject.style.left;

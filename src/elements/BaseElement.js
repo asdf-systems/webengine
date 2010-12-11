@@ -94,6 +94,7 @@ function asdf_BaseElement(_id, _parent, positionX, positionY, bgColor, extra_css
 
 
 
+
 /**
  * instant hide BaseElement
  */
@@ -137,6 +138,18 @@ asdf_BaseElement.prototype.setSize = function(sizeX, sizeY){
     notifyParent(this);
 }
 
+/**
+ * return real size based on child Size and position
+ * @return sizeX, sizeY
+ */
+asdf_BaseElement.prototype.getSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mDomTreeObject.width);
+    var sizeY = getValueWithoutUnits(this.mDomTreeObject.height);
+        
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
 
 /**
  * Start BaseElement Specific actions. ActionName has to be set on first element of params.parameter

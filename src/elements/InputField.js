@@ -316,6 +316,25 @@ asdf_InputField.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
     notifyParent(this);
 }
+
+/**
+ * return real size based on child Size and position
+ * @return sizeX, sizeY
+ */
+asdf_InputField.prototype.getSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mWidth);
+    var sizeY = getValueWithoutUnits(this.mHeight);
+    var x = getValueWithoutUnits(this.mDomTreeObject.width);
+    var y = getValueWithoutUnits(this.mDomTreeObject.height);
+    if(x > sizeX)
+        sizeX = x;
+    if(y > sizeY)
+        sizeY = y;
+
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
 /**
  * Start InputField Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter

@@ -160,6 +160,37 @@ asdf_Panel.prototype.setSize = function(sizeX, sizeY){
 }
 
 /**
+ * return real size based on child Size and position
+ * @return sizeX, sizeY
+ */
+asdf_Panel.prototype.getSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mWidth);
+    var sizeY = getValueWithoutUnits(this.mHeight);
+    var x = getValueWithoutUnits(this.mDomTreeObject.width);
+    var y = getValueWithoutUnits(this.mDomTreeObject.height);
+    if(x > sizeX)
+        sizeX = x;
+    if(y > sizeY)
+        sizeY = y;
+    
+    for(var i = 0; i < this.mChildren.length; i++){
+        var child = this.mChildren[i].object;
+        if(child == null)
+            continue;
+        // if child position + size > mySize -> I´m greater than I´m think
+        var sz = child.getSize();
+        x = sz.x + getValueWithoutUnits(child.mDomTreeObject.style.left);
+        y = sz.y+ getValueWithoutUnits(child.mDomTreeObject.style.top);
+        if(x > sizeX)
+            sizeX = x;
+        if(sz.y > sizeY)
+            sizeY = y;
+    }
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
+/**
  * instant show Panel
  */
 asdf_Panel.prototype.show = function(){

@@ -138,6 +138,19 @@ asdf_Image.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomTreeObject, sizeX, sizeY);
     notifyParent(this);
 }
+
+/**
+ * return real size based on child Size and position
+ * @return Size
+ */
+asdf_Image.prototype.getSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mDomTreeObject.width);
+    var sizeY = getValueWithoutUnits(this.mDomTreeObject.height);
+        
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
 /**
  * Start Image Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter

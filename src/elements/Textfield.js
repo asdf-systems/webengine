@@ -168,6 +168,19 @@ asdf_Textfield.prototype.setSize = function(sizeX, sizeY){
 }
 
 /**
+ * return real size based on child Size and position
+ * @return sizeX, sizeY
+ */
+asdf_Textfield.prototype.getSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mDomTreeObject.width);
+    var sizeY = getValueWithoutUnits(this.mDomTreeObject.height);
+        
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
+
+/**
  * Start Textfield Specific actions. ActionName has to be set on first element of params.parameter
  * \param params    EventParameter
  */

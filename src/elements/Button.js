@@ -157,6 +157,19 @@ asdf_Button.prototype.setSize = function(sizeX, sizeY){
 }
 
 /**
+ * return real size based on child Size and position
+ * @return sizeX, sizeY
+ */
+asdf_Button.prototype.getSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mDomTreeObject.width);
+    var sizeY = getValueWithoutUnits(this.mDomTreeObject.height);
+        
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
+
+/**
  * Changes Background Image to active Image
  */
 asdf_Button.prototype.setActiveImage = function(){

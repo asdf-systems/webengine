@@ -215,6 +215,24 @@ asdf_PagePanel.prototype.setSize = function(sizeX, sizeY){
 }
 
 /**
+ * return real size based on child Size and position
+ * @return sizeX, sizeY
+ */
+asdf_PagePanel.prototype.getSize = function(){
+
+    var sizeX = getValueWithoutUnits(this.mWidth);
+    var sizeY = getValueWithoutUnits(this.mHeight);
+    var x = getValueWithoutUnits(this.mDomTreeObject.width);
+    var y = getValueWithoutUnits(this.mDomTreeObject.height);
+    if(x > sizeX)
+        sizeX = x;
+    if(y > sizeY)
+        sizeY = y;
+        
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
+/**
  * Add Child to the DomTree and save as Child
  * @param child     jsonElement     childElement to addd
  */

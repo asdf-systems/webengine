@@ -178,6 +178,41 @@ asdf_RollOutPanel.prototype.setSize = function(sizeX, sizeY){
     notifyParent(this);
 }
 
+/**
+ * return real size based on child Size and position
+ * @return sizeX, sizeY
+ */
+asdf_RollOutPanel.prototype.getSize = function(){
+    
+    if(!this.mDomTreeObject.visible){
+        return new Size(0,0);
+    }
+    
+    var sizeX = getValueWithoutUnits(this.mWidth);
+    var sizeY = getValueWithoutUnits(this.mHeight);
+    var x = getValueWithoutUnits(this.mDomTreeObject.style.width);
+    var y = getValueWithoutUnits(this.mDomTreeObject.style.height);
+    if(x > sizeX)
+        sizeX = x;
+    if(y > sizeY)
+        sizeY = y;
+    
+    for(var i = 0; i < this.mChildren.length; i++){
+        var child = this.mChildren[i].object;
+        if(child == null)
+            continue;
+        // if child position + size > mySize -> I´m greater than I´m think
+        var sz = child.getSize();
+        x = sz.x + getValueWithoutUnits(child.mDomTreeObject.style.left);
+        y = sz.y+ getValueWithoutUnits(child.mDomTreeObject.style.top);
+        if(x > sizeX)
+            sizeX = x;
+        if(sz.y > sizeY)
+            sizeY = y;
+    }
+    var ret = new Size(sizeX, sizeY);
+    return ret;
+}
 
 /**
  * Add Child to the DomTree and save as Child
