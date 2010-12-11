@@ -1,10 +1,10 @@
 [Button]
-position_x=431px
-position_y=109px
+position_x=0
+position_y=0
 width=722px
 height=53px
-standard_src=header_projects_software_bg.png
-action_click=SPECIFIC(../software_rollout,toggle)
+standard_src=header_projects_hardware_bg.png
+action_click=SPECIFIC(../hardware_rollout,toggle)
 alt_text=show show hardware projects
 extra_css=hardware_button
 initial_show=true

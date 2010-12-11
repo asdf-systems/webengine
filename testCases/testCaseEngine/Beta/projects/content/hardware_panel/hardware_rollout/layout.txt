@@ -1,6 +1,6 @@
 [RollOutPanel]
-position_x=431px
-position_y=195px
+position_x=0
+position_y=53
 width=722px
 height=1000px
 animation_speed=200

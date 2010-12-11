@@ -1,11 +1,10 @@
 [RollOutPanel]
-#position not importend because inside HV Panel
-position_x=0px
-position_y=0px
+position_x=0
+position_y=53
 width=722px
-height=31px
+height=1000px
 animation_speed=200
-extra_css=hardware_rollOut
+extra_css=hardware_rollout
 initial_show=false
 # higher level - object more in front
 layer_level=500

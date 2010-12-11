@@ -95,7 +95,7 @@ function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , heigh
     else
         this.mSpacing = spacing;
         
-    if(orientation == null || orientation == undefined)
+    if(orientation != "horizontal")
         this.mOrientation = "vertical";
     else
         this.mOrientation = "horizontal";
@@ -185,6 +185,10 @@ asdf_HVPanel.prototype.setSize = function(sizeX, sizeY){
 
 
 asdf_HVPanel.prototype.arrangeChildren = function(){
+     // Arrange first child
+     this.initFirstChild();
+     
+     // Arrange other child relative to first one
      for(var i = 0; i < this.mChildren.length-1; i++){ // step through children - skip lastone
         var child = this.mChildren[i].object;
         var nextChild = this.getNextChild(i);
@@ -197,11 +201,23 @@ asdf_HVPanel.prototype.arrangeChildren = function(){
         var newPosX = nextChild.mDomTreeObject.style.left;
         var newPosY = nextChild.mDomTreeObject.style.top;
         if(this.mOrientation == "horizontal"){
-            newPosX = Number (getValueWithUnits( getValueWithoutUnits(posX)) + Number(getValueWithoutUnits(sizeX) + this.mSpacing ) ) ;
+            newPosX = getValueWithoutUnits(posX) + getValueWithoutUnits(sizeX) + getValueWithoutUnits(this.mSpacing ) ;
+            newPosY = 0;
         } else { // vertical
-            newPosY = Number (getValueWithUnits( getValueWithoutUnits(posY)) + Number (getValueWithoutUnits(sizeY) + this.mSpacing ) ) ;   
+            newPosY = getValueWithoutUnits(posY) + getValueWithoutUnits(sizeY) + getValueWithoutUnits(this.mSpacing ) ;   
+            newPosX = 0;
         }
         nextChild.setPosition(newPosX, newPosY);
+     }
+}
+
+asdf_HVPanel.prototype.initFirstChild = function(){
+      if(this.mChildren.length >= 1){
+        var child = this.mChildren[0].object;
+        if(this.mOrientation == "horizontal")
+            child.setPosition(this.mSpacing, 0);
+        else
+            child.setPosition(0, this.mSpacing);
      }
 }
 /**
@@ -211,7 +227,7 @@ asdf_HVPanel.prototype.arrangeChildren = function(){
 asdf_HVPanel.prototype.getNextChild = function(index){
     var retElement = null;
     // checks for next visible child - AND BREAK IF FOUND 
-    for(var i = index+1; i < this.mChildren.length-1; i++){
+    for(var i = index+1; i < this.mChildren.length; i++){
         var child = this.mChildren[i].object;
         if(child.mDomTreeObject.style.visibility == "hidden" || child.mDomTreeObject.style.display == "none")
             continue;
@@ -239,7 +255,7 @@ asdf_HVPanel.prototype.addChild = function(child){
         }
         if(child.object.mInitialShow != false){
             child.object.show();
-                    // init and add all grandChildren
+            this.arrangeChildren();
             
         } else
             child.object.hide();

@@ -6,6 +6,6 @@ height=1000px
 orientation=vertical
 space_between_elements=5
 extra_css=hardware_hvPanel
-initial_show=false
+initial_show=true
 # higher level - object more in front
 layer_level=500

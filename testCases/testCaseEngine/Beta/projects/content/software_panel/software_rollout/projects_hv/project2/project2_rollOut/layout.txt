@@ -1,7 +1,6 @@
 [RollOutPanel]
-#position not importend because inside HV Panel
-position_x=0px
-position_y=0px
+position_x=0
+position_y=20
 width=722px
 height=31px
 animation_speed=200
