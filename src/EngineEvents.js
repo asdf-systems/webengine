@@ -57,6 +57,9 @@ function notifyParent(object){
     var parent = getParent(object);
     if(parent != null && parent.mType == "HVPanel")
         parent.arrangeChildren();
+    else if (parent != null && parent != undefined && parent != object)
+        notifyParent(parent);
+        
 }
 
 

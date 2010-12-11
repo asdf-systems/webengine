@@ -455,9 +455,9 @@ function checkBrowser(){
 function getParent(object){
     if(object == null)
         return null;
-    if(object.mDomTreeObject == null)
+    if(object.mParent == null)
         return null;
-        
-    return object.mDomTreeObject.nextNode;
+            
+    return object.mParent.nextNode;
 }
 //*};
