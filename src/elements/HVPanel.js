@@ -165,7 +165,7 @@ asdf_HVPanel.prototype.show = function(){
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
     this.updateSize();
-    notifyParent(this);    
+    
     
 }
 
@@ -194,7 +194,7 @@ asdf_HVPanel.prototype.setSize = function(sizeX, sizeY){
  */
 asdf_HVPanel.prototype.getSize = function(){
 
-   this.updateSize();
+   //this.updateSize();
     var sizeX = getValueWithoutUnits(this.mWidth);
     var sizeY = getValueWithoutUnits(this.mHeight);
        

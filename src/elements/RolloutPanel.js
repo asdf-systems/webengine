@@ -184,7 +184,7 @@ asdf_RollOutPanel.prototype.setSize = function(sizeX, sizeY){
  */
 asdf_RollOutPanel.prototype.getSize = function(){
 
-    this.updateSize();
+    //this.updateSize();
     var sizeX = getValueWithoutUnits(this.mWidth);
     var sizeY = getValueWithoutUnits(this.mHeight);
        

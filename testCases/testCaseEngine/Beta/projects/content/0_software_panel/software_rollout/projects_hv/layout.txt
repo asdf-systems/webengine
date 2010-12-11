@@ -2,7 +2,7 @@
 position_x=0
 position_y=0
 width=722px
-height=1000px
+height=10px
 orientation=vertical
 space_between_elements=5
 extra_css=hardware_hvPanel
