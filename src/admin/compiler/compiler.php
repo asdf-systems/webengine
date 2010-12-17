@@ -44,18 +44,22 @@
 	 * @returns The resulting hash map
 	 */
 	function compile($path) {
-		debug("Compiling \"".$path."\"");
-		$object = getDefaultObject($path);
-		$compiled = readLayoutFile(simplifyPath($path, "layout.txt"));
-		// With array_merge is left-associative
-		// so for any duplicate keys, the value in
-		// $compiled will be seen in the result.
-		$object = array_merge($object, $compiled);
-		$object["children"] = getChildren($path);
-		$object = checkForSpecialAttributes($path, $object);
-		createHTMLDummy($object);
-		debug("Done.");
-		return $object;
+		try {
+			debug("Compiling \"".$path."\"");
+			$object = getDefaultObject($path);
+			$compiled = readLayoutFile(simplifyPath($path, "layout.txt"));
+			// With array_merge is left-associative
+			// so for any duplicate keys, the value in
+			// $compiled will be seen in the result.
+			$object = array_merge($object, $compiled);
+			$object["children"] = getChildren($path);
+			$object = checkForSpecialAttributes($path, $object);
+			createHTMLDummy($object);
+			debug("Done.");
+			return $object;
+		} catch(Exception $e) {
+			throw new Exception("Error while compiling \"".$path."\": ".$e->getMessage());
+		}
 	}
 
 	/**
@@ -69,15 +73,19 @@
 	 * @returns Hash map with the section's key=value pairs
 	 */
 	function readLayoutFile($file) {
-		debug("Reading layout file \"".$file."\"");
-		$ini = readINIFile($file);
-		if($ini === false) {
-			return Array();
+		try {
+			debug("Reading layout file \"".$file."\"");
+			$ini = readINIFile($file);
+			if($ini === false) {
+				return Array();
+			}
+			$first_section_name = getFirstINISection($ini);
+			debug("Declared type is \"".$first_section_name."\"");
+			$ini[$first_section_name]["type"] = $first_section_name;
+			return $ini[$first_section_name];
+		} catch(Exception $e) {
+			throw new Exception("Error while reading layoutfile \"".$file."\": ".$e->getMessage());
 		}
-		$first_section_name = getFirstINISection($ini);
-		debug("Declared type is \"".$first_section_name."\"");
-		$ini[$first_section_name]["type"] = $first_section_name;
-		return $ini[$first_section_name];
 	}
 
 	/**

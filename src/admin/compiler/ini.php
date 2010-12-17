@@ -8,28 +8,32 @@
 	 * @returns An hash map mapping from section names to hash maps mapping from key to value
 	 */
 	function readINIFile($file) {
-		debug("Parsing generic INI file \"".$file."\"");
-		$ret = Array();
-		$data = file($file);
-		if($data === false) {
-			return false;
-		}
-		$current_section = null;
-		foreach($data as $line) {
-			$line = stripComments($line);
-			if(preg_match("/^\s*\[[^\]]+\]\s*$/", $line)) { // New Section
-				$current_section = trim(preg_replace("/^\s*\[([^\]]+)\]\s*(#.+)?$/", "$1", $line));
-				$ret[$current_section] = Array();
-			} else if(preg_match("/^[^=]+=.+$/", $line)) { // Key-value pair
-				if($current_section == null) {
-					issueWarning("Stray data in \"".$file."\"\n");
-					continue;
-				}
-				$split = explode("=", $line, 2);
-				$ret[$current_section][trim($split[0])] = trim($split[1]);
+		try {
+			debug("Parsing generic INI file \"".$file."\"");
+			$ret = Array();
+			$data = file($file);
+			if($data === false) {
+				return false;
 			}
+			$current_section = null;
+			foreach($data as $line) {
+				$line = stripComments($line);
+				if(preg_match("/^\s*\[[^\]]+\]\s*$/", $line)) { // New Section
+					$current_section = trim(preg_replace("/^\s*\[([^\]]+)\]\s*(#.+)?$/", "$1", $line));
+					$ret[$current_section] = Array();
+				} else if(preg_match("/^[^=]+=.+$/", $line)) { // Key-value pair
+					if($current_section == null) {
+						issueWarning("Stray data in \"".$file."\"\n");
+						continue;
+					}
+					$split = explode("=", $line, 2);
+					$ret[$current_section][trim($split[0])] = trim($split[1]);
+				}
+			}
+			return $ret;
+		} catch(Exception $e) {
+			throw new Exception("Error while reading INI file \"".$file."\": ".$e->getMessage());
 		}
-		return $ret;
 	}
 
 	/**

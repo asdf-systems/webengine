@@ -5,33 +5,37 @@
 	require_once("directory_operations.php");
 
 	function parseReferenceFile($file) {
-		debug("Resolving reference from \"".$file."\"");
-		$ini = readINIFile($file);
-		$first_section_name = getFirstINISection($ini);
-		$refpath = simplifyPath(dirname($file), $first_section_name);
-		$elem = $ini[$first_section_name];
-		debug("Reference to \"".$refpath."\"");
-		if(hasImageExtension($refpath)) {
-			$elem["object"] = null;
-			$elem["type"] = "Image";
-			$elem["src"] = $refpath;
-			$elem = checkForSpecialAttributes(dirname($file), $elem);
-		} else {
-			// compile() will call checkForSpecialAttributes
-			// Calling it twice on an object will cause corrupted paths
-			// and destroy EVERYTHING!
-			// However, because some special attributes may be listed
-			// in the reference file (and those still need proper handling)
-			// checkForSpecialAttributes() is called upon the object
-			// containing only the data from the reference file
-			// and both objects will be merged *afterwards*
-			$refelem = resolveReference($refpath);
-			$elem = checkForSpecialAttributes(dirname($file), $elem);
-			$elem = array_merge($refelem, $elem);
+		try {
+			debug("Resolving reference from \"".$file."\"");
+			$ini = readINIFile($file);
+			$first_section_name = getFirstINISection($ini);
+			$refpath = simplifyPath(dirname($file), $first_section_name);
+			$elem = $ini[$first_section_name];
+			debug("Reference to \"".$refpath."\"");
+			if(hasImageExtension($refpath)) {
+				$elem["object"] = null;
+				$elem["type"] = "Image";
+				$elem["src"] = $refpath;
+				$elem = checkForSpecialAttributes(dirname($file), $elem);
+			} else {
+				// compile() will call checkForSpecialAttributes
+				// Calling it twice on an object will cause corrupted paths
+				// and destroy EVERYTHING!
+				// However, because some special attributes may be listed
+				// in the reference file (and those still need proper handling)
+				// checkForSpecialAttributes() is called upon the object
+				// containing only the data from the reference file
+				// and both objects will be merged *afterwards*
+				$refelem = resolveReference($refpath);
+				$elem = checkForSpecialAttributes(dirname($file), $elem);
+				$elem = array_merge($refelem, $elem);
+			}
+			$elem["id"] = $file;
+			debug("Done.");
+			return $elem;
+		} catch(Exception $e) {
+			throw new Exception("Error while parsing reference file \"".$file."\": ".$e->getMessage());
 		}
-		$elem["id"] = $file;
-		debug("Done.");
-		return $elem;
 	}
 
 	function resolveReference($file) {
@@ -65,20 +69,24 @@
 	 * @returns An Array with objects describing the function call
 	 */
 	function parseEventChain($path, $chain) {
-		debug("Parsing event chain \"".$chain."\"");
-		if(!isValidEventChain($chain)) {
-			return false;
-		}
+		try {
+			debug("Parsing event chain \"".$chain."\"");
+			if(!isValidEventChain($chain)) {
+				return false;
+			}
 
-		$object = Array();
-		$splittable = preg_replace("/([^(]+\([^)]*\)),/", "$1;", $chain);
-		debug("Lexer returned \"".$splittable."\"");
-		$functions = explode(";", $splittable);
+			$object = Array();
+			$splittable = preg_replace("/([^(]+\([^)]*\)),/", "$1;", $chain);
+			debug("Lexer returned \"".$splittable."\"");
+			$functions = explode(";", $splittable);
 
-		foreach($functions as $function) {
-			array_push($object, parseFunction($path, $function));
+			foreach($functions as $function) {
+				array_push($object, parseFunction($path, $function));
+			}
+			return $object;
+		} catch(Exception $e) {
+			throw new Exception("Error while parsing eventchain \"".$chain."\": ".$e->getMessage());
 		}
-		return $object;
 	}
 
 	function isValidEventChain($chain) {

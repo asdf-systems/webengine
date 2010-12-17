@@ -9,7 +9,7 @@
 		if($op === false) {
 			print("\n\nDetails:\n");
 			print($msg."\n\n");
-			die("An error occurred\n");
+			throw new Exception("An error occurred\n");
 		}
 		return $op;
 	}
