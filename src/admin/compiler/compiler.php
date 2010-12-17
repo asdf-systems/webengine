@@ -14,12 +14,17 @@
 	if(!isset($DEBUG))
 		$DEBUG = false;
 
-	debug("Starting main routine");
-	$result = compile("./");
-	$result = makePositionsRelative($result);
-	$json = my_json_encode($result)."\n";
-	debug("Result:\n".$json);
-	writeToFile(getOutputFileName(), "var jsonObject = ".$json);
+	try {
+		debug("Starting main routine");
+		$result = compile("./");
+		$result = makePositionsRelative($result);
+		$json = my_json_encode($result)."\n";
+		debug("Result:\n".$json);
+		writeToFile(getOutputFileName(), "var jsonObject = ".$json);
+	} catch (Exception $e) {
+		print("Fatal: ".$e->getMessage());
+		debug("Trace: ".$e->getTraceAsString());
+	}
 
 	/** Functions **/
 
