@@ -22,7 +22,8 @@
 		debug("Result:\n".$json);
 		writeToFile(getOutputFileName(), "var jsonObject = ".$json);
 	} catch (Exception $e) {
-		print("Fatal: ".$e->getMessage());
+		$msg = str_replace(": ", ": \n", $e->getMessage());
+		print("Fatal: ".$msg);
 		debug("Trace: ".$e->getTraceAsString());
 	}
 

@@ -7,9 +7,7 @@
 	 */
 	function DieOnError($op, $msg = "No details were given") {
 		if($op === false) {
-			print("\n\nDetails:\n");
-			print($msg."\n\n");
-			throw new Exception("An error occurred\n");
+			throw new Exception($msg."\n");
 		}
 		return $op;
 	}
