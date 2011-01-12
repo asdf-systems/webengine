@@ -4,7 +4,6 @@ position_y=0
 width=722px
 height=53px
 standard_src=header_projects_software_bg.png
-action_click=SPECIFIC(../software_rollout,toggle)
 alt_text=show show hardware projects
 extra_css=hardware_button
 initial_show=true

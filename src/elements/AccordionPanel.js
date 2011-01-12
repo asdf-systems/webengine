@@ -88,7 +88,7 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
          this.mPages  = new Array();
          this.mHeader = new Array();
     } else {
-        setHeaderAndPages(pages);
+        this.setHeaderAndPages(pages);
     }
     
     if(initialShow == "false")
@@ -106,7 +106,7 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
 
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
-    this.setAccordion();
+    this.create();
     this.mDomTreeObject.style.position = "absolute";
     this.mChildren = new Array();
     
@@ -235,17 +235,18 @@ asdf_AccordionPanel.prototype.show = function(){
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
     this.updateSize();
-    this.create();
 
 }
 
 /**
  * activate jQueryUI accordion
  */
-asdf_AccordionPanel.prototype.setAccordion() = function(){
+asdf_AccordionPanel.prototype.setAccordion = function(){
 
   	//$("#accordion").accordion({ header: ".header",  collapsible: this.mCollapse});
-  	$(this.mDomTreeObject).accordion({ header: ".header",  collapsible: this.mCollapse});
+    $(this.mDomTreeObject).accordion('destroy');
+  	$(this.mDomTreeObject).accordion({ header: ".asdf_accordion_header",  collapsible: this.mCollapse});
+
 }
 
 
@@ -255,10 +256,21 @@ asdf_AccordionPanel.prototype.setAccordion() = function(){
  */
 asdf_AccordionPanel.prototype.create = function(){
 
-    this.mSegements = new Array();
+    this.mDomSegments = new Array();
+    this.mDomSegmentsHeader = new Array();
+    this.mDomSegmentsContent = new Array();
     for(var i=0; i < this.mHeader.length; i++){
         var segment =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segment_"+i), "div", this.mType, this.extra_css_class); 
+        var header =  createDomObjectDOM(this, segment, (this.mId + "_segmentHeader_"+i), "div", this.mType, this.extra_css_class); 
+        var content =  createDomObjectDOM(this, segment, (this.mId + "_segmentBody_"+i), "div", this.mType, this.extra_css_class); 
+        setObjectPosition(segment, 0, 0, "relative");
+        setObjectPosition(header, 0, 0, "relative");
+        setObjectPosition(content, 0, 0, "relative");
+         
         this.mDomSegments.push(segment);
+        this.mDomSegmentsHeader.push(header);
+        this.mDomSegmentsContent.push(content);
+        $(header).addClass("asdf_accordion_header");        
     }
     this.setAccordion();
 
@@ -271,13 +283,13 @@ asdf_AccordionPanel.prototype.create = function(){
 asdf_AccordionPanel.prototype.setHeaderAndPages = function(pages){
     this.mPages = new Array();
     this.mHeader = new Array();
-    if(pages.length() %2 != 0){
+    if(pages.length %2 != 0){
         if(globals.debug > 0)
             alert("Error AccordionPanel "+this.mId+" has odd number of pages.\n That means that there is an header without body - cancel");
         return null;
     }
     
-    for(var i=0; i < pages.size(); i+=2){
+    for(var i=0; i < pages.length; i+=2){
         this.mHeader.push(pages[i]);
         this.mPages.push(pages[i+1]);
     }
@@ -292,12 +304,10 @@ asdf_AccordionPanel.prototype.setHeaderAndPages = function(pages){
  * @param child     jsonElement     childElement to addd
  */
 asdf_AccordionPanel.prototype.addChild = function(child){
-     var parent = this.getParent(child);
-     if(child.object == null){ // child not initialised yet
 
-         if(child.object == null) // child not initialised yet
-                init(child, parent);
-        this.mChildren[this.mChildren.length] = child;
+     if(child.object == null){ // child not initialised yet
+         var parent = this.initChild(child);
+
         
         for(var grandChild in child.children){
             var thisJson = getJsonObject(this.mId);
@@ -311,6 +321,7 @@ asdf_AccordionPanel.prototype.addChild = function(child){
         } else
             child.object.hide();
         
+        this.setAccordion();
     }
    
     
@@ -320,25 +331,36 @@ asdf_AccordionPanel.prototype.addChild = function(child){
 /**
  * check where the childObject should be added in DomTree
  */
-asdf_AccordionPanel.prototype.getParent = function(child){
+asdf_AccordionPanel.prototype.initChild = function(child){
 
     //check if child is an Header or Page
     for(var i=0; i< this.mHeader.length; i++){
-        boolean flag = false;
+        var flag = false;
         if(this.mHeader[i].id == child.id){
-            $(this.mHeader.object.mDomTreeObject).addClass("asdf_accordion_header");
-            flag = true;
-            
-        } else if (this.mPages[i] == child.id){
-            flag = true;
+            if(child.object == null) // child not initialised yet
+                init(child, this.mDomSegmentsHeader[i]);
+            this.mChildren[this.mChildren.length] = child;
+            child.object.show();
+            setObjectPosition(child.object.mDomTreeObject, this.mPosX, this.mPosX, "relative");
+            return;
+                   
+        } else if(this.mPages[i].id == child.id){
+             if(child.object == null) // child not initialised yet
+                init(child, this.mDomSegmentsContent[i]);
+            this.mChildren[this.mChildren.length] = child;
+            child.object.show();
+            setObjectPosition(child.object.mDomTreeObject, this.mPosX, this.mPosX, "relative");
+            return;
         }
         
-        if(flag){
-            return this.mDomSegments[i];
-        }
+ 
     }
     
-    return this.mDomTreeObject;    
+    if(child.object == null) // child not initialised yet
+         init(child, this.mDomTreeObject);
+    this.mChildren[this.mChildren.length] = child;
+
+    return;    
 }
 
 
