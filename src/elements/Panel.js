@@ -152,7 +152,6 @@ asdf_Panel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
-    notifyParent(this);
 
 }
 
@@ -160,7 +159,7 @@ asdf_Panel.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
-    notifyParent(this);
+
     
 }
 
@@ -243,8 +242,11 @@ asdf_Panel.prototype.addChild = function(child){
             
         } else
             child.object.hide();
+
+        if(this.mDomTreeObject.id == "projects/content/1_hardware_panel/hardware_rollout/projects_hv/project2")
+            var l = 5;
         
-        //this.updateSize();
+        this.updateSize();
     }
     
 }

@@ -211,16 +211,6 @@ asdf_InputField.prototype.checkSign = function(params){
     var object = params.event.currentTarget.nextNode;
     //    alert("KeyCode" + event.keyCode);
     var asciiCode;
-    /*if(navigator="Firefox")
-        alert("firefox");
-    if(navigator="Opera")
-        alert("opera");
-    if(navigator="Safari")
-        alert("safari");
-    if(navigator="chrome");
-        alert("chrome");
-    if(navigator="Microsoft Internet Explorer");
-        alert("IE - go home");*/
     var browser = checkBrowser();
     if(browser.mozilla)
         var asciiCode = params.event.charCode;
@@ -247,7 +237,7 @@ asdf_InputField.prototype.checkSign = function(params){
  */
 asdf_InputField.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
-    notifyParent(this);
+
 }
 
 /**
@@ -293,7 +283,7 @@ asdf_InputField.prototype.show = function(){
 
     }
     $(this.mDomTreeObject).show();
-    notifyParent(this);
+
 }
 
 /**
@@ -307,14 +297,14 @@ asdf_InputField.prototype.setPosition = function(posX, posY){
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
     setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute");
     setObjectPosition(this.mDomBackground, 0,0,"absolute");
-    notifyParent(this);
+
 }
 
 asdf_InputField.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
-    notifyParent(this);
+
 }
 
 /**

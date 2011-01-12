@@ -178,14 +178,14 @@ asdf_HVPanel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
-    notifyParent(this);
+
 }
 
 asdf_HVPanel.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
-    notifyParent(this);
+
 }
 
 /**

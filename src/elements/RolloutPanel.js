@@ -168,14 +168,14 @@ asdf_RollOutPanel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
-    notifyParent(this);
+ 
 }
 
 asdf_RollOutPanel.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
-    notifyParent(this);
+
 }
 
 /**
@@ -276,12 +276,15 @@ asdf_RollOutPanel.prototype.specificAction = function(params){
 			// for slideDown - hav to be hidden, but need show to initialise childs
             this.show(); this.hide(); this.showChildren();
             $(this.mDomTreeObject).slideDown(this.mAnimationSpeed, this.rollDownCallback);
+
 		break;
 		case "rollup":
 		case "up":
 		case "slideup":
-            if(!this.mouseOverPanel(params))
+            if(!this.mouseOverPanel(params)){
     			$(this.mDomTreeObject).slideUp(this.mAnimationSpeed, this.rollUpCallback);
+
+   		  }
 		break;
         default:
             if(globals.debug > 0)

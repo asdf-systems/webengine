@@ -114,7 +114,7 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
  */
 asdf_Button.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
-    notifyParent(this);
+
 }
 
 /**
@@ -131,11 +131,14 @@ asdf_Button.prototype.show = function(){
         this.mDomTreeObject.style.position = "absolute";
         this.setPosition(this.mPosX,this.mPosY);
         this.mDomTreeObject.style.zIndex = this.mZIndex;
+        this.mWidth = this.mDomTreeObject.offsetWidth;
+        this.mHeight = this.mDomTreeObject.offsetHeight;
+        this.setSize(this.mWidth, this.mHeight);
 
     }
     
     $(this.mDomTreeObject).show();
-    notifyParent(this);
+
 
 }
 
@@ -148,12 +151,12 @@ asdf_Button.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
-    notifyParent(this);
+
 }
 
 asdf_Button.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomTreeObject, sizeX, sizeY);
-    notifyParent(this);
+
 }
 
 /**

@@ -156,7 +156,7 @@ asdf_PagePanel.prototype.hide = function(){
     $(this.mDomPages).hide();
     this.hideChildren();
     this.mCurrentPage = 0;
-    notifyParent(this);
+
     
 }
 
@@ -188,7 +188,7 @@ asdf_PagePanel.prototype.show = function(){
     this.mDomTreeObject.style.background = this.mBgColor;
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
-    notifyParent(this);
+
 }
 
 /**
@@ -203,7 +203,6 @@ asdf_PagePanel.prototype.setPosition = function(posX, posY){
     setObjectPosition(this.mDomPages, 0, 0, "absolute");
     setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
     setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
-    notifyParent(this);
 
 }
 
@@ -214,7 +213,6 @@ asdf_PagePanel.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomEvenPages, this.mPageSizeX, this.mPageSizeX);    
     setObjectSize(this.mDomPages, this.mPageSizeX*2, this.mPageSizeY);
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);   
-    notifyParent(this); 
     
 }
 

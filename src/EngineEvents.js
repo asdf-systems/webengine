@@ -57,13 +57,13 @@ function notifyParent(object){
     var parent = getParent(object);
     
     if(parent != null && parent.updateSize)
-        parent.updateSize();
-    /*    
+       parent.updateSize();
+        
     if (parent != null && parent != undefined && parent != object){
         if(parent.updateSize)
             parent.updateSize();
             
-    }*/    
+    }    
 }
 
 
