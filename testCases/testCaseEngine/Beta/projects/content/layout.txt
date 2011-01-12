@@ -8,4 +8,4 @@ space_between_elements=5
 extra_css=projects_hvPanel
 initial_show=true
 # higher level - object more in front
-layer_level=500
+layer_level=400

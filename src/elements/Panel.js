@@ -243,9 +243,7 @@ asdf_Panel.prototype.addChild = function(child){
         } else
             child.object.hide();
 
-        if(this.mDomTreeObject.id == "projects/content/1_hardware_panel/hardware_rollout/projects_hv/project2")
-            var l = 5;
-        
+
         this.updateSize();
     }
     

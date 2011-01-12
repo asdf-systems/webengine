@@ -42,6 +42,11 @@ function init(elem, parentObject){
 			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
+        case "AccordionPanel":
+            var pages = getPages(elem);
+            elem.object = new asdf_AccordionPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css, elem.collapse, pages,  elem.initial_show, elem.layer_level );
+            registerActions(elem);           
+		break;
         case "Image":
             elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
