@@ -1,0 +1,9 @@
+[Panel]
+# we are in HV
+position_x=0px
+position_y=0px
+width=400px
+height=400px
+initial_show=true
+# higher level - object more in front
+layer_level=550

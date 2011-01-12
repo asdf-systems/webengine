@@ -1,0 +1,10 @@
+[RollOutPanel]
+position_x=0
+position_y=20
+width=722px
+height=31px
+animation_speed=200
+extra_css=hardware_rollOut
+initial_show=false
+# higher level - object more in front
+layer_level=500

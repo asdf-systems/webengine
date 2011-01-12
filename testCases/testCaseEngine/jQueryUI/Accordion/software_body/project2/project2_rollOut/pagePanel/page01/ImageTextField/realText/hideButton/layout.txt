@@ -1,0 +1,6 @@
+[Button]
+position_x=25
+position_y=25
+standard_src=/elements/right_arrow_btn/right_arrow_btn.png
+action_click=HIDE(../textFeld/)
+extra_css=imageTextField
