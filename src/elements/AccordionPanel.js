@@ -245,7 +245,8 @@ asdf_AccordionPanel.prototype.setAccordion = function(){
 
   	//$("#accordion").accordion({ header: ".header",  collapsible: this.mCollapse});
     $(this.mDomTreeObject).accordion('destroy');
-  	$(this.mDomTreeObject).accordion({ header: ".asdf_accordion_header",  collapsible: this.mCollapse});
+    var headerString = "." + this.mId + "_asdf_accordion_header";
+  	$(this.mDomTreeObject).accordion({ header:  headerString, collapsible: this.mCollapse});
 
 }
 
@@ -266,11 +267,11 @@ asdf_AccordionPanel.prototype.create = function(){
         setObjectPosition(segment, 0, 0, "relative");
         setObjectPosition(header, 0, 0, "relative");
         setObjectPosition(content, 0, 0, "relative");
-         
+        var headerString = this.mId + "_asdf_accordion_header";
         this.mDomSegments.push(segment);
         this.mDomSegmentsHeader.push(header);
         this.mDomSegmentsContent.push(content);
-        $(header).addClass("asdf_accordion_header");        
+        $(header).addClass(headerString);        
     }
     this.setAccordion();
 
@@ -321,7 +322,7 @@ asdf_AccordionPanel.prototype.addChild = function(child){
         } else
             child.object.hide();
         
-        this.setAccordion();
+        //this.setAccordion();
     }
    
     

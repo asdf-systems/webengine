@@ -10,7 +10,20 @@
 			$(function(){
 
 				// Accordion
-				$("#accordion").accordion({ header: ".header" });
+				$("#accordion").accordion({
+						header: ".header" 
+						//alwaysOpen: false,
+						//active: false,
+						//autoheight: false,
+						//clearStyle: true
+					 });
+				$("#accordion2").accordion({
+						header: ".header2" 
+						//alwaysOpen: false,
+						//active: false,
+						//autoheight: false,
+						//clearStyle: true
+					 });
 	
 				// Tabs
 				$('#tabs').tabs();
@@ -81,16 +94,29 @@
 		<!-- Accordion -->
 		<h2 class="demoHeaders">Accordion</h2>
 		<div id="accordion">
-			<div>
-   				<img src="header.png" class="header" style="position:relative; top:0px; width:200px; height:200px"></img>
-				<div style="position:relative; top:0px; width:20px; height:20px"><img src="bild.png" style="position:absolute; top:0px; width:200px; height:200px"></img></div>
+			<div class="ui-accordion-group">
+   				<h3 class="header"><a href="#">Bla</a></h3>
+					<div id="accordion2">
+						<div  class="ui-accordion2-group">
+			   				<img src="header.png" class="header2"></img>
+							<div class="ui-accordion2-content"><img src="bild.png"></img></div>
+						</div>
+						<div>
+							<h3 class="header2" style="position:relative; top:0px"><a href="#">Second</a></h3>
+							<div>Phasellus mattis tincidunt nibh.</div>
+						</div>
+						<div>
+							<h3><a href="#">Third</a></h3>
+							<div>Nam dui erat, auctor a, dignissim quis.</div>
+						</div>
+					</div>
 			</div>
 			<div>
 				<h3 class="header" style="position:relative; top:0px"><a href="#">Second</a></h3>
 				<div>Phasellus mattis tincidunt nibh.</div>
 			</div>
 			<div>
-				<h3><a href="#">Third</a></h3>
+				<h3 class="header"><a href="#">Third</a></h3>
 				<div>Nam dui erat, auctor a, dignissim quis.</div>
 			</div>
 		</div>
