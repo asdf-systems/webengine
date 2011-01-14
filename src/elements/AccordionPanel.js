@@ -244,7 +244,7 @@ asdf_AccordionPanel.prototype.show = function(){
 asdf_AccordionPanel.prototype.setAccordion = function(){
 
   	//$("#accordion").accordion({ header: ".header",  collapsible: this.mCollapse});
-    $(this.mDomTreeObject).accordion('destroy');
+    //$(this.mDomTreeObject).accordion('destroy');
     var headerString = "." + this.mId + "_asdf_accordion_header";
   	$(this.mDomTreeObject).accordion({ header:  headerString, collapsible: this.mCollapse});
 
@@ -322,7 +322,10 @@ asdf_AccordionPanel.prototype.addChild = function(child){
         } else
             child.object.hide();
         
-        //this.setAccordion();
+        //$(this.mDomTreeObject).accordion("add", $(child.object.mDomTreeObject)); 
+        //this.resize();
+        this.setAccordion();
+        
     }
    
     
