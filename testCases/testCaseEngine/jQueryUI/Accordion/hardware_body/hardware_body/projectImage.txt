@@ -2,7 +2,7 @@
 position_x=0
 position_y=0
 width=498px
-height=390px
+height=450px
 alt_key=tolle bild
 extra_css=hardware_image
 initial_show=true

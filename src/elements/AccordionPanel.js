@@ -221,6 +221,7 @@ asdf_AccordionPanel.prototype.updateSize = function(){
             sizeY = y;
     }
     this.setSize(sizeX, sizeY);
+    //$(this.mDomTreeObject).accordion("updateSize", $(this.mDomTreeObject)); 
     
 }
 
@@ -246,7 +247,8 @@ asdf_AccordionPanel.prototype.setAccordion = function(){
   	//$("#accordion").accordion({ header: ".header",  collapsible: this.mCollapse});
     //$(this.mDomTreeObject).accordion('destroy');
     var headerString = "." + this.mId + "_asdf_accordion_header";
-  	$(this.mDomTreeObject).accordion({ header:  headerString, collapsible: this.mCollapse});
+    var headerString = headerString.replace(/\//g, "_");
+  	$(this.mDomTreeObject).accordion({ header:  headerString, collapsible: this.mCollapse, autoHeight : true});
 
 }
 
@@ -268,6 +270,7 @@ asdf_AccordionPanel.prototype.create = function(){
         setObjectPosition(header, 0, 0, "relative");
         setObjectPosition(content, 0, 0, "relative");
         var headerString = this.mId + "_asdf_accordion_header";
+        var headerString = headerString.replace(/\//g, "_");
         this.mDomSegments.push(segment);
         this.mDomSegmentsHeader.push(header);
         this.mDomSegmentsContent.push(content);
@@ -322,9 +325,11 @@ asdf_AccordionPanel.prototype.addChild = function(child){
         } else
             child.object.hide();
         
-        //$(this.mDomTreeObject).accordion("add", $(child.object.mDomTreeObject)); 
-        //this.resize();
-        this.setAccordion();
+        // this function is modded by us and does only the resize
+        $(this.mDomTreeObject).accordion("updateSize", $(child.object.mDomTreeObject)); 
+        //this.updateSize();
+        //$(child.object.mDomTreeObject).resize();
+        //notifyParent(this);
         
     }
    

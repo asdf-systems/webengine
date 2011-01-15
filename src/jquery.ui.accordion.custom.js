@@ -31,7 +31,7 @@
 	     *
 	     * @param {mixed} el
 	     */
-	    add: function (el) {
+	    updateSize: function (el) {
 		var o = this.options, self = this;
 		el = $(el);
 
