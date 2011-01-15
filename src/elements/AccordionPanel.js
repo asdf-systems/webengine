@@ -327,9 +327,7 @@ asdf_AccordionPanel.prototype.addChild = function(child){
         
         // this function is modded by us and does only the resize
         $(this.mDomTreeObject).accordion("updateSize", $(child.object.mDomTreeObject)); 
-        //this.updateSize();
-        //$(child.object.mDomTreeObject).resize();
-        //notifyParent(this);
+        
         
     }
    

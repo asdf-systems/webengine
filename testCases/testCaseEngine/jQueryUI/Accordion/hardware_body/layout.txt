@@ -8,4 +8,4 @@ initial_show=true
 # higher level - object more in front
 layer_level=500
 # Segments of the accordion written in header, content, header, content and so on
-pages=software_head,software_body,hardware_head,hardware_body
+pages=hardware_head,hardware_body,software_head,software_body

@@ -40,49 +40,12 @@
 		var content = head.next();
 		
 
-		// Attach header classes
-		/*head.addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-all")
-			.bind("mouseenter.accordion", function(){$(this).addClass('ui-state-hover');})
-			.bind("mouseleave.accordion", function(){$(this).removeClass('ui-state-hover');})
-			.bind("focus.accordion", function(){$(this).addClass('ui-state-focus');})
-			.bind("blur.accordion", function(){$(this).removeClass('ui-state-focus');});
-		*/
-		// Attach content classes
-		/*content
-		.addClass("ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom");*/
-
-		// Attach header el to widget.headers
-		//this.headers.push(head[0]);
-
-		// Create icons
-		//this._createIcons();
-
-		// Resize
+	   // Resize
 		this.resize();
-
-		// Attach roles
-		/*head
-		    .attr('role','tab')
-		    .bind('keydown', function(event) {return self._keydown(event);})
-		    .attr('aria-expanded', 'false')
-		    .attr("tabIndex", "-1");
-		    
-		content
-		    .attr('role','tabpanel')
-		    .hide();*/
 
 		// only need links in taborder for Safari
 		if (!$.browser.safari)
 			head.find('a').attr('tabIndex','-1');
-
-		/*if (o.event) {
-			head.bind((o.event) + ".accordion", function(event) {
-				self._clickHandler.call(self, event, this);
-				event.preventDefault();
-			});
-		}*/
-		//this.element.append(head);
-		//this.element.append(content);
 
 		if(o.autoActivate) {
 		    this.activate(this.headers.length - 1);
