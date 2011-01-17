@@ -77,7 +77,10 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
         
     this.mUnitW = getUnit(width);
     this.mUnitH = getUnit(height);  
-    
+    this.mUnitX = getUnit(this.mPosX);
+    this.mUnitY = getUnit(this.mPosY);    
+
+        
     if(positionType == undefined || positionType == null){
          if(globals.debug > 2 )
             alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
@@ -102,7 +105,7 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
 
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
-    this.mDomTreeObject.style.position = "absolute";
+    this.mDomTreeObject.style.position = this.mPositionType;
     this.mChildren = new Array();
     
     // set Position
@@ -163,7 +166,7 @@ asdf_Panel.prototype.showChildren = function(){
 asdf_Panel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitX, this.mUnitY);
 
 }
 

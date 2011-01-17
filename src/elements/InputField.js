@@ -98,6 +98,8 @@ function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, hei
 
     this.mUnitW = getUnit(width);
     this.mUnitH = getUnit(height);
+    this.mUnitX = getUnit(this.mPosX);
+    this.mUnitY = getUnit(this.mPosY);
     
     if(inputFieldOffsetY == null){
         if(globals.debug > 0)
@@ -305,9 +307,9 @@ asdf_InputField.prototype.show = function(){
 asdf_InputField.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
-    setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute", this.mUnitW, this.mUnitH);
-    setObjectPosition(this.mDomBackground, 0,0,"absolute", this.mUnitW, this.mUnitH);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitX, this.mUnitY);
+    setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute", this.mUnitX, this.mUnitY);
+    setObjectPosition(this.mDomBackground, 0,0,"absolute", this.mUnitX, this.mUnitY);
 
 }
 

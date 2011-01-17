@@ -78,6 +78,8 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
         
     this.mUnitW = getUnit(width);
     this.mUnitH = getUnit(height); 
+    this.mUnitX = getUnit(this.mPosX);
+    this.mUnitY = getUnit(this.mPosY);
     
     if(positionType == undefined || positionType == null){
          if(globals.debug > 2 )
@@ -212,7 +214,7 @@ asdf_PagePanel.prototype.show = function(){
 asdf_PagePanel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitX, this.mUnitY);
     setObjectPosition(this.mDomPages, 0, 0, "absolute", "px", "px");
     setObjectPosition(this.mDomEvenPages, 0, 0, "absolute", "px", "px");
     setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute","px", "px");

@@ -101,6 +101,8 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
         
     this.mUnitW = getUnit(width);
     this.mUnitH = getUnit(height); 
+    this.mUnitX = getUnit(this.mPosX);
+    this.mUnitY = getUnit(this.mPosY);
     
     if(positionType == undefined || positionType == null){
          if(globals.debug > 2 )
@@ -181,7 +183,7 @@ asdf_Textfield.prototype.show = function(){
 asdf_Textfield.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitX, this.mUnitY);
 
 }
 
