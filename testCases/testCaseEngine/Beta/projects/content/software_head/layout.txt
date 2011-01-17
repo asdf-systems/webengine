@@ -3,6 +3,8 @@ position_x=0
 position_y=0
 width=722px
 height=53px
+#position type can be absolute or relative
+position_type=relative
 standard_src=header_projects_software_bg.png
 alt_text=show show hardware projects
 extra_css=hardware_button

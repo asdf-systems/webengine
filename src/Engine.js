@@ -35,41 +35,41 @@ function init(elem, parentObject){
 	// check Type 
     switch(elem.type){
 		case "Button":
-            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.extra_css, elem.initial_show, elem.layer_level );
+            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.width, elem.height, elem.position_type, elem.extra_css, elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		case "Panel":
-			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css,elem.initial_show, elem.layer_level );
+			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.position_type, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
         case "AccordionPanel":
             var pages = getPages(elem);
-            elem.object = new asdf_AccordionPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.extra_css, elem.collapse, pages,  elem.initial_show, elem.layer_level );
+            elem.object = new asdf_AccordionPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.position_type, elem.extra_css, elem.collapse, pages,  elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
         case "Image":
-            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height, elem.src, elem.extra_css,elem.initial_show, elem.layer_level );
+            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height, elem.src, elem.position_type, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
         case "InputField":
-			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_src, elem.forbidden_signs, elem.password_modus, elem.font_color, elem.font_size, elem.font_family, elem.extra_css, elem.initial_show, elem.layer_level );
+			elem.object = new asdf_InputField(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height ,elem.input_sensitiv_field_offsetX, elem.input_sensitiv_field_offsetY,  elem.backgroundImage_src, elem.forbidden_signs, elem.password_modus, elem.font_color, elem.font_size, elem.font_family, elem.position_type, elem.extra_css, elem.initial_show, elem.layer_level );
 			registerActions(elem);           
 		break;
 		case "TextField":
-			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.texts, elem.font_family, elem.font_size, elem.font_color, elem.extra_css, elem.initial_show, elem.layer_level );
+			elem.object = new asdf_Textfield(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.texts, elem.font_family, elem.font_size, elem.font_color,elem.width, elem.height, elem.position_type, elem.extra_css, elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		case "PagePanel":
             var pages = getPages(elem);
-			elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.page_size_x, elem.page_size_y, elem.animation_speed, pages, elem.extra_css , elem.initial_show, elem.layer_level );
+			elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.page_size_x, elem.page_size_y, elem.animation_speed, pages, elem.position_type, elem.extra_css , elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;		
 		case "RollOutPanel":
-			elem.object = new asdf_RollOutPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.animation_speed, elem.extra_css,elem.initial_show, elem.layer_level );
+			elem.object = new asdf_RollOutPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.animation_speed, elem.position_type, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		case "HVPanel":
-			elem.object = new asdf_HVPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.space_between_elements, elem.orientation,  elem.extra_css,elem.initial_show, elem.layer_level );
+			elem.object = new asdf_HVPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.space_between_elements, elem.orientation, elem.position_type, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);  
 		break;
         /*
@@ -175,15 +175,39 @@ function getActionParameter(actionElement){
 }
 
 /**
- * adds standart unit of measurement to the value if no unit is specified
+ * @return unit ("px" or "%") if value has a unit and empty String if there is no unit
+*/
+
+function getUnit(value){
+     value += "";
+     if(value.match(".*%"))
+        return "%";
+     if(value.match(".*px"))
+        return "px";
+
+   return "";
+}
+/**
+ * adds the given unit to the value, or replace the old one. Fails if no unit given
  * \return  value + right unit of measurement like 50px or 50%
+ * @param value the Value that should get the unit
+ * @param unit needed unit like: % or px
  */
-function getValueWithUnits(value){
+function getValueWithUnits(value, unit){
    
+   if(unit == null || unit == "" || unit == undefined){
+        unit = globals.stdUnit;
+   }
    value += "";
-   if(value.match(".*%") || value.match(".*px"))
+   var currUnit = getUnit(value);
+   if(currUnit == unit)
         return value;
-   return (value + globals.stdUnit);
+        
+   if(currUnit == "")
+        return (value + unit);
+
+   return  getValueWithoutUnits(value) + unit;
+
      
 }
 

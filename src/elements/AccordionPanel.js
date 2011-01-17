@@ -17,7 +17,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class, collapse, pages, initialShow, zIndex){
+function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, collapse, pages, initialShow, zIndex){
     
     
     //* public: 
@@ -76,7 +76,19 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
         this.mHeight = "0";
     else 
         this.mHeight = height;        
-
+    
+    this.mUnitW = getUnit(width);
+    this.mUnitH = getUnit(height);
+    
+    if(positionType == undefined || positionType == null){
+        if(globals.debug > 2 )
+            alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
+        this.mPositionType = "absolute";
+    } else{
+        this.mPositionType = positionType
+    }
+    
+    
     if(collapse == null || collapse == undefined)
         this.mCollapse = false;
     else
@@ -167,14 +179,14 @@ asdf_AccordionPanel.prototype.showChildren = function(){
 asdf_AccordionPanel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
 
 }
 
 asdf_AccordionPanel.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
-    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
+    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, this.mUnitW, this.mUnitH);
 
     
 }
@@ -232,7 +244,7 @@ asdf_AccordionPanel.prototype.show = function(){
 
     $(this.mDomTreeObject).show();
     this.mDomTreeObject.style.background = this.mBgColor;
-    setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
+    this.setSize(this.mWidth, this.mHeight);
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
     this.updateSize();
@@ -266,14 +278,17 @@ asdf_AccordionPanel.prototype.create = function(){
         var segment =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segment_"+i), "div", this.mType, this.extra_css_class); 
         var header =  createDomObjectDOM(this, segment, (this.mId + "_segmentHeader_"+i), "div", this.mType, this.extra_css_class); 
         var content =  createDomObjectDOM(this, segment, (this.mId + "_segmentBody_"+i), "div", this.mType, this.extra_css_class); 
-        setObjectPosition(segment, 0, 0, "relative");
-        setObjectPosition(header, 0, 0, "relative");
-        setObjectPosition(content, 0, 0, "relative");
+        setObjectPosition(segment, 0, 0, "relative", "px", "px");
+        setObjectPosition(header, 0, 0, "relative", "px", "px");
+        setObjectPosition(content, 0, 0, "relative", "px", "px");
         var headerString = this.mId + "_asdf_accordion_header";
         var headerString = headerString.replace(/\//g, "_");
         this.mDomSegments.push(segment);
         this.mDomSegmentsHeader.push(header);
         this.mDomSegmentsContent.push(content);
+        segment.style.zIndex = Number(this.mZIndex)+1;
+        header.style.zIndex = Number(this.mZIndex)+10;
+        content.style.zIndex = Number(this.mZIndex)+1;
         $(header).addClass(headerString);        
     }
     this.setAccordion();
@@ -348,7 +363,7 @@ asdf_AccordionPanel.prototype.initChild = function(child){
                 init(child, this.mDomSegmentsHeader[i]);
             this.mChildren[this.mChildren.length] = child;
             child.object.show();
-            setObjectPosition(child.object.mDomTreeObject, this.mPosX, this.mPosX, "relative");
+            setObjectPosition(child.object.mDomTreeObject, child.object.mPosX, child.object.mPosY, "relative", child.object.mUnitW, child.object.mUnitH);
             return;
                    
         } else if(this.mPages[i].id == child.id){
@@ -356,7 +371,7 @@ asdf_AccordionPanel.prototype.initChild = function(child){
                 init(child, this.mDomSegmentsContent[i]);
             this.mChildren[this.mChildren.length] = child;
             child.object.show();
-            setObjectPosition(child.object.mDomTreeObject, this.mPosX, this.mPosX, "relative");
+            setObjectPosition(child.object.mDomTreeObject, child.object.mPosX, child.object.mPosY, "relative", child.object.mUnitW,  child.object.mUnitH);
             return;
         }
         

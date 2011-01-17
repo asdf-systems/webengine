@@ -18,7 +18,7 @@
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  * todo klären wer das übersetze der Textfiles übernimmt (also formatierung (rtf, txt, html) -> html)
  */
-function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, fontColor, extra_css_class, initialShow, zIndex){
+function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, fontColor, width, height, posititionType, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -89,6 +89,27 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
     } else  
         this.mFontColor = fontColor;
         
+    if(width == null || width == "")
+        this.mWidth = "0";
+    else 
+        this.mWidth = width;
+
+    if(height == null || height == "")
+        this.mHeight = "0";
+    else 
+        this.mHeight = height;   
+        
+    this.mUnitW = getUnit(width);
+    this.mUnitH = getUnit(height); 
+    
+    if(positionType == undefined || positionType == null){
+         if(globals.debug > 2 )
+            alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
+        this.mPositionType = "absolute";
+    } else{
+        this.mPositionType = positionType
+    }
+    
     if(initialShow == "false")
         this.mInitialShow = false;
     else if(initialShow != false)
@@ -160,12 +181,12 @@ asdf_Textfield.prototype.show = function(){
 asdf_Textfield.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
 
 }
 
 asdf_Textfield.prototype.setSize = function(sizeX, sizeY){
-    setObjectSize(this.mDomTreeObject, sizeX, sizeY);
+    setObjectSize(this.mDomTreeObject, sizeX, sizeY, this.mUnitW, this.mUnitH);
 
 }
 

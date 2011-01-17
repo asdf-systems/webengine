@@ -17,7 +17,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, extra_css_class, initialShow, zIndex){
+function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, width, height, positionType, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -49,7 +49,28 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     if(image_hover == null){
         image_hover = image_active;
     }    
+    
+    if(width == null || width == "")
+        this.mWidth = "0";
+    else 
+        this.mWidth = width;
 
+    if(height == null || height == "")
+        this.mHeight = "0";
+    else 
+        this.mHeight = height;   
+        
+    this.mUnitW = getUnit(width);
+    this.mUnitH = getUnit(height);
+    
+    if(positionType == undefined || positionType == null){
+         if(globals.debug > 2 )
+            alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
+        this.mPositionType = "absolute";
+    } else{
+        this.mPositionType = positionType
+    } 
+    
     this.mId = _id;
     this.mImageNormal   = image_normal;
     this.mImageHover   = image_hover;
@@ -150,12 +171,12 @@ asdf_Button.prototype.show = function(){
 asdf_Button.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
 
 }
 
 asdf_Button.prototype.setSize = function(sizeX, sizeY){
-    setObjectSize(this.mDomTreeObject, sizeX, sizeY);
+    setObjectSize(this.mDomTreeObject, sizeX, sizeY, this.mUnitW, this.mUnitH);
 
 }
 

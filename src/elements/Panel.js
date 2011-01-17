@@ -15,7 +15,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height, extra_css_class, initialShow, zIndex){
+function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -73,7 +73,19 @@ function asdf_Panel(_id, _parent, positionX, positionY, bgColor, width , height,
     if(height == null || height == "")
         this.mHeight = "0";
     else 
-        this.mHeight = height;        
+        this.mHeight = height;   
+        
+    this.mUnitW = getUnit(width);
+    this.mUnitH = getUnit(height);  
+    
+    if(positionType == undefined || positionType == null){
+         if(globals.debug > 2 )
+            alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
+        this.mPositionType = "absolute";
+    } else{
+        this.mPositionType = positionType
+    }
+       
 
     if(initialShow == "false")
         this.mInitialShow = false;
@@ -151,14 +163,14 @@ asdf_Panel.prototype.showChildren = function(){
 asdf_Panel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
 
 }
 
 asdf_Panel.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
-    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
+    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, this.mUnitW, this.mUnitH);
 
     
 }
@@ -206,6 +218,8 @@ asdf_Panel.prototype.updateSize = function(){
     }
     this.setSize(sizeX, sizeY);
     
+    
+    
 }
 
 /**
@@ -215,10 +229,10 @@ asdf_Panel.prototype.show = function(){
 
     $(this.mDomTreeObject).show();
     this.mDomTreeObject.style.background = this.mBgColor;
-    setObjectSize( this.mDomTreeObject, this.mWidth, this.mHeight);
+    this.setSize(this.mWidth, this.mHeight);
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
-    this.updateSize();
+    //this.updateSize();
 }
 
 /**

@@ -16,7 +16,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , height, pageSizeX, pageSizeY, animationSpeed, pages, extra_css_class, initialShow, zIndex){
+function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , height, pageSizeX, pageSizeY, animationSpeed, pages, positionType, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -74,7 +74,20 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     if(height == null)
         this.mHeight = "0";
     else 
-        this.mHeight = height;        
+        this.mHeight = height;   
+        
+    this.mUnitW = getUnit(width);
+    this.mUnitH = getUnit(height); 
+    
+    if(positionType == undefined || positionType == null){
+         if(globals.debug > 2 )
+            alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
+        this.mPositionType = "absolute";
+    } else{
+        this.mPositionType = positionType
+    }
+    
+             
     
     if(pageSizeX == null){
         if(globals.debug > 1)
@@ -199,20 +212,21 @@ asdf_PagePanel.prototype.show = function(){
 asdf_PagePanel.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
-    setObjectPosition(this.mDomPages, 0, 0, "absolute");
-    setObjectPosition(this.mDomEvenPages, 0, 0, "absolute");
-    setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
+    setObjectPosition(this.mDomPages, 0, 0, "absolute", "px", "px");
+    setObjectPosition(this.mDomEvenPages, 0, 0, "absolute", "px", "px");
+    setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute","px", "px");
 
 }
 
 asdf_PagePanel.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
-    setObjectSize(this.mDomOddPages, this.mPageSizeX, this.mPageSizeX);   
-    setObjectSize(this.mDomEvenPages, this.mPageSizeX, this.mPageSizeX);    
-    setObjectSize(this.mDomPages, this.mPageSizeX*2, this.mPageSizeY);
-    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);   
+    setObjectSize(this.mDomOddPages, this.mPageSizeX, this.mPageSizeX, this.mUnitW, this.mUnitH);   
+    setObjectSize(this.mDomEvenPages, this.mPageSizeX, this.mPageSizeX, this.mUnitW, this.mUnitH);    
+    setObjectSize(this.mDomPages, this.mPageSizeX*2, this.mPageSizeY, this.mUnitW, this.mUnitH);
+    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, this.mUnitW, this.mUnitH);   
+
     
 }
 
@@ -323,12 +337,12 @@ asdf_PagePanel.prototype.changePage = function(direction){
         // Put Odd Page in the right Position for Animation
         var value = "";
         if(direction < 0){
-            setObjectPosition(this.mDomOddPages, invertValue(this.mPageSizeX), this.mPosY, "absolute");
+            setObjectPosition(this.mDomOddPages, invertValue(this.mPageSizeX), this.mPosY, "absolute", "px", "px");
             value = "+=" + getValueWithUnits(this.mPageSizeX);
             
         }
         else{
-            setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute");
+            setObjectPosition(this.mDomOddPages, this.mPageSizeX, this.mPosY, "absolute", "px", "px");
             value = "-=" + getValueWithUnits(this.mPageSizeX);
             
         }
@@ -343,11 +357,11 @@ asdf_PagePanel.prototype.changePage = function(direction){
             // Put Odd Page in the right Position for Animation
             var value = "";
             if(direction < 0) {
-                setObjectPosition(this.mDomEvenPages, 0, this.mPosY, "absolute");
+                setObjectPosition(this.mDomEvenPages, 0, this.mPosY, "absolute", "px","px");
                 value = "+=" + getValueWithUnits(this.mPageSizeX);
             }
             else{
-                setObjectPosition(this.mDomEvenPages, this.mPageSizeX*2, this.mPosY, "absolute");
+                setObjectPosition(this.mDomEvenPages, this.mPageSizeX*2, this.mPosY, "absolute", "px", "px");
                 value = "-=" + getValueWithUnits(this.mPageSizeX);
             }
             
@@ -371,9 +385,9 @@ asdf_PagePanel.prototype.evenToOddCallback = function(){
     // ACHTUNG: this is pointing to mDomPages - dont ask me why - ask f*** jQuery
     var object = this.parentElement.nextNode;
     $(object.mDomEvenPages).hide();
-    setObjectPosition(object.mDomPages, 0, 0, "absolute");
-    setObjectPosition(object.mDomEvenPages, object.mPageSizeX, object.mPosY, "absolute");
-    setObjectPosition(object.mDomOddPages, 0,0, "absolute");
+    setObjectPosition(object.mDomPages, 0, 0, "absolute", "px", "px");
+    setObjectPosition(object.mDomEvenPages, object.mPageSizeX, object.mPosY, "absolute", "px", "px");
+    setObjectPosition(object.mDomOddPages, 0,0, "absolute", "px", "px");
     
     // hide left and right
     object.hideLeftAndRightPages(object);
@@ -396,9 +410,9 @@ asdf_PagePanel.prototype.oddToEvenCallback = function(){
     // ACHTUNG: this is pointing to mDomPages - dont ask me why - ask f*** jQuery
     var object = this.parentElement.nextNode;
     $(object.mDomOddPages).hide();
-    setObjectPosition(object.mDomPages, 0, 0, "absolute");
-    setObjectPosition(object.mDomOddPages, object.mPageSizeX, object.mPosY, "absolute");
-    setObjectPosition(object.mDomEvenPages, 0,0, "absolute");
+    setObjectPosition(object.mDomPages, 0, 0, "absolute","px", "px");
+    setObjectPosition(object.mDomOddPages, object.mPageSizeX, object.mPosY, "absolute", "px", "px");
+    setObjectPosition(object.mDomEvenPages, 0,0, "absolute", "px", "px");
     object.hideLeftAndRightPages(object);    
 }
 

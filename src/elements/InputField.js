@@ -23,7 +23,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password ,fontColor, fontSize, fontFamily,  extra_css_class, initialShow,zIndex){
+function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, height, inputFieldOffsetX, inputFieldOffsetY, src, forbiddenSigns, password ,fontColor, fontSize, fontFamily, positionType, extra_css_class, initialShow,zIndex){
     
     
     //* public: 
@@ -79,6 +79,15 @@ function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, hei
     else
         this.mHeight      = height;
         
+    if(positionType == undefined || positionType == null){
+         if(globals.debug > 2 )
+            alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
+        this.mPositionType = "absolute";
+    } else{
+        this.mPositionType = positionType
+    }
+    
+        
     if(inputFieldOffsetX == null){
         if(globals.debug > 0)
            alert("Error: InputField: inputFieldOffsetX is not set - cancel");
@@ -87,7 +96,9 @@ function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, hei
     else
         this.mInputOffsetX      = inputFieldOffsetX;
 
-
+    this.mUnitW = getUnit(width);
+    this.mUnitH = getUnit(height);
+    
     if(inputFieldOffsetY == null){
         if(globals.debug > 0)
            alert("Error: InputField: inputFieldOffsetY is not set - cancel");
@@ -153,7 +164,7 @@ function asdf_InputField(_id, _parent, positionX, positionY, bgColor, width, hei
         this.mZIndex = 500;
     else
         this.mZIndex = zIndex;
-                 
+           
     this.mDomTreeObject = null;
     this.mDomBackground = null;
     this.mDomInputField = null;
@@ -294,21 +305,21 @@ asdf_InputField.prototype.show = function(){
 asdf_InputField.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
-    setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute");
-    setObjectPosition(this.mDomBackground, 0,0,"absolute");
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
+    setObjectPosition(this.mDomInputField, this.mInputOffsetX, this.mInputOffsetY, "absolute", this.mUnitW, this.mUnitH);
+    setObjectPosition(this.mDomBackground, 0,0,"absolute", this.mUnitW, this.mUnitH);
 
 }
 
 asdf_InputField.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
-    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
+    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, this.mUnitW, this.mUnitH);
     var x = getValueWithoutUnits(this.mWidth) - getValueWithoutUnits(this.mInputOffsetX);
     x = getValueWithUnits(x);
     var y = getValueWithoutUnits(this.mHeight) - getValueWithoutUnits(this.mInputOffsetY);
     y = getValueWithUnits(y);
-    setObjectSize(this.mDomBackground,x, y);
+    setObjectSize(this.mDomBackground,x, y, "px", "px");
 
 }
 

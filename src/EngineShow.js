@@ -146,7 +146,7 @@ function showChildren(elem){
  * @param   top     int         Position top
  * @param   type    string      position type like relative or absoulte; if NotSet value will leave as is
  */
-function setObjectPosition(element, left, top, type){
+function setObjectPosition(element, left, top, type, unitW, unitH){
     left += "";
     top += "";
     if(left == null  || left == "px"  || left == "" ){
@@ -160,8 +160,8 @@ function setObjectPosition(element, left, top, type){
     if(type != null)
         element.style.position = type;
         
-    element.style.left = getValueWithUnits(left);
-    element.style.top = getValueWithUnits(top);
+    element.style.left = getValueWithUnits(left, unitW);
+    element.style.top = getValueWithUnits(top, unitH);
 }
 
 /**
@@ -169,9 +169,16 @@ function setObjectPosition(element, left, top, type){
  * @param   element DOMObject   Element to Place
  * @param   width   int         Position left
  * @param   height  int         Position top
+ * @param   unitW   string      Unit for the Width value like % or "px"
+ * @param   unitH   string      Unit for the Height value
  */
-function setObjectSize(element, width ,height){
+function setObjectSize(element, width ,height, unitW, unitH){
        
-    element.style.width = getValueWithUnits(width);
-    element.style.height = getValueWithUnits(height);
+    if(unitW == "")
+        untiW = globals.stdUnit;
+    if(unitH == "")
+        unitH = globals.stdUnit;
+        
+    element.style.width = getValueWithUnits(width, unitW);
+    element.style.height = getValueWithUnits(height, unitH);
 }

@@ -13,7 +13,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Image(_id, _parent, positionX, positionY, width, height, src, extra_css_class, initialShow,zIndex){
+function asdf_Image(_id, _parent, positionX, positionY, width, height, src, positionType, extra_css_class, initialShow,zIndex){
     
     
     //* public: 
@@ -70,7 +70,17 @@ function asdf_Image(_id, _parent, positionX, positionY, width, height, src, extr
         return null;
     } else
         this.mWidth = width;
-
+        
+    this.mUnitW = getUnit(width);
+    this.mUnitH = getUnit(height);
+    
+    if(positionType == undefined || positionType == null){
+         if(globals.debug > 2 )
+            alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
+        this.mPositionType = "absolute";
+    } else{
+        this.mPositionType = positionType
+    }
 
     if(height == false){
        if(globals.debug > 0)
@@ -146,12 +156,12 @@ asdf_Image.prototype.show = function(){
 asdf_Image.prototype.setPosition = function(posX, posY){
     this.mPosX = posX;
     this.mPosY = posY;
-    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY);
+    setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitW, this.mUnitH);
 
 }
 
 asdf_Image.prototype.setSize = function(sizeX, sizeY){
-    setObjectSize(this.mDomTreeObject, sizeX, sizeY);
+    setObjectSize(this.mDomTreeObject, sizeX, sizeY, this.mUnitW, this.mUnitH);
 
 }
 

@@ -1,6 +1,10 @@
 [AccordionPanel]
-position_x=277px
-position_y=120px
+position_x=432px
+position_y=130px
+width=900px
+height=500px
+#position type can be absolute or relative
+position_type=absolute;
 # true for force one selection open every time
 collapse=true
 initial_show=true
