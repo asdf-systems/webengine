@@ -1,5 +1,6 @@
-[navi_normal_bg.jpg]
+[navi_normal_bg.png]
 position_x=278px
 position_y=130px
 extra_css=navi_normal_bg
 initial_show=true
+layer_level=400

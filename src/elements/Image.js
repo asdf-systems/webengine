@@ -13,7 +13,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, initialShow,zIndex){
+function asdf_Image(_id, _parent, positionX, positionY, width, height, src, extra_css_class, initialShow,zIndex){
     
     
     //* public: 
@@ -64,6 +64,22 @@ function asdf_Image(_id, _parent, positionX, positionY, src, extra_css_class, in
         return null;
     }
     
+    if(width == false){
+       if(globals.debug > 0)
+            alert("Image: image width from Image: "+this.mId+" is null - cancel");
+        return null;
+    } else
+        this.mWidth = width;
+
+
+    if(height == false){
+       if(globals.debug > 0)
+            alert("Image: image height from Image: "+this.mId+" is null - cancel");
+        return null;
+    } else
+        this.mHeight = height;        
+        
+        
     if(initialShow == "false")
         this.mInitialShow = false;
     else if(initialShow != false)
@@ -114,6 +130,7 @@ asdf_Image.prototype.show = function(){
         // set Position
         this.mDomTreeObject.style.position = "absolute";
         this.setPosition(this.mPosX, this.mPosY);
+        this.setSize(this.mWidth, this.mHeight);
         this.mDomTreeObject.style.zIndex = this.mZIndex;
     }
 		

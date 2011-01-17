@@ -304,6 +304,11 @@ asdf_InputField.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight);
+    var x = getValueWithoutUnits(this.mWidth) - getValueWithoutUnits(this.mInputOffsetX);
+    x = getValueWithUnits(x);
+    var y = getValueWithoutUnits(this.mHeight) - getValueWithoutUnits(this.mInputOffsetY);
+    y = getValueWithUnits(y);
+    setObjectSize(this.mDomBackground,x, y);
 
 }
 

@@ -8,3 +8,4 @@ extra_css=asdf_login_name_inf
 default_value=email@adresse.de
 initial_show=true
 action_hover=SPECIFIC(/static/password_rollout/, rollout)
+layer_level=700

@@ -48,7 +48,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "Image":
-            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.src, elem.extra_css,elem.initial_show, elem.layer_level );
+            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height, elem.src, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
         case "InputField":
