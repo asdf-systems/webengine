@@ -1,6 +1,6 @@
 [AccordionPanel]
-position_x=0px
-position_y=0px
+position_x=277px
+position_y=130px
 height=450px
 # true for force one selection open every time
 collapse=true

@@ -1,6 +1,6 @@
 [/elements/topic_bar_orange]
 position_x=432px
-position_y=109px
+position_y=130px
 alt_text=news
 extra_css=asdf_button
 initial_show=true

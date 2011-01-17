@@ -1,5 +1,5 @@
 [navi_normal_bg.jpg]
 position_x=278px
-position_y=109px
+position_y=130px
 extra_css=navi_normal_bg
 initial_show=true

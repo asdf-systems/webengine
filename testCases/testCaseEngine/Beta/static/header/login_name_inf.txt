@@ -1,4 +1,4 @@
-[/elements/inpuField]
+[/elements/inputField]
 position_x=499px
 position_y=0px
 #like: abc[a..z]

@@ -1,6 +1,6 @@
 [footer_bg.png]
-position_x=277px
-position_y=1160px
+position_x=0
+position_y=0
 width=875px
 height=45px
 extra_css=footer_panel

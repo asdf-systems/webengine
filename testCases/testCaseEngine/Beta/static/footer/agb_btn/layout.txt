@@ -1,12 +1,13 @@
 [Button]
-position_x=913
+position_x=813
 position_y=18
 width=49px
 height=25px
-standard_src=agb_inactiv.png
-hover_src=agb_activ.png
-activ_src=agb_activ.png
+standard_src=agb_inactiv_btn.png
+active_src=agb_activ_btn.png
+hover_src=agb_activ_btn.png
 action_click=HIDE(/), SHOW(/agb/)
 alt_text=Allgemeine Geschäfts Bestimmungen
 extra_css=footer_button
 initial_show=true
+layer_level=600

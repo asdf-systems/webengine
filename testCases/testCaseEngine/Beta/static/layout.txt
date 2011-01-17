@@ -1,0 +1,9 @@
+[Panel]
+position_x=0px
+position_y=0px
+width=100%
+height=100%
+extra_css=bg
+initial_show=true
+# higher level - object more in front
+layer_level=100

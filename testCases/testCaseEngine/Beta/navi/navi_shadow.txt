@@ -1,6 +1,6 @@
-[../bar_shadow/elements/shadow.jpg]
+[/elements/bar_shadow/shadow.jpg]
 position_x=277px
-position_y=114px
+position_y=130px
 width=150px
 height=16px
 extra_css=shadow
