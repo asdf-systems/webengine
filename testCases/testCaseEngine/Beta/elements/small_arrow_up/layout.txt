@@ -1,0 +1,13 @@
+[Button]
+position_x=0px
+position_y=0px
+width=10px
+height=13px
+standard_src=smallarrow_up.png
+active_src=smallarrow_up.png
+hover_src=smallarrow_up.png
+alt_text=open
+extra_css=asdf_button
+initial_show=true
+# higher level - object more in front
+layer_level=500

@@ -1,0 +1,9 @@
+[Button]
+position_x=657px
+position_y=32px
+width=19px
+height=15px
+standard_src=left_arrow_big_btn.png
+alt_text="left_arrow_btn"
+extra_css=asdf_button
+initial_show=true
