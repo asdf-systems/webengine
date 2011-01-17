@@ -1,7 +1,7 @@
 [navi_with_profile_bg.png]
-position_x=278px
-position_y=117px
-width=151px
-height=258px
+position_x=277px
+position_y=130px
+width=150px
+height=210px
 extra_css=naviBg
 initial_show=false

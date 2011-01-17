@@ -1,0 +1,10 @@
+[/elements/inpuField]
+position_x=499px
+position_y=0px
+#like: abc[a..z]
+forbidden_signs=""
+password_modus=off
+extra_css=asdf_login_name_inf
+default_value=email@adresse.de
+initial_show=true
+action_hover=SPECIFIC(/static/password_rollout/, rollout)

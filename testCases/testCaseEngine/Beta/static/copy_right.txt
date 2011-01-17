@@ -1,8 +1,0 @@
-[copy_right_img.png]
-position_x=299px
-position_y=1179px
-width=120px
-height=13px
-alt_key=copyright by asdf-system, 2010
-extra_css=copy_right
-initial_show=true

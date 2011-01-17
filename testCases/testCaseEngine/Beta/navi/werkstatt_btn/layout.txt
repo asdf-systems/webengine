@@ -1,13 +1,13 @@
 [Button]
-position_x=278px
-position_y=208px
-width=150px
-height=25px
+position_x=279px
+position_y=204px
+width=146px
+height=27px
 standard_src=werkstatt_normal_bg.png
 active_src=werkstatt_hover_bg.png
 hover_src=werkstatt_hover_bg.png
 action_click=HIDE(/), , SPECIFIC(../,deactivate), SHOW(/werkstatt/), SPECIFIC(.,activate)
 alt_text="werkstatt"
-extra_css=naviButton
+extra_css=asdf_button naviButton
 initial_show=true
 layer_level=800

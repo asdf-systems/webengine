@@ -1,0 +1,8 @@
+[footer_bg.png]
+position_x=277px
+position_y=1160px
+width=875px
+height=45px
+extra_css=footer_panel
+initial_show=true
+layer_level=200

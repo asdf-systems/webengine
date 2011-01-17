@@ -1,9 +1,0 @@
-[Button]
-position_x=1113px
-position_y=5px
-width=15px
-height=15px
-standard_src=change_brightnes_btn.png
-alt_text="change brightness"
-extra_css=change_brightness
-initial_show=true

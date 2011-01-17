@@ -1,6 +1,0 @@
-[Panel]
-position_x=447px
-position_y=577px
-width=691px
-height=191px
-extra_css=textToImageField

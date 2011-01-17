@@ -38,6 +38,8 @@ y 130
 navi_schatten
 x 277
 y 114
+w150
+x16
 
 neuigkeiten_button
 x 279 

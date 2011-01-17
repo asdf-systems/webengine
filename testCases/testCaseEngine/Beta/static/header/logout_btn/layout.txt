@@ -1,0 +1,12 @@
+[Button]
+position_x=499px
+position_y=0px
+width=93px
+height=24px
+standard_src=logout_inactiv.png
+activ_src=logout_activ.png
+hover_src=logout_activ.png
+action_click=
+alt_text=
+extra_css=asdf_button
+initial_show=false
