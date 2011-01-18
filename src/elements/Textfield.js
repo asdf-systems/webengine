@@ -158,7 +158,7 @@ asdf_Textfield.prototype.hide = function(){
  */
 asdf_Textfield.prototype.show = function(){
 	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, (this.mId+"_start") , "pre", this.mType, this.extra_css_class,null , this.mText);
+		this.mDomTreeObject = createDomObject(this, (this.mId+"_start") , "pre", this.mType, tthis.mExtraClassCSS,null , this.mText);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);

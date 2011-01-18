@@ -153,10 +153,10 @@ asdf_BackgroundStitcher.prototype.hide = function(){
  */
 asdf_BackgroundStitcher.prototype.show = function(){
 	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
-		this.mDomImageTop = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageTop", "img", this.mType, this.extra_css_class, this.mImageTop);
-		this.mDomImageMiddle = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageMiddle", "img", this.mType, this.extra_css_class, this.mImageMiddle); 
-		this.mDomImageBottom = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageBottom", "img", this.mType, this.extra_css_class, this.mImageBottom);  
+		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, tthis.mExtraClassCSS);
+		this.mDomImageTop = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageTop", "img", this.mType, this.mExtraClassCSS, this.mImageTop);
+		this.mDomImageMiddle = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageMiddle", "img", this.mType, this.mExtraClassCSS, this.mImageMiddle); 
+		this.mDomImageBottom = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageBottom", "img", this.mType, this.mExtraClassCSS, this.mImageBottom);  
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);

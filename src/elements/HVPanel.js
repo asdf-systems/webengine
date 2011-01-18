@@ -115,7 +115,7 @@ function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , heigh
         this.mOrientation = "horizontal";
     
     
-    this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+    this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
     this.mChildren = new Array();
     this.mDomTreeObject.style.position = this.mPositionType; 
     // set Position

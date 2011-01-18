@@ -146,7 +146,7 @@ asdf_Button.prototype.hide = function(){
  */
 asdf_Button.prototype.show = function(){
     if(this.mDomTreeObject == null){
-        this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.extra_css_class, this.mImageNormal);
+        this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.mExtraClassCSS, this.mImageNormal);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);

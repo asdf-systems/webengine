@@ -119,7 +119,7 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
         this.mZIndex = zIndex;
 
         
-    this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+    this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
     this.create();
     this.mDomTreeObject.style.position = this.mPositionType;
     this.mChildren = new Array();
@@ -277,9 +277,9 @@ asdf_AccordionPanel.prototype.create = function(){
     this.mDomSegmentsHeader = new Array();
     this.mDomSegmentsContent = new Array();
     for(var i=0; i < this.mHeader.length; i++){
-        var segment =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segment_"+i), "div", this.mType, this.extra_css_class); 
-        var header =  createDomObjectDOM(this, segment, (this.mId + "_segmentHeader_"+i), "div", this.mType, this.extra_css_class); 
-        var content =  createDomObjectDOM(this, segment, (this.mId + "_segmentBody_"+i), "div", this.mType, this.extra_css_class); 
+        var segment =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segment_"+i), "div", this.mType, this.mExtraClassCSS); 
+        var header =  createDomObjectDOM(this, segment, (this.mId + "_segmentHeader_"+i), "div", this.mType, this.mExtraClassCSS); 
+        var content =  createDomObjectDOM(this, segment, (this.mId + "_segmentBody_"+i), "div", this.mType, this.mExtraClassCSS); 
         setObjectPosition(segment, 0, 0, "relative", "px", "px");
         setObjectPosition(header, 0, 0, "relative", "px", "px");
         setObjectPosition(content, 0, 0, "relative", "px", "px");

@@ -127,7 +127,7 @@ asdf_BaseElement.prototype.hide = function(){
  */
 asdf_BaseElement.prototype.show = function(){
 	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
+		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
