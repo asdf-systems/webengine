@@ -260,7 +260,7 @@ asdf_InputField.prototype.show = function(){
 	//alert("InputField Show()");
     if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
-        this.mDomTreeObject.style.position = "absolute";
+        this.mDomTreeObject.style.position = this.mPositionType;
          
          
             this.mDomBackground = createDomObjectDOM(this, this.mDomTreeObject, this.mId, "img", (this.mType+"_bgImage"), this.extra_css_class, this.mBgImage);

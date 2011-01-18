@@ -131,7 +131,7 @@ asdf_BaseElement.prototype.show = function(){
             $(this.mDomTreeObject).mouseover(onMouseOver);
             $(this.mDomTreeObject).mouseout(onMouseOut);
             $(this.mDomTreeObject).click(onMouseClick);
-            this.mDomTreeObject.style.position = "absolute";<b></b>
+            this.mDomTreeObject.style.position = this.mPositionType;
             this.setPosition(this.mPosX, this.mPosY);
             this.mDomTreeObject.style.background = this.mBgColor;
             this.mDomTreeObject.style.zIndex = this.mZIndex;

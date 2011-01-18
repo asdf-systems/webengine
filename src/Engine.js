@@ -38,6 +38,10 @@ function init(elem, parentObject){
             elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.width, elem.height, elem.position_type, elem.extra_css, elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
+		case "BackgroundStitcher":
+            elem.object = new asdf_BackgroundStitcher(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.image_top_src, elem.image_middle_src, image_bottom_src, elem.position_type, elem.extra_css, elem.initial_show, elem.layer_level );
+            registerActions(elem);           
+		break;
 		case "Panel":
 			elem.object = new asdf_Panel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.position_type, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
@@ -216,6 +220,7 @@ function getValueWithoutUnits(value){
     value = value.replace(/px/, "");
     value = value.replace(/%/, "");
     return Number(value);
+
 
 }
 /**

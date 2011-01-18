@@ -140,7 +140,7 @@ asdf_Image.prototype.show = function(){
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
         // set Position
-        this.mDomTreeObject.style.position = "absolute";
+        this.mDomTreeObject.style.position = this.mPositionType;
         this.setPosition(this.mPosX, this.mPosY);
         this.setSize(this.mWidth, this.mHeight);
         this.mDomTreeObject.style.zIndex = this.mZIndex;

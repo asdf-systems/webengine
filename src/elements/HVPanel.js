@@ -117,7 +117,7 @@ function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , heigh
     
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.extra_css_class);
     this.mChildren = new Array();
-    this.mDomTreeObject.style.position = "absolute"; 
+    this.mDomTreeObject.style.position = this.mPositionType; 
     // set Position
     this.setPosition(this.mPosX, this.mPosY);
 

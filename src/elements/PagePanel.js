@@ -136,7 +136,7 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     this.mDomEvenPages = createDomObjectDOM(this, this.mDomPages, ( this.mId + "_evenPages"), "div", this.mType, this.extra_css_class);
     this.mDomOddPages = createDomObjectDOM(this, this.mDomPages, ( this.mId + "_oddPages"), "div", this.mType, this.extra_css_class);
     
-    this.mDomTreeObject.style.position = "absolute";
+    this.mDomTreeObject.style.position = this.mPositionType;
     this.setPosition(this.mPosX, this.mPosY);
     this.setSize(this.mWidth, this.mHeight);
     
