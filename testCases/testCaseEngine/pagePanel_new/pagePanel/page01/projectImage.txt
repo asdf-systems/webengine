@@ -1,0 +1,9 @@
+[project_image-11.png]
+position_x=0
+position_y=0
+width=498px
+height=390px
+alt_key=tolle bild
+extra_css=hardware_image
+initial_show=true
+layer_level=500
