@@ -4,7 +4,7 @@ position_y=0
 width=498px
 height=390px
 #position type can be absolute or relative
-position_type=relative
+position_type=absolute
 alt_key=tolle bild
 extra_css=hardware_image
 initial_show=true
