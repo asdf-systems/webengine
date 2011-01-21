@@ -18,7 +18,7 @@
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  * todo klären wer das übersetze der Textfiles übernimmt (also formatierung (rtf, txt, html) -> html)
  */
-function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, fontColor, width, height, posititionType, extra_css_class, initialShow, zIndex){
+function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontFamily, fontSize, fontColor, width, height, positionType, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -158,7 +158,7 @@ asdf_Textfield.prototype.hide = function(){
  */
 asdf_Textfield.prototype.show = function(){
 	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, (this.mId+"_start") , "pre", this.mType, tthis.mExtraClassCSS,null , this.mText);
+		this.mDomTreeObject = createDomObject(this, (this.mId+"_start") , "pre", this.mType, this.mExtraClassCSS,null , this.mText);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);

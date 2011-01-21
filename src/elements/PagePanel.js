@@ -150,6 +150,7 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     this.mPagePosX = 0;
     this.mPagePosY = 0;
     $(this.mDomPages).show();   
+    this.initPages();
 
     //* private:
     this.mMouseOverEvents = new Array();
@@ -219,7 +220,7 @@ asdf_PagePanel.prototype.initPages = function(){
 	this.mDomPagesArray = new Array();
 	for(var i=0; i < this.mPages.length; i++){
 		var pageId = this.mId + "_page_" + i ;
-		var page = createDomObjectDom(this, this.mDomTreeObject, pageId, "div", this.mType, this.mExtra_css_class);
+		var page = createDomObjectDOM(this, this.mDomTreeObject, pageId, "div", this.mType, this.mExtra_css_class);
 		page.style.position = "relative";
 		if(this.mOrientation == "horizontal"){
 			page.style.left = getValueWithUnits(this.mSpacing, "px");
@@ -228,7 +229,7 @@ asdf_PagePanel.prototype.initPages = function(){
 			page.style.top = getValueWithUnits(this.mSpacing, "px");
 			page.style.left = "0px";
 		}
-		this.mDomPagesArray.add(page);
+		this.mDomPagesArray.push(page);
 	}
 }
 /**
@@ -297,7 +298,7 @@ asdf_PagePanel.prototype.addChild = function(child){
 		    parent.style.height = child.object.mDomTreeObject.height;
    			if(child.object.mInitialShow == false)
    				child.object.hide();
-			if(orientation == "horizontal"){
+			if(this.mOrientation == "horizontal"){
 				var newWidth = getValueWithoutUnits(this.mDomPages.style.width) + getValueWithoutUnits(parent.style.width);
 	   			this.mDomPages.style = getValueWithUnits(newWidth, "px");
 	   		} else{
