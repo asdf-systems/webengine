@@ -364,7 +364,7 @@ asdf_PagePanel.prototype.specificAction = function(params){
 asdf_PagePanel.prototype.changePage = function(direction){
     if(direction != -1 && direction != 1){
     	if(globals.debug > 0)
-    		alert("Error: PagePanel: "  this.mId + " get wrong changePage direction: " + direction);
+    		alert("Error: PagePanel: "  + this.mId + " get wrong changePage direction: " + direction);
     	return;
     }
     var lastPage = this.mCurrentPage == this.mPages.length-1;

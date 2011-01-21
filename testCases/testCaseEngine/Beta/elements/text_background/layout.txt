@@ -1,0 +1,12 @@
+[BackgroundStitcher]
+position_x=px
+position_y=px
+width=0px
+height=0px
+#position type can be absolute or relative
+image_top_src=top.png
+image_middle_src=middle.png
+image_bottom_src=bottom.png
+initial_show=true
+# higher level - object more in front
+layer_level=300

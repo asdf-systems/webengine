@@ -153,7 +153,7 @@ asdf_BackgroundStitcher.prototype.hide = function(){
  */
 asdf_BackgroundStitcher.prototype.show = function(){
 	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, tthis.mExtraClassCSS);
+		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
 		this.mDomImageTop = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageTop", "img", this.mType, this.mExtraClassCSS, this.mImageTop);
 		this.mDomImageMiddle = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageMiddle", "img", this.mType, this.mExtraClassCSS, this.mImageMiddle); 
 		this.mDomImageBottom = createDomObjectDOM(this, this.mDomTreeObject, this.mId + "_imageBottom", "img", this.mType, this.mExtraClassCSS, this.mImageBottom);  
@@ -169,15 +169,15 @@ asdf_BackgroundStitcher.prototype.show = function(){
 		var topSize = this.getImageSize(this.mDomImageTop);
 		var bottomSize = this.getImageSize(this.mDomImageBottom);
 		var middleSize = this.getImageSize(this.mDomImageMiddle);
-		middleSize.y = getValueWithoutUnits(this.mHeight) - topSize.y - bottomSize.y;
+		middleSize.y = getValueWithoutUnits(this.mHeight) - getValueWithoutUnits(topSize.y) - getValueWithoutUnits(bottomSize.y);
 		// cut stuff if top + bottom is already to big
 		if(middleSize.x < 0){
-			this.mDomImageBottom.style.height = bottomSize.y + middleSize.y + "px";
+			this.mDomImageBottom.style.height = getValueWithUnits( getValueWithoutUnits(bottomSize.y) + getValueWithoutUnits(middleSize.y));
 		} else{ // resize Middle
-			this.mDomImageMiddle.style.height = middle.y;
+			this.mDomImageMiddle.style.height = getValueWithUnits(middleSize.y);
 		}
 		
-		this.mDomImageMiddle.style.width = middle.x;
+		this.mDomImageMiddle.style.width = getValueWithUnits(middleSize.x);
 		
 
     }
@@ -186,14 +186,13 @@ asdf_BackgroundStitcher.prototype.show = function(){
 }
 
 /**
- * Function set Position for element
- * @param int posX  position X
- * @param int posY  position Y
+ * Function getImage Size for element
+ * @param object jsObject
  */
 asdf_BackgroundStitcher.prototype.getImageSize = function(object){
 	// here we have to query the image resoulution
-	var imageX = getValueWithUnit(...) ;
-	var imageY = getValueWithUnit(...) ;
+	var imageX = getValueWithUnits(object.width) ;
+	var imageY = getValueWithUnits(object.height) ;
 		
     var ret = new Size(imageX, imageY);
     return ret;
