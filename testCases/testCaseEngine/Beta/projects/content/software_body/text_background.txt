@@ -1,7 +1,7 @@
 [/elements/text_background]
 position_x=0px
 position_y=0px
-width=500px
+width=720px
 height=600px
 #position type can be absolute or relative
 position_type=relative

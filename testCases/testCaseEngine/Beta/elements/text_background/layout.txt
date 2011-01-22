@@ -1,7 +1,7 @@
 [BackgroundStitcher]
 position_x=px
 position_y=px
-width=0px
+width=720px
 height=0px
 #position type can be absolute or relative
 image_top_src=top.png

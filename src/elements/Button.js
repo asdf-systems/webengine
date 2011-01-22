@@ -154,8 +154,6 @@ asdf_Button.prototype.show = function(){
         this.mDomTreeObject.style.position = this.mPositionType;
         this.setPosition(this.mPosX,this.mPosY);
         this.mDomTreeObject.style.zIndex = this.mZIndex;
-        this.mWidth = this.mDomTreeObject.offsetWidth;
-        this.mHeight = this.mDomTreeObject.offsetHeight;
         this.setSize(this.mWidth, this.mHeight);
 
     }

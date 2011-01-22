@@ -177,7 +177,7 @@ asdf_BackgroundStitcher.prototype.show = function(){
 			this.mDomImageMiddle.style.height = getValueWithUnits(middleSize.y);
 		}
 		
-		this.mDomImageMiddle.style.width = getValueWithUnits(middleSize.x);
+		this.mDomImageMiddle.style.width = this.mWidth;
 		
 
     }
