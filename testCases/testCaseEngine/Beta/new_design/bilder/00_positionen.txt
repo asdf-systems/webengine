@@ -1,0 +1,99 @@
+
+POSITIONEN
+
+logo
+x 921
+y 76
+
+kopfzeile_hintergrund
+x 277
+y 0
+
+kopfzeile_suchen_hintergrund
+x 302
+y 0
+w 175
+
+kopfzeile_login_hintergrund = kopfzeile_suchen_hintergrund
+x 502
+y 0
+w 175
+
+login_aktiv
+x 499
+y 24
+
+login_ausloggen_button_inaktiv
+x 499
+y 0
+
+login_ausloggen_button_aktiv
+x 499
+y 0
+
+navi_hintergrund_normal
+x 277
+y 130
+
+navi_schatten
+x 277
+y 114
+
+neuigkeiten_button
+x 279 
+y 132
+
+projekte_button
+x 279 
+y 169
+
+werkstatt_button
+x 279 
+y 204
+
+support_button
+x 279 
+y 240
+
+ueberuns_button
+x 279 
+y 274
+
+kontakt_button
+x 279 
+y 310
+
+fusszeile_hintergrund.png
+x 277 
+y 1155 (am unteren Rand des Browserfensters)
+
+fusszeile_impressum_button
+x 958
+y 1173 (relativ zum Fußzeilenhintergrund)
+
+fusszeile_faq_button
+x 1040
+y 1173 (relativ zum Fußzeilenhintergrund)
+
+fusszeile_agb_button
+x 1090
+y 1173 (relativ zum Fußzeilenhintergrund)
+
+werkstatt_balken (oberster)
+x 432
+y 130
+Abstand zum nächsten: 5
+
+seitenwechselstreifen
+links x 432
+rechts x 1148
+
+bigarrow_left
+x 388
+
+bigarrow_right
+x 1169
+
+
+
+
