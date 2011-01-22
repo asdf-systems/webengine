@@ -1,7 +1,7 @@
 [/elements/changePageButton_Line]
 position_x=0
 position_y=427
-action_click=SPECIFIC(../pagePanel,prevPage)
+action_click=SPECIFIC(../hardware_body,prevPage)
 alt_text=
 extra_css=
 initial_show=true

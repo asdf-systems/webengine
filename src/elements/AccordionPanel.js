@@ -87,7 +87,7 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
             alert("Warning: PositionType on Element: " + this.mId + " is not set\n");
         this.mPositionType = "absolute";
     } else{
-        this.mPositionType = positionType
+        this.mPositionType = positionType;
     }
     
     
