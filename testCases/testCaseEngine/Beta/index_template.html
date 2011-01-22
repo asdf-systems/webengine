@@ -24,11 +24,23 @@
 <script type="text/javascript" src="src/Size.js"></script>
 <!-- <link type="text/css" href="css/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />	-->
 
+<script>
+    function wrapper(id) {
+        if(id == "./") {
+            linkCalled(id);
+        } else {
+            window.location.href = "/webengine/index.html?"+id;
+        }
+    }
+</script>
 
 <title></title>
 
 </head>
-  <body id="mainBody" style="background-color:#131313" onLoad='linkCalled("{id}");'>
-    {text}
+  <body id="mainBody" style="background-color:#131313" onLoad='wrapper("{id}");'>
+      {text}
+      Links:
+      <a href="/webengine/projects">Projekte</a>
+      <a href="/webengine/news">news</a>
 </body>
 </html>
