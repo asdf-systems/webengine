@@ -107,10 +107,9 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
 		if(globals.debug > 2)
 			alert("Warning: PagePanel: orientation on Panel: " + this.mId + " is not set - set horizontal");
 		this.mOrientation = "horizontal";
-	} else if(oientation != "vertical" && orientation != "horizontal"){
+	} else if(orientation != "vertical" && orientation != "horizontal"){
 		if(globals.debug > 1)
-			alert("Warning: PagePanel: Orientation is set to an unknown value" + orientation + "\n\
-			on Panel: " + this.mId +"please set it to <horizontal> or <vertical>\n");
+			alert("Warning: PagePanel: Orientation is set to an unknown value" + orientation + "\n on Panel: " + this.mId +"please set it to <horizontal> or <vertical>\n");
 			
 			this.mOrientation = "horizontal";
 	} else
@@ -142,6 +141,7 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     this.mDomPages = createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_pages"), "div", this.mType, this.mExtraClassCSS);
     
     this.mDomTreeObject.style.position = this.mPositionType;
+    this.mDomTreeObject.style.overflow = "hidden";
     this.setPosition(this.mPosX, this.mPosY);
     this.setSize(this.mWidth, this.mHeight);
     
@@ -220,8 +220,8 @@ asdf_PagePanel.prototype.initPages = function(){
 	this.mDomPagesArray = new Array();
 	for(var i=0; i < this.mPages.length; i++){
 		var pageId = this.mId + "_page_" + i ;
-		var page = createDomObjectDOM(this, this.mDomTreeObject, pageId, "div", this.mType, this.mExtra_css_class);
-		page.style.position = "relative";
+		var page = createDomObjectDOM(this, this.mDomPages, pageId, "div", this.mType, this.mExtra_css_class);
+		page.style.position = "absolute";
 		if(this.mOrientation == "horizontal"){
 			page.style.left = getValueWithUnits(this.mSpacing, "px");
 			page.style.top = "0px";
@@ -294,17 +294,18 @@ asdf_PagePanel.prototype.addChild = function(child){
 		    // init child
 		    child.object.show();
 			// update parent size
-		    parent.style.width = child.object.mDomTreeObject.width;
-		    parent.style.height = child.object.mDomTreeObject.height;
+		    parent.style.width = child.object.mDomTreeObject.style.width;
+		    parent.style.height = child.object.mDomTreeObject.style.height;
    			if(child.object.mInitialShow == false)
    				child.object.hide();
 			if(this.mOrientation == "horizontal"){
 				var newWidth = getValueWithoutUnits(this.mDomPages.style.width) + getValueWithoutUnits(parent.style.width);
-	   			this.mDomPages.style = getValueWithUnits(newWidth, "px");
+	   			this.mDomPages.style.width = getValueWithUnits(newWidth, "px");
 	   		} else{
 				var newHeight = getValueWithoutUnits(this.mDomPages.style.height) + getValueWithoutUnits(parent.style.height);
-	   			this.mDomPages.style = getValueWithUnits(newWidth, "px");
+	   			this.mDomPages.style.height = getValueWithUnits(newHeight, "px");
 	   		}
+	   		this.refresh();
 		} else{ // added normal child
 			if(child.object.mInitialShow != false)
 		    	child.object.show();
@@ -318,7 +319,23 @@ asdf_PagePanel.prototype.addChild = function(child){
     
 }
 
-
+/**
+ * this function calculate size of each page and arrange the Rest
+ */
+asdf_PagePanel.prototype.refresh = function(child){
+	var posX = 0; 
+	var posY = 0;
+	for(var i=0; i < this.mDomPagesArray.length; i++){
+		var page = this.mDomPagesArray[i];
+		page.style.left = getValueWithUnits(posX, "px");
+		page.style.top = getValueWithUnits(posY, "px");
+		if(this.mOrientation == "horizontal"){
+			posX += getValueWithoutUnits(this.mSpacing) + getValueWithoutUnits(page.style.width);
+		} else {
+			posY += getValueWithoutUnits(this.mSpacing) + getValueWithoutUnits(page.style.height);
+		}
+	}
+}
 /**
  * check where the childObject should be added in DomTree
  */
@@ -382,7 +399,13 @@ asdf_PagePanel.prototype.changePage = function(direction){
 	} else 
 		move = page.style.height;
 
-	move *= direction;
+	move = getValueWithoutUnits(move) ;
+	// make an relative +=Value or -=Value
+	if(direction > 0){
+		move = "-=" + getValueWithUnits(move, "px");
+	} else {
+		move = "+=" + getValueWithUnits(move, "px");
+	}
 	
 	this.mCurrentPage += direction;
 	gCurrentAnimationSpeed = this.mAnimSpeed;

@@ -8,7 +8,7 @@ page_size_x=722px
 page_size_y=588px
 animation_speed=200
 extra_css=hardware_pagePanel
-pages=page01,page02
+pages=page01,page02,page03
 initial_show=false
 # higher level - object more in front
 layer_level=500

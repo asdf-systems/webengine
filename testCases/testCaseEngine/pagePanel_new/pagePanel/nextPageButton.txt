@@ -1,6 +1,6 @@
 [/elements/changePageButton_Line]
-position_x=717
-position_y=427
+position_x=715
+position_y=200
 action_click=SPECIFIC(../pagePanel,nextPage)
 alt_text=
 extra_css=
