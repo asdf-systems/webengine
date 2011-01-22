@@ -18,6 +18,7 @@ function linkCalled(id){
         if(params.query != "") {
             // We're supposed to show something
             // else than the main page
+            hideElemt("./");
             changeContent(params.query);
         }
     } else {
@@ -26,6 +27,7 @@ function linkCalled(id){
         // which id is supposed to be shown
         location.href = ROOT + "/index.html?"+id;
     }
+}
 
 /**
  * Create Javaclasses for Elements and put the in DomHirachy
