@@ -1,7 +1,8 @@
 [AccordionPanel]
 position_x=0
 position_y=0
-height=450px
+#height=450px
+width=722px
 #position type can be absolute or relative
 position_type=relative
 # true for force one selection open every time

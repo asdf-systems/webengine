@@ -141,6 +141,7 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     this.mDomPages = createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_pages"), "div", this.mType, this.mExtraClassCSS);
     
     this.mDomTreeObject.style.position = this.mPositionType;
+    this.mDomPages.style.position = this.mPositionType;
     this.mDomTreeObject.style.overflow = "hidden";
     this.setPosition(this.mPosX, this.mPosY);
     this.setSize(this.mWidth, this.mHeight);

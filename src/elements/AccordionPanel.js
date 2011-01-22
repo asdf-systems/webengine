@@ -39,7 +39,7 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
 
     this.mId = _id;
     this.mParent        = _parent; 
-    this.mType          = "Panel";
+    this.mType          = "Accordion";
 
     if(positionX == null){
         if(globals.debug > 1)
@@ -120,12 +120,12 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
 
         
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
-    this.create();
     this.mDomTreeObject.style.position = this.mPositionType;
     this.mChildren = new Array();
-    
     // set Position
     this.setPosition(this.mPosX, this.mPosY);
+    this.create();
+    
 
     //* private:
     this.mMouseOverEvents = new Array();
@@ -139,6 +139,10 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
     $(this.mDomTreeObject).mouseover(onMouseOver);
     $(this.mDomTreeObject).mouseout(onMouseOut);
     $(this.mDomTreeObject).click(onMouseClick);
+    
+    /*$(this.mDomTreeObject).bind('accordionchange', function(event, ui) {
+		$(this.mDomTreeObject).accordion("resize");
+});*/
 
     return this;
 }
@@ -151,7 +155,7 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
 asdf_AccordionPanel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
    this.hideChildren();
-   this.setSize(0,0);
+   //this.setSize(0,0);
 
 }
 
@@ -171,7 +175,7 @@ asdf_AccordionPanel.prototype.showChildren = function(){
         else
             child.object.hide();
     }
-    this.updateSize();
+    //this.updateSize();
 }
 /**
  * Function set Position for element
@@ -189,6 +193,9 @@ asdf_AccordionPanel.prototype.setSize = function(sizeX, sizeY){
     this.mWidth = sizeX;
     this.mHeight = sizeY;
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, this.mUnitW, this.mUnitH);
+
+    
+    
 
     
 }
@@ -249,7 +256,7 @@ asdf_AccordionPanel.prototype.show = function(){
     this.setSize(this.mWidth, this.mHeight);
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
-    this.updateSize();
+    //this.updateSize();
 
 }
 
@@ -260,9 +267,10 @@ asdf_AccordionPanel.prototype.setAccordion = function(){
 
   	//$("#accordion").accordion({ header: ".header",  collapsible: this.mCollapse});
     //$(this.mDomTreeObject).accordion('destroy');
-    var headerString = "." + this.mId + "_asdf_accordion_header";
-    var headerString = headerString.replace(/\//g, "_");
-  	$(this.mDomTreeObject).accordion({ header:  headerString, collapsible: this.mCollapse, autoHeight : true});
+    //var headerString = "." + this.mId + "_asdf_accordion_header";
+    //var headerString = headerString.replace(/\//g, "_");
+  	//$(this.mDomTreeObject).accordion({ header:  headerString, collapsible: this.mCollapse, autoHeight : false, clearStyle : true});
+  	$(this.mDomTreeObject).accordion({ collapsible: this.mCollapse, autoHeight : false, clearStyle : true});
 
 }
 
@@ -277,20 +285,22 @@ asdf_AccordionPanel.prototype.create = function(){
     this.mDomSegmentsHeader = new Array();
     this.mDomSegmentsContent = new Array();
     for(var i=0; i < this.mHeader.length; i++){
-        var segment =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segment_"+i), "div", this.mType, this.mExtraClassCSS); 
-        var header =  createDomObjectDOM(this, segment, (this.mId + "_segmentHeader_"+i), "div", this.mType, this.mExtraClassCSS); 
-        var content =  createDomObjectDOM(this, segment, (this.mId + "_segmentBody_"+i), "div", this.mType, this.mExtraClassCSS); 
-        setObjectPosition(segment, 0, 0, "relative", "px", "px");
+        //var segment =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segment_"+i), "div", this.mType, this.mExtraClassCSS); 
+        var header =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segmentHeader_"+i), "div", this.mType, this.mExtraClassCSS); 
+        var content =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segmentBody_"+i), "div", this.mType, this.mExtraClassCSS); 
+        //setObjectPosition(segment, 0, 0, "relative", "px", "px");
         setObjectPosition(header, 0, 0, "relative", "px", "px");
         setObjectPosition(content, 0, 0, "relative", "px", "px");
+        this.setSize();
         var headerString = this.mId + "_asdf_accordion_header";
         var headerString = headerString.replace(/\//g, "_");
-        this.mDomSegments.push(segment);
+        //this.mDomSegments.push(segment);
         this.mDomSegmentsHeader.push(header);
         this.mDomSegmentsContent.push(content);
-        segment.style.zIndex = Number(this.mZIndex)+1;
+        //segment.style.zIndex = Number(this.mZIndex)+1;
         header.style.zIndex = Number(this.mZIndex)+10;
         content.style.zIndex = Number(this.mZIndex)+1;
+        //content.style.height = "auto";
         $(header).addClass(headerString);        
     }
     this.setAccordion();
@@ -343,7 +353,10 @@ asdf_AccordionPanel.prototype.addChild = function(child){
             child.object.hide();
         
         // this function is modded by us and does only the resize
-        $(this.mDomTreeObject).accordion("updateSize", $(child.object.mDomTreeObject)); 
+        //$(this.mDomTreeObject).accordion("updateSize", $(child.object.mDomTreeObject)); 
+        //$(this.mDomTreeObject).accordion("resize");
+        //$(this.mDomTreeObject).accordion("resize");
+        //$(child.object.mDomTreeObject).accordion("resize");
         
         
     }
@@ -366,6 +379,8 @@ asdf_AccordionPanel.prototype.initChild = function(child){
             this.mChildren[this.mChildren.length] = child;
             child.object.show();
             setObjectPosition(child.object.mDomTreeObject, child.object.mPosX, child.object.mPosY, "relative", child.object.mUnitX, child.object.mUnitY);
+            //setObjectPosition(child.object.mDomTreeObject, 0, 0, "relative", "px", "px");
+            
             return;
                    
         } else if(this.mPages[i].id == child.id){
@@ -374,6 +389,7 @@ asdf_AccordionPanel.prototype.initChild = function(child){
             this.mChildren[this.mChildren.length] = child;
             child.object.show();
             setObjectPosition(child.object.mDomTreeObject, child.object.mPosX, child.object.mPosY, "relative", child.object.mUnitX,  child.object.mUnitY);
+            //setObjectPosition(child.object.mDomTreeObject, 0, 0, "relative", "px", "px");
             return;
         }
         

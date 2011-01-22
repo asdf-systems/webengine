@@ -54,7 +54,7 @@ function ActionHandlerSend(params){
  * check if parent has to be notified about changes - and call if necessary
  */
 function notifyParent(object){
-    var parent = getParent(object);
+    /*var parent = getParent(object);
     
     if(parent != null && parent.updateSize)
        parent.updateSize();
@@ -63,7 +63,7 @@ function notifyParent(object){
         if(parent.updateSize)
             parent.updateSize();
             
-    }    
+    }*/    
 }
 
 
