@@ -1,3 +1,4 @@
+ROOT = "/webengine";
 /**
  * Engine Class Description
  */
@@ -10,9 +11,22 @@ function main(){
 }
 
 function linkCalled(id){
-    if(id == "./")
+    if(id == "./") {
+        // We're on the main page
         main();
-    
+        var params = disassembleURL();
+        if(params.query != "") {
+            // We're supposed to show something
+            // else than the main page
+            hideElemt("./");
+            changeContent(params.query);
+        }
+    } else {
+        // We're on some other page
+        // so link to main page and tell it
+        // which id is supposed to be shown
+        location.href = ROOT + "/index.html?"+id;
+    }
 }
 
 /**
@@ -493,5 +507,20 @@ function getParent(object){
         return null;
             
     return object.mParent.nextNode;
+}
+
+function disassembleURL() {
+    var fullURL = document.location;
+
+    var regex = /([a-zA-Z]+):\/\/([^/:]+)(:[0-9]+)?(([^\/]+\/)*\/[^?#]*)(\?([^#]+))?(#.+)?/;
+    regex.exec(fullURL);
+    return {
+        "scheme": RegExp.$1,
+        "authority": RegExp.$2,
+        "port": RegExp.$3,
+        "path": RegExp.$4,
+        "query": RegExp.$7,
+        "fragment": RegExp.$8
+    }
 }
 //*};
