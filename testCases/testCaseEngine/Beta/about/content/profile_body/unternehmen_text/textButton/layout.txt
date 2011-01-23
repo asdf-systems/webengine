@@ -1,8 +1,8 @@
 [Button]
 position_x=5
 position_y=5
-width=667px
-height=283px
+width=0px
+height=0px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_text1_unternehmen.png
