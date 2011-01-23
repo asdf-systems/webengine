@@ -1,8 +1,8 @@
 [mitarbeiterprofil.png]
 position_x=20
-position_y=7
-width=107px
-height=16px
+position_y=10
+width=103px
+height=15px
 #position type can be absolute or relative
 position_type=absolute
 initial_show=true
