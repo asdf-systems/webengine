@@ -1,0 +1,8 @@
+[Panel]
+position_x=0
+position_y=0
+width=0px
+height=0px
+position_type=relative
+extra_css=textToImageField
+initial_show=true

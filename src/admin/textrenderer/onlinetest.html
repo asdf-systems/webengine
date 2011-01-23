@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Rendertest</title>
+		<script>
+			function refreshImage() {
+				var image = document.getElementById("renderimage");
+				var text = escape(document.getElementById("renderinput").value);
+				image.src="textrenderer.php?text="+text;
+			}
+		</script>
+	</head>
+	<body bgcolor="#000000">
+		<center>
+			<table border=0>
+				<tr>
+					<td align="center">
+						<textarea id="renderinput" onKeyPress="refreshImage()" cols=50 rows=10></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<img id="renderimage" src="textrenderer.php" style="border: 1px solid green">
+					</td>
+				</tr>
+			</table>
+		</center>
+	</body>
+</html>

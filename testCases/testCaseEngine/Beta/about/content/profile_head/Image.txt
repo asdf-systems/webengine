@@ -1,0 +1,9 @@
+[firmenprofil.png]
+position_x=20
+position_y=10
+width=77px
+height=15px
+#position type can be absolute or relative
+position_type=absolute
+initial_show=true
+layer_level=500

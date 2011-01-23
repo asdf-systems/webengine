@@ -1,11 +1,11 @@
 [Button]
-position_x=0px
-position_y=0px
+position_x=0
+position_y=0
 width=720px
 height=31px
 standard_src=inactive.png
 active_src=active.png
-hover_src=active.src
+hover_src=active.png
 alt_text=show
 extra_css=asdf_button topic_bar
 initial_show=true
