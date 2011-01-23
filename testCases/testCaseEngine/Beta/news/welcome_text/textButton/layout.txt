@@ -1,0 +1,10 @@
+[Button]
+position_x=0
+position_y=0
+width=696px
+height=203px
+standard_src=./image_of_the_text.jpg
+action_click=SHOW(../realText/)
+extra_css=imageTextField
+initial_show=true
+layer_level=600
