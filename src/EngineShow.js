@@ -174,11 +174,19 @@ function setObjectPosition(element, left, top, type, unitW, unitH){
  */
 function setObjectSize(element, width ,height, unitW, unitH){
        
+    if(width == undefined)
+    	width = 0;
+    if(height == undefined)
+    	height = 0;
+    
     if(unitW == "")
         untiW = globals.stdUnit;
     if(unitH == "")
         unitH = globals.stdUnit;
         
-    element.style.width = getValueWithUnits(width, unitW);
-    element.style.height = getValueWithUnits(height, unitH);
+    var v1 = getValueWithUnits(width, unitW);
+    element.style.width = v1;
+    
+    var v2 = getValueWithUnits(height, unitH);
+    element.style.height = v2;
 }

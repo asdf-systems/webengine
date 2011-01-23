@@ -64,12 +64,20 @@ function asdf_Image(_id, _parent, positionX, positionY, width, height, src, posi
         return null;
     }
     
-    if(width == false){
-       if(globals.debug > 0)
-            alert("Image: image width from Image: "+this.mId+" is null - cancel");
-        return null;
+    if(width == null || width == undefined){
+       if(globals.debug > 1)
+            alert("Image: image width from Image: "+this.mId+" is null - set to 0");
+        this.mWidth = "0px";
     } else
         this.mWidth = width;
+     
+	if(height == null || height == undefined){
+	   if(globals.debug > 1)
+		alert("Image: image height from Image: "+this.mId+" is null - set to 0");
+	    this.mHeight = "0px";
+	} else
+	this.mHeight = height;  
+        
         
     this.mUnitW = getUnit(width);
     this.mUnitH = getUnit(height);
@@ -84,12 +92,7 @@ function asdf_Image(_id, _parent, positionX, positionY, width, height, src, posi
         this.mPositionType = positionType
     }
 
-    if(height == false){
-       if(globals.debug > 0)
-            alert("Image: image height from Image: "+this.mId+" is null - cancel");
-        return null;
-    } else
-        this.mHeight = height;        
+      
         
         
     if(initialShow == "false")
