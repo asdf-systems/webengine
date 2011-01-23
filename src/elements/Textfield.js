@@ -160,7 +160,7 @@ asdf_Textfield.prototype.hide = function(){
 asdf_Textfield.prototype.show = function(){
 	if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId , "div", this.mType, this.mExtraClassCSS);
-		this.mTextDom = createDomObjectDOM(this, this.mDomTreeObject(this.mId+"_start") , "pre", this.mType, this.mExtraClassCSS,null , this.mText);
+		this.mTextDom = createDomObjectDOM(this, this.mDomTreeObject,(this.mId+"_start") , "pre", this.mType, this.mExtraClassCSS,null , this.mText);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
@@ -172,6 +172,7 @@ asdf_Textfield.prototype.show = function(){
         this.mDomTreeObject.style.background = this.mBgColor;
         this.mDomTreeObject.style.zIndex = this.mZIndex;
 		this.mTextDom.style.zIndex = this.mZIndex + 10;
+		$(this.mTextDom).show();
         this.setSize(this.mWidth, this.mHeight);
         
 
