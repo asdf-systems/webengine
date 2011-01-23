@@ -1,96 +1,89 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <html>
-<head>
-<link type="text/css" href="css/ui-darkness/jquery-ui-1.8.7.custom.css" rel="stylesheet" />
-		<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.7.custom.min.js"></script>
+<!--<link type="text/css" href="css/ui-darkness/jquery-ui-1.8.7.custom.css" rel="stylesheet" />//-->
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.7.custom.min.js"></script>
 
-        <script type="text/javascript">
-        $(document).ready(function() {
-                $("#acc1").accordion({
-                        alwaysOpen: false,
-                        active: false,
-                        autoheight: false,
-                        header: 'h3.ui-accordion-header',
-                        clearStyle: true
-                });
-                $("#acc2").accordion({
-                        alwaysOpen: false,
-                        active: false,
-                        autoheight: false,
-                        header: 'h4.ui-accordion2-header',
-                        clearStyle: true
-                });
-                $("#acc3").accordion({
-                        alwaysOpen: false,
-                        active: false,
-                        autoheight: false,
-                        header: 'h4.ui-accordion2-header',
-                        clearStyle: true
-                });
+<script type="text/javascript">
 
-        });
-
-        function sleep(milliseconds) {
-		  var start = new Date().getTime();
-		  while(true){
-			if ((new Date().getTime() - start) > milliseconds){
-			  break;
-			}
-  		}
-}
-        </script>
+	$(document).ready(function() {
+		$("body").append("<div id=\"acc1\"></div>");
+		for(i = 0; i < 5; i++) {
+			$("#acc1").append("<div class=\"acc1_header\" id=\"acc1_"+i+"_header\"></div>");
+			$("#acc1").append("<div id=\"acc1_"+i+"_body\"></div>");
+		}
+		$("#acc1").accordion({
+			//header: ".acc1_header",
+			collapsible: true,
+			autoHeight: false,
+			clearStyle: true
+		});
+		$("#acc1").get(0).style.top = "150px";
+		$("#acc1").get(0).style.position = "absolute"; //Vodka
+		$("#acc1_1_header").append("<div>Panel 1.1</div>");
+		$("#acc1_1_body").append("<div id=\"acc2\"></div>");
+		$("#acc1_2_header").append("<div>Panel 1.2</div>");
+		$("#acc1_2_body").append("<div>BlaFasel</div>");
+		for(i = 0; i < 5; i++) {
+			$("#acc2").append("<div class=\"acc2_header\" id=\"acc2_"+i+"_header\"></div>");
+			$("#acc2").append("<div id=\"acc2_"+i+"_body\"></div>");
+		}
+		$("#acc2").accordion({
+			//header: ".acc2_header",
+			collapsible: true,
+			autoHeight: false,
+			clearStyle: true
+		});
+		$("#acc2_1_header").append("<div>Panel 2.1</div>");
+		$("#acc2_1_body").append("<div style=\"height: 100px\">Ba</div>");
+		$("#acc2_2_header").append("<div>Panel 2.2</div>");
+		$("#acc2_2_body").append("<div>BlaFasel</div>");
+	});
+</script>
 
 </head>
 
 <body>
-        <div id="acc1">
-                <div class="ui-accordion-group">
-                        <h3 class="ui-accordion-header"><a href="#">Test 1</a></h3>
-                        <div class="ui-accordion-content">
-                                <div id="acc2">
-                                        <div class="ui-accordion2-group">
-                                                <h4 class="ui-accordion2-header"><a href="#">Test 1a</a></h4>
-                                                <div class="ui-accordion2-content">
-                                                        <p>Inner accordian 1a elit, sed do eiusmod tempor incididunt .</
-p>
-                                                </div>
-                                        </div>
-                                        <div class="ui-accordion2-group">
-                                                <h4 class="ui-accordion2-header"><a href="#">Test 1b</a></h4>
-                                                <div class="ui-accordion2-content">
-                                                        <p>Inner accordian 1b  m, quis nostrud exercitation ullamco
-laboris nisi ut aliquip ex ea commodo con.</p>
-                                                </div>
-                                        </div>
-                                </div>
+	<!--	    <div id="acc1">
+		<div class="ui-accordion-group">
+			<h3 class="ui-accordion-header"><a href="#">Test 1</a></h3>
+			<div class="ui-accordion-content">
+				<div id="acc2">
+					<div id="hereasdf" class="ui-accordion2-group">
+						<h4 class="ui-accordion2-header"><a href="#">Test 1a</a></h4>
+					</div>
+					<div class="ui-accordion2-group">
+						<h4 class="ui-accordion2-header"><a href="#">Test 1b</a></h4>
+						<div class="ui-accordion2-content">
+							<p>Inner accordian 1b  m, quis nostrud exercitation ullamco
+							laboris nisi ut aliquip ex ea commodo con.</p>
+						</div>
+					</div>
+				</div>
 
-                        </div>
-                </div>
-                <div class="ui-accordion-group">
-                        <h3 class="ui-accordion-header"><a href="#">Test 1</a></h3>
-                        <div class="ui-accordion-content">
-                                <div id="acc3">
-                                        <div class="ui-accordion2-group">
-                                                <h4 class="ui-accordion2-header"><a href="#">Test 1a</a></h4>
-                                                <div class="ui-accordion2-content">
-                                                        <p>Inner accordian 1a elit, sed do eiusmod tempor incididunt .</
-p>
-                                                </div>
-                                        </div>
-                                        <div class="ui-accordion2-group">
-                                                <h4 class="ui-accordion2-header"><a href="#">Test 1b</a></h4>
-                                                <div class="ui-accordion2-content">
-                                                        <p>Inner accordian 1b  m, quis nostrud exercitation ullamco
-laboris nisi ut aliquip ex ea commodo con.</p>
-                                                </div>
-                                        </div>
-                                </div>
+			</div>
+		</div>
+		<div class="ui-accordion-group">
+			<h3 class="ui-accordion-header"><a href="#">Test 1</a></h3>
+			<div class="ui-accordion-content">
+				<div id="acc3">
+					<div class="ui-accordion2-group">
+						<h4 class="ui-accordion2-header"><a href="#">Test 1a</a></h4>
+						<div class="ui-accordion2-content">
+							<p>Inner accordian 1a elit, sed do eiusmod tempor incididunt .</
+							p>
+						</div>
+					</div>
+					<div class="ui-accordion2-group">
+						<h4 class="ui-accordion2-header"><a href="#">Test 1b</a></h4>
+						<div class="ui-accordion2-content">
+							<p>Inner accordian 1b  m, quis nostrud exercitation ullamco
+							laboris nisi ut aliquip ex ea commodo con.</p>
+						</div>
+					</div>
+				</div>
 
-                        </div>
-                </div>
-        </div>
+			</div>
+		</div>
+	</div>//-->
 </body>
-
 </html>

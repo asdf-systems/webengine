@@ -1,8 +1,13 @@
 [AccordionPanel]
 position_x=432px
 position_y=130px
+<<<<<<< HEAD
 width=900px
 #height=0px
+=======
+width=720px
+height=693px
+>>>>>>> origin/surma/dev
 #position type can be absolute or relative
 position_type=absolute
 # true for force one selection open every time
@@ -11,4 +16,4 @@ initial_show=true
 # higher level - object more in front
 layer_level=500
 # Segments of the accordion written in header, content, header, content and so on
-pages=hardware_head,hardware_body,software_head,software_body
+pages=hardware_head,hardware_body,software_head,software_body,consulting_head,consulting_body

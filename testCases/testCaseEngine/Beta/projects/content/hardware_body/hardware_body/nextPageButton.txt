@@ -1,9 +1,0 @@
-[/elements/changePageButton_Line]
-position_x=717
-position_y=427
-action_click=SPECIFIC(../hardware_body,nextPage)
-alt_text=
-extra_css=
-initial_show=true
-# higher level - object more in front
-layer_level=600

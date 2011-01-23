@@ -7,4 +7,4 @@ height=600px
 position_type=relative
 initial_show=true
 # higher level - object more in front
-layer_level=500
+layer_level=200

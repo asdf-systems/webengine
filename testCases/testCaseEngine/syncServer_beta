@@ -1,4 +1,5 @@
 #!/bin/bash
-rsync -vvzuae ssh Beta/ wessel@asdf-systems.de:/var/www/www.asdf-systems.de/webengine 
-rsync -vvzuae ssh ../../src/ wessel@asdf-systems.de:/var/www/www.asdf-systems.de/webengine/src
-ssh wessel@asdf-systems.de 'sudo chmod 0777 -R /var/www/www.asdf-systems.de/webengine'
+ssh surma@asdf-systems.de "cd /var/www/www.asdf-systems.de/webengine; ./clear"
+rsync -vvzuae ssh Beta/ surma@asdf-systems.de:/var/www/www.asdf-systems.de/webengine 
+#rsync -vvzuae ssh ../../src/ surma@asdf-systems.de:/var/www/www.asdf-systems.de/webengine/src
+ssh surma@asdf-systems.de 'sudo chmod 0777 -R /var/www/www.asdf-systems.de/webengine'
