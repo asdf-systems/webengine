@@ -61,8 +61,9 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
         this.mText = "";
         if(globals.debug >1)
            alert("Warning: Textfield: Text is not set");    
-    } else
+    } else 
         this.mText = text;
+
         
     if(extra_css_class == null)
         this.mExtraClassCSS = "EXTRA_NOTSET";
