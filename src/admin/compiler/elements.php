@@ -162,7 +162,7 @@
 		$texts = "";
 		foreach(parseList($list) as $file) {
 			debug("Reading textfile \"".$file."\"");
-			$data = file(simplifyPath($curdir, $file));
+			$data = implode("\n", file(simplifyPath($curdir, $file)));
 			if(!$data) {
 				return false;
 			}
