@@ -162,11 +162,11 @@
 		$texts = "";
 		foreach(parseList($list) as $file) {
 			debug("Reading textfile \"".$file."\"");
-			$data = implode("\n", file(simplifyPath($curdir, $file)));
+			$data = dieOnError(file_get_contents(simplifyPath($curdir, $file)), "Could not read file \"".$file."\"");
 			if(!$data) {
 				return false;
 			}
-			$texts .= $data;
+			$texts .= str_replace("\r", "", $data);
 		}
 		return $texts;
 	}
