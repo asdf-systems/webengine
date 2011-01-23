@@ -1,8 +1,8 @@
-[background_lr_hardware_bg.png]
+[background_lr_hardware.png]
 position_x=1339px
 position_y=923px
-width=95px
-height=277px
+width=100px
+height=279px
 extra_css=bg_elements
 initial_show=true
 layer_level=10

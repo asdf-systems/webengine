@@ -1,4 +1,4 @@
-[/elements/bar_shadow/shadow.jpg]
+[/elements/bar_shadow/shadow.png]
 position_x=277px
 position_y=114px
 width=150px
