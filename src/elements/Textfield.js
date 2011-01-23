@@ -159,7 +159,8 @@ asdf_Textfield.prototype.hide = function(){
  */
 asdf_Textfield.prototype.show = function(){
 	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, (this.mId+"_start") , "pre", this.mType, this.mExtraClassCSS,null , this.mText);
+		this.mDomTreeObject = createDomObject(this, this.mId , "div", this.mType, this.mExtraClassCSS);
+		this.mTextDom = createDomObjectDOM(this, this.mDomTreeObject,(this.mId+"_start") , "pre", this.mType, this.mExtraClassCSS,null , this.mText);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
@@ -170,6 +171,10 @@ asdf_Textfield.prototype.show = function(){
         this.setPosition(this.mPosX, this.mPosY, "absolute");
         this.mDomTreeObject.style.background = this.mBgColor;
         this.mDomTreeObject.style.zIndex = this.mZIndex;
+		this.mTextDom.style.zIndex = this.mZIndex + 10;
+		$(this.mTextDom).show();
+        this.setSize(this.mWidth, this.mHeight);
+        
 
     }
     $(this.mDomTreeObject).show();
@@ -190,6 +195,7 @@ asdf_Textfield.prototype.setPosition = function(posX, posY){
 
 asdf_Textfield.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomTreeObject, sizeX, sizeY, this.mUnitW, this.mUnitH);
+    setObjectSize(this.mTextDom, sizeX, sizeY, this.mUnitW, this.mUnitH);
 
 }
 

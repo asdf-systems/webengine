@@ -62,12 +62,13 @@ function showElement(elementId, elem){
 	    var parentObject = $("body[id=mainBody]").get(0);
         initAndShowElements(elem, parentObject);
     }
+    var name ="";
     for(var i=0; i < path.length; i++){
         elem.object.show();
         if(elem.children == null)
             break;
 
-        var name = path[i];
+        name = path[i];
         if(name == "")
             break;
 
@@ -84,8 +85,9 @@ function showElement(elementId, elem){
         elem = child;
         
     }
-    // Now Show all Children in the tree
-    //showChildren(elem);
+    // Now Show last elemeent
+    if(elem != null && elem.object != null && elem.object != undefined && name != "")
+	    elem.object.show();
     
     
 		
