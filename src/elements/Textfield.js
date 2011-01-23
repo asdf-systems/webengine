@@ -61,8 +61,10 @@ function asdf_Textfield(_id, _parent, positionX, positionY, bgColor, text, fontF
         this.mText = "";
         if(globals.debug >1)
            alert("Warning: Textfield: Text is not set");    
-    } else 
+    } else {
         this.mText = text;
+    	this.mText = this.mText.replace(/\n/g, "<br>");
+    }
 
         
     if(extra_css_class == null)
@@ -159,8 +161,7 @@ asdf_Textfield.prototype.hide = function(){
  */
 asdf_Textfield.prototype.show = function(){
 	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, this.mId , "div", this.mType, this.mExtraClassCSS);
-		this.mTextDom = createDomObjectDOM(this, this.mDomTreeObject,(this.mId+"_start") , "pre", this.mType, this.mExtraClassCSS,null , this.mText);
+		this.mDomTreeObject = createDomObject(this, this.mId , "div", this.mType, this.mExtraClassCSS, null, this.mText);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
@@ -171,8 +172,6 @@ asdf_Textfield.prototype.show = function(){
         this.setPosition(this.mPosX, this.mPosY, "absolute");
         this.mDomTreeObject.style.background = this.mBgColor;
         this.mDomTreeObject.style.zIndex = this.mZIndex;
-		this.mTextDom.style.zIndex = this.mZIndex + 10;
-		$(this.mTextDom).show();
         this.setSize(this.mWidth, this.mHeight);
         
 
@@ -195,7 +194,7 @@ asdf_Textfield.prototype.setPosition = function(posX, posY){
 
 asdf_Textfield.prototype.setSize = function(sizeX, sizeY){
     setObjectSize(this.mDomTreeObject, sizeX, sizeY, this.mUnitW, this.mUnitH);
-    setObjectSize(this.mTextDom, sizeX, sizeY, this.mUnitW, this.mUnitH);
+
 
 }
 
