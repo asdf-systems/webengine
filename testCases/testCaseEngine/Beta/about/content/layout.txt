@@ -11,4 +11,4 @@ initial_show=true
 # higher level - object more in front
 layer_level=500
 # Segments of the accordion written in header, content, header, content and so on
-pages=hardware_head,hardware_body,software_head,software_body,consulting_head,consulting_body
+pages=profile_head,profile_body,employees_head,employees_body

@@ -1,4 +1,4 @@
-[background_lr_news.png]
+[background_lr.png]
 position_x=1339px
 position_y=922px
 width=100px

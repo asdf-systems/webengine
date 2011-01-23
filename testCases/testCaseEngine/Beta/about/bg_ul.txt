@@ -1,8 +1,8 @@
-[background_ul_news.png]
+[background_ul.png]
 position_x=0px
 position_y=0px
 width=134px
 height=509px
-extra_css=background
+extra_css=bg_elements
 initial_show=true
-layer_level=200
+layer_level=10
