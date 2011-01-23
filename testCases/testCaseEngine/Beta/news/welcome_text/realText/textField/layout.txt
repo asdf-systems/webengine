@@ -1,5 +1,5 @@
 [TextField]
-font_size=12pt
+font_size=10px
 font_family=Arial, Tahoma
 position_x=25
 position_y=0
@@ -7,7 +7,7 @@ width=685px
 height=210px
 position_type=absolute
 #Path to textfile
-background_color=#ffffff
+background_color=#131313
 texts=startText.txt
 extra_css=textField
 initial_show=true
