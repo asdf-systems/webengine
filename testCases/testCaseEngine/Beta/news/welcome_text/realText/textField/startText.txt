@@ -1,4 +1,4 @@
 Hallo dies ist 
 ein Starttext
-mi ner Menge Zeilenumbrüche
+mi ner Menge Zeilenumbrueche
 Und auch weiteren Texten

@@ -5,6 +5,7 @@ position_x=25
 position_y=0
 width=685px
 height=210px
+position_type=absolute
 #Path to textfile
 background_color=#ffffff
 texts=startText.txt

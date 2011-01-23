@@ -1,0 +1,14 @@
+[Button]
+position_x=0
+position_y=17
+width=700px
+height=183px
+#position type can be absolute or relative
+position_type=absolute
+standard_src=news_about_text.png
+action_click=SHOW(/news/welcome_text/realText)
+alt_text=
+extra_css=
+initial_show=true
+# higher level - object more in front
+layer_level=500
