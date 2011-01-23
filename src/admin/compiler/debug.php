@@ -20,7 +20,8 @@
 	 * @param $msg Message to print
 	 */
 	function debug($msg) {
-		if(DEBUG) {
+		global $DEBUG;
+		if($DEBUG) {
 			$stack = debug_backtrace();
 			$depth = count($stack);
 			printf("%20s:%4d %30s: ", basename($stack[0]["file"]), $stack[0]["line"], $stack[1]["function"]);

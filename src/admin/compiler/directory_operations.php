@@ -20,6 +20,12 @@
 		return $content;
 	}
 
+	function writeToFile($path, $data) {
+		$file = dieOnError(fopen($path, "w+"), "Could not open file \"".$path."\"");
+		fwrite($file, $data);
+		fclose($file);
+	}
+
 	/**
 	 * Filter function to filter out files not
 	 * relevant for creating the JSON tree
@@ -41,9 +47,12 @@
 
 	/**
 	 * Gets all available information on a file
+	 * @definition The file information table consists
+	 * of everything stat() returns plus a disseciton of
+	 * the filename.
 	 */
 	function getFileInformation($file) {
-		$data = dieOnError(stat($file));
+		$data = dieOnError(stat($file), "Could not open \"".$file."\"");
 		return array_merge($data, getExtraData($file));
 	}
 
