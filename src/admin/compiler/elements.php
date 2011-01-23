@@ -162,7 +162,7 @@
 		$texts = "";
 		foreach(parseList($list) as $file) {
 			debug("Reading textfile \"".$file."\"");
-			$data = dieOnError(file_get_contents(simplifyPath($curdir, $file)), "Could not read file \"".$file."\"");
+			$data = file_get_contents(simplifyPath($curdir, $file));
 			if(!$data) {
 				return false;
 			}

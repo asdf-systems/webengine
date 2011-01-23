@@ -3,7 +3,7 @@ position_x=0
 position_y=0
 background_color=
 width=720px
-height=200px
+height=230px
 #position type can be absolute or relative
 position_type=relative
 extra_css=

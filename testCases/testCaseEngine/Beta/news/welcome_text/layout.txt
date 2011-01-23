@@ -1,8 +1,8 @@
 [Panel]
 position_x=432px
-position_y=166px
+position_y=165px
 width=720px
-height=220px
+height=230px
 position_type=absolute
 extra_css=textToImageField
 initial_show=true

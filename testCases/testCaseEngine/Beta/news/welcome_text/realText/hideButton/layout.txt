@@ -1,6 +1,6 @@
 [Button]
-position_x=0
-position_y=0
+position_x=655
+position_y=155
 width=25px
 height=25px
 standard_src=/elements/dummyButton.jpg

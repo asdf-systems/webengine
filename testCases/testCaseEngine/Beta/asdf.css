@@ -1,3 +1,7 @@
 img {
 	display: block;
 }
+
+.textpopup {
+	border: 2px #333333 solid;
+}
