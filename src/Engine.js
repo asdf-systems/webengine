@@ -18,7 +18,7 @@ function linkCalled(id){
         if(params.query != "") {
             // We're supposed to show something
             // else than the main page
-            hideElemt("./");
+            hideElement("./");
             changeContent(params.query);
         }
     } else {
