@@ -370,7 +370,7 @@ asdf_PagePanel.prototype.specificAction = function(params){
             this.changePage(-1);
         break;
         default:
-            if(globals.debug > 0)
+            if(globals.debug > 1)
                 alert("PagePanel: action name: " + actionName + " unknown!");
         break;
     }
