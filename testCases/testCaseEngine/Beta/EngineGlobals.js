@@ -1,7 +1,7 @@
 var gCurrentAnimationSpeed;
 var gCurrentCallbackFunction;
 var globals = {
-    debug : false,
+    debug : 2,
     start : "news/",
     static : "static/,navi/",
     stdUnit : "px", 
