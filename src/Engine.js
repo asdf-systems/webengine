@@ -79,7 +79,7 @@ function init(elem, parentObject){
 		break;
 		case "PagePanel":
             var pages = getPages(elem);
-			elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.animation_speed, pages, elem.position_type, elem.orientation, elem.spacing, elem.extra_css , elem.initial_show, elem.layer_level );
+			elem.object = new asdf_PagePanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.animation_speed, pages, elem.position_type, elem.spacing, elem.orientation, elem.extra_css , elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;		
 		case "RollOutPanel":
