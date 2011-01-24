@@ -1,0 +1,4 @@
+[/elements/topic_bar_fullgreen]
+position_x=0
+
+position_y=0

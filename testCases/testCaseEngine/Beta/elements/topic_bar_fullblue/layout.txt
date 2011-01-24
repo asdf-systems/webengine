@@ -1,11 +1,10 @@
-[Panel]
+[Button]
 position_x=0
 position_y=0
 width=720px
-height=450px
-#position type can be absolute or relative
-position_type=relative
-extra_css=
+height=31px
+standard_src=bar.png
+extra_css=asdf_button topic_bar
 initial_show=true
 # higher level - object more in front
 layer_level=500
