@@ -1,5 +1,9 @@
 #!/bin/bash
-ssh wessel@asdf-systems.de "cd /var/www/www.asdf-systems.de/webengine; ./clear"
-rsync -vvzuae ssh Beta/ wessel@asdf-systems.de:/var/www/www.asdf-systems.de/webengine 
-rsync -vvzuae ssh ../../src/ wessel@asdf-systems.de:/var/www/www.asdf-systems.de/webengine/src
-ssh wessel@asdf-systems.de 'sudo chmod 0777 -R /var/www/www.asdf-systems.de/webengine'
+if [ "$#" -ne 1 ] ; then
+	echo "Usage: $0 <username>"
+	exit 1
+fi
+ssh $1@asdf-systems.de "cd /var/www/www.asdf-systems.de/webengine; ./clear"
+rsync -vvzuae ssh Beta/ $1@asdf-systems.de:/var/www/www.asdf-systems.de/webengine 
+rsync -vvzuae ssh ../../src/ $1@asdf-systems.de:/var/www/www.asdf-systems.de/webengine/src
+ssh $1@asdf-systems.de 'sudo chmod 0777 -R /var/www/www.asdf-systems.de/webengine'
