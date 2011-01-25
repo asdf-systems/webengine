@@ -176,10 +176,11 @@ function setObjectPosition(element, left, top, type, unitW, unitH){
  */
 function setObjectSize(element, width ,height, unitW, unitH){
        
+    // we take 5000 to see whats going on
     if(width == undefined)
-    	width = 0;
+    	width = 5000;
     if(height == undefined)
-    	height = 0;
+    	height = 5000;
     
     if(unitW == "")
         untiW = globals.stdUnit;

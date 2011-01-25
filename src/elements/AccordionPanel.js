@@ -291,7 +291,7 @@ asdf_AccordionPanel.prototype.create = function(){
         //setObjectPosition(segment, 0, 0, "relative", "px", "px");
         setObjectPosition(header, 0, 0, "relative", "px", "px");
         setObjectPosition(content, 0, 0, "relative", "px", "px");
-        this.setSize();
+        this.setSize(this.mWidth, this.mHeight);
         var headerString = this.mId + "_asdf_accordion_header";
         var headerString = headerString.replace(/\//g, "_");
         //this.mDomSegments.push(segment);
