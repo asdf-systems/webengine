@@ -485,7 +485,9 @@ function getPages(elem){
     if(elem.children == null){
     	if(globals.debug > 0)
     		alert("Error: element.children is null on: " + elem.id + " - cancel");
-    }
+    	return  ( new Array() ) ;
+    	
+    } 
     for(var i = 0; i < pageNames.length; i++){
         var name = pageNames[i];
         if(elem.children[name] != null && elem.children[name] != undefined)
