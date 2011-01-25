@@ -1,6 +1,6 @@
 [Panel]
 position_x=277px
-position_y=100%
+position_y=1157px
 width=875px
 height=45px
 extra_css=
