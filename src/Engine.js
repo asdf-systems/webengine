@@ -62,7 +62,7 @@ function init(elem, parentObject){
 		break;
         case "AccordionPanel":
             var pages = getPages(elem);
-            elem.object = new asdf_AccordionPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.position_type, elem.extra_css, elem.collapse, pages,  elem.initial_show, elem.layer_level );
+            elem.object = new asdf_AccordionPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.position_type, elem.start_page,elem.extra_css, elem.collapse, pages,  elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
         case "Image":
@@ -166,6 +166,8 @@ function getActionHandler(actionElement){
         return ActionHandlerShow;
     if(actionElement.name == "hide")
         return ActionHandlerHide;
+    if(actionElement.name == "toggle_visibility")
+        return ActionHandlerToggle;
     if(actionElement.name == "delay")
         return ActionHandlerDelay;   
     if(actionElement.name == "specific")

@@ -17,7 +17,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, collapse, pages, initialShow, zIndex){
+function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width , height, positionType, startPage, extra_css_class, collapse, pages, initialShow, zIndex){
     
     
     //* public: 
@@ -104,6 +104,13 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
     } else {
         this.setHeaderAndPages(pages);
     }
+    
+    if(startPage == null || startPage == undefined){
+        if(globals.debug > 2)
+            alert("Startpage not set: " + this.mID + "Accordion. Set to false.");
+        this.mStartPage = false;
+    } else
+        this.mStartPage = startPage;
     
     if(initialShow == "false")
         this.mInitialShow = false;
@@ -271,6 +278,7 @@ asdf_AccordionPanel.prototype.setAccordion = function(){
     //var headerString = headerString.replace(/\//g, "_");
   	//$(this.mDomTreeObject).accordion({ header:  headerString, collapsible: this.mCollapse, autoHeight : false, clearStyle : true});
   	$(this.mDomTreeObject).accordion({ collapsible: this.mCollapse, autoHeight : false, clearStyle : true});
+  	
 
 }
 
@@ -304,6 +312,9 @@ asdf_AccordionPanel.prototype.create = function(){
         $(header).addClass(headerString);        
     }
     this.setAccordion();
+    if(this.mStartPage != false)
+        this.mStartPage = Number(this.mStartPage)-1;
+    $(this.mDomTreeObject).accordion("activate", this.mStartPage);
 
 }
 

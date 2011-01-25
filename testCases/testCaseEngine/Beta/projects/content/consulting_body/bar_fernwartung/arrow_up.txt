@@ -1,0 +1,9 @@
+[/elements/small_arrow_up]
+position_x=700
+position_y=5
+#position type can be absolute or relative
+position_type=absolute
+alt_key=
+extra_css=
+initial_show=false
+layer_level=510

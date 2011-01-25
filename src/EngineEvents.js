@@ -13,6 +13,18 @@ function ActionHandlerShow(params){
     
 }
 
+function ActionHandlerToggle(params){
+    var object = getJsonObject(params.parameter[0])
+    if(object != null && object.object != null){
+        if(object.object.mDomnTreeObject != null && object.object.mDomTreeObject.style.visibility == "visible")
+            hideElement(params.parameter[0]);
+        else
+           showElement(params.parameter[0]);
+    }
+
+    
+}
+
 function ActionHandlerHide(params){
     var elementName = params.parameter[0];
     //elementName = elementName.toLowerCase();

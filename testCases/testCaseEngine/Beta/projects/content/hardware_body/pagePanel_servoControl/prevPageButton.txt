@@ -1,9 +1,9 @@
 [/elements/changePageButton_Line]
 position_x=0
-position_y=30
+position_y=340
 #position type can be absolute or relative
 position_type=absolute
-action_click=SPECIFIC(../pagePanel_servoControl,prevPage)
+action_click=SPECIFIC(../pagePanel_servoControl,prevPage),SPECIFIC(../bar_servoControl,prevPage)
 initial_show=true
 # higher level - object more in front
 layer_level=710
