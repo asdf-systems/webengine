@@ -138,11 +138,13 @@ function asdf_PagePanel(_id, _parent, positionX, positionY, bgColor, width , hei
     this.mCurrentPage = 0;
     
     this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
-    this.mDomPages = createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_pages"), "div", this.mType, this.mExtraClassCSS);
+    this.mDomPageBorder = createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_pagesBorder"), "div", this.mType, this.mExtraClassCSS);
+    this.mDomPages = createDomObjectDOM(this, this.mDomPageBorder, (this.mId + "_pages"), "div", this.mType, this.mExtraClassCSS);
     
     this.mDomTreeObject.style.position = this.mPositionType;
+    this.mDomPageBorder.style.position = this.mPositionType;
     this.mDomPages.style.position = this.mPositionType;
-    this.mDomTreeObject.style.overflow = "hidden";
+    this.mDomPageBorder.style.overflow = "hidden";
     this.setPosition(this.mPosX, this.mPosY);
     this.setSize(this.mWidth, this.mHeight);
     
@@ -243,6 +245,8 @@ asdf_PagePanel.prototype.setPosition = function(posX, posY){
     this.mPosY = posY;
     setObjectPosition(this.mDomTreeObject, this.mPosX, this.mPosY, this.mPostionType, this.mUnitX, this.mUnitY);
     setObjectPosition(this.mDomPages, this.mPagePosX, this.mPagePosY, "absolute", "px", "px");
+    setObjectPosition(this.mDomPageBorder, this.mPosX, this.mPosY, "absolute", "px", "px");
+    
 
 }
 
@@ -251,6 +255,7 @@ asdf_PagePanel.prototype.setSize = function(sizeX, sizeY){
     this.mHeight = sizeY;
     setObjectSize(this.mDomPages, this.mPageSizeX, this.mPageSizeY, this.mUnitW, this.mUnitH);
     setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, this.mUnitW, this.mUnitH);   
+    setObjectSize(this.mDomPageBorder, this.mWidth, this.mHeight, this.mUnitW, this.mUnitH);   
 
     
 }

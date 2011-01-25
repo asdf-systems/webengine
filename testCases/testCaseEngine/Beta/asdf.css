@@ -5,3 +5,5 @@ img{
 .textpopup {
 	border: 2px #333333 solid;
 }
+
+.link { cursor: pointer }

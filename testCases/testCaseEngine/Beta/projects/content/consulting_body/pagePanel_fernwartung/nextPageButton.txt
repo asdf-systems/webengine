@@ -3,6 +3,7 @@ position_x=715
 position_y=340
 #position type can be absolute or relative
 position_type=absolute
+extra_css=link
 action_click=SPECIFIC(../pagePanel_fernwartung,nextPage),SPECIFIC(../bar_fernwartung,nextPage)
 initial_show=true
 # higher level - object more in front
