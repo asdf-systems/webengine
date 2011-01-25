@@ -6,3 +6,4 @@ height=320px
 initial_show=true
 # higher level - object more in front
 layer_level=500
+position_type=relative

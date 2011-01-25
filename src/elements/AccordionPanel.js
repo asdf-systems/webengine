@@ -312,9 +312,9 @@ asdf_AccordionPanel.prototype.create = function(){
         $(header).addClass(headerString);        
     }
     this.setAccordion();
-    if(this.mStartPage != false)
+    /*if(this.mStartPage != false)
         this.mStartPage = Number(this.mStartPage)-1;
-    $(this.mDomTreeObject).accordion("activate", this.mStartPage);
+    $(this.mDomTreeObject).accordion("activate", this.mStartPage);*/
 
 }
 
