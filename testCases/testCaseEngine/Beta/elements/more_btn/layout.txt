@@ -1,0 +1,13 @@
+[Button]
+position_x=0
+position_y=0
+width=47px
+height=14px
+#position type can be absolute or relative
+standard_src=more_inactiv.png
+active_src=more_activ.png
+hover_src=more_activ.png
+extra_css=link
+initial_show=true
+# higher level - object more in front
+layer_level=500

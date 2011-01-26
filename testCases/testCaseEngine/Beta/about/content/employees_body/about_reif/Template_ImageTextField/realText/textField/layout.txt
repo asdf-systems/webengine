@@ -3,12 +3,12 @@ font_size=12px
 font_family=Arial, Tahoma
 position_x=5
 position_y=5
-width=0px
-height=0px
+width=660px
+height=160px
 position_type=absolute
 #Path to textfile
 background_color=#131313
-texts=about_unternehmen.txt
+texts=about_reif.txt
 extra_css=textField
 initial_show=true
 layer_level=500

@@ -1,11 +1,11 @@
 [Button]
 position_x=5
 position_y=5
-width=710px
-height=183px
+width=678px
+height=441px
 #position type can be absolute or relative
 position_type=absolute
-standard_src=about_text2_philosophie.png
+standard_src=about_philosophie.png
 action_click=SHOW(/about/content/profile_body/philosophie_text/realText)
 initial_show=true
 # higher level - object more in front

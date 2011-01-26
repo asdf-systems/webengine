@@ -1,0 +1,6 @@
+Webengine Version 1.0 Fertiggestellt.
+
+Wir haben unsere firmeninterne Engine für Websites fertiggestellt. Die Engine
+ermöglicht es uns auch komplexe Internetauftritte präzise und schnell umzusetzen
+um Ihre Wüsche zu erfüllen. 
+Schauen Sie sich doch mal unsere Homepage an.

@@ -1,0 +1,9 @@
+Stcihpunkte:
+
+- idee: Computer vorallem im Cluster Betrieb stark übertakten zu können.
+- nach Recherchen und "trocken" test beim Übertakten haben wir mit AMD X2 ind AMD Athlons getestet.
+- zuerst maschinen ohne öl übertaktet
+- dann im Öl bad
+- ergebniss: Die Rechner sind mucksmäuschen still
+- Übertaktungsergebniss bleiben die gleichen
+-> lohnt den aufwand, und die umständliche Handhabung nicht
