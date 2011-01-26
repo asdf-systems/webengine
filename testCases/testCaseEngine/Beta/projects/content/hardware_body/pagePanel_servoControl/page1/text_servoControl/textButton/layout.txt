@@ -1,11 +1,11 @@
 [Button]
 position_x=0
 position_y=0
-width=659px
-height=108px
+width=633px
+height=229px
 #position type can be absolute or relative
 position_type=absolute
-standard_src=text_page1.png
+standard_src=projects_servoControl_page1.png
 action_click=SHOW(../realText)
 initial_show=true
 # higher level - object more in front

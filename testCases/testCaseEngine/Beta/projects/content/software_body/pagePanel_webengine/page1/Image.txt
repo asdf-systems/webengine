@@ -1,0 +1,10 @@
+[webengine.png]
+position_x=0
+position_y=0
+width=720px
+height=297px
+#position type can be absolute or relative
+position_type=absolute
+extra_css=
+initial_show=true
+layer_level=500

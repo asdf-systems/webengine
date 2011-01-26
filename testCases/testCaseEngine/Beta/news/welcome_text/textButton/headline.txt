@@ -1,8 +1,8 @@
 [news_about_headline.png]
 position_x=3
 position_y=3
-width=368px
-height=16px
+width=430px
+height=19px
 #position type can be absolute or relative
 position_type=absolute
 initial_show=true

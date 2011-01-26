@@ -1,0 +1,10 @@
+[headline.png]
+position_x=5
+position_y=5
+width=215px
+height=19px
+#position type can be absolute or relative
+position_type=absolute
+extra_css=
+initial_show=true
+layer_level=500

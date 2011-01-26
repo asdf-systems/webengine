@@ -1,0 +1,12 @@
+[Button]
+position_x=5
+position_y=25
+width=594px
+height=107px
+#position type can be absolute or relative
+position_type=absolute
+standard_src=news_webengine.png
+action_click=SHOW(../realText)
+initial_show=true
+# higher level - object more in front
+layer_level=600

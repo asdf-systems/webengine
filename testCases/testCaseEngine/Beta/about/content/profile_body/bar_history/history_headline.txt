@@ -1,0 +1,9 @@
+[history_headline.png]
+position_x=20
+position_y=13
+width=106px
+height=14px
+#position type can be absolute or relative
+position_type=absolute
+initial_show=true
+layer_level=500

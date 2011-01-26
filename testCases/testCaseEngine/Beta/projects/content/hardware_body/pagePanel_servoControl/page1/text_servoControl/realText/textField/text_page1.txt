@@ -1,7 +1,0 @@
-Die ServoControl ist ein Soft und Hardwaresystem das es ermöglicht Animatronics zu steuern.
-
-Mit der ServoControl können Bewegungen von handelsüblichen Gamepads und Joysticks aber auch von
-Puppetcontrol systemen auf den Computer übertragen werden. Im Moment wird die 3d Software Autodesk Maya
-unterstützt. Mit der ServoControl ist es somit möglich digitale Charaktere wie Handpuppets oder 
-Animatronics zu Steuern. Mit erheblichen Vorteilen.
-Andersherum kann mit der ServoControl mithilfe eines digitalen Charackters eine Animatronic gesteuert werden. 
