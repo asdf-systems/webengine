@@ -1,0 +1,10 @@
+[/elements/left_arrow_big_btn]
+position_x=-25
+position_y=365
+#position type can be absolute or relative
+position_type=absolute
+alt_key=prev Page
+extra_css=link
+initial_show=true
+layer_level=500
+action_click=SPECIFIC(../pagePanel_fernwartung,prevPage),SPECIFIC(../bar_fernwartung,prevPage)

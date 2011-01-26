@@ -1,0 +1,7 @@
+[Panel]
+position_x=0
+position_y=0
+height=1000px
+initial_show=true
+# higher level - object more in front
+layer_level=350
