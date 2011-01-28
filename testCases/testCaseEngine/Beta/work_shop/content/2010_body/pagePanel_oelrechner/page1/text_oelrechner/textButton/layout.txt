@@ -1,11 +1,11 @@
 [Button]
 position_x=0
 position_y=0
-width=571px
-height=322px
+width=625px
+height=178px
 #position type can be absolute or relative
 position_type=absolute
-standard_src=project_Fernwartung.png
+standard_src=werkstatt_oelrechner.png
 action_click=SHOW(../realText)
 initial_show=true
 # higher level - object more in front

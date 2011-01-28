@@ -1,11 +1,10 @@
-[Panel]
+[/elements/topic_bar_orange]
 position_x=0
 position_y=0
-width=720px
-height=31px
 #position type can be absolute or relative
-position_type=absolute
+position_type=relative
 extra_css=link
 initial_show=true
 # higher level - object more in front
 layer_level=500
+action_click=SPECIFIC(../, deactivate), SPECIFIC(., activate)

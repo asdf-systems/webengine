@@ -2,8 +2,8 @@
 position_x=0
 position_y=0
 #position type can be absolute or relative
-position_type=
+position_type=absolute
 alt_key=
 extra_css=link
 initial_show=true
-layer_level=500
+layer_level=515

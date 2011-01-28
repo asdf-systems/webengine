@@ -1,8 +1,8 @@
-[werkstatt_headline.png]
+[werkstatt.png]
 position_x=5
-position_y=5
-width=74px
-height=14px
+position_y=7
+width=68px
+height=13px
 #position type can be absolute or relative
 position_type=absolute
 extra_css=link

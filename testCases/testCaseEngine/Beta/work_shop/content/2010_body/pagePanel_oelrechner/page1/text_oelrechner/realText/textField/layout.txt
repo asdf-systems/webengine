@@ -8,7 +8,7 @@ height=160px
 position_type=absolute
 #Path to textfile
 background_color=#131313
-texts=project_Fernwartung.txt
+texts=werkstatt_oelRechner.txt
 extra_css=textField
 initial_show=true
 layer_level=500

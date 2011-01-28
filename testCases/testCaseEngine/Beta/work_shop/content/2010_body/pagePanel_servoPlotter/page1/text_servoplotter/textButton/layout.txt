@@ -1,11 +1,11 @@
 [Button]
 position_x=0
 position_y=0
-width=672px
-height=283px
+width=674px
+height=232px
 #position type can be absolute or relative
 position_type=absolute
-standard_src=werkstatt_start.png
+standard_src=werkstatt_servoPlotterr.png
 action_click=SHOW(../realText)
 initial_show=true
 # higher level - object more in front

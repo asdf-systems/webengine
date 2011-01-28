@@ -1,10 +1,10 @@
 [servoplotter.png]
-position_x=0
-position_y=0
-width=720px
-height=297px
+position_x=20
+
+position_y=10
+width=92px
+height=17px
 #position type can be absolute or relative
 position_type=absolute
-extra_css=
 initial_show=true
-layer_level=500
+layer_level=520

@@ -14,4 +14,4 @@ initial_show=true
 # higher level - object more in front
 layer_level=500
 # Segments of the accordion written in header, content, header, content and so on
-pages=bar_oelrechner,pagePanel_oelrechner,bar_servoPlotter,pagePanel_servoPlotter
+pages=headline,content

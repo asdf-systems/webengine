@@ -1,9 +1,9 @@
-[headline_officeRechner.png]
+[oelrechner_headline.png]
 position_x=20
 
 position_y=10
-width=79px
-height=15px
+width=71px
+height=17px
 #position type can be absolute or relative
 position_type=absolute
 initial_show=true

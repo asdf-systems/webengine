@@ -1,10 +1,10 @@
-[headline_fernwartung.png]
-position_x=20
-
-position_y=10
-width=79px
-height=15px
+[werkstatt_headline.png]
+position_x=5
+position_y=7
+width=242px
+height=14px
 #position type can be absolute or relative
 position_type=absolute
+extra_css=link
 initial_show=true
 layer_level=520
