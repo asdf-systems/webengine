@@ -473,7 +473,7 @@ asdf_PagePanel.prototype.registerOnMouseOutEvent = function(functionName,  param
 }
 // STATIC FUNCTIONS
 function getPages(elem){
-    if(elem.type != "PagePanel" && elem.type != "AccordionPanel"){
+    if(elem.type != "PagePanel" && elem.type != "AccordionPanel" && elem.type != "HVPanel"){
         if(globals.debug > 0 )
             alert("Error: getPages(): getPages not supported on : " + elem.type);
         return null;

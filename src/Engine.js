@@ -87,7 +87,8 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
 		case "HVPanel":
-			elem.object = new asdf_HVPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.space_between_elements, elem.orientation, elem.position_type, elem.extra_css,elem.initial_show, elem.layer_level );
+            var pages = getPages(elem);
+			elem.object = new asdf_HVPanel(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.space_between_elements, elem.orientation, elem.position_type, pages, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);  
 		break;
         /*

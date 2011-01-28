@@ -348,7 +348,7 @@ asdf_AccordionPanel.prototype.setHeaderAndPages = function(pages){
 asdf_AccordionPanel.prototype.addChild = function(child){
 
      if(child.object == null){ // child not initialised yet
-         var parent = this.initChild(child);
+         this.initChild(child);
 
         
         for(var grandChild in child.children){

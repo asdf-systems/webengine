@@ -1,0 +1,15 @@
+[HVPanel]
+position_x=432px
+position_y=425px
+background_color=
+width=720px
+height=500px
+#position type can be absolute or relative
+position_type=absolute
+orientation=vertical
+space_between_elements=5
+extra_css=
+initial_show=true
+# higher level - object more in front
+layer_level=500
+pages=news_webengine,news_syncSuite,news_gruendung

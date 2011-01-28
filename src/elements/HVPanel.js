@@ -17,7 +17,7 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , height, spacing, orientation, positionType, extra_css_class, initialShow, zIndex){
+function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , height, spacing, orientation, positionType, pages, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -90,7 +90,13 @@ function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , heigh
         this.mPositionType = positionType
     }
          
-
+    if(pages == null || pages == undefined){
+        if(globals.debug > 1)
+            alert("Warning: HVPanel: " + this.mId + " has no pages\n");
+        this.mPages = new Array();
+    } else
+        this.mPages = pages;
+        
     if(initialShow == "false")
         this.mInitialShow = false;
     else if(initialShow != false)
@@ -120,6 +126,7 @@ function asdf_HVPanel(_id, _parent, positionX, positionY, bgColor, width , heigh
     this.mDomTreeObject.style.position = this.mPositionType; 
     // set Position
     this.setPosition(this.mPosX, this.mPosY);
+    this.setupPages();
 
     //* private:
     this.mMouseOverEvents = new Array();
@@ -183,6 +190,15 @@ asdf_HVPanel.prototype.show = function(){
     
 }
 
+asdf_HVPanel.prototype.setupPages = function(){
+    this.mDomPages = new Array();
+    this.mPageChildren = new Array();
+    for(i=0; i < this.mPages.length; i++){
+         var page = createDomObjectDOM(this, this.mDomTreeObject, this.mId, "div", this.mType, this.mExtraClassCSS); 
+         this.mDomPages.push(page);
+    }
+}
+
 /**
  * Function set Position for element
  * @param int posX  position X
@@ -224,8 +240,8 @@ asdf_HVPanel.prototype.updateSize  = function(){
     var sizeX = getValueWithoutUnits(this.mWidth);
     var sizeY = getValueWithoutUnits(this.mHeight);
     
-    for(var i = 0; i < this.mChildren.length; i++){
-        var child = this.mChildren[i].object;
+    for(var i = 0; i < this.mPageChildren.length; i++){
+        var child = this.mPageChildren[i].object;
         if(child == null)
             continue;
         if(child.mDomTreeObject == null || child.mDomTreeObject == undefined)
@@ -249,26 +265,27 @@ asdf_HVPanel.prototype.arrangeChildren = function(){
      this.initFirstChild();
      
      // Arrange other child relative to first one
-     for(var i = 0; i < this.mChildren.length-1; i++){ // step through children - skip lastone
-        var child = this.mChildren[i].object;
-        var nextChild = this.getNextChild(i);
+     for(var i = 0; i < this.mDomPages.length-1; i++){ // step through children - skip lastone
+        var child = this.mDomPages[i];
+        var nextChild = this.mDomPages[i+1];
         if(nextChild == null)
             break;
-        var sz = child.getSize();
-        var sizeX = sz.x;
-        var sizeY = sz.y;
-        var posX  = child.mDomTreeObject.style.left;
-        var posY  = child.mDomTreeObject.style.top;
-        var newPosX = nextChild.mDomTreeObject.style.left;
-        var newPosY = nextChild.mDomTreeObject.style.top;
+        var sizeX = child.style.width;
+        var sizeY = child.style.height;
+        var posX  = child.style.left;
+        var posY  = child.style.top;
+        var newPosX = nextChild.style.left;
+        var newPosY = nextChild.style.top;
         if(this.mOrientation == "horizontal"){
-            newPosX = this.mSpacing; //getValueWithoutUnits(posX) + getValueWithoutUnits(sizeX) + getValueWithoutUnits(this.mSpacing ) ;
+            newPosX = getValueWithoutUnits(posX) + getValueWithoutUnits(sizeX) + getValueWithoutUnits(this.mSpacing ) ;
+            //this.mSpacing; //getValueWithoutUnits(posX) + getValueWithoutUnits(sizeX) + getValueWithoutUnits(this.mSpacing ) ;
             newPosY = 0;
         } else { // vertical
-            newPosY = this.mSpacing; //getValueWithoutUnits(posY) + getValueWithoutUnits(sizeY) + getValueWithoutUnits(this.mSpacing ) ;   
+            newPosY = getValueWithoutUnits(posY) + getValueWithoutUnits(sizeY) + getValueWithoutUnits(this.mSpacing ) ;   
+            //this.mSpacing; //getValueWithoutUnits(posY) + getValueWithoutUnits(sizeY) + getValueWithoutUnits(this.mSpacing ) ;   
             newPosX = 0;
         }
-        nextChild.setPosition(newPosX, newPosY);
+        setObjectPosition(nextChild, newPosX, newPosY, "absolute", this.mUnitX, this.mUnitY);
      }
 }
 
@@ -305,11 +322,8 @@ asdf_HVPanel.prototype.getNextChild = function(index){
  */
 asdf_HVPanel.prototype.addChild = function(child){
    if(child.object == null){ // child not initialised yet
-        init(child, this.mDomTreeObject);
-        
-        // set position relative
-        this.mChildren.push(child);
-
+        this.initChild(child);
+       
        for(var grandChild in child.children){
             var thisJson = getJsonObject(this.mId);
             var path = getPathWithFromRoot(child.children[grandChild], thisJson);
@@ -323,12 +337,41 @@ asdf_HVPanel.prototype.addChild = function(child){
         } else
             child.object.hide();
         
-        this.updateSize();
+        this.arrangeChildren();
 
     }
 }
 
 
+asdf_HVPanel.prototype.initChild = function(child){
+      //check if child is an Header or Page
+    for(var i=0; i< this.mPages.length; i++){
+        if(this.mPages[i].id == child.id){
+            flag = true;
+            if(child.object == null) // child not initialised yet
+                init(child, this.mDomPages[i]);
+            this.mPageChildren.push(child);
+            child.object.show();
+            setObjectPosition(child.object.mDomTreeObject, child.object.mPosX, child.object.mPosY, "relative", child.object.mUnitX, child.object.mUnitY);
+            var size = child.object.getSize();
+            setObjectSize(this.mDomPages[i], size.x, size.y, child.object.mUnitW, child.object.mUnitH);
+                        
+            return;
+                   
+        } 
+    }
+    
+  // Child is no Page
+    if(child.object == null)// child not initialised yet
+        init(child, this.mDomTreeObject);
+    this.mChildren.push(child);
+    child.object.show();
+    setObjectPosition(child.object.mDomTreeObject, child.object.mPosX, child.object.mPosY, "relative", child.object.mUnitX,  child.object.mUnitY);
+    return;
+  
+
+
+}
 
 /**
  * Start Panel Specific actions. ActionName has to be set on first element of params.parameter
