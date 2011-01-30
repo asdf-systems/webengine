@@ -1,6 +1,7 @@
 /**
  * Creates an Panel is only an placing Element without any visible Elements
  * In Contrast to normal Elements Panels load DomObject onInit not on Show
+ * NOT ALLOWED TO HAVE WIDTH AND HIGHT - THIS WILL BE HANDLED BY JQUERY
  */
 //* class Panel{
 /**
@@ -9,15 +10,13 @@
  * \param: positionX    int         x Position of the Panel - relative to parent
  * \param: positionY    int         y Position of the Panel - relative to parent
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
- * \param: width        int         width of the Panel (need if filled with bg Color) : Default: 0
- * \param: height       int         height of the Panel (need if filled with bg Color) : Default: 0
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: collapse     bool        Say if one element has to be open all time or not
  * \param: pages        jsonObject[] Childs that represent the cont in order header,page, header,page and so on
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width , height, positionType, startPage, extra_css_class, collapse, pages, initialShow, zIndex){
+function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, positionType, startPage, extra_css_class, collapse, pages, initialShow, zIndex){
     
     
     //* public: 
@@ -67,18 +66,6 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, width 
      else   
         this.mBgColor = bgColor;
         
-    if(width == null || width == "")
-        this.mWidth = "0";
-    else 
-        this.mWidth = width;
-
-    if(height == null || height == "")
-        this.mHeight = "0";
-    else 
-        this.mHeight = height;        
-    
-    this.mUnitW = getUnit(width);
-    this.mUnitH = getUnit(height);
     this.mUnitX = getUnit(this.mPosX);
     this.mUnitY = getUnit(this.mPosY);
     
@@ -197,14 +184,7 @@ asdf_AccordionPanel.prototype.setPosition = function(posX, posY){
 }
 
 asdf_AccordionPanel.prototype.setSize = function(sizeX, sizeY){
-    this.mWidth = sizeX;
-    this.mHeight = sizeY;
-    setObjectSize(this.mDomTreeObject, this.mWidth, this.mHeight, this.mUnitW, this.mUnitH);
-
-    
-    
-
-    
+    // Dummy function for compatibility with engine- Jquery will handle the with and Height do not fill in stuff!!    
 }
 
 /**
@@ -213,11 +193,8 @@ asdf_AccordionPanel.prototype.setSize = function(sizeX, sizeY){
  */
 asdf_AccordionPanel.prototype.getSize = function(){
 
-    //this.updateSize();
-    var sizeX = getValueWithoutUnits(this.mWidth);
-    var sizeY = getValueWithoutUnits(this.mHeight);
-       
-    var ret = new Size(sizeX, sizeY);
+    // Dummy function for compatibility with engine- Jquery will handle the with and Height do not fill in stuff!!    
+    var ret = new Size(0, 0);
     return ret;
 }
 
@@ -226,30 +203,8 @@ asdf_AccordionPanel.prototype.getSize = function(){
  * and resize if needen
  */
 asdf_AccordionPanel.prototype.updateSize = function(){
-
-    var sizeX = getValueWithoutUnits(this.mWidth);
-    var sizeY = getValueWithoutUnits(this.mHeight);
-    
-    for(var i = 0; i < this.mChildren.length; i++){
-        var child = this.mChildren[i].object;
-        if(child == null)
-            continue;
-        if(child.mDomTreeObject == null || child.mDomTreeObject == undefined)
-            continue;
-        if(!$(child.mDomTreeObject).is(":visible"))
-            continue;
-
-         // if child position + size > mySize -> need resize
-        var sz = child.getSize();
-        x = sz.x + getValueWithoutUnits(child.mDomTreeObject.style.left);
-        y = sz.y+ getValueWithoutUnits(child.mDomTreeObject.style.top);
-        if(x > sizeX)
-            sizeX = x;
-        if(sz.y > sizeY)
-            sizeY = y;
-    }
-    this.setSize(sizeX, sizeY);
-    //$(this.mDomTreeObject).accordion("updateSize", $(this.mDomTreeObject)); 
+     // Dummy function for compatibility with engine- Jquery will handle the with and Height do not fill in stuff!!    
+  
     
 }
 
@@ -260,7 +215,7 @@ asdf_AccordionPanel.prototype.show = function(){
 
     $(this.mDomTreeObject).show();
     this.mDomTreeObject.style.background = this.mBgColor;
-    this.setSize(this.mWidth, this.mHeight);
+    
     this.showChildren();
     this.mDomTreeObject.style.zIndex = this.mZIndex;
     //this.updateSize();
@@ -299,7 +254,7 @@ asdf_AccordionPanel.prototype.create = function(){
         //setObjectPosition(segment, 0, 0, "relative", "px", "px");
         setObjectPosition(header, 0, 0, "relative", "px", "px");
         setObjectPosition(content, 0, 0, "relative", "px", "px");
-        this.setSize(this.mWidth, this.mHeight);
+        
         var headerString = this.mId + "_asdf_accordion_header";
         var headerString = headerString.replace(/\//g, "_");
         //this.mDomSegments.push(segment);

@@ -161,7 +161,11 @@ function setObjectPosition(element, left, top, type, unitW, unitH){
     }
     if(type != null)
         element.style.position = type;
-        
+    if(unitW == null || unitW == undefined)
+        unitW = "px";
+    if(unitH == null || unitH == undefined)
+        unitH = "px"
+            
     element.style.left = getValueWithUnits(left, unitW);
     element.style.top = getValueWithUnits(top, unitH);
 }
