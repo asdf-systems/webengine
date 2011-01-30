@@ -194,7 +194,7 @@ asdf_HVPanel.prototype.setupPages = function(){
     this.mDomPages = new Array();
     this.mPageChildren = new Array();
     for(i=0; i < this.mPages.length; i++){
-         var page = createDomObjectDOM(this, this.mDomTreeObject, this.mId, "div", this.mType, this.mExtraClassCSS); 
+         var page = createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_page" + i), "div", this.mType, this.mExtraClassCSS); 
          this.mDomPages.push(page);
     }
 }
@@ -290,12 +290,10 @@ asdf_HVPanel.prototype.arrangeChildren = function(){
 }
 
 asdf_HVPanel.prototype.initFirstChild = function(){
-      if(this.mChildren.length >= 1){
-        var child = this.mChildren[0].object;
-        if(this.mOrientation == "horizontal")
-            child.setPosition(this.mSpacing, 0);
-        else
-            child.setPosition(0, this.mSpacing);
+
+      if(this.mDomPages.length >= 1){
+        var child = this.mDomPages[0];
+        setObjectPosition(child, 0, 0, "absolute", this.mUnitX, this.mUnitY);
      }
 }
 /**
