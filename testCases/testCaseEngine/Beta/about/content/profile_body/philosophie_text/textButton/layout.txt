@@ -2,7 +2,7 @@
 position_x=5
 position_y=5
 width=678px
-height=441px
+height=411px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_philosophie.png

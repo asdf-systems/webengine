@@ -1,0 +1,11 @@
+[/elements/inputField]
+position_x=50
+position_y=85
+#position type can be absolute or relative
+position_type=absolute
+#like: abc[a..z]
+forbidden_signs=
+password_modus=off
+initial_show=true
+# higher level - object more in front
+layer_level=700

@@ -162,6 +162,7 @@ asdf_BackgroundStitcher.prototype.show = function(){
         $(this.mDomTreeObject).click(onMouseClick);
         this.mDomTreeObject.style.position = this.mPositionType;
         this.setPosition(this.mPosX, this.mPosY);
+        this.setSize(this.mWidth, this.mHeight);
         this.mDomTreeObject.style.background = this.mBgColor;
         this.mDomTreeObject.style.zIndex = this.mZIndex;
 		
@@ -171,13 +172,15 @@ asdf_BackgroundStitcher.prototype.show = function(){
 		var middleSize = this.getImageSize(this.mDomImageMiddle);
 		middleSize.y = getValueWithoutUnits(this.mHeight) - getValueWithoutUnits(topSize.y) - getValueWithoutUnits(bottomSize.y);
 		// cut stuff if top + bottom is already to big
-		if(middleSize.x < 0){
+		if(middleSize.y < 0){
 			this.mDomImageBottom.style.height = getValueWithUnits( getValueWithoutUnits(bottomSize.y) + getValueWithoutUnits(middleSize.y));
 		} else{ // resize Middle
 			this.mDomImageMiddle.style.height = getValueWithUnits(middleSize.y);
 		}
 		
 		this.mDomImageMiddle.style.width = this.mWidth;
+      	this.mDomImageBottom.style.width = this.mWidth;
+   		this.mDomImageTop.style.width = this.mWidth;
 		
 
     }

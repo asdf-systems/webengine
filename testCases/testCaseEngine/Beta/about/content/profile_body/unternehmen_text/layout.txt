@@ -2,7 +2,7 @@
 position_x=0
 position_y=0
 width=720px
-height=283px
+height=340px
 
 position_type=relative
 extra_css=textToImageField

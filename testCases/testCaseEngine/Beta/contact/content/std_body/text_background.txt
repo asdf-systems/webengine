@@ -1,10 +1,11 @@
-[Panel]
+[/elements/text_background]
 position_x=0
 position_y=0
 width=720px
-height=210px
+height=200px
 #position type can be absolute or relative
 position_type=absolute
+extra_css=asdf_text_background
 initial_show=true
 # higher level - object more in front
-layer_level=500
+layer_level=300
