@@ -1,4 +1,4 @@
-[Button]
+[/elements/topic_bar]
 position_x=px
 position_y=px
 width=px
