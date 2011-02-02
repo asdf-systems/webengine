@@ -1,6 +1,6 @@
 [/elements/seperator_orange/separator_orange.png]
 position_x=0
-position_y=200
+position_y=170
 width=720px
 height=3px
 #position type can be absolute or relative

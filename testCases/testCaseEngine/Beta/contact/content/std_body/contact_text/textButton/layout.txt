@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=557px
-height=107px
+width=626px
+height=247px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=contact_text.png
