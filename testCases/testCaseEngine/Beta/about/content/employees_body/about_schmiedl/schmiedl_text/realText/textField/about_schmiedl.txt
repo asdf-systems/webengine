@@ -1,11 +1,7 @@
-Alexander Surma - Geschäftsführer
+Christian Schmiedl - Software Development
 
-Herr Surma ist einer der Gründer von asdf-systems und leitet die Geschicke der Firma
-als Geschäftsführer.
-Er verfolgt in den Bereichen Soft- und Hardware einen minimalistischen Ansatz und
-hat sich auf hardwarenahe Programmierung, Ressourcenoptimierung und Algorithmik 
-spezialisiert. Sein besonderes Interesse gilt der Entwicklung von Hardwaremodulen.
+Christian ist einer der Gründer von asdf-systems und spezialisiert auf den Bereich mikrocontrolling und mobile Sensornetzwerke.
 
-Nach seinem Abitur kam der gebürtige Hamburger im Jahr 2008 nach Berlin. Seither studiert 
-er Informatik (B.Sc.) an der FU-Berlin mit dem Nebenfach Mathematik.
+Nach seinem Abitur kam der gebürtige Franke im Jahr 2008 nach Berlin. Seither studiert 
+er Informatik (B.Sc.) an der FU-Berlin. Seine Studienschwerpunkte liegen in Computersicherheit und Simulation.
 
