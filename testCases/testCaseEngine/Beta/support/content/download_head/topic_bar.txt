@@ -1,0 +1,16 @@
+[Button]
+position_x=px
+position_y=px
+width=px
+height=px
+#position type can be absolute or relative
+position_type=
+standard_src=
+active_src=
+hover_src=
+action_click=
+alt_text=
+extra_css=
+initial_show=false
+# higher level - object more in front
+layer_level=500

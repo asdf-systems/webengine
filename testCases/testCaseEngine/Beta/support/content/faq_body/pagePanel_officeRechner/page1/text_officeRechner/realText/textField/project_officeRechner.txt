@@ -1,0 +1,16 @@
+Stichpunkte:
+
+- normale Office PCs sollen eigentlich funktionieren wie ein fernseher
+anschalten und programm start einfach und ohne wartezeiten.
+- zuverlässig: wir verbauen nur Markenkomponenten, und testen Maschinen 48h unter Volllast
+- Standart Ausstattung: Mail, Druck, Scann, Office Programm (Tabellen Kalkulation, Textverarbeitung)
+Internet (inkl. nötiger Plugins für Videos), Musikplayer, Videoplayer, Banking, VPN zugang
+- Für noch mehr Sicherheit: schauen sie unser Fernwartungspaket an oder melden sie sich bei uns für einen Individuellen Wartungsvertrag
+- Momentane Systemdaten: Windows starten (Zeit von An knopf drücken bis der Computer bedienbar ist, (also Programme gestartet werden können))
+: 45 sekunden
+Zeit zum Start von Openoffice: 1 sek.
+- ausgestattet mit dem asdf-rescue System um beim Ausfall von Betriebssystem weiterarbeiten zu können
+
+
+
+ 

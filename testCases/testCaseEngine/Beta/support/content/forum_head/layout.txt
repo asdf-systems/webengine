@@ -1,0 +1,16 @@
+[Button]
+position_x=0
+position_y=0
+width=720px
+height=31px
+#position type can be absolute or relative
+position_type=relative
+standard_src=balken_software_inaktiv.png
+active_src=balken_software_aktiv.png
+hover_src=balken_software_aktiv.png
+alt_text=show show hardware projects
+extra_css=software_button
+initial_show=true
+# higher level - object more in front
+layer_level=500
+action_click=SPECIFIC(../, deactivate), SPECIFIC(., activate)

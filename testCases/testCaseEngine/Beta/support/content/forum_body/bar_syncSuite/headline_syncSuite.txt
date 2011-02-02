@@ -1,0 +1,10 @@
+[headline_syncSuite.png]
+position_x=20
+
+position_y=10
+width=71px
+height=17px
+#position type can be absolute or relative
+position_type=absolute
+initial_show=true
+layer_level=520

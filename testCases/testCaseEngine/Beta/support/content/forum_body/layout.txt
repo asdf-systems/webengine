@@ -1,0 +1,17 @@
+[AccordionPanel]
+position_x=0
+position_y=0
+width=720px
+height=562px
+#position type can be absolute or relative
+position_type=relative
+extra_css=
+#say which page should be opened at start - false for none (1 based index)
+start_page=false
+# true for force one selection open every time
+collapse=true
+initial_show=true
+# higher level - object more in front
+layer_level=500
+# Segments of the accordion written in header, content, header, content and so on
+pages=bar_syncSuite,pagePanel_syncSuite,bar_webengine,pagePanel_webengine

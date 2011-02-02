@@ -1,0 +1,6 @@
+[/elements/topic_bar_fullpurple]
+position_x=0
+
+position_y=0
+layer_level=510
+extra_css=link

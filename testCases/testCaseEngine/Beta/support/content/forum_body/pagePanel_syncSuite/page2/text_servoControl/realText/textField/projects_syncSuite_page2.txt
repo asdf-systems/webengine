@@ -1,0 +1,7 @@
+Zur erstellung Digitaler Effekte für internationale Film und Fernsehproduktion besitzt
+ChrisCreatures Filmeffects eine große Anzahl Computer in einem sogenannten Renderpark.
+Um Softwareupdates einzuspielen, oder neue Software zu installierne muss dazu auf
+jedem Rechner einzeln die Installation durchgeführt werden. Der Wunsch war es diese
+Arbeit zu beschleunigen und zu vereinfachen. Das Resultat ist die SyncSuite die
+seit Anfang 2010 bei ChrisCreatures eingesetzt wird.
+bla bla siehe Marketing/Projektbeschreibung

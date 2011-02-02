@@ -1,0 +1,10 @@
+[bg_head_line_page1.png]
+position_x=0
+position_y=0
+width=720px
+height=31px
+#position type can be absolute or relative
+position_type=absolute
+extra_css=
+initial_show=true
+layer_level=500
