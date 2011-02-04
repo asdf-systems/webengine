@@ -59,7 +59,7 @@ function showElement(elementId, elem){
     var path = elementId.split("/");
     if(elem == null){
         elem = jsonObject;
-	    var parentObject = $("body[id=mainBody]").get(0);
+	    var parentObject = $("#mainBody").get(0);
         initAndShowElements(elem, parentObject);
     }
     var name ="";
