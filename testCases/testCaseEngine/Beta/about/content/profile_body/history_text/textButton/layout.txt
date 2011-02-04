@@ -6,7 +6,7 @@ height=71px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=geschichte.png
-action_click=SHOW(/about/content/profile_body/philosophie_text/realText)
+action_click=SHOW(./realText)
 initial_show=true
 # higher level - object more in front
 layer_level=600

@@ -6,7 +6,7 @@ height=304px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_unternehmen.png
-action_click=SHOW(/about/content/profile_body/unternehmen_text/realText)
+action_click=SHOW(./realText)
 initial_show=true
 # higher level - object more in front
 layer_level=600
