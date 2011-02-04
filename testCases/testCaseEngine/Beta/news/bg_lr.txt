@@ -1,8 +1,0 @@
-[background_lr.png]
-position_x=1339px
-position_y=922px
-width=100px
-height=279px
-extra_css=background_news
-initial_show=true
-layer_level=200

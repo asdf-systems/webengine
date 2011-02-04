@@ -128,22 +128,27 @@ function registerActions(element){
             actionElement = element[name];
             if(typeof actionElement != Array)
                 var bal = 5;
-                
 			for(var x =0; x < actionElement.length; x++){
-                var actionHandler = getActionHandler(actionElement[x]);
+				var actionHandler = getActionHandler(actionElement[x]);
 				var actionParameter = getActionParameter(actionElement[x]);
 				//alert("Action Parameter: " + actionParameter.parameter[0]);
+				if(actionHandler == null) {
+					if(globals.debug > 0){
+						alert("Warning: "+element.object.mId+ " has unknown action \""+actionElement[x].name+"\"");
+					}
+					continue;
+				}
 				switch(i){
 					case 0:
 						element.object.registerOnMouseClickEvent(actionHandler, actionParameter);
 					break;
 					case 1:
-                        element.object.registerOnMouseOverEvent(actionHandler, actionParameter);
+						element.object.registerOnMouseOverEvent(actionHandler, actionParameter);
 					break;
 					case 2:
 						element.object.registerOnMouseOutEvent(actionHandler, actionParameter);
 					break;
-					case "default":
+					default:
 						if(globals.debug > 0)
 						alert("Error: registeAction(): unknown MouseAction: " + mouseAction);
 					break;
@@ -176,9 +181,7 @@ function getActionHandler(actionElement){
     if(actionElement.name == "send")
         return ActionHandlerSend;  
     else{
-        if(globals.debug > 0){
-            alert("Warning: ActionName: <" + actionElement + "> is unkown");
-        }
+	return null;
     }        
                     
 }

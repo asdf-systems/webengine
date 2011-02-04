@@ -43,7 +43,9 @@ function showObjectList(objectList){
 function hideElement(elementId){
     
     var object = getJsonObject(elementId).object;
-    object.hide();
+    if(object != null) {
+        object.hide();
+    }
 }
 
 /**
