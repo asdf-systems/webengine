@@ -1,50 +1,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
+	<head>
+		<script language="javascript" type="text/javascript"></script>
+		<script type="text/javascript" src="src/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="src/jquery-ui-1.8.7.custom.min.js"></script>
+		<script type="text/javascript" src="src/jquery.ui.accordion.custom.js"></script>
+		<script type="text/javascript" src="jsonObject.js"></script>
+		<script type="text/javascript" src="EngineGlobals.js"></script>
+		<script type="text/javascript" src="src/elements/Button.js"></script>
+		<script type="text/javascript" src="src/elements/Panel.js"></script>
+		<script type="text/javascript" src="src/elements/Image.js"></script>
+		<script type="text/javascript" src="src/elements/InputField.js"></script>
+		<script type="text/javascript" src="src/elements/Textfield.js"></script>
+		<script type="text/javascript" src="src/elements/PagePanel.js"></script>
+		<script type="text/javascript" src="src/elements/RolloutPanel.js"></script>
+		<script type="text/javascript" src="src/elements/HVPanel.js"></script>
+		<script type="text/javascript" src="src/elements/AccordionPanel.js"></script>
+		<script type="text/javascript" src="src/elements/BackgroundStitcher.js"></script>
+		<script type="text/javascript" src="src/EngineShow.js"></script>
+		<script type="text/javascript" src="src/EngineEvents.js"></script>
+		<script type="text/javascript" src="src/EventParameter.js"></script>
+		<script type="text/javascript" src="src/Engine.js"></script>
+		<script type="text/javascript" src="src/Size.js"></script>
+		<!-- <link type="text/css" href="css/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />	    -->
+		<link rel="stylesheet" type="text/css" href="asdf.css" />
 
-<head>
-<script language="javascript" type="text/javascript"></script>
-<script type="text/javascript" src="src/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="src/jquery-ui-1.8.7.custom.min.js"></script>
-<script type="text/javascript" src="src/jquery.ui.accordion.custom.js"></script>
-<script type="text/javascript" src="jsonObject.js"></script>
-<script type="text/javascript" src="EngineGlobals.js"></script>
-<script type="text/javascript" src="src/elements/Button.js"></script>
-<script type="text/javascript" src="src/elements/Panel.js"></script>
-<script type="text/javascript" src="src/elements/Image.js"></script>
-<script type="text/javascript" src="src/elements/InputField.js"></script>
-<script type="text/javascript" src="src/elements/Textfield.js"></script>
-<script type="text/javascript" src="src/elements/PagePanel.js"></script>
-<script type="text/javascript" src="src/elements/RolloutPanel.js"></script>
-<script type="text/javascript" src="src/elements/HVPanel.js"></script>
-<script type="text/javascript" src="src/elements/AccordionPanel.js"></script>
-<script type="text/javascript" src="src/elements/BackgroundStitcher.js"></script>
-<script type="text/javascript" src="src/EngineShow.js"></script>
-<script type="text/javascript" src="src/EngineEvents.js"></script>
-<script type="text/javascript" src="src/EventParameter.js"></script>
-<script type="text/javascript" src="src/Engine.js"></script>
-<script type="text/javascript" src="src/Size.js"></script>
-<!-- <link type="text/css" href="css/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />	-->
-<link rel="stylesheet" type="text/css" href="asdf.css" />
-
-<script>
-    function wrapper(id) {
-        if(id == "./") {
-            linkCalled(id);
-        } else {
-            window.location.href = "/webengine/index.html?"+id+"/";
-        }
-    }
-</script>
-
-<title></title>
-
-</head>
-  <body id="mainBody" style="background-color:#131313" onLoad='wrapper("{id}");'>
-      {text}
-      <div style="position: absolute; top: -5000px; height: -5000px;">
-          Links:
-          <a href="/webengine/projects">Projekte</a>
-          <a href="/webengine/news">news</a>
-      </div>
-</body>
-</html>
+		<script>
+			function wrapper(id) {
+				if(id == "./") {
+					linkCalled(id);
+					} else {
+					window.location.href = "/webengine/index.html?"+id+"/";
+				}
+			}
+		</script>
+		<title></title>
+	</head>
+	<body style="background-color:#131313" onLoad='wrapper("{id}");'>
+		<div style="position: absolute; top: 0px; left: 50%; width: 0px; height: 0px;">
+			<div id="mainBody">
+			</div>
+			<div style="position: absolute; top: -5000px; height: -5000px;">
+				{text}
+				Links:
+				<a href="/webengine/projects">Projekte</a>
+				<a href="/webengine/news">news</a>
+			</div>
+		</body>
+	</html>
