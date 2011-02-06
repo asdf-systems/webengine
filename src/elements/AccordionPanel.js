@@ -377,8 +377,12 @@ asdf_AccordionPanel.prototype.initChild = function(child){
  */
 asdf_AccordionPanel.prototype.specificAction = function(params){
     actionName = params.parameter[0];
+    page = params.parameter[1];
     //object = params.event.currentTarget.nextNode;
     switch(actionName){
+	case "activate":
+		$(this.mDomTreeObject).accordion("activate", page);
+		break;
         default:
             // check if children has action
             for(var i =0; i< this.mChildren.length; i++){
