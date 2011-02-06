@@ -197,7 +197,7 @@ asdf_Image.prototype.specificAction = function(params){
 
     switch(actionName){
 		case "changeImage":
-            object.mDomTreeObject.src = newSource;
+            this.mDomTreeObject.src = newSource;
 		break;
         case "default":
             if(globals.debug > 0)
