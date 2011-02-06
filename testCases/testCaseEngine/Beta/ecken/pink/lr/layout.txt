@@ -1,9 +1,0 @@
-[Panel]
-position_x=100%
-position_y=100%
-width=0px
-height=0px
-position_type=absolute
-initial_show=true
-# higher level - object more in front
-layer_level=100

@@ -1,4 +1,4 @@
-[background_lr.png]
+[corner_yellow_lr.png]
 position_x=-100px
 position_y=-279px
 width=100px

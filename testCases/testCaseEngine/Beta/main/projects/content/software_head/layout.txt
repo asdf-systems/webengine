@@ -13,4 +13,4 @@ extra_css=software_button
 initial_show=true
 # higher level - object more in front
 layer_level=500
-action_click=SPECIFIC(../, deactivate), SPECIFIC(., activate), HIDE(/ecken), SHOW(/ecken/pink)
+action_click=SPECIFIC(../, deactivate), SPECIFIC(., activate), SPECIFIC(/corners/corner_ul.txt,changeImage,/webengine/corners/corner_purple_ul.png), SPECIFIC(/corners/lr/corner_lr.txt,changeImage,/webengine/corners/lr/corner_purple_lr.png)

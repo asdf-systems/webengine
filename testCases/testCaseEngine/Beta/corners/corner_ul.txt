@@ -1,9 +1,9 @@
-[Panel]
+[corner_yellow_ul.png]
 position_x=0px
 position_y=0px
 width=134px
 height=509px
 position_type=absolute
+extra_css=bg_elements
 initial_show=true
-# higher level - object more in front
-layer_level=100
+layer_level=10

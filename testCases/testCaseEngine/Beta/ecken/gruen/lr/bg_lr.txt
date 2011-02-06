@@ -1,9 +1,0 @@
-[background_lr.png]
-position_x=-100px
-position_y=-279px
-width=100px
-height=279px
-position_type=absolute
-extra_css=bg_elements
-initial_show=true
-layer_level=10
