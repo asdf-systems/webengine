@@ -1,0 +1,13 @@
+[Button]
+position_x=0
+position_y=39
+width=146px
+height=27px
+standard_src=projects_normal_bg.png
+active_src=projects_hover_bg.png
+hover_src=projects_hover_bg.png
+action_click=HIDE(../../), SPECIFIC(../,deactivate), SHOW(../../projects/), SPECIFIC(.,activate), SPECIFIC(/corners/corner_ul.txt,changeImage,/webengine/corners/corner_green_ul.png), SPECIFIC(/corners/lr/corner_lr.txt,changeImage,/webengine/corners/lr/corner_green_lr.png), SPECIFIC(../../projects/content,close), SPECIFIC(../../projects/content,deactivate)
+alt_text="projects"
+extra_css=asdf_button
+initial_show=true
+layer_level=800

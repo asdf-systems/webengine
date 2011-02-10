@@ -1,8 +1,0 @@
-[/elements/topic_bar]
-position_x=432px
-position_y=130px
-alt_text=news
-extra_css=asdf_button
-initial_show=true
-# higher level - object more in front
-layer_level=300

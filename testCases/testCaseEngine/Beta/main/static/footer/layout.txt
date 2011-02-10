@@ -1,9 +1,0 @@
-[Panel]
-position_x=277px
-position_y=1157px
-width=875px
-height=45px
-extra_css=
-initial_show=true
-# higher level - object more in front
-layer_level=400

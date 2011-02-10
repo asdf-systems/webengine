@@ -1,9 +1,9 @@
 [Panel]
-position_x=50%
+position_x=-460px
 position_y=0px
-width=100%
+width=800px
 height=100%
-position_type=absolute
+position_type=relative
 initial_show=true
 # higher level - object more in front
 layer_level=200

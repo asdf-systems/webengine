@@ -1,0 +1,7 @@
+[header_panel.png]
+position_x=0
+position_y=0
+width=875px
+height=24px
+extra_css=asdf_headerPanel
+initial_show=true

@@ -1,8 +1,0 @@
-[Panel]
-position_x=432px
-position_y=165px
-width=720px
-height=250px
-position_type=absolute
-extra_css=textToImageField
-initial_show=true

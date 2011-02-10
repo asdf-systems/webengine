@@ -1,0 +1,13 @@
+[Button]
+position_x=0
+position_y=208
+width=151px
+height=26px
+standard_src=myProfile_normal_bg.png
+active_src=myProfile_hover_bg.png
+hover_src=myProfile_hover_bg.png
+action_click=HIDE(/), SPECIFIC(../,deactivate), SHOW(/myProfile/), SPECIFIC(.,activate)
+alt_text=my profile
+extra_css=naviButon
+initial_show=false
+layer_level=800

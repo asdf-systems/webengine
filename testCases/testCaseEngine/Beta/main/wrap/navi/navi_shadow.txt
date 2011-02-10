@@ -1,0 +1,8 @@
+[/elements/bar_shadow/shadow.png]
+position_x=0
+position_y=-16
+width=150px
+height=16px
+extra_css=shadow
+initial_show=true
+layer_level=500

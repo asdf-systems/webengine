@@ -1,0 +1,14 @@
+[Button]
+position_x=605
+position_y=7
+width=98px
+height=19px
+standard_src=blog_archive_normal_bg.png
+activ_src=blog_archive_normal_bg.png
+hover_src=blog_archive_normal_bg.png
+action_click=HIDE(/news/), SHOW(/news/archive/)
+alt_text=show blog archive
+extra_css=news_button
+initial_show=true
+# higher level - object more in front
+layer_level=600
