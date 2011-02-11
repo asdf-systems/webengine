@@ -1,0 +1,10 @@
+[werkstatt.png]
+position_x=5
+position_y=7
+width=68px
+height=13px
+#position type can be absolute or relative
+position_type=absolute
+extra_css=link
+initial_show=true
+layer_level=500

@@ -1,4 +1,0 @@
-Die Syncsuite bietet die Möglichkeit Softwarekonfigurationen von Computern auf einem
-zentralen Server zu speichern, und von da zu laden. Dadurch müssen installationen nur noch
-auf einem Computer ausgeführt werden, alle weiteren Computer mit der gleichen Konfiguration
-syncronisieren  ihre Software beim Neustart.

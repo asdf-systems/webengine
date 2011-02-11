@@ -1,8 +1,0 @@
-Zusammen mit ChrisCreatures Filmeffects wurde 2009 das Konzept zur Servocontrol entwickelt. 
-Der Kundenwunsch war es einerseits digitale Characktere genauso steuern und animieren zu können wie reale
-Animatroncis, und andersherum von den  Vorteilen der digitalen Bearbeitung
-Speichern von Animation, Animationen überlagern) auch für Animatronics profitieren  zu können.
-Auf Basis dieser Wünsche wurde ende 2009 der erste Prototyp gebaut,
-der die fähigkeiten des neuen Systems aufzeigte und uns die Möglichkeit gab das gewünschte Produkt genauer
-zu definieren.  Im August 2010 wurde der Testbetrieb mit der ersten Version der ServoControl aufgenommen.
-Seid dem wird das system unter  realen Bedingungen getestet und von uns in Zukunft erweitert und verbessert.
