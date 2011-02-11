@@ -63,15 +63,14 @@ function ActionHandlerSend(params){
 }
 
 function ActionHandlerLink(params){
-    var object = getJsonObject(params.parameter[0]).object;
-    if(object == null && getJsonObject(params.parameter[0]) != null) // object exists - but nnot initialised yet
-        showElement(params.parameter[0])
-    object = getJsonObject(params.parameter[0]).object; // again to get initialsied object
-    
+   
     var actionParameter = new EventParameter();
     for(i=1; i< params.parameter.length; i++)
         actionParameter.parameter[actionParameter.parameter.length] = params.parameter[i];  
-    window.open(actionParameter.parameter[0])
+    var link = actionParameter.parameter[0];
+    if(!link.match(/http:\/\//))
+    	link = "http://" + link;
+    window.open(link)
 
 }
 
