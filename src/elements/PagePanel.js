@@ -181,7 +181,7 @@ asdf_PagePanel.prototype.hide = function(){
     $(this.mDomTreeObject).hide();
     $(this.mDomPages).hide();
     this.hideChildren();
-    this.mCurrentPage = 0;
+    //this.mCurrentPage = 0;
 
     
 }
