@@ -68,9 +68,15 @@ function ActionHandlerLink(params){
     for(i=1; i< params.parameter.length; i++)
         actionParameter.parameter[actionParameter.parameter.length] = params.parameter[i];  
     var link = actionParameter.parameter[0];
-    if(!link.match(/http:\/\//))
-    	link = "http://" + link;
-    window.open(link)
+    
+    if(link.match(/^mailto:/)){
+    	window.location = link;
+    } else {
+	    if(!link.match(/http:\/\//))
+	    	link = "http://" + link;
+	    
+	    window.open(link);
+    }
 
 }
 
