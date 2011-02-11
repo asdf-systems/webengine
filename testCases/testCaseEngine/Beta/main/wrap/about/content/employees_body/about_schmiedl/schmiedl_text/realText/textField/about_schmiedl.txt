@@ -1,7 +1,10 @@
-Christian Schmiedl - Software Development
+Christian - Software development
 
-Christian ist einer der Gründer von asdf-systems und spezialisiert auf den Bereich mikrocontrolling und mobile Sensornetzwerke.
+Christian ist einer der gründer von asdf-systems und spezialisiert
+auf den Bereich mikrocintrolling und mobile Sensornetzwerke.
 
-Nach seinem Abitur kam der gebürtige Franke im Jahr 2008 nach Berlin. Seither studiert 
-er Informatik (B.Sc.) an der FU-Berlin. Seine Studienschwerpunkte liegen in Computersicherheit und Simulation.
+Nach seinem Abitur kann der gebürtige Franke im jahr 2008 im 
+Jahr 2008 nach Berlin. Seit her studiert er Informatik (B.Sc.) an 
+der FU-Berlin. Seine Studienschwerpunkte liegen in Computer-
+sicherheit und Simulation.
 
