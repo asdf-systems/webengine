@@ -363,6 +363,9 @@ asdf_PagePanel.prototype.getParent = function(child){
 asdf_PagePanel.prototype.specificAction = function(params){
     var actionName = trimString(params.parameter[0]);
     object = params.event.currentTarget.nextNode;
+    var pageNumber = 1;
+    if(params.parameter.length == 2)
+    	pageNumber = Number(params.parameter[1]);
     
     switch(actionName){
         case "forward" : // no break for runThrough
@@ -373,6 +376,9 @@ asdf_PagePanel.prototype.specificAction = function(params){
         case "prevPage" : 
         case "previousPage":
             this.changePage(-1);
+        break;
+        case "showPage":
+        	this.showPage(pageNumber-1);
         break;
         default:
             if(globals.debug > 1)
@@ -423,6 +429,26 @@ asdf_PagePanel.prototype.changePage = function(direction){
 	
 }
 
+/**
+ * jump directly to given page
+ */
+ asdf_PagePanel.prototype.showPage = function(pageNumber){
+ 	var page = this.mDomPagesArray[this.mCurrentPage];
+	var move = 0;
+	if(this.mOrientation == "horizontal"){
+		move = page.style.width;
+	} else 
+		move = page.style.height;
+		
+	var pageDiff = pageNumber - this.mCurrentPage;
+	this.mCurrentPage += direction * pageDiff;
+	        	
+	if(this.mOrientation == "horizontal"){
+	    this.mDomPages.style.left += move;
+	} else 
+		this.mDomPages.style.top += move;
+ }
+ 
 /**
  * Called when sliding an animation is finished 
  */

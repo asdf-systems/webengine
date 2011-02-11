@@ -33,7 +33,7 @@ function ActionHandlerHide(params){
         jsonElement.object.hide();
         
     } else*/
-        hideElement(elementName);
+        hideElement(elementName);                             
 }
 
 function ActionHandlerSpecific(params){
@@ -59,6 +59,19 @@ function ActionHandlerSend(params){
     // if(.object.getValue != undefined) -> sonst Warnig ausgeben if(globals.debug > 0) alert("Warning: Object: " 
     // var value = inputFieldNames.object.getValue(); //! todo null etc auf object abfangen //
     
+
+}
+
+function ActionHandlerLink(params){
+    var object = getJsonObject(params.parameter[0]).object;
+    if(object == null && getJsonObject(params.parameter[0]) != null) // object exists - but nnot initialised yet
+        showElement(params.parameter[0])
+    object = getJsonObject(params.parameter[0]).object; // again to get initialsied object
+    
+    var actionParameter = new EventParameter();
+    for(i=1; i< params.parameter.length; i++)
+        actionParameter.parameter[actionParameter.parameter.length] = params.parameter[i];  
+    window.open(actionParameter.parameter[0])
 
 }
 

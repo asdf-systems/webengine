@@ -179,7 +179,9 @@ function getActionHandler(actionElement){
     if(actionElement.name == "specific")
         return ActionHandlerSpecific;    
     if(actionElement.name == "send")
-        return ActionHandlerSend;  
+        return ActionHandlerSend;
+    if(actionElement.name == "link")
+        return ActionHandlerLink;  
     else{
 	return null;
     }        
