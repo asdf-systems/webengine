@@ -439,14 +439,18 @@ asdf_PagePanel.prototype.changePage = function(direction){
 		move = page.style.width;
 	} else 
 		move = page.style.height;
-		
+	
 	var pageDiff = pageNumber - this.mCurrentPage;
-	this.mCurrentPage += direction * pageDiff;
+	move = getValueWithoutUnits(move) ;	
+	move *= pageDiff*-1;
+	
+	this.mCurrentPage += pageDiff;
 	        	
 	if(this.mOrientation == "horizontal"){
-	    this.mDomPages.style.left += move;
+	    var test = getValueWithoutUnits(this.mDomPages.style.left) + move + this.mUnitX;
+	    this.mDomPages.style.left = test;
 	} else 
-		this.mDomPages.style.top += move;
+		this.mDomPages.style.top = getValueWithoutUnits(this.mDomPages.style.top) + move + this.mUnitY;
  }
  
 /**
