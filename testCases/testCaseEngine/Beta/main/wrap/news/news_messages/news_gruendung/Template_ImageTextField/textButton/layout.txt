@@ -2,7 +2,7 @@
 position_x=5
 position_y=5
 width=595px
-height=71px
+height=35px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=news_gruendung.png

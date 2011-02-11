@@ -2,7 +2,7 @@
 position_x=5
 position_y=25
 width=594px
-height=107px
+height=71px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=news_webengine.png

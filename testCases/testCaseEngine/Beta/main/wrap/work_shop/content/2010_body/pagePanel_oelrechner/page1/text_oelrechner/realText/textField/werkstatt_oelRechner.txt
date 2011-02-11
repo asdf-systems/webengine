@@ -1,9 +1,21 @@
-Stcihpunkte:
+Die Idee: Wir wollen Rechner im Cluster Betrieb stark übertakten.
 
-- idee: Computer vorallem im Cluster Betrieb stark übertakten zu können.
-- nach Recherchen und "trocken" test beim Übertakten haben wir mit AMD X2 ind AMD Athlons getestet.
-- zuerst maschinen ohne öl übertaktet
-- dann im Öl bad
-- ergebniss: Die Rechner sind mucksmäuschen still
-- Übertaktungsergebniss bleiben die gleichen
--> lohnt den aufwand, und die umständliche Handhabung nicht
+Vorbereitung:
+Nach eingehender Recherche haben wir uns entschieden AMD X2 und AMD Athlons
+für den Testlauf zu verwenden.
+
+Phase 1:
+Die Rechner wurden in trockenen Zustand übertaktet
+und haben alle Testläufe bravurös bestanden.
+
+Phase 2: 
+Die Rechner wurden in ein Ölbad eingelegt. Dabei war die komplette Maschine
+mit Öl bedeckt. Alle Testläufe wurden genau so problemlos gemeistert,
+wie in der ersten Phase.
+
+Fazit:
+Die Rechner haben das Ölbad ohne Schaden überstanden und haben problemlos gearbeitet.
+Durch das einlegen in Öl liefen die Rechner völlig geräuschlos.
+Einstärkeres Übertakten als im Trockenen Zustand war jedoch nicht möglich.
+Der zu betreibende Aufwand und die umständliche Handhabung, vor allem in der
+Wartung lassen einen Einsatz zum jetzigen Zeitpunkt nicht sinnvoll erscheinen.

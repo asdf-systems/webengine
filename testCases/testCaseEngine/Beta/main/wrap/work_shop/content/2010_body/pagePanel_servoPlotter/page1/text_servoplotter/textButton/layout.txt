@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=674px
-height=232px
+width=645px
+height=408px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=werkstatt_servoPlotterr.png
