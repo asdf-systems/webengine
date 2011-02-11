@@ -356,7 +356,7 @@ asdf_InputField.prototype.specificAction = function(params){
             return this.mDomInputField.value;
         break;
         default:
-            if(globals.debug > 0)
+            if(globals.debug > 1)
                 alert("InputField: action name: " + actionName + " unknown!");
         break;
     }
