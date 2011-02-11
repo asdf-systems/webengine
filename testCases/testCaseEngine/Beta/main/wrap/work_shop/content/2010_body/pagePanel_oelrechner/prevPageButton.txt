@@ -3,7 +3,7 @@ position_x=0
 position_y=340
 #position type can be absolute or relative
 position_type=absolute
-action_click=SPECIFIC(../pagePanel_fernwartung,prevPage),SPECIFIC(../bar_fernwartung,prevPage)
+action_click=SPECIFIC(./,prevPage),SPECIFIC(../bar_oelrechner,prevPage)
 initial_show=true
 extra_css=link
 # higher level - object more in front

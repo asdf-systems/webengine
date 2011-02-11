@@ -9,3 +9,4 @@ extra_css=
 initial_show=true
 # higher level - object more in front
 layer_level=500
+action_click=SPECIFIC(../, deactivate), SPECIFIC(., activate)

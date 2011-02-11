@@ -1,2 +1,1 @@
 [/elements/topic_bar_orange]
-action_click=SPECIFIC(../, deactivate), SPECIFIC(., activate)

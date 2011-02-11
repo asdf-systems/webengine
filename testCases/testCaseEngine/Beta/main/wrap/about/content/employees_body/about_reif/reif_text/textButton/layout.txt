@@ -2,7 +2,7 @@
 position_x=10
 position_y=10
 width=630px
-height=168px
+height=161px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_reif.png

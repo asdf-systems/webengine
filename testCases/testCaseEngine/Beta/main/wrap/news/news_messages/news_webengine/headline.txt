@@ -1,7 +1,7 @@
 [headline.png]
 position_x=5
 position_y=5
-width=248px
+width=284px
 height=19px
 #position type can be absolute or relative
 position_type=absolute
