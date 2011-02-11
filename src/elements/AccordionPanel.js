@@ -378,10 +378,19 @@ asdf_AccordionPanel.prototype.initChild = function(child){
 asdf_AccordionPanel.prototype.specificAction = function(params){
     actionName = params.parameter[0];
     //object = params.event.currentTarget.nextNode;
+    var pageNumber = 0;
+    if(params.parameter.length == 2){
+        pageNumber = Number(params.parameter[1]);
+    }
     switch(actionName){
-	case "close":
-		$(this.mDomTreeObject).accordion("activate", false);
+	   case "close":
+	       	$(this.mDomTreeObject).accordion("activate", false);
 		break;
+		case "show":
+          var currentPage = $(this.mDomTreeObject).accordion("option","active");  
+          if(currentPage != pageNumber)
+    		  $(this.mDomTreeObject).accordion("option","active",Number(pageNumber));
+        break;
         default:
             // check if children has action
             for(var i =0; i< this.mChildren.length; i++){
