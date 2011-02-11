@@ -4,7 +4,7 @@ position_y=0
 width=720px
 height=31px
 #position type can be absolute or relative
-position_type=relative
+position_type=absolute
 initial_show=true
 animation_speed=200
 # can be horizontal or vertical, default is horizontal

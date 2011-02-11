@@ -12,11 +12,12 @@
  * \param: bgColor      colorHex    bgColor of the Element : Default: transparent
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: collapse     bool        Say if one element has to be open all time or not
+ * \param: spacing      int         spacing between Headers
  * \param: pages        jsonObject[] Childs that represent the cont in order header,page, header,page and so on
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, positionType, startPage, extra_css_class, collapse, pages, initialShow, zIndex){
+function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, positionType, startPage, extra_css_class, collapse, spacing, pages, initialShow, zIndex){
     
     
     //* public: 
@@ -99,6 +100,13 @@ function asdf_AccordionPanel(_id, _parent, positionX, positionY, bgColor, positi
     } else
         this.mStartPage = startPage;
     
+    if(spacing == null || spacing == undefined){
+        if(globals.debug > 2)
+            alert("Accodion: spacing not set: " + this.mID + " Accordion. Set to 0.");
+        this.mSpacing = 0;
+    } else{
+        this.mSpacing = spacing;
+    }
     if(initialShow == "false")
         this.mInitialShow = false;
     else if(initialShow != false)
@@ -252,8 +260,9 @@ asdf_AccordionPanel.prototype.create = function(){
         var header =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segmentHeader_"+i), "div", this.mType, this.mExtraClassCSS); 
         var content =  createDomObjectDOM(this, this.mDomTreeObject, (this.mId + "_segmentBody_"+i), "div", this.mType, this.mExtraClassCSS); 
         //setObjectPosition(segment, 0, 0, "relative", "px", "px");
-        setObjectPosition(header, 0, 0, "relative", "px", "px");
-        setObjectPosition(content, 0, 0, "relative", "px", "px");
+        
+        setObjectPosition(header, 0, this.mSpacing*i, "relative", "px", "px");
+        setObjectPosition(content, 0, this.mSpacing*i, "relative", "px", "px");
         
         var headerString = this.mId + "_asdf_accordion_header";
         var headerString = headerString.replace(/\//g, "_");
