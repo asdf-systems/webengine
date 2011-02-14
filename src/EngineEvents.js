@@ -16,10 +16,15 @@ function ActionHandlerShow(params){
 function ActionHandlerToggle(params){
     var object = getJsonObject(params.parameter[0])
     if(object != null && object.object != null){
-        if(object.object.mDomnTreeObject != null && object.object.mDomTreeObject.style.visibility == "visible")
-            hideElement(params.parameter[0]);
-        else
-           showElement(params.parameter[0]);
+        if(object.object.mDomTreeObject != null && $(object.object.mDomTreeObject).is(":visible")){
+            //hideElement(params.parameter[0]);
+            if(object.object != null)
+                object.object.hide();
+        } else{
+           //showElement(params.parameter[0]);
+           if(object.object != null)
+               object.object.show();
+        }
     }
 
     
