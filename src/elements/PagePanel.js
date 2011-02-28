@@ -447,10 +447,13 @@ asdf_PagePanel.prototype.changePage = function(direction){
 	this.mCurrentPage += pageDiff;
 	        	
 	if(this.mOrientation == "horizontal"){
-	    var test = getValueWithoutUnits(this.mDomPages.style.left) + move + this.mUnitX;
-	    this.mDomPages.style.left = test;
-	} else 
-		this.mDomPages.style.top = getValueWithoutUnits(this.mDomPages.style.top) + move + this.mUnitY;
+	    var value = getValueWithoutUnits(this.mDomPages.style.left) + move + this.mUnitX;
+	    this.mDomPages.style.left = getValueWithUnits(value, "px");
+	    
+	} else { 
+	    var value = getValueWithoutUnits(this.mDomPages.style.top) + move + this.mUnitY;
+	    this.mDomPages.style.top = getValueWithUnits(value, "px");
+	}
  }
  
 /**
