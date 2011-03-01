@@ -243,12 +243,24 @@ asdf_Button.prototype.unsetHoverImage = function(params){
  * \definition: Special Actions: Button: activate, deactivate
  */
 asdf_Button.prototype.specificAction = function(params){
-    actionName = params.parameter[0];
+    var actionName = params.parameter[0];
+    var id = null;
+    if(params.parameter.length > 1){
+    	id = params.parameter[1];
+    }
     switch(actionName){
         case "activate":
+            if(id != null){ // activate all execpt that with id
+            	if(id == this.mId)
+            		break;
+            }
             this.setActiveImage();
         break;
         case "deactivate":
+        	if(id != null){ // deactivate all execpt that with id
+            	if(id == this.mId)
+            		break;
+            }
             this.setNormalImage();
         break;
         default:
