@@ -248,6 +248,11 @@ asdf_Button.prototype.specificAction = function(params){
     if(params.parameter.length > 1){
     	id = params.parameter[1];
     }
+    if(this.mId == "main/wrap/07_termine/april_header/header_btn")
+    	var x = 5;
+    if(this.mId == "main/wrap/07_termine/april_header/arrow_btn.txt")
+    	var x = 5;
+    	
     switch(actionName){
         case "activate":
             if(id != null){ // activate all execpt that with id
@@ -263,6 +268,17 @@ asdf_Button.prototype.specificAction = function(params){
             }
             this.setNormalImage();
         break;
+        case "toggle_active":
+        	if(id != null){ // deactivate all execpt that with id
+            	if(id == this.mId)
+            		break;
+            }
+            if(this.mActive == false)
+            	this.setActiveImage();
+            else
+	            this.setNormalImage();
+        break;
+        
         default:
             if(globals.debug > 0)
                 alert("Button: action name: " + actionName + " unknown!");
