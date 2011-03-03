@@ -9,11 +9,12 @@
  * \param: positionX    int         x Position of the Image - relative to parent
  * \param: positionY    int         y Position of the Image - relative to parent
  * \param: src		    string      path to the Image that sould be show
+ * \param: alt_key      string      Alt Text on Hover
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Image(_id, _parent, positionX, positionY, width, height, src, positionType, extra_css_class, initialShow,zIndex){
+function asdf_Image(_id, _parent, positionX, positionY, width, height, src, positionType, alt_key, extra_css_class, initialShow,zIndex){
     
     
     //* public: 
@@ -53,6 +54,11 @@ function asdf_Image(_id, _parent, positionX, positionY, width, height, src, posi
     else
         this.mPosY      = positionY;
     
+    if(alt_key == null || alt_key == undefined){
+        this.mAlt = "";
+    } else
+        this.mAlt = alt_key;
+        
     if(extra_css_class == null)
         this.mExtraClassCSS = "EXTRA_NOTSET";
     else    
@@ -139,6 +145,7 @@ asdf_Image.prototype.hide = function(){
 asdf_Image.prototype.show = function(){
 	if(this.mDomTreeObject == null){
 		this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.mExtraClassCSS, this.mSource);
+		this.mDomTreeObject.setAttribute("alt",this.mAlt);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);

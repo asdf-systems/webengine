@@ -13,11 +13,12 @@
  * \param: image_normal string      Path to Image that showed if nothing is done to the Button
  * \param: image_active string      Path to Image that showd if Button is activated. Default: = image_normal
  * \param: image_hover  string      Path to Image that showed if Mouse is over Button. Default: =image_normal
+ * \param: alt_key      string      Alt Text on Hover
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, width, height, positionType, extra_css_class, initialShow, zIndex){
+function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_active, image_hover, width, height, positionType, alt_key, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -95,6 +96,11 @@ function asdf_Button(_id, _parent, positionX, positionY, image_normal, image_act
     else
         this.mPosY      = positionY;
     
+    if(alt_key == null || alt_key == undefined){
+        this.mAlt = "";
+    } else
+        this.mAlt = alt_key;
+        
     if(extra_css_class == null)
         this.mExtraClassCSS = "EXTRA_NOTSET";
     else    
@@ -147,6 +153,7 @@ asdf_Button.prototype.hide = function(){
 asdf_Button.prototype.show = function(){
     if(this.mDomTreeObject == null){
         this.mDomTreeObject = createDomObject(this, this.mId, "img", this.mType, this.mExtraClassCSS, this.mImageNormal);
+        this.mDomTreeObject.setAttribute("alt",this.mAlt);
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);

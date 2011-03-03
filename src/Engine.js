@@ -49,7 +49,7 @@ function init(elem, parentObject){
 	// check Type 
     switch(elem.type){
 		case "Button":
-            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.width, elem.height, elem.position_type, elem.extra_css, elem.initial_show, elem.layer_level );
+            elem.object = new asdf_Button(elem.id, parentObject, elem.position_x, elem.position_y, elem.standard_src,elem.active_src, elem.hover_src, elem.width, elem.height, elem.position_type, elem.alt_text, elem.extra_css, elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		case "BackgroundStitcher":
@@ -66,7 +66,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
         case "Image":
-            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height, elem.src, elem.position_type, elem.extra_css,elem.initial_show, elem.layer_level );
+            elem.object = new asdf_Image(elem.id, parentObject, elem.position_x, elem.position_y, elem.width, elem.height, elem.src, elem.position_type, elem.alt_key, elem.extra_css,elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
         case "InputField":
