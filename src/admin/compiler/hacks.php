@@ -152,15 +152,23 @@
 
 	/**
 	 * Creates an index.html from a template in the panel's folder
-	 * and fills it with the textual content.
+	 * and fills it with content.
+	 * @definition Texts are copied verbatim, Images are included via img-tag
 	 * @definition Panels which are referenced (and therefore don't
 	 * have a folder on their own) are ignored.
 	 */
 	function createHTMLDummy($object) {
 		debug("Creating html dummy for \"".$object["id"]."\"");
 		$data = readTemplate();
-		$data = replacePlaceholder($data, "text", $object["texts"]);
 		$data = replacePlaceholder($data, "id", $object["id"]);
+		switch($object["type"]) {
+		case "Image":
+			$data = replacePlaceholder($data, "content", "<img src=\"".$object["src"]."\" alt=\"".$object["alt_text"]."\">");
+			break;
+		default:
+			$data = replacePlaceholder($data, "content", $object["texts"]);
+			break;
+		}
 		writeToFile(simplifyPath($object["id"], "index.html"), $data);
 	}
 
