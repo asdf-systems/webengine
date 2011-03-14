@@ -161,15 +161,66 @@
 		debug("Creating html dummy for \"".$object["id"]."\"");
 		$data = readTemplate();
 		$data = replacePlaceholder($data, "id", $object["id"]);
+		$content = "";
+		if(array_key_exists("children", $object) && is_array($object["children"])) {
+			foreach($object["children"] as $child) {
+				$content .= HTMLifyObject($child);
+			}
+		}
+		$data = replacePlaceholder($data, "content", $content);
+		writeToFile(simplifyPath($object["id"], "index.html"), $data);
+	}
+
+	/**
+	 * Turns an object into its individual HTML representation for dummyHTML pages.
+	 */
+	function HTMLifyObject($object) {
+		debug("Looking for HTML-worthy material in \"".$object["id"]."\"");
 		switch($object["type"]) {
 		case "Image":
-			$data = replacePlaceholder($data, "content", "<img src=\"".$object["src"]."\" alt=\"".$object["alt_text"]."\">");
+			debug("Found an image: \"".$object["src"]."\"");
+			$content = "<img src=\"".$object["src"]."\" alt=\"".$object["alt_key"]."\">";
 			break;
-		default:
-			$data = replacePlaceholder($data, "content", $object["texts"]);
+		case "TextField":
+			debug("Found text [...]");
+			$content = "<pre>".$object["texts"]."</pre>";
 			break;
 		}
-		writeToFile(simplifyPath($object["id"], "index.html"), $data);
+		$links = extractLinksFromObject($object);
+		foreach($links as $link) {
+			$content .= "<a href=\"".$link."\">Link</a>";
+		}
+		return $content;
+	}
+
+	/**
+	 * Extracts all links used in LINK actions of an object
+	 */
+	function extractLinksFromObject($object) {
+		debug("Looking for links in \"".$object["id"]."\"");
+		$links = Array();
+		foreach($object as $key => $value) {
+			if(preg_match("/^action_.+$/", $key)) {
+				$actionlinks = extractLinksFromAction($object[$key]);
+				$links = array_merge($links, $actionlinks);
+			}
+		}
+		return $links;
+	}
+
+	/**
+	 * Takes an event chain and returns all links referenced
+	 */
+	function extractLinksFromAction($actionchain) {
+		$links = Array();
+		foreach($actionchain as $action) {
+			if(strtolower($action["name"]) == "link") {
+				$link = $action["parameters"][1];
+				debug("Found a link: \"".$link."\"");
+				array_push($links, $link);
+			}
+		}
+		return $links;
 	}
 
 	/**
