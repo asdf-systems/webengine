@@ -107,6 +107,8 @@
 	 * @see santizeBooleans
 	 */
 	function hasBooleanStringValue($string, $val) {
+		if(gettype($string) != "string")
+			return false;
 		$stringbools = Array(true => Array("on", "true", "yes"),
 			false => Array("off", "false", "no"));
 		foreach($stringbools[$val] as $bool) {

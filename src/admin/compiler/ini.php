@@ -11,7 +11,7 @@
 		try {
 			debug("Parsing generic INI file \"".$file."\"");
 			$ret = Array();
-			$data = file($file);
+			$data = @file($file);
 			if($data === false) {
 				return false;
 			}
