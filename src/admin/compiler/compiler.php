@@ -6,13 +6,17 @@
 	require_once("paths.php");
 	require_once("hacks.php");
 
-	if(!isset($ROOT))
+	if(php_sapi_name() == "cli") {
+		$ROOT = getenv("ROOT");
+		$DEBUG = getenv("DEBUG");
+	}
+	else {
 		$ROOT = getcwd()."/../";
+		if(!isset($DEBUG))
+			$DEBUG = false;
+	}
 	debug("Jailig to \"".$ROOT."\"");
 	chdir($ROOT);
-
-	if(!isset($DEBUG))
-		$DEBUG = false;
 
 	try {
 		debug("Starting main routine");
