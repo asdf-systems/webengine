@@ -1,6 +1,0 @@
-Das Konzept wurde in Zusammarbeit mit ChrisCreatures Film Effects erarbeitet und
-innerhalb eines Jahres wurde ein Prototypen gebaut. In der andauernden Testphase
-bei ChrisCreatures zeigte sich das Potential der Idee zur ServoControl.
-
-asdf-systems entwickelt zur Zeit die nächste Generation. Die ServoControl, im neuen,
-kompakten Design, wird intuitiver bedienbar, umfassender und stromsparender sein.
