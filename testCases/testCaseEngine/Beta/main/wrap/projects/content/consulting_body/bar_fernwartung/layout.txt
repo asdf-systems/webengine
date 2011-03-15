@@ -11,7 +11,7 @@ animation_speed=200
 orientation=horizontal
 # distance between the pages
 spacing=5
-pages=page1,page2
+pages=page1
 initial_show=true
 # higher level - object more in front
 layer_level=500
