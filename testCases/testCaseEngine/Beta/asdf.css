@@ -6,4 +6,10 @@ img{
 	border: 2px #333333 solid;
 }
 
-.link { cursor: pointer }
+.link {
+	cursor: pointer;
+}
+
+.ui-accordion-header {
+	margin-top: 5px;
+}

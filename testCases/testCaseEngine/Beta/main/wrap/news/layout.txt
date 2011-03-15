@@ -1,6 +1,6 @@
 [Panel]
 position_x=155
-position_y=130
+position_y=135
 width=874px
 height=772px
 extra_css=news_panel
