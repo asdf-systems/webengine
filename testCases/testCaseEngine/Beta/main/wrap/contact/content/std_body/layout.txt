@@ -1,6 +1,6 @@
 [Panel]
 position_x=0
-position_y=0
+position_y=5
 width=720px
 height=260px
 position_type=absolute
