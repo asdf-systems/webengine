@@ -1,4 +1,0 @@
-[/elements/text_background]
-width=720px
-height=210px
-layer_level=300
