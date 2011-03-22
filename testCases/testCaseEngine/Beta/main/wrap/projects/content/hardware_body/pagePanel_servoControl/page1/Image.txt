@@ -1,4 +1,4 @@
-[animatronic_01.png]
+[roboter.png]
 position_x=0
 position_y=0
 width=720px

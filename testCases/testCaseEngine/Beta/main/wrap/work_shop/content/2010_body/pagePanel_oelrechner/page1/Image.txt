@@ -1,7 +1,7 @@
 [oelrechner.png]
 position_x=0
 position_y=0
-width=720px
+width=719px
 height=297px
 #position type can be absolute or relative
 position_type=absolute
