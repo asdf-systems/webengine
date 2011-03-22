@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [Panel]
 position_x=0
 position_y=0
@@ -6,4 +7,14 @@ height=320px
 initial_show=true
 # higher level - object more in front
 layer_level=500
+=======
+[Panel]
+position_x=0
+position_y=0
+width=720px
+height=500px
+initial_show=true
+# higher level - object more in front
+layer_level=500
+>>>>>>> origin/wessel/BetaTest
 position_type=relative
