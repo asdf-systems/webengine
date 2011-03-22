@@ -14,11 +14,15 @@
  * \param: imgTop      	string		src to the upper BorderImage
  * \param: imgMiddle   	string		src to the image that fills the middle
  * \param: imgBottom    string		src to the lower BorderImage 
+ * \param: img_topH     int         height of the top Image
+ * \param: img_topW     int         Width of the top Image
+ * \param: img_bottomH  int         height of the bottom Image 
+ * \param: img_bottomW  int         width of the bottom Image 
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_BackgroundStitcher(_id, _parent, positionX, positionY, bgColor, width, height, imgTop, imgMiddle, imgBottom, positionType, extra_css_class, initialShow, zIndex){
+function asdf_BackgroundStitcher(_id, _parent, positionX, positionY, bgColor, width, height, imgTop, imgMiddle, imgBottom, positionType, img_topH, img_topW, img_bottomH, img_bottomW, extra_css_class, initialShow, zIndex){
     
     
     //* public: 
@@ -99,6 +103,39 @@ function asdf_BackgroundStitcher(_id, _parent, positionX, positionY, bgColor, wi
     else
         this.mPosY      = positionY;
     
+    if(img_topH == null || img_topH == undefined){
+        this.mImg_topH = "0px";
+        if(globals.debug > 1)
+            alert("Warning: BackgroundStitcher: Image Top Height is not set - set to 0");
+    } else {
+        this.mImg_topH = img_topH; 
+    }
+
+
+    if(img_topW == null || img_topW == undefined){
+        this.mImg_topW = "0px";
+        if(globals.debug > 1)
+            alert("Warning: BackgroundStitcher: Image Top Width is not set - set to 0");
+    } else {
+        this.mImg_topW = img_topW; 
+    }
+    
+    if(img_bottomH == null || img_topH == undefined){
+        this.mImg_bottomH = "0px";
+        if(globals.debug > 1)
+            alert("Warning: BackgroundStitcher: Image Bottom Height is not set - set to 0");
+    } else {
+        this.mImg_bottomH = img_bottomH; 
+    }
+    
+    if(img_bottomW == null || img_bottomW == undefined){
+        this.mImg_bottomW = "0px";
+        if(globals.debug > 1)
+            alert("Warning: BackgroundStitcher: Image Bottom Width is not set - set to 0");
+    } else {
+        this.mImg_topW = img_topW; 
+    }
+    
     if(extra_css_class == null)
         this.mExtraClassCSS = "EXTRA_NOTSET";
     else    
@@ -167,13 +204,14 @@ asdf_BackgroundStitcher.prototype.show = function(){
         this.mDomTreeObject.style.zIndex = this.mZIndex;
 		
 
-		var topSize = this.getImageSize(this.mDomImageTop);
-		var bottomSize = this.getImageSize(this.mDomImageBottom);
+		var topSize = Size(this.mImg_topH,this.mImg_topW);
+		var bottomSize = Size(this.mImg_bottomH, this.mImg_bottomW);
 		var middleSize = this.getImageSize(this.mDomImageMiddle);
 		middleSize.y = getValueWithoutUnits(this.mHeight) - getValueWithoutUnits(topSize.y) - getValueWithoutUnits(bottomSize.y);
 		// cut stuff if top + bottom is already to big
 		if(middleSize.y < 0){
 			this.mDomImageBottom.style.height = getValueWithUnits( getValueWithoutUnits(bottomSize.y) + getValueWithoutUnits(middleSize.y));
+			this.mDomImageMiddle.style.height = "0px";
 		} else{ // resize Middle
 			this.mDomImageMiddle.style.height = getValueWithUnits(middleSize.y);
 		}
