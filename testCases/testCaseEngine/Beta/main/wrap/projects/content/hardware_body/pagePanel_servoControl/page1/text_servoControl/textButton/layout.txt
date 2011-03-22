@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=633px
-height=229px
+width=672px
+height=191px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=projects_servoControl_page1.png
