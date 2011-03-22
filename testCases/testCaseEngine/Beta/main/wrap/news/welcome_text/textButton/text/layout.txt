@@ -1,8 +1,8 @@
 [Button]
 position_x=3
 position_y=30
-width=659px
-height=211px
+width=656px
+height=241px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=start.png
