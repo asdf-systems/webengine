@@ -120,7 +120,7 @@ function asdf_BackgroundStitcher(_id, _parent, positionX, positionY, bgColor, wi
         this.mImg_topW = img_topW; 
     }
     
-    if(img_bottomH == null || img_topH == undefined){
+    if(img_bottomH == null || img_bottomH == undefined){
         this.mImg_bottomH = "0px";
         if(globals.debug > 1)
             alert("Warning: BackgroundStitcher: Image Bottom Height is not set - set to 0");
@@ -133,7 +133,7 @@ function asdf_BackgroundStitcher(_id, _parent, positionX, positionY, bgColor, wi
         if(globals.debug > 1)
             alert("Warning: BackgroundStitcher: Image Bottom Width is not set - set to 0");
     } else {
-        this.mImg_topW = img_topW; 
+        this.mImg_bottomW = img_bottomW; 
     }
     
     if(extra_css_class == null)
@@ -197,6 +197,8 @@ asdf_BackgroundStitcher.prototype.show = function(){
         $(this.mDomTreeObject).mouseover(onMouseOver);
         $(this.mDomTreeObject).mouseout(onMouseOut);
         $(this.mDomTreeObject).click(onMouseClick);
+        setObjectSize(this.mDomImageTop, this.mImg_topW, this.mImg_topH, "px", "px");
+        setObjectSize(this.mDomImageBottom, this.mImg_bottomW, this.mImg_bottomH, "px", "px");        
         this.mDomTreeObject.style.position = this.mPositionType;
         this.setPosition(this.mPosX, this.mPosY);
         this.setSize(this.mWidth, this.mHeight);
@@ -204,8 +206,8 @@ asdf_BackgroundStitcher.prototype.show = function(){
         this.mDomTreeObject.style.zIndex = this.mZIndex;
 		
 
-		var topSize = Size(this.mImg_topH,this.mImg_topW);
-		var bottomSize = Size(this.mImg_bottomH, this.mImg_bottomW);
+		var topSize = new Size(this.mImg_topW,this.mImg_topH);
+		var bottomSize = new Size(this.mImg_bottomW, this.mImg_bottomH);
 		var middleSize = this.getImageSize(this.mDomImageMiddle);
 		middleSize.y = getValueWithoutUnits(this.mHeight) - getValueWithoutUnits(topSize.y) - getValueWithoutUnits(bottomSize.y);
 		// cut stuff if top + bottom is already to big

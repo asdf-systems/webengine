@@ -3,6 +3,10 @@ position_x=0
 position_y=0
 width=720px
 height=0px
+image_top_height=63px
+image_top_width=720px
+image_bottom_height=130px
+image_bottom_width=720px
 #position type can be absolute or relative
 image_top_src=top.png
 image_middle_src=middle.png

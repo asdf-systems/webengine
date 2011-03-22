@@ -9,3 +9,4 @@ fi
 rsync -vvzuae ssh Beta/ $1@asdf-systems.de:/var/www/www.asdf-systems.de/webengine 
 rsync -vvzuae ssh ../../src/ $1@asdf-systems.de:/var/www/www.asdf-systems.de/webengine/src
 ssh $1@asdf-systems.de 'sudo chmod 0777 -R /var/www/www.asdf-systems.de/webengine'
+
