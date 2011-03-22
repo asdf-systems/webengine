@@ -1,8 +1,0 @@
-[logo.png]
-position_x=649
-position_y=76
-width=212px
-height=39px
-alt_key="asdf-systems logo"
-extra_css="logo"
-initial_show=true

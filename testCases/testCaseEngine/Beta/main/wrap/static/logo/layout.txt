@@ -1,0 +1,11 @@
+[Button]
+position_x=649
+position_y=76
+width=212px
+height=39px
+alt_key="asdf-systems logo"
+extra_css="logo"
+initial_show=true
+standard_src=logo.png
+action_click=HIDE(/main),SPECIFIC(/main/wrap/navi,deactivate), SHOW(/main/wrap/news/), SPECIFIC(/main/wrap/navi/news_btn,activate),SPECIFIC(/corners/corner_ul.txt,changeImage,/webengine/corners/corner_yellow_ul.png), SPECIFIC(/corners/lr/corner_lr.txt,changeImage,/webengine/corners/lr/corner_yellow_lr.png)
+layer_level=300
