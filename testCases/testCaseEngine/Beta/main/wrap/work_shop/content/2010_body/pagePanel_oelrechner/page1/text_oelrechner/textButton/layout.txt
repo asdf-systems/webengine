@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=651px
-height=376px
+width=674px
+height=114px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=werkstatt_oelrechner.png

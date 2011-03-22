@@ -1,21 +1,3 @@
-Die Idee: Wir wollen Rechner im Cluster Betrieb stark übertakten.
+In diesem Projekt wollten wir ueberpruefen, ob es moeglich ist, mit mid-end Computerhardware die selben Leistungen zu erzaehlen, wie sie von spezialisierter Clusterhardware erbracht wird. Dies wollten wir durch starkes Uebertakten und ein ungewoehnliches Kuehlprinzip erreichen. 
 
-Vorbereitung:
-Nach eingehender Recherche haben wir uns entschieden AMD X2 und AMD Athlons
-für den Testlauf zu verwenden.
-
-Phase 1:
-Die Rechner wurden in trockenen Zustand übertaktet
-und haben alle Testläufe bravurös bestanden.
-
-Phase 2: 
-Die Rechner wurden in ein Ölbad eingelegt. Dabei war die komplette Maschine
-mit Öl bedeckt. Alle Testläufe wurden genau so problemlos gemeistert,
-wie in der ersten Phase.
-
-Fazit:
-Die Rechner haben das Ölbad ohne Schaden überstanden und haben problemlos gearbeitet.
-Durch das einlegen in Öl liefen die Rechner völlig geräuschlos.
-Einstärkeres Übertakten als im Trockenen Zustand war jedoch nicht möglich.
-Der zu betreibende Aufwand und die umständliche Handhabung, vor allem in der
-Wartung lassen einen Einsatz zum jetzigen Zeitpunkt nicht sinnvoll erscheinen.
+Unser Ziel haben wir nicht erreicht, aber trotzdem einige Erkentnisse aus diesem Projekt gezogen.

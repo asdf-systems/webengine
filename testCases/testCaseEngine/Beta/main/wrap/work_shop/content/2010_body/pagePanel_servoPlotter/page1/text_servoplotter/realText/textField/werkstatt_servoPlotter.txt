@@ -1,16 +1,2 @@
-Die Idee:
-
-Wir möchten mit dem Rechner Motoren (Servos) steuern. Die Steuerung soll sowohl mit der Maus als auch visuell am Rechner möglich sein.
-
-Das Ziel:
-
-Zeichenbewegungen die mit der Maus auf dem Rechner ausgeführt werden sollen mittels Motoren auf einen mechanischen Arm übertragen werden, der mit einem Stift eine beliebige Vergrößerung auf dem Papier nachvollzieht.
-
-Die Umsetzung:
-
-Nach eingehender Recherche wurde mit einem einfachen Metallbaukasten ein erster Prototyp entworfen. Dieser wurde dann per Maus über einen Handelsüblichen Laptop angesteuert und hat eine erfolgreich eine Testreihe absolviert.
-
-Fazit:
-
-Die einfache mechanische Konstruktion hat zwar zu dürftigen Zeichenergebnissen geführt, aber gleichzeitig aufgezeigt welches großes Potential in dieser Idee steckt.
-Mit der ServoControl wurde aus der Idee des Servoplotter ein Projekt. Momentan arbeiten wir an der Version 2.0
+Der Servoplotter sollte ein Drucker werden, der - im Gegensatz zu ueblichen Tintenstrahl- oder Laserdruckern - die Bilder nicht rastert, sondern eher menschenaehnlich mit einem Stift malt.
+Mit Hilfe eines selbstgebauten Arms mit Stifthalterung und Servomotorisierung haben wir den ersten Prototypen umgesetzt.

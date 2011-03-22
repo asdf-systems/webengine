@@ -1,8 +1,15 @@
-Zusammen mit ChrisCreatures Filmeffects wurde 2009 das Konzept zur Servocontrol entwickelt. 
-Der Kundenwunsch war es einerseits digitale Characktere genauso steuern und animieren zu können wie reale
-Animatroncis, und andersherum von den  Vorteilen der digitalen Bearbeitung
-Speichern von Animation, Animationen überlagern) auch für Animatronics profitieren  zu können.
-Auf Basis dieser Wünsche wurde ende 2009 der erste Prototyp gebaut,
-der die fähigkeiten des neuen Systems aufzeigte und uns die Möglichkeit gab das gewünschte Produkt genauer
-zu definieren.  Im August 2010 wurde der Testbetrieb mit der ersten Version der ServoControl aufgenommen.
-Seid dem wird das system unter  realen Bedingungen getestet und von uns in Zukunft erweitert und verbessert.
+Nach eingehender Recherche haben wir uns entschieden, AMD X2 und AMD Athlon Prozessoren für den Testlauf zu verwenden.
+
+Phase 1:
+Um Vergleichswerte zu haben, haben wir die Rechner in einem normalen Gehaeuse mit normaler Luftkuehlung uebertaktet. Hierbei gab es keine Ausfaelle oder Defekte. 
+
+Phase 2: 
+Die Rechner wurden in ein Ölbad eingelegt. Dabei war die komplette Maschine
+mit Öl bedeckt. Alle Testläufe wurden genau so problemlos gemeistert,
+wie in der ersten Phase.
+
+Fazit:
+Die Rechner haben das Ölbad ohne Schaden überstanden und haben problemlos gearbeitet. Durch das einlegen in Öl liefen die Rechner völlig geräuschlos.
+Ein stärkeres Übertakten als im trockenen Zustand war jedoch nicht möglich, da das Oel in unserem Testaufbau nicht genug zirkulieren konnte, um die Waerme abzugeben.
+Der zu betreibende Aufwand und die umständliche Handhabung (vor allem in der
+Wartung) lassen einen Einsatz zum jetzigen Zeitpunkt nicht sinnvoll erscheinen.
