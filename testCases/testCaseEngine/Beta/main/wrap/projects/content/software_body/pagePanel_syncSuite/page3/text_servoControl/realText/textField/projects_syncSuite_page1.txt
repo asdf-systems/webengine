@@ -1,4 +1,3 @@
-Die Syncsuite bietet die Möglichkeit Softwarekonfigurationen von Computern auf einem
-zentralen Server zu speichern, und von da zu laden. Dadurch müssen installationen nur noch
-auf einem Computer ausgeführt werden, alle weiteren Computer mit der gleichen Konfiguration
-syncronisieren  ihre Software beim Neustart.
+Die syncSuite ist als Auftragsarbeit für die in Berlin ansässige Firma ChrisCreatures FilmEffects entstanden und ist dort bis heute erfolgreich im Einsatz. Dort wird ein Cluster von Rendermaschinen mit Hilfe der syncSuite administriert und an die Beduerfnisse der Mitarbeiter angepasst.
+
+Hier wurde die syncSuite in ihrer Funktionsweise noch erweitert, so dass nicht genutzte Maschinen sich selbststaendig ausschalten, wenn sie keine Arbeit zu verrichten haben. So wird Geld gespart und die Umwelt geschont. Sobald Arbeit anliegt, werden die Maschinen automatisch hochgefahren und nehmen die Arbeit wieder auf. 

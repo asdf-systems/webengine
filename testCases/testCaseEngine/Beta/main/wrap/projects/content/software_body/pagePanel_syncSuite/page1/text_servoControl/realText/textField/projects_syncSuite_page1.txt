@@ -1,4 +1,5 @@
-Die Syncsuite bietet die Möglichkeit Softwarekonfigurationen von Computern auf einem
-zentralen Server zu speichern, und von da zu laden. Dadurch müssen installationen nur noch
-auf einem Computer ausgeführt werden, alle weiteren Computer mit der gleichen Konfiguration
-syncronisieren  ihre Software beim Neustart.
+Wenn an vielen gleichen Rechnern die gleiche Arbeit verrichtet werden muss, wie zum Beispiel die Installation einer neuen Software auf allen Workstations eines Büros, so kann Ihnen die syncSuite eine gewaltige Menge an Zeit und Nerven ersparen.
+
+Gleichzeitig ist es mit der syncSuite möglich, die Konfiguration eines Systems zu speichern und somit ein Versionierung fuer das gesamte Buero zu haben. Bei einer Fehleinstellung oder Virenbefall kann einfach eine alte Konfiguration geladen werden, ohne viel Zeit in Reparatur oder Virenbereinigung zu investieren.
+
+Im Moment befindet sich Version 2 der syncSuite in Planung. Auf unserer Newseite halten wir Sie auf dem Laufenden.

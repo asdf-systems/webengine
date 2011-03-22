@@ -1,4 +1,7 @@
-Die Syncsuite bietet die Möglichkeit Softwarekonfigurationen von Computern auf einem
-zentralen Server zu speichern, und von da zu laden. Dadurch müssen installationen nur noch
-auf einem Computer ausgeführt werden, alle weiteren Computer mit der gleichen Konfiguration
-syncronisieren  ihre Software beim Neustart.
+Rechner, die mit Hilfe unserer Software fÃ¼r die Verwaltung mit der syncSuite vorbereitet werden, koennen ihr System auf einem Server sichern. Andere, vorzugsweise baugleiche, Rechner kÃ¶nnen dieses sich an diesen Rechner angleichen. 
+
+Neben der Installation neuer Software bietet das System auch eine  Backupfunktion â€“ bootunfaehgie Computer werden durch einen Neustart auf die letzte, funktionierende Konfiguration zurueckgesetzt. Bei Hardwareausfall muss auf der Ersatzhardware nur der syncSuite-client installiert werden , sÃ¤mtliche andere Software wird dann beim Neustart installiert. Je nach Menge der Software ist die Ersatzhardware nach wenigen Minuten bis einer halben Stunde voll einsatzbereit.
+
+
+Befinden sich mehrere Versionen der gleichen Software im Einsatz, so ist die syncSuite eine einfache Loesung, um die Rueckwaertskompatibilitaet zu erhalten.
+Oft werden fuer unterschiedliche Projekte unterschiedliche Softwareloesungen eingesetzt. Sind Nacharbeiten an einem Projekt noetig, fuer das die Software auf Grund anderer Projekte entfernt wurde, so kann man waehrend des Bootvorgangs auf die Konfiguration seines Rechners wechseln, die die benoetigte Software bereitstellt.

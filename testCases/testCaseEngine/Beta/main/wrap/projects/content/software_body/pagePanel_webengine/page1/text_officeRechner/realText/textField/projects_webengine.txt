@@ -1,26 +1,10 @@
-﻿Mit der Webengine lässt sich der komplette Aufbau einer Website über eine Ordnerstruktur
-und einfache Textdatein beschreiben.
+﻿Die Webengine ist unser firmeninternes Tool zur effizienten und praezisen Umsetzung von Webauftritten. Sie wurde mit dem Ziel entworfen, eine moeglichst gute Zusammenarbeit mit Grafikern und Designern zu ermoeglichen und trotzdem einen unversierten Nutzer in die Lage zu versetzen, selbst die Inhalte seiner Webpraesenz zu aktualisieren.
 
-Startpunkt für uns war der Kundenauftrag von sykora-arts.
-Sykora-arts ist eine Portfolioseite für Grafikdesign www.paulinealtmann.de
+Mit Hilfe der Webengine koennen Webseiten praezise nach Designvorlage umgesetzt werden um das gewuenschte Erscheinungsbild auf jedem Browser und Endgeraet zu garantieren.
+Die Konfiguration der Inhalte basiert auf einfachen Textdateien. Das Bearbeiten von solchen Dateien ist jedem User vertraut und reicht aus, um die eigene Homepage komplett neu zu strukturieren.
+ Was mit der Webengine möglich ist könnnen Sie sich hier anschauen:
 
+www.leda-berlin.de
+www.paulinealtmann.de
 
-Auf der Website müssen häufig neue Projekte mit Bildern und Beschreibungstexten hinzu-
-gefügt oder bearbeitet werden. Ein klassisches Content-Management-System mit Formularen
-hat hierfür zwei Nachteile: Es ist einerseits zu unflexibel für die Gestaltung verschiedener
-Projektseiten und andererseit umständlich zu Bedienen. Der Wunsch war ein einfaches System
-um Inhalte schnell zu aktualieren.
-
-Wir haben dazu ein System entwickelt, bei dem der Benutzer durch einfaches kopieren der 
-Dateien in einen Ordner seine Website aktualisieren kann.
-Das kopieren der Dateien in einen Ordner ist der Benutzer vom Betriebssystem gewöhnt. 
-Wenn nun die neuen Bilder und Textdateien in den Ordner der Website kopiert werden, so
-erscheinen sie auf der Webseite. Wird ein Unterordner erstellt, erscheint auf der 
-Website eine neue Kategorie. Spezielle Layout wünsche oder Positionierungen können über
-das Ausfüllen einer vorgefertigten Textdatei realisiert werden.
-
-Nach der Umsetzung dieser Webseite haben wir das System ausgebaut, und vorallem immer
-wieder benötigte Elemente wie Buttons, Eingabefelder etc. als Standardelemente 
-verfügbar gemacht.
-
-Damit ist es uns nun möglich Webseiten deutlich schneller, und damit günstiger zu erstellen. 
+oder auf unseren eigenen Homepage.  
