@@ -1,4 +1,5 @@
 [/elements/text_background]
+position_y=36
 width=720px
 height=290px
 layer_level=300

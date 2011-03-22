@@ -1,12 +1,14 @@
-[Panel]
-position_x=20
-position_y=20
-background_color=
-width=720px
-height=230px
+[Button]
+position_x=3
+position_y=30
+width=656px
+height=241px
 #position type can be absolute or relative
-position_type=relative
+position_type=absolute
+standard_src=start.png
+action_click=SHOW(../realText)
+alt_text=
 extra_css=
 initial_show=true
 # higher level - object more in front
-layer_level=600
+layer_level=500

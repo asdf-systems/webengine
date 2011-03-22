@@ -2,7 +2,7 @@
 position_x=10
 position_y=320
 width=720px
-height=193px
+height=191px
 
 position_type=absolute
 extra_css=textToImageField
