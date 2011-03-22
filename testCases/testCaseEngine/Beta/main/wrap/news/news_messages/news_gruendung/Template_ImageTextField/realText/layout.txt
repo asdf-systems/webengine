@@ -1,6 +1,6 @@
 [Panel]
-position_x=165
-position_y=10
+position_x=5
+position_y=5
 width=680px
 height=163px
 #position type can be absolute or relative

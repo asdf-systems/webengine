@@ -1,8 +1,8 @@
-[headline.png]
+[icon.png]
 position_x=20
-position_y=15
-width=215px
-height=19px
+position_y=44
+width=150px
+height=150px
 #position type can be absolute or relative
 position_type=absolute
 extra_css=

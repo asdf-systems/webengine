@@ -2,7 +2,7 @@
 position_x=0
 position_y=0
 width=720px
-height=196px
+height=214px
 #position type can be absolute or relative
 position_type=absolute
 initial_show=true

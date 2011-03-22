@@ -1,6 +1,6 @@
 [headline.png]
-position_x=5
-position_y=5
+position_x=20
+position_y=15
 width=374px
 height=19px
 #position type can be absolute or relative

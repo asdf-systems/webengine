@@ -1,6 +1,6 @@
 [Panel]
-position_x=0
-position_y=0
+position_x=20
+position_y=20
 background_color=
 width=720px
 height=230px
