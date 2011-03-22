@@ -53,7 +53,7 @@ function init(elem, parentObject){
             registerActions(elem);           
 		break;
 		case "BackgroundStitcher":
-            elem.object = new asdf_BackgroundStitcher(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.image_top_src, elem.image_middle_src, elem.image_bottom_src, elem.position_type, elem.extra_css, elem.initial_show, elem.layer_level );
+            elem.object = new asdf_BackgroundStitcher(elem.id, parentObject, elem.position_x, elem.position_y, elem.background_color, elem.width, elem.height, elem.image_top_src, elem.image_middle_src, elem.image_bottom_src, elem.position_type, elem.image_top_height, imgage_top_width, elem.image_bottom_height, elem.image_bottom_width,elem.extra_css, elem.initial_show, elem.layer_level );
             registerActions(elem);           
 		break;
 		case "Panel":
