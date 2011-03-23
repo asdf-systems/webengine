@@ -1,0 +1,13 @@
+[Button]
+position_x=10
+position_y=461
+width=136px
+height=11px
+#position type can be absolute or relative
+position_type=absolute
+standard_src=leda_link.png
+action_click=LINK(.,www.leda-berlin.de)
+initial_show=true
+extra_css=link
+# higher level - object more in front
+layer_level=650
