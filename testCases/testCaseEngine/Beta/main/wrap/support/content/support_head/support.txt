@@ -1,5 +1,5 @@
 [support.png]
-position_x=5
+position_x=20
 position_y=7
 width=49px
 height=13px

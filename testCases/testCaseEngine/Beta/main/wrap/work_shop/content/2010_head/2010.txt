@@ -1,6 +1,6 @@
 [werkstatt_2010.png]
-position_x=5
-position_y=5
+position_x=20
+position_y=7
 width=36px
 height=13px
 #position type can be absolute or relative
