@@ -8,6 +8,6 @@ hover_src=faq_active.png
 active_src=faq_active.png
 action_click=HIDE(/main), SHOW(/main/wrap/faq/), SPECIFIC(/main/wrap/navi, deactivate), SPECIFIC(/main/wrap/static/footer, deactivate), SPECIFIC(.,activate)
 alt_text=Frequently Asked Questions
-extra_css=footer_button asdf_button
+extra_css=link
 initial_show=true
 layer_level=600

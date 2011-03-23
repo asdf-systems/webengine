@@ -8,6 +8,6 @@ active_src=agb_active_btn.png
 hover_src=agb_active_btn.png
 action_click=HIDE(/main), SHOW(/main/wrap/agb/), SPECIFIC(/main/wrap/navi, deactivate), SPECIFIC(/main/wrap/static/footer, deactivate), SPECIFIC(.,activate)
 alt_text=Allgemeine Geschäfts Bestimmungen
-extra_css=footer_button
+extra_css=link
 initial_show=true
 layer_level=600
