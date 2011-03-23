@@ -1,9 +1,8 @@
 [oelrechner_headline.png]
 position_x=20
-
-position_y=10
-width=71px
-height=17px
+position_y=7
+width=76px
+height=16px
 #position type can be absolute or relative
 position_type=absolute
 initial_show=true
