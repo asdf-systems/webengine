@@ -1,6 +1,7 @@
 Alexander Surma - Geschäftsführer
 
-Herr Surma ist einer der Gründer von asdf-systems und leitet die Geschicke der Firma
+
+Alexander ist einer der Gründer von asdf-systems und leitet die Geschicke der Firma
 als Geschäftsführer.
 Er verfolgt in den Bereichen Soft- und Hardware einen minimalistischen Ansatz und
 hat sich auf hardwarenahe Programmierung, Ressourcenoptimierung und Algorithmik 

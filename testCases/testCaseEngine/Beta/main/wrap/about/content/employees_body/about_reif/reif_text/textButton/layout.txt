@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=464px
-height=196px
+width=373px
+height=190px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_reif.png

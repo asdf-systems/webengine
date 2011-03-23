@@ -7,4 +7,4 @@ height=13px
 position_type=absolute
 extra_css=link
 initial_show=true
-layer_level=600
+layer_level=550
