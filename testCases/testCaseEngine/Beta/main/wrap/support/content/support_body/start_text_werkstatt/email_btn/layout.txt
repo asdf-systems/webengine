@@ -1,0 +1,14 @@
+[Button]
+position_x=54
+position_y=109
+width=185px
+height=14px
+#position type can be absolute or relative
+position_type=absolute
+standard_src=mail.png
+action_click=LINK(.,mailto:support@asdf-systems.de)
+alt_text=Email verfassen
+extra_css=link
+initial_show=true
+# higher level - object more in front
+layer_level=600
