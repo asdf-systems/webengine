@@ -2,7 +2,7 @@
 position_x=0
 position_y=0
 width=720px
-height=900px
+height=1200px
 #position type can be absolute or relative
 position_type=absolute
 # true for force one selection open every time

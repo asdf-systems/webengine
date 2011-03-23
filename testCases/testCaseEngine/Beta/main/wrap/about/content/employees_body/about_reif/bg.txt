@@ -1,4 +1,4 @@
 [/elements/text_background]
 width=720px
-height=200px
+height=260px
 layer_level=300

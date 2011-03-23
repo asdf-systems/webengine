@@ -2,7 +2,7 @@
 position_x=-460px
 position_y=0px
 width=800px
-height=100%
+height=1400
 position_type=relative
 initial_show=true
 # higher level - object more in front
