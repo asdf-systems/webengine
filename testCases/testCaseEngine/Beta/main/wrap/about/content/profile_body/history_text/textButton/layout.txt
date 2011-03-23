@@ -1,8 +1,8 @@
 [Button]
-position_x=5
-position_y=5
-width=694px
-height=71px
+position_x=20
+position_y=20
+width=555px
+height=59px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=geschichte.png
