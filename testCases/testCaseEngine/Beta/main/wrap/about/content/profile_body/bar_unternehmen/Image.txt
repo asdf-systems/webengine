@@ -1,7 +1,7 @@
 [about_unternehmen_mainHeadline.png]
 position_x=20
 
-position_y=13
+position_y=10
 width=131px
 height=12px
 #position type can be absolute or relative

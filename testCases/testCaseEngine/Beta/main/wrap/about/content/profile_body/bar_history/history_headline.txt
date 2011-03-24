@@ -1,6 +1,6 @@
 [history_headline.png]
 position_x=20
-position_y=13
+position_y=10
 width=150px
 height=12px
 #position type can be absolute or relative
