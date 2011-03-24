@@ -1,6 +1,6 @@
 [/elements/right_arrow_big_btn]
 position_x=680px
-position_y=190px
+position_y=185px
 #position type can be absolute or relative
 action_click=HIDE(../../), SPECIFIC(/main/wrap/navi,deactivate), SHOW(/main/wrap/projects/), SPECIFIC(/main/wrap/navi/projects_btn,activate), SPECIFIC(/corners/corner_ul.txt,changeImage,/webengine/corners/corner_purple_ul.png), SPECIFIC(/corners/lr/corner_lr.txt,changeImage,/webengine/corners/lr/corner_purple_lr.png), SPECIFIC(/main/wrap/projects/content,show,1),SPECIFIC(/main/wrap/projects/content/software_body,show,0),SPECIFIC(/main/wrap/projects/content,deactivate), SPECIFIC(/main/wrap/static/footer, deactivate), SPECIFIC(/main/wrap/projects/content/software_head, activate)
 alt_text=
