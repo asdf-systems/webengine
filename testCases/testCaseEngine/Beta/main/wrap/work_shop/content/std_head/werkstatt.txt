@@ -8,3 +8,4 @@ position_type=absolute
 extra_css=link
 initial_show=true
 layer_level=500
+action_click=SPECIFIC(../, deactivate), SPECIFIC(topicBar.txt, activate)
