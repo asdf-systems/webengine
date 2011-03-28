@@ -1,5 +1,5 @@
 [werkstatt_headline.png]
-position_x=5
+position_x=20
 position_y=7
 width=242px
 height=14px
