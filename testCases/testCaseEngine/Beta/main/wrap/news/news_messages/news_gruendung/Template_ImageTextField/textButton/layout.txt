@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=409px
-height=71px
+width=631px
+height=37px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=news_gruendung.png

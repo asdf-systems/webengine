@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=473px
-height=125px
+width=476px
+height=131px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=news_syncsuite.png

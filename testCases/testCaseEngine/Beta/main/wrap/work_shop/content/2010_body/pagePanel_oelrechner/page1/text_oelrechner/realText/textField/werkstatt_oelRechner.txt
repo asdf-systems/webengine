@@ -1,3 +1,3 @@
-In diesem Projekt wollten wir ueberpruefen, ob es moeglich ist, mit mid-end Computerhardware die selben Leistungen zu erzaehlen, wie sie von spezialisierter Clusterhardware erbracht wird. Dies wollten wir durch starkes Uebertakten und ein ungewoehnliches Kuehlprinzip erreichen. 
+Bei diesem Projekt wollten wir überprüfen, ob es möglich ist mit mid-end Computerhardware die selben Leistungen zu erzielen, wie mit spezialisierter Clusterhardware. Dies wollten wir durch starkes Übertakten und ein ungewöhnliches Kühlprinzip erreichen. 
 
-Unser Ziel haben wir nicht erreicht, aber trotzdem einige Erkentnisse aus diesem Projekt gezogen.
+Eine vergleichbare Leistung konnte mit den Testrechnern nicht erreicht werden. 
