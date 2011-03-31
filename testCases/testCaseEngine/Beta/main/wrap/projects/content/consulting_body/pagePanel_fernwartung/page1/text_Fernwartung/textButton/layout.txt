@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=662px
-height=174px
+width=634px
+height=180px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=project_Fernwartung.png
