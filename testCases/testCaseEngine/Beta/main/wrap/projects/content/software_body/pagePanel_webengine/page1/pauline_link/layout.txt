@@ -2,7 +2,7 @@
 
 position_x=20
 position_y=481
-width=175px
+width=176px
 height=16px
 position_type=absolute
 standard_src=pauline_link.png

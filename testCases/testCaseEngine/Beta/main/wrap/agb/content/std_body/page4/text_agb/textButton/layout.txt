@@ -1,0 +1,12 @@
+[Button]
+position_x=0
+position_y=0
+width=676px
+height=440px
+#position type can be absolute or relative
+position_type=absolute
+standard_src=agb_page4.png
+action_click=SHOW(../realText)
+initial_show=true
+# higher level - object more in front
+layer_level=600

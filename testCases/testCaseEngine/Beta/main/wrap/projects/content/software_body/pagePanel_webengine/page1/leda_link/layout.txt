@@ -2,7 +2,7 @@
 
 position_x=20
 position_y=461
-width=140px
+width=141px
 height=13px
 position_type=absolute
 standard_src=leda_link.png
