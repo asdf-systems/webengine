@@ -2,8 +2,8 @@
 position_x=20
 
 position_y=10
-width=86px
-height=15px
+width=88px
+height=18px
 #position type can be absolute or relative
 position_type=absolute
 initial_show=true

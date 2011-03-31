@@ -1,8 +1,8 @@
 [Panel]
 position_x=0
 position_y=0
-width=720px
-height=31px
+width=216px
+height=18px
 #position type can be absolute or relative
 position_type=relative
 initial_show=true
