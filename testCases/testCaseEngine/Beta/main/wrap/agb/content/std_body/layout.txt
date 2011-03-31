@@ -1,9 +1,16 @@
-[Panel]
+[PagePanel]
 position_x=0
 position_y=0
 width=720px
-height=500px
-position_type=absolute
+height=550px
+#position type can be absolute or relative
+position_type=relative
+animation_speed=200
+# can be horizontal or vertical, default is horizontal
+orientation=horizontal
+# distance between the pages
+spacing=5
+pages=page1,page2,page3,page4
 initial_show=true
 # higher level - object more in front
 layer_level=500
