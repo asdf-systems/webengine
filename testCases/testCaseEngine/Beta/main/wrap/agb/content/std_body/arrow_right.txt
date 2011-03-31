@@ -7,4 +7,4 @@ alt_key=prev Page
 extra_css=link
 initial_show=true
 layer_level=500
-action_click=SPECIFIC(../pagePanel_servoControl,nextPage),SPECIFIC(../bar_servoControl,nextPage)
+action_click=SPECIFIC(.,nextPage)

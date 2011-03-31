@@ -8,7 +8,7 @@ height=160px
 position_type=absolute
 #Path to textfile
 background_color=#131313
-texts=projects_servoControl_page1.txt
+texts=agb_page4.txt
 extra_css=textField
 initial_show=true
 layer_level=500
