@@ -2,7 +2,7 @@
 position_x=20
 position_y=20
 width=597px
-height=226px
+height=266px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_unternehmen.png

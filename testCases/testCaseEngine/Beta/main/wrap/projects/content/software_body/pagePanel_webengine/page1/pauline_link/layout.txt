@@ -1,11 +1,13 @@
 [Button]
+
 position_x=20
 position_y=481
-width=170px
-height=14px
-#position type can be absolute or relative
+width=175px
+height=16px
 position_type=absolute
 standard_src=pauline_link.png
+hover_src=pauline_link_hover.png
+active_src=pauline_link.png
 action_click=LINK(.,www.paulinealtmann.de)
 initial_show=true
 extra_css=link
