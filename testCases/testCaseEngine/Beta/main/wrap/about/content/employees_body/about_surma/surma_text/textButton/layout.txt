@@ -1,8 +1,8 @@
 [Button]
 position_x=0
 position_y=0
-width=434px
-height=204px
+width=460px
+height=186px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_surma.png

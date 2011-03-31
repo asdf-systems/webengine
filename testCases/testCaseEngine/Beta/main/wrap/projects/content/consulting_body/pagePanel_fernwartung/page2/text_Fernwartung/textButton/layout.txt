@@ -2,7 +2,7 @@
 position_x=0
 position_y=0
 width=664px
-height=81px
+height=107px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=project_Fernwartung.png

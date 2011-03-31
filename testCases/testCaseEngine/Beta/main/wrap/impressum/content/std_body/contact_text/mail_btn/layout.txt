@@ -1,8 +1,8 @@
 [Button]
 position_x=64
 position_y=85
-width=125px
-height=11px
+width=128px
+height=13px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=email.png
