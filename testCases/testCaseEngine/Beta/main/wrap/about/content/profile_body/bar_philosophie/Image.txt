@@ -1,8 +1,8 @@
 [about_headline2_philosophie.png]
 position_x=20
 position_y=10
-width=207px
-height=15px
+width=216px
+height=18px
 #position type can be absolute or relative
 position_type=absolute
 initial_show=true
