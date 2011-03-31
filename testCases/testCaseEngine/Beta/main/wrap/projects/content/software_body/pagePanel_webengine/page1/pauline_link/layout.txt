@@ -1,5 +1,5 @@
 [Button]
-position_x=10
+position_x=20
 position_y=481
 width=170px
 height=14px

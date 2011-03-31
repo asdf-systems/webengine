@@ -1,11 +1,13 @@
 [Button]
 position_x=54
-position_y=109
-width=185px
-height=14px
+position_y=23
+width=190px
+height=16px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=mail.png
+hover_src=mailhover.png
+active_src=mailhover.png
 action_click=LINK(.,mailto:support@asdf-systems.de)
 alt_text=Email verfassen
 extra_css=link

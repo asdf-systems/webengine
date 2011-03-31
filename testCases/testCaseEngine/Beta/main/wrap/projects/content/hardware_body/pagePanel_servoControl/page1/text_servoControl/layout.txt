@@ -1,5 +1,5 @@
 [Panel]
-position_x=10
+position_x=20
 position_y=320
 width=720px
 height=191px
