@@ -1,6 +1,6 @@
 [Button]
-position_x=54
-position_y=23
+position_x=53
+position_y=19
 width=190px
 height=16px
 #position type can be absolute or relative

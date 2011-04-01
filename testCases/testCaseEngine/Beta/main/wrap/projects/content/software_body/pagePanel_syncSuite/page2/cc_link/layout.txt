@@ -1,0 +1,16 @@
+[Button]
+position_x=456px
+position_y=331px
+width=168px
+height=12px
+#position type can be absolute or relative
+position_type=absolute
+standard_src=cc_link.png
+active_src=cc_link_hover.png
+hover_src=cc_link_hover.png
+action_click=LINK(.,www.chriscreatures.com)
+alt_text=Chris Creatures Filmeffects GmbH
+extra_css=link
+initial_show=true
+# higher level - object more in front
+layer_level=550

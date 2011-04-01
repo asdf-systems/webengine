@@ -1,7 +1,7 @@
 [Button]
 
 position_x=20
-position_y=461
+position_y=454
 width=141px
 height=13px
 position_type=absolute

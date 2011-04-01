@@ -1,0 +1,16 @@
+[Button]
+position_x=20px
+position_y=209px
+width=149px
+height=13px
+#position type can be absolute or relative
+position_type=absolute
+standard_src=link_pauline.png
+active_src=link_pauline_hover.png
+hover_src=link_pauline_hover.png
+action_click=LINK(.,www.paulinealtmann.de)
+alt_text=Pauline Altmann
+extra_css=link
+initial_show=true
+# higher level - object more in front
+layer_level=610
