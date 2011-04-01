@@ -1,5 +1,5 @@
-[/elements/text_background]
+[/elements/text_background_with_highlight]
 position_y=36
 width=720px
-height=290px
+height=300px
 layer_level=300

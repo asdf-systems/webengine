@@ -2,7 +2,7 @@
 position_x=0
 position_y=0
 width=665px
-height=89px
+height=126px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=projects_servoControl_page1.png

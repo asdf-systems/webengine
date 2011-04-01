@@ -2,7 +2,7 @@
 position_x=0px
 position_y=0px
 width=720px
-height=550px
+height=840px
 #position type can be absolute or relative
 position_type=relative
 extra_css=asdf_text_background
