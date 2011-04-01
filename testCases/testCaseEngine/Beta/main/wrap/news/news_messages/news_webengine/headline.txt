@@ -2,7 +2,7 @@
 position_x=20
 position_y=15
 width=311px
-height=18x
+height=18px
 #position type can be absolute or relative
 position_type=absolute
 extra_css=
