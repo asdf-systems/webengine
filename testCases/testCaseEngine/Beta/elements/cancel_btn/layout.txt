@@ -1,0 +1,16 @@
+[Button]
+position_x=0px
+position_y=0px
+width=32px
+height=32px
+#position type can be absolute or relative
+position_type=absolute
+standard_src=cancel.png
+active_src=cancel_hover.png
+hover_src=cancel_hover.png
+action_click=
+alt_text=cancel
+extra_css=link
+initial_show=true
+# higher level - object more in front
+layer_level=500
