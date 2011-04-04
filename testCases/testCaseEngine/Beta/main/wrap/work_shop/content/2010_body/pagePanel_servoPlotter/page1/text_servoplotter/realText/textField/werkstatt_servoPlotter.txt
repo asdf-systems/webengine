@@ -1,2 +1,2 @@
-Der Servoplotter sollte ein Drucker werden, der – im Gegensatz zu üblichen Tintenstrahl- oder Laserdruckern – die Bilder nicht rastert, sondern menschenähnlich mit einem Stift malt.
+﻿Der Servoplotter sollte ein Drucker werden, der â€“ im Gegensatz zu Ã¼blichen Tintenstrahl- oder Laserdruckern â€“ die Bilder nicht rastert, sondern menschenÃ¤hnlich mit einem Stift malt.
 Mit Hilfe eines selbstgebauten Arms mit Stifthalterung und Servomotorisierung haben wir den ersten Prototypen umgesetzt.
