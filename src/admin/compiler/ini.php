@@ -16,6 +16,7 @@
 				return false;
 			}
 			$current_section = null;
+			debug("Read ".count($data)." lines");
 			foreach($data as $line) {
 				$line = stripComments($line);
 				if(preg_match("/^\s*\[[^\]]+\]\s*$/", $line)) { // New Section
