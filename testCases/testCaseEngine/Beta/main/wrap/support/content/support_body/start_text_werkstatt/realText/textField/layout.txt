@@ -1,5 +1,0 @@
-[/elements/textField]
-width=720px
-height=300px
-initial_show=true
-texts=support.txt
