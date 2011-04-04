@@ -1,0 +1,6 @@
+[/elements/textField]
+width=720px
+height=300px
+#Path to textfile
+texts=about_surma.txt
+initial_show=true
