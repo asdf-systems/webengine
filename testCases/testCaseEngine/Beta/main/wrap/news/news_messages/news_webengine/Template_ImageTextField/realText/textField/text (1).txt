@@ -1,5 +1,5 @@
 [/elements/textField]
-width=680px
-height=120px
+width=520px
+height=110px
 initial_show=true
 texts=news_webengine.txt

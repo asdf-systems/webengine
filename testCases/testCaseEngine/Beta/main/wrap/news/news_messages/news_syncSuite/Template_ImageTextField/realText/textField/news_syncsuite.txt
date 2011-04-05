@@ -1,7 +1,3 @@
-﻿Für eine in Berlin ansässige Firma für Film-Effekte haben
-wir die syncSuite eingerichtet. Durch sie ist das netzwerkweite
-Installieren von neuer Software, sowie Energie- und Kostenein-
-sparung durch automatisches Herunterfahren nicht beschäftigter 
-Maschinen keine Utopie mehr.
+﻿Für eine in Berlin ansässige Firma für Film-Effekte haben wir die syncSuite eingerichtet. Durch sie ist das netzwerkweite Installieren von neuer Software, sowie Energie- und Kostenein- sparung durch automatisches Herunterfahren nicht beschäftigter Maschinen keine Utopie mehr.
 
 Mehr dazu finden Sie unter dem Projekt syncSuite.
