@@ -1,7 +1,8 @@
 [Panel]
 position_x=155
 position_y=130
-height=2500px
+height=1200px
+width=720px
 initial_show=false
 # higher level - object more in front
 layer_level=350

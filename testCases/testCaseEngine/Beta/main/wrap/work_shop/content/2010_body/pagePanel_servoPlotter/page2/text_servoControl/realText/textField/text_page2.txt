@@ -1,10 +1,10 @@
-Zeichenbewegungen, die mit der Maus auf dem Rechner ausgeführt werden, sollen mittels Motoren auf einen mechanischen Arm übertragen werden.
-An diesem Arm befindet sich ein Stift, der die Bewegungen möglichst präzise auf ein Blatt Papier überträgt
+ï»¿Zeichenbewegungen, die mit der Maus auf dem Rechner ausgefÃ¼hrt werden, sollen mittels Motoren auf einen mechanischen Arm Ã¼bertragen werden.
+An diesem Arm befindet sich ein Stift, der die Bewegungen mÃ¶glichst prÃ¤zise auf ein Blatt Papier Ã¼bertrÃ¤gt
 
-Der Prototyp ist mit einem einfachen Metallbaukasten konstruiert worden. Die Servomotoren wurden fest verschraubt und mit Hilfe eines Atmega AVR mit dem benötigen PWM-Steuersignalen versorgt. Über eine serielle Schnittstelle konnten wir die Signale des AVRs verändern.
+Der Prototyp ist mit einem einfachen Metallbaukasten konstruiert worden. Die Servomotoren wurden fest verschraubt und mit Hilfe eines Atmega AVR mit dem benÃ¶tigen PWM-Steuersignalen versorgt. Ãœber eine serielle Schnittstelle konnten wir die Signale des AVRs verÃ¤ndern.
 
-Bei den Testläufen erwies sich die Metallbaukasten-Konstruktion als zu instabil für präzise Bewegungen, grobe Bewegungen wurden aber gut übertragen und zeigten die Möglichkeiten des Sytems auf.
+Bei den TestlÃ¤ufen erwies sich die Metallbaukasten-Konstruktion als zu instabil fÃ¼r prÃ¤zise Bewegungen, grobe Bewegungen wurden aber gut Ã¼bertragen und zeigten die MÃ¶glichkeiten des Sytems auf.
 
 Fazit:
-Die einfache mechanische Konstruktion hat zwar zu dürftigen Zeichenergebnissen geführt, aber gleichzeitig aufgezeigt welches großes Potential in dieser Idee steckt.
-Unsere Erkenntnisse beim Bauen des Servoplotters bildeten die Grundlage für die ServoControl.
+Die einfache mechanische Konstruktion hat zwar zu dÃ¼rftigen Zeichenergebnissen gefÃ¼hrt, aber gleichzeitig aufgezeigt welches groÃŸes Potential in dieser Idee steckt.
+Unsere Erkenntnisse beim Bauen des Servoplotters bildeten die Grundlage fÃ¼r die ServoControl.

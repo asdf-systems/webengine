@@ -1,0 +1,11 @@
+[footer_bg.png]
+position_x=0px
+position_y=0px
+width=875px
+height=45px
+#position type can be absolute or relative
+position_type=absolute
+alt_key=
+extra_css=
+initial_show=true
+layer_level=410

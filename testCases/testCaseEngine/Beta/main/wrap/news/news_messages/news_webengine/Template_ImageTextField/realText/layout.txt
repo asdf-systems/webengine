@@ -9,4 +9,4 @@ background_color=#131313
 extra_css=textpopup
 initial_show=false
 # higher level - object more in front
-layer_level=600
+layer_level=800

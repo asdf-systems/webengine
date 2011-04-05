@@ -1,0 +1,10 @@
+[TextField]
+font_size=12px
+font_family=Arial, Tahoma
+position_x=0
+position_y=0
+position_type=absolute
+#Path to textfile
+background_color=#131313
+extra_css=textField
+layer_level=500
