@@ -1,12 +1,12 @@
 [Button]
-position_x=20
-position_y=20
+position_x=0
+position_y=0
 width=643px
 height=379px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_philosophie.png
-action_click=SHOW(./realText)
+action_click=SHOW(../realText)
 initial_show=true
 # higher level - object more in front
 layer_level=600

@@ -1,0 +1,5 @@
+[/elements/textField]
+width=680px
+height=60px
+initial_show=true
+texts=history.txt
