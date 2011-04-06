@@ -1,5 +1,5 @@
 [/elements/textField]
-width=720px
-height=300px
+width=400px
+height=172px
 initial_show=true
 texts=about_reif.txt

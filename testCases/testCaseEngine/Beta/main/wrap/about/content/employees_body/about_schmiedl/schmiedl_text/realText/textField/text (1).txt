@@ -1,6 +1,6 @@
 [/elements/textField]
-width=720px
-height=300px
+width=433px
+height=139px
 #Path to textfile
 texts=about_schmiedl.txt
 initial_show=true
