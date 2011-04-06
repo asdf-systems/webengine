@@ -1,5 +1,6 @@
 [/elements/textField]
-width=720px
-height=300px
+width=680px
+height=436px
 initial_show=true
 texts=projects_syncSuite_page1.txt
+layer_level=600

@@ -1,6 +1,6 @@
 [/elements/cancel_btn]
-position_x=655
-position_y=135
+position_x=650px
+position_y=185px
 action_click=HIDE(../)
 initial_show=true
 position_type=absolute
