@@ -1,5 +1,5 @@
 [/elements/textField]
-width=720px
-height=300px
+width=680px
+height=126px
 initial_show=true
 texts=projects_servoControl_page1.txt

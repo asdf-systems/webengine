@@ -1,8 +1,8 @@
 [Panel]
 position_x=20
 position_y=20
-width=720px
-height=193px
+width=680px
+height=580px
 
 position_type=absolute
 extra_css=textToImageField
