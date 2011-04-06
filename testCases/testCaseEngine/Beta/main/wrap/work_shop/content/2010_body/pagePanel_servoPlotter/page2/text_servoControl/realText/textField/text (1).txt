@@ -1,5 +1,5 @@
 [/elements/textField]
-width=720px
-height=300px
+width=680px
+height=304px
 initial_show=true
 texts=text_page2.txt
