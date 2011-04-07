@@ -1,5 +1,5 @@
 [/elements/textField]
-width=720px
-height=300px
+width=680px
+height=224px
 initial_show=true
 texts=contact.txt
