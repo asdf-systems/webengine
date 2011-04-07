@@ -1,8 +1,8 @@
 [Panel]
-position_x=10
-position_y=10
+position_x=0
+position_y=0
 width=680px
-height=163px
+height=74px
 #position type can be absolute or relative
 position_type=absolute
 background_color=#131313
