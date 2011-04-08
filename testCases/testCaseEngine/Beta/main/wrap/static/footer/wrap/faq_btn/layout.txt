@@ -6,8 +6,9 @@ height=25px
 standard_src=faq_inactive.png
 hover_src=faq_active.png
 active_src=faq_active.png
-action_click=HIDE(/main), SHOW(/main/wrap/faq/), SPECIFIC(/main/wrap/navi, deactivate), SPECIFIC(/main/wrap/static/footer, deactivate), SPECIFIC(.,activate)
+action_click=HIDE(/main), SHOW(/main/wrap/support/), SPECIFIC(/main/wrap/navi, deactivate), SPECIFIC(/main/wrap/navi/support_btn, activate), SPECIFIC(/main/wrap/static/footer, deactivate), SPECIFIC(.,activate), SPECIFIC(/corners/corner_ul.txt,changeImage,/webengine/corners/corner_blue_ul.png), SPECIFIC(/corners/lr/corner_lr.txt,changeImage,/webengine/corners/lr/corner_blue_lr.png), SPECIFIC(/main/wrap/static/footer, deactivate), SPECIFIC(/main/wrap/support/content, deactivate), SPECIFIC(/main/wrap/support/content/support_head, activate), SPECIFIC(/main/wrap/support/content, show, 0)
 alt_text=Frequently Asked Questions
 extra_css=link
 initial_show=true
 layer_level=600
+
