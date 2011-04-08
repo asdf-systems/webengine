@@ -2,7 +2,7 @@
 position_x=0
 position_y=0
 width=433px
-height=139px
+height=158px
 #position type can be absolute or relative
 position_type=absolute
 standard_src=about_schmiedl.png

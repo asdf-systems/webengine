@@ -1,6 +1,6 @@
 [/elements/inputField]
-position_x=20
-position_y=98
+position_x=0
+position_y=78
 #position type can be absolute or relative
 position_type=absolute
 #like: abc[a..z]
