@@ -8,3 +8,4 @@ position_type=absolute
 extra_css=textToImageField
 
 initial_show=true
+layer_level=600

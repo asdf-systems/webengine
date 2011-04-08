@@ -12,4 +12,4 @@ action_click=LINK(.,www.paulinealtmann.de)
 initial_show=true
 extra_css=link
 # higher level - object more in front
-layer_level=650
+layer_level=550
