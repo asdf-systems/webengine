@@ -1,8 +1,8 @@
 [kontakt.png]
-position_x=5
-position_y=7
-width=53px
-height=13px
+position_x=20
+position_y=10
+width=26px
+height=10px
 #position type can be absolute or relative
 position_type=absolute
 extra_css=link

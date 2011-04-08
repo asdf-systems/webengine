@@ -7,4 +7,4 @@ extra_css=link
 initial_show=true
 # higher level - object more in front
 layer_level=500
-action_click=SPECIFIC(../, deactivate), SPECIFIC(., activate)
+action_click=SPECIFIC(../, deactivate), SPECIFIC(., activate), SPECIFIC(/main/wrap/agb/content/std_head, activate)
