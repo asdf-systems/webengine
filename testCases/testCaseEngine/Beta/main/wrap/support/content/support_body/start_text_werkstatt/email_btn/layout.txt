@@ -13,4 +13,4 @@ alt_text=Email verfassen
 extra_css=link
 initial_show=true
 # higher level - object more in front
-layer_level=505
+layer_level=750
