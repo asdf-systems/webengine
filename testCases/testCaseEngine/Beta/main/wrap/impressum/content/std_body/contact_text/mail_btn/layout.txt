@@ -1,6 +1,6 @@
 [Button]
-position_x=67
-position_y=83
+position_x=47
+position_y=63
 width=138px
 height=13px
 #position type can be absolute or relative
@@ -12,4 +12,4 @@ action_click=LINK(.,mailto:info@asdf-systems.de)
 initial_show=true
 extra_css=link
 # higher level - object more in front
-layer_level=650
+layer_level=750
