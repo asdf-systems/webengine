@@ -311,7 +311,7 @@ function createDomObjectDOM(parent, domparent, id, type, css, extra_css, src, ex
         css = "NOTSET";
     
     if(extra_css == null)
-        extra_css == "EXTRA_NOTSET";
+        extra_css = "EXTRA_NOTSET";
     
      //create HTML command
 

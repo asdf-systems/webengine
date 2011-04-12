@@ -11,7 +11,7 @@ function changeContent(objectList){
     //alert("changeContent(): showObjectList")
     
     //alert("changeContent(): showStatics")
-    showObjectList(globals.static);
+    showObjectList(globals.statics);
     showObjectList(objectList);
     
 }
